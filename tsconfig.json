@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "outDir": "build/lib",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "sourceMap": true,
+    "allowJs": false,
+    "jsx": "react-jsx",
+    "declaration": true,
+    "moduleResolution": "node",
+    "rootDir": "./components",
+    "baseUrl": "./components",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true
+  },
+  "include": ["./components/**/*"],
+  "exclude": ["**/*.stories.tsx", "**/*.test.tsx"]
+}

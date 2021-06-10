@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkButton Renders 1`] = `
+<a
+  className="sc-bdnxRM eBJmcI"
+  href="#"
+>
+  Text
+</a>
+`;
