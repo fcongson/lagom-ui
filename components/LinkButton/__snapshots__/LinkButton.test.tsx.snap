@@ -1,10 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LinkButton Renders 1`] = `
-<a
-  className="sc-bdnxRM eBJmcI"
+<styled.a
   href="#"
 >
-  Text
-</a>
+  <Button
+    primary={false}
+  >
+    Text
+  </Button>
+</styled.a>
+`;
+
+exports[`LinkButton Renders primary 1`] = `
+<styled.a
+  href="#"
+>
+  <Button
+    primary={true}
+  >
+    Text
+  </Button>
+</styled.a>
+`;
+
+exports[`LinkButton Renders secondary 1`] = `
+<styled.a
+  href="#"
+>
+  <Button
+    primary={false}
+  >
+    Text
+  </Button>
+</styled.a>
 `;
