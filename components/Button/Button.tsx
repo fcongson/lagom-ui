@@ -1,7 +1,15 @@
-import styled, { css } from "styled-components";
-import { buttonStyle, ButtonStyleProps } from "styled-system";
+import styled from "styled-components";
+import {
+  buttonStyle,
+  ButtonStyleProps,
+  typography,
+  TypographyProps,
+} from "styled-system";
 
-const ButtonStyles = css`
+const StyledButton = styled.button<ButtonStyleProps & TypographyProps>`
+  ${typography}
+  ${buttonStyle}
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,31 +19,26 @@ const ButtonStyles = css`
   border: 1px solid black;
   border-radius: 24px;
   padding: 8px 24px;
-  font-family: ${(props) => props.theme.fonts.sansSerif};
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
   cursor: pointer;
 
   transition: transform 200ms ease-in-out;
 
   &:hover {
-    border: 1px solid black;
     transform: translateY(-2px);
   }
 
   &:active {
-    border: 1px solid black;
     transform: translateY(1px);
     transition: transform 100ms ease-in-out;
   }
 `;
 
-const StyledButton = styled.button<ButtonStyleProps>`
-  ${buttonStyle}
-  ${ButtonStyles}
-`;
+StyledButton.defaultProps = {
+  fontFamily: "sansSerif",
+  fontWeight: "link",
+  fontSize: "body",
+  lineHeight: 2,
+};
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   /**

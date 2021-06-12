@@ -2,6 +2,10 @@
 
 exports[`Button Renders 1`] = `
 <styled.button
+  fontFamily="sansSerif"
+  fontSize="body"
+  fontWeight="link"
+  lineHeight={2}
   variant="secondary"
 >
   Text
@@ -10,6 +14,10 @@ exports[`Button Renders 1`] = `
 
 exports[`Button Renders primary 1`] = `
 <styled.button
+  fontFamily="sansSerif"
+  fontSize="body"
+  fontWeight="link"
+  lineHeight={2}
   variant="primary"
 >
   Text
@@ -18,6 +26,10 @@ exports[`Button Renders primary 1`] = `
 
 exports[`Button Renders secondary 1`] = `
 <styled.button
+  fontFamily="sansSerif"
+  fontSize="body"
+  fontWeight="link"
+  lineHeight={2}
   variant="secondary"
 >
   Text
