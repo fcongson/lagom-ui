@@ -9,12 +9,12 @@
     "jsx": "react-jsx",
     "declaration": true,
     "moduleResolution": "node",
-    "rootDir": "./components",
-    "baseUrl": "./components",
+    "rootDir": "./src",
+    "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "esModuleInterop": true
   },
-  "include": ["./components/**/*"],
-  "exclude": ["**/*.stories.tsx", "**/*.test.tsx"]
+  "include": ["./src/**/*"],
+  "exclude": ["./src/theme/", "**/*.stories.tsx", "**/*.test.tsx"]
 }

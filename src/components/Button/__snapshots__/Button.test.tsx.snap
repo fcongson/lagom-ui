@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Renders 1`] = `
+<styled.button
+  borderColor="black"
+  borderRadius={24}
+  fontFamily="sansSerif"
+  fontSize="body"
+  fontWeight="link"
+  lineHeight={2}
+  theme={
+    Object {
+      "breakpoints": Array [
+        "320px",
+        "568px",
+        "768px",
+        "992px",
+      ],
+      "buttons": Object {
+        "primary": Object {
+          "backgroundColor": "#111111",
+          "color": "#ffffff",
+        },
+        "secondary": Object {
+          "backgroundColor": "#ffffff",
+          "color": "#111111",
+        },
+      },
+      "colors": Object {
+        "black": "#111111",
+        "grey": "#878787",
+        "greys": Array [
+          "#222222",
+          "#545454",
+          "#878787",
+          "#bababa",
+          "#ededed",
+        ],
+        "honey": "#dcae1d",
+        "honeys": Array [
+          "#dcae1d",
+          "#edcf73",
+          "#f8eecd",
+        ],
+        "navy": "#394e6f",
+        "navys": Array [
+          "#394e6f",
+          "#617eae",
+          "#a4b5d0",
+        ],
+        "olive": "#626e60",
+        "olives": Array [
+          "#626e60",
+          "#94a092",
+          "#cacfc9",
+        ],
+        "violet": "#442c45",
+        "violets": Array [
+          "#442c45",
+          "#815483",
+          "#b289b3",
+        ],
+        "white": "#ffffff",
+      },
+      "fontSizes": Array [
+        12,
+        14,
+        16,
+        20,
+        24,
+        36,
+        54,
+        81,
+        121.5,
+      ],
+      "fontWeights": Array [
+        400,
+        600,
+        700,
+      ],
+      "fonts": Object {
+        "monospace": "'silkamono', monospace",
+        "sansSerif": "'Montserrat', sans-serif",
+        "serif": "'Domine', serif",
+      },
+      "lineHeights": Array [
+        "15px",
+        "17px",
+        "20px",
+        "24px",
+        "29px",
+        "44px",
+        "66px",
+        "99px",
+        "148px",
+      ],
+      "mediaQueries": Object {
+        "emphasized": "@media screen and (min-width: 1456px)",
+        "large": "@media screen and (max-width: 992px)",
+        "medium": "@media screen and (max-width: 768px)",
+        "small": "@media screen and (max-width: 568px)",
+        "xsmall": "@media screen and (max-width: 320px)",
+      },
+      "sizes": Object {
+        "maxWidthContainer": "1120px",
+        "maxWidthContent": "800px",
+        "maxWidthSection": "1800px",
+        "minWidthEmph": "1456px",
+      },
+      "space": Array [
+        0,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128,
+      ],
+    }
+  }
+  variant="secondary"
+>
+  Text
+</styled.button>
+`;
+
+exports[`Button Renders primary 1`] = `
+<styled.button
+  borderColor="black"
+  borderRadius={24}
+  fontFamily="sansSerif"
+  fontSize="body"
+  fontWeight="link"
+  lineHeight={2}
+  theme={
+    Object {
+      "breakpoints": Array [
+        "320px",
+        "568px",
+        "768px",
+        "992px",
+      ],
+      "buttons": Object {
+        "primary": Object {
+          "backgroundColor": "#111111",
+          "color": "#ffffff",
+        },
+        "secondary": Object {
+          "backgroundColor": "#ffffff",
+          "color": "#111111",
+        },
+      },
+      "colors": Object {
+        "black": "#111111",
+        "grey": "#878787",
+        "greys": Array [
+          "#222222",
+          "#545454",
+          "#878787",
+          "#bababa",
+          "#ededed",
+        ],
+        "honey": "#dcae1d",
+        "honeys": Array [
+          "#dcae1d",
+          "#edcf73",
+          "#f8eecd",
+        ],
+        "navy": "#394e6f",
+        "navys": Array [
+          "#394e6f",
+          "#617eae",
+          "#a4b5d0",
+        ],
+        "olive": "#626e60",
+        "olives": Array [
+          "#626e60",
+          "#94a092",
+          "#cacfc9",
+        ],
+        "violet": "#442c45",
+        "violets": Array [
+          "#442c45",
+          "#815483",
+          "#b289b3",
+        ],
+        "white": "#ffffff",
+      },
+      "fontSizes": Array [
+        12,
+        14,
+        16,
+        20,
+        24,
+        36,
+        54,
+        81,
+        121.5,
+      ],
+      "fontWeights": Array [
+        400,
+        600,
+        700,
+      ],
+      "fonts": Object {
+        "monospace": "'silkamono', monospace",
+        "sansSerif": "'Montserrat', sans-serif",
+        "serif": "'Domine', serif",
+      },
+      "lineHeights": Array [
+        "15px",
+        "17px",
+        "20px",
+        "24px",
+        "29px",
+        "44px",
+        "66px",
+        "99px",
+        "148px",
+      ],
+      "mediaQueries": Object {
+        "emphasized": "@media screen and (min-width: 1456px)",
+        "large": "@media screen and (max-width: 992px)",
+        "medium": "@media screen and (max-width: 768px)",
+        "small": "@media screen and (max-width: 568px)",
+        "xsmall": "@media screen and (max-width: 320px)",
+      },
+      "sizes": Object {
+        "maxWidthContainer": "1120px",
+        "maxWidthContent": "800px",
+        "maxWidthSection": "1800px",
+        "minWidthEmph": "1456px",
+      },
+      "space": Array [
+        0,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128,
+      ],
+    }
+  }
+  variant="primary"
+>
+  Text
+</styled.button>
+`;
+
+exports[`Button Renders secondary 1`] = `
+<styled.button
+  borderColor="black"
+  borderRadius={24}
+  fontFamily="sansSerif"
+  fontSize="body"
+  fontWeight="link"
+  lineHeight={2}
+  theme={
+    Object {
+      "breakpoints": Array [
+        "320px",
+        "568px",
+        "768px",
+        "992px",
+      ],
+      "buttons": Object {
+        "primary": Object {
+          "backgroundColor": "#111111",
+          "color": "#ffffff",
+        },
+        "secondary": Object {
+          "backgroundColor": "#ffffff",
+          "color": "#111111",
+        },
+      },
+      "colors": Object {
+        "black": "#111111",
+        "grey": "#878787",
+        "greys": Array [
+          "#222222",
+          "#545454",
+          "#878787",
+          "#bababa",
+          "#ededed",
+        ],
+        "honey": "#dcae1d",
+        "honeys": Array [
+          "#dcae1d",
+          "#edcf73",
+          "#f8eecd",
+        ],
+        "navy": "#394e6f",
+        "navys": Array [
+          "#394e6f",
+          "#617eae",
+          "#a4b5d0",
+        ],
+        "olive": "#626e60",
+        "olives": Array [
+          "#626e60",
+          "#94a092",
+          "#cacfc9",
+        ],
+        "violet": "#442c45",
+        "violets": Array [
+          "#442c45",
+          "#815483",
+          "#b289b3",
+        ],
+        "white": "#ffffff",
+      },
+      "fontSizes": Array [
+        12,
+        14,
+        16,
+        20,
+        24,
+        36,
+        54,
+        81,
+        121.5,
+      ],
+      "fontWeights": Array [
+        400,
+        600,
+        700,
+      ],
+      "fonts": Object {
+        "monospace": "'silkamono', monospace",
+        "sansSerif": "'Montserrat', sans-serif",
+        "serif": "'Domine', serif",
+      },
+      "lineHeights": Array [
+        "15px",
+        "17px",
+        "20px",
+        "24px",
+        "29px",
+        "44px",
+        "66px",
+        "99px",
+        "148px",
+      ],
+      "mediaQueries": Object {
+        "emphasized": "@media screen and (min-width: 1456px)",
+        "large": "@media screen and (max-width: 992px)",
+        "medium": "@media screen and (max-width: 768px)",
+        "small": "@media screen and (max-width: 568px)",
+        "xsmall": "@media screen and (max-width: 320px)",
+      },
+      "sizes": Object {
+        "maxWidthContainer": "1120px",
+        "maxWidthContent": "800px",
+        "maxWidthSection": "1800px",
+        "minWidthEmph": "1456px",
+      },
+      "space": Array [
+        0,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128,
+      ],
+    }
+  }
+  variant="secondary"
+>
+  Text
+</styled.button>
+`;

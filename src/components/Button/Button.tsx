@@ -1,13 +1,19 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import {
+  border,
+  BorderProps,
   buttonStyle,
   ButtonStyleProps,
   typography,
   TypographyProps,
 } from "styled-system";
+import { theme } from "../../themes/theme";
 
-const StyledButton = styled.button<ButtonStyleProps & TypographyProps>`
+const StyledButton = styled.button<
+  ButtonStyleProps & TypographyProps & BorderProps
+>`
   ${typography}
+  ${border}
   ${buttonStyle}
 
   display: flex;
@@ -16,8 +22,8 @@ const StyledButton = styled.button<ButtonStyleProps & TypographyProps>`
 
   height: 48px;
   width: fit-content;
-  border: 1px solid black;
-  border-radius: 24px;
+  border: 1px solid;
+  /* border-radius: 24px; */
   padding: 8px 24px;
   cursor: pointer;
 
@@ -34,10 +40,13 @@ const StyledButton = styled.button<ButtonStyleProps & TypographyProps>`
 `;
 
 StyledButton.defaultProps = {
+  theme,
   fontFamily: "sansSerif",
   fontWeight: "link",
   fontSize: "body",
   lineHeight: 2,
+  borderColor: "black",
+  borderRadius: 24,
 };
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
@@ -51,8 +60,16 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   children,
   primary = false,
   ...restProps
-}) => (
-  <StyledButton variant={primary ? "primary" : "secondary"} {...restProps}>
-    {children}
-  </StyledButton>
-);
+}) => {
+  const providedTheme = useTheme();
+  const mergedTheme = { ...theme, ...providedTheme };
+  return (
+    <StyledButton
+      theme={mergedTheme}
+      variant={primary ? "primary" : "secondary"}
+      {...restProps}
+    >
+      {children}
+    </StyledButton>
+  );
+};

@@ -1,5 +1,5 @@
 module.exports = {
-  roots: ["<rootDir>/components"],
+  roots: ["<rootDir>/src"],
   setupFilesAfterEnv: ["<rootDir>/enzyme.setup.js"],
   transform: {
     "^.+\\.tsx?$": "ts-jest",

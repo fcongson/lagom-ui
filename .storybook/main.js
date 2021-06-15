@@ -1,5 +1,5 @@
 module.exports = {
-  stories: ["../components/**/*.stories.tsx"],
+  stories: ["../src/**/*.stories.tsx"],
   addons: [
     "@storybook/addon-actions",
     "@storybook/addon-essentials",
@@ -11,5 +11,6 @@ module.exports = {
         configureJSX: true,
       },
     },
+    "storybook-addon-styled-component-theme/dist/preset",
   ],
 };
