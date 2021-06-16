@@ -1,15 +1,28 @@
-import { DocsContainer, DocsPage } from "@storybook/addon-docs/blocks";
-import { withKnobs } from "@storybook/addon-knobs";
-import { withThemesProvider } from "storybook-addon-styled-component-theme";
+import { withThemes } from "storybook-addon-themes/react";
+import { ThemeProvider } from "styled-components";
+import { theme as defaultTheme } from "../src/themes/theme";
 import { theme } from "../src/themes/theme-sub";
 
+const themeList = [
+  { name: "default", color: defaultTheme.colors.black },
+  { name: "provided", color: theme.colors.violet },
+];
+
+const ThemeDecorator = ({ children, themeName }) => {
+  switch (themeName) {
+    case "provided":
+      return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+    default:
+      return <>{children}</>;
+  }
+};
+
 export const parameters = {
-  docs: {
-    container: DocsContainer,
-    page: DocsPage,
+  themes: {
+    default: "default",
+    list: themeList,
+    Decorator: ThemeDecorator,
   },
 };
 
-const themes = [{ name: "default" }, { name: "provided", ...theme }];
-
-export const decorators = [withKnobs, withThemesProvider(themes)];
+export const decorators = [withThemes];

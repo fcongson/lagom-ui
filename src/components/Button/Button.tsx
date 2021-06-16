@@ -12,10 +12,6 @@ import { theme } from "../../themes/theme";
 const StyledButton = styled.button<
   ButtonStyleProps & TypographyProps & BorderProps
 >`
-  ${typography}
-  ${border}
-  ${buttonStyle}
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +19,6 @@ const StyledButton = styled.button<
   height: 48px;
   width: fit-content;
   border: 1px solid;
-  /* border-radius: 24px; */
   padding: 8px 24px;
   cursor: pointer;
 
@@ -37,6 +32,10 @@ const StyledButton = styled.button<
     transform: translateY(1px);
     transition: transform 100ms ease-in-out;
   }
+
+  ${typography}
+  ${border}
+  ${buttonStyle}
 `;
 
 StyledButton.defaultProps = {

@@ -1,16 +1,12 @@
 module.exports = {
   stories: ["../src/**/*.stories.tsx"],
   addons: [
-    "@storybook/addon-actions",
-    "@storybook/addon-essentials",
-    "@storybook/addon-knobs",
-    "@storybook/addon-links",
     {
-      name: "@storybook/addon-docs",
+      name: "@storybook/addon-essentials",
       options: {
-        configureJSX: true,
+        controls: false,
       },
     },
-    "storybook-addon-styled-component-theme/dist/preset",
+    "storybook-addon-themes",
   ],
 };

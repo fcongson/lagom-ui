@@ -47,7 +47,7 @@ const buttons = {
   primary: {
     backgroundColor: colors.violets[0] as string,
     color: colors.white as string,
-    borderColor: colors.violets[0] as string,
+    borderColor: colors.violet as string,
     borderRadius: 8,
   },
   secondary: {
