@@ -41,6 +41,7 @@
     "react-is": "^17.0.2",
     "storybook-addon-themes": "^6.1.0",
     "ts-jest": "^27.0.3",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "4.2.2"
   },
   "dependencies": {

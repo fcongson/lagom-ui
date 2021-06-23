@@ -13,8 +13,14 @@
     "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "components/*": ["components/*"],
+      "hooks/*": ["hooks/*"],
+      "layouts/*": ["layouts/*"],
+      "themes/*": ["themes/*"]
+    }
   },
   "include": ["./src/**/*"],
-  "exclude": ["./src/themes/*", "**/*.stories.tsx", "**/*.test.tsx"]
+  "exclude": ["**/*.stories.tsx", "**/*.test.tsx"]
 }

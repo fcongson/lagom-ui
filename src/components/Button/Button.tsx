@@ -1,4 +1,5 @@
-import styled, { useTheme } from "styled-components";
+import { useMergedTheme } from "hooks/useMergedTheme";
+import styled from "styled-components";
 import {
   border,
   BorderProps,
@@ -7,7 +8,7 @@ import {
   typography,
   TypographyProps,
 } from "styled-system";
-import { theme } from "../../themes/theme";
+import { theme } from "themes/theme";
 
 const StyledButton = styled.button<
   ButtonStyleProps & TypographyProps & BorderProps
@@ -60,8 +61,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   primary = false,
   ...restProps
 }) => {
-  const providedTheme = useTheme();
-  const mergedTheme = { ...theme, ...providedTheme };
+  const mergedTheme = useMergedTheme();
   return (
     <StyledButton
       theme={mergedTheme}
