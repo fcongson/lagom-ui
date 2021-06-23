@@ -1,8 +1,13 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Button } from "../Button";
 
-const StyledLink = styled.a`
+const linkCss = css`
   text-decoration: none;
+  display: contents;
+`;
+
+const StyledLink = styled.a`
+  ${linkCss}
 `;
 
 interface LinkButtonProps extends React.ComponentPropsWithoutRef<"button"> {
@@ -13,18 +18,38 @@ interface LinkButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   /**
    * Where to navigate to
    */
-  to?: string;
+  to: string;
+  /**
+   * A framework specific link component
+   */
+  Component?: React.ComponentType<{ to: string }>;
 }
 
 export const LinkButton: React.FunctionComponent<LinkButtonProps> = ({
   children,
   primary = false,
   to,
+  Component,
   ...restProps
-}) => (
-  <StyledLink href={to}>
-    <Button primary={primary} {...restProps}>
-      {children}
-    </Button>
-  </StyledLink>
-);
+}) => {
+  if (Component) {
+    const StyledComponent = styled(Component)`
+      ${linkCss}
+    `;
+    return (
+      <StyledComponent to={to}>
+        <Button primary={primary} {...restProps}>
+          {children}
+        </Button>
+      </StyledComponent>
+    );
+  }
+
+  return (
+    <StyledLink href={to}>
+      <Button primary={primary} {...restProps}>
+        {children}
+      </Button>
+    </StyledLink>
+  );
+};
