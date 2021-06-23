@@ -13,13 +13,7 @@
     "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "paths": {
-      "components/*": ["components/*"],
-      "hooks/*": ["hooks/*"],
-      "layouts/*": ["layouts/*"],
-      "themes/*": ["themes/*"]
-    }
+    "esModuleInterop": true
   },
   "include": ["./src/**/*"],
   "exclude": ["**/*.stories.tsx", "**/*.test.tsx"]

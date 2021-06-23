@@ -1,4 +1,3 @@
-import { useMergedTheme } from "hooks/useMergedTheme";
 import React from "react";
 import styled from "styled-components";
 import {
@@ -9,6 +8,7 @@ import {
   space,
   SpaceProps,
 } from "styled-system";
+import { useMergedTheme } from "../../hooks/useMergedTheme";
 
 const StyledContainer = styled.div<SpaceProps & LayoutProps & ColorProps>`
   ${space}

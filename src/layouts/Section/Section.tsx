@@ -1,4 +1,3 @@
-import { useMergedTheme } from "hooks/useMergedTheme";
 import styled from "styled-components";
 import {
   color,
@@ -8,6 +7,7 @@ import {
   space,
   SpaceProps,
 } from "styled-system";
+import { useMergedTheme } from "../../hooks/useMergedTheme";
 
 const StyledSection = styled.section<SpaceProps & LayoutProps & ColorProps>`
   ${space}

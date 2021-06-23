@@ -1,4 +1,3 @@
-import { useMergedTheme } from "hooks/useMergedTheme";
 import styled from "styled-components";
 import {
   border,
@@ -8,7 +7,8 @@ import {
   typography,
   TypographyProps,
 } from "styled-system";
-import { theme } from "themes/theme";
+import { useMergedTheme } from "../../hooks/useMergedTheme";
+import { theme } from "../../themes/theme";
 
 const StyledButton = styled.button<
   ButtonStyleProps & TypographyProps & BorderProps
