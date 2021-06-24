@@ -1,7 +1,7 @@
 import { PageHeader } from "./PageHeader";
 
 export default {
-  title: "Page Header",
+  title: "Components/Page Header",
   component: PageHeader,
 };
 

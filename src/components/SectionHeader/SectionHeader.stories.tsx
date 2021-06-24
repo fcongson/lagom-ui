@@ -1,7 +1,7 @@
 import { SectionHeader } from "./SectionHeader";
 
 export default {
-  title: "Section Header",
+  title: "Components/Section Header",
   component: SectionHeader,
 };
 

@@ -2,16 +2,16 @@ import { action } from "@storybook/addon-actions";
 import { Button } from "./Button";
 
 export default {
-  title: "Button",
+  title: "Components/Button",
   component: Button,
 };
 
-export const ButtonPrimary = () => (
+export const Primary = () => (
   <Button onClick={action("clicked")} primary>
     Button primary
   </Button>
 );
 
-export const ButtonSecondary = () => (
+export const Secondary = () => (
   <Button onClick={action("clicked")}>Button secondary</Button>
 );

@@ -2,7 +2,7 @@ import { Container } from "../Container";
 import { Section } from "./Section";
 
 export default {
-  title: "Section",
+  title: "Layouts/Section",
   component: Section,
 };
 
