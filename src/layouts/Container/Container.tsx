@@ -3,6 +3,8 @@ import styled from "styled-components";
 import {
   color,
   ColorProps,
+  flexbox,
+  FlexboxProps,
   layout,
   LayoutProps,
   space,
@@ -10,10 +12,13 @@ import {
 } from "styled-system";
 import { useMergedTheme } from "../../hooks/useMergedTheme";
 
-const StyledContainer = styled.div<SpaceProps & LayoutProps & ColorProps>`
+const StyledContainer = styled.div<
+  SpaceProps & LayoutProps & ColorProps & FlexboxProps
+>`
   ${space}
   ${layout}
   ${color}
+  ${flexbox}
 `;
 
 StyledContainer.defaultProps = {
@@ -25,11 +30,9 @@ StyledContainer.defaultProps = {
 /**
  * Primarily used as a child of `Section`. Provides a container for the section contents.
  */
-export const Container: React.FunctionComponent<ColorProps> = ({
-  children,
-  color,
-  ...restProps
-}) => {
+export const Container: React.FunctionComponent<
+  SpaceProps & LayoutProps & ColorProps & FlexboxProps
+> = ({ children, color, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
     <StyledContainer theme={mergedTheme} {...restProps}>

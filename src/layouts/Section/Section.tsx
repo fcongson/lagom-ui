@@ -34,11 +34,9 @@ StyledSection.defaultProps = {
 /**
  * A layout element that defines a section in a document.
  */
-export const Section: React.FunctionComponent<ColorProps> = ({
-  children,
-  color,
-  ...restProps
-}) => {
+export const Section: React.FunctionComponent<
+  SpaceProps & LayoutProps & ColorProps
+> = ({ children, color, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
     <StyledSection theme={mergedTheme} {...restProps}>
