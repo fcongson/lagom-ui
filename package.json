@@ -12,8 +12,8 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
     "prepare": "husky install"
   },
   "devDependencies": {
