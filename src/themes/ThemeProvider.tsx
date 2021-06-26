@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ThemeProvider as _ThemeProvder } from "styled-components";
-import { GlobalStyle } from "./GlobalStyle";
+import { GlobalStyle } from "../styles/GlobalStyle";
+import "../styles/resetr.css";
 import { theme as _theme, ThemeType } from "./theme";
-import "./resetr.css";
 
 export const ThemeProvider: React.FunctionComponent<{ theme: ThemeType }> = ({
   children,

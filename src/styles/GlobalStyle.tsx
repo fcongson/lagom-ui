@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { ThemeType } from "./theme";
+import { ThemeType } from "../themes/theme";
 
 export const GlobalStyle = createGlobalStyle<{
   noFocusOutline: boolean;
