@@ -17,12 +17,13 @@ StyledHeader.defaultProps = {
   marginBottom: [4, null, null, null, 5],
 };
 
-export const PageHeader: React.FunctionComponent<TypographyProps & SpaceProps> =
-  ({ children, ...restProps }) => {
-    const mergedTheme = useMergedTheme();
-    return (
-      <StyledHeader theme={mergedTheme} {...restProps}>
-        {children}
-      </StyledHeader>
-    );
-  };
+export const PageHeader: React.FunctionComponent<
+  React.ComponentProps<"h1"> & TypographyProps & SpaceProps
+> = ({ children, ref, ...restProps }) => {
+  const mergedTheme = useMergedTheme();
+  return (
+    <StyledHeader theme={mergedTheme} {...restProps}>
+      {children}
+    </StyledHeader>
+  );
+};

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import {
   color,
@@ -31,8 +30,12 @@ StyledContainer.defaultProps = {
  * Primarily used as a child of `Section`. Provides a container for the section contents.
  */
 export const Container: React.FunctionComponent<
-  SpaceProps & LayoutProps & ColorProps & FlexboxProps
-> = ({ children, color, ...restProps }) => {
+  React.ComponentProps<"div"> &
+    SpaceProps &
+    LayoutProps &
+    ColorProps &
+    FlexboxProps
+> = ({ children, ref, color, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
     <StyledContainer theme={mergedTheme} {...restProps}>

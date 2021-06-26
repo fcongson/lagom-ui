@@ -47,7 +47,9 @@ const StyledBlockquote = styled.blockquote`
   }
 `;
 
-export const Quote: React.FunctionComponent = ({ children, ...restProps }) => {
+export const Quote: React.FunctionComponent<
+  React.ComponentProps<"blockquote">
+> = ({ children, ref, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
     <StyledBlockquote theme={mergedTheme} {...restProps}>

@@ -18,8 +18,8 @@ StyledHeader.defaultProps = {
 };
 
 export const SectionHeader: React.FunctionComponent<
-  TypographyProps & SpaceProps
-> = ({ children, ...restProps }) => {
+  React.ComponentProps<"h2"> & TypographyProps & SpaceProps
+> = ({ children, ref, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
     <StyledHeader theme={mergedTheme} {...restProps}>

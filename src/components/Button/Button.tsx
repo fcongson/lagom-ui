@@ -49,7 +49,7 @@ StyledButton.defaultProps = {
   borderRadius: 24,
 };
 
-interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+interface ButtonProps extends React.ComponentProps<"button"> {
   /**
    * Choose between the primary and secondary variants
    */
@@ -58,6 +58,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
   children,
+  ref,
   primary = false,
   ...restProps
 }) => {
