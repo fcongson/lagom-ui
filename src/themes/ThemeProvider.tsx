@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { ThemeProvider as _ThemeProvder } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
-import { theme } from "./theme";
+import { theme as _theme, ThemeType } from "./theme";
 
-export const ThemeProvider: React.FunctionComponent = ({ children }) => {
+export const ThemeProvider: React.FunctionComponent<{ theme: ThemeType }> = ({
+  children,
+  theme,
+}) => {
   const [noFocusOutline, setNoFocusOutline] = useState(true);
+  const mergedTheme = { ..._theme, ...theme };
 
   const a11yHandler = ({ keyCode }: { keyCode: number }) => {
     // Add focus outline when tab key is pressed
@@ -23,7 +27,7 @@ export const ThemeProvider: React.FunctionComponent = ({ children }) => {
   }, []);
 
   return (
-    <_ThemeProvder theme={theme}>
+    <_ThemeProvder theme={mergedTheme}>
       <GlobalStyle noFocusOutline={noFocusOutline} />
       {children}
     </_ThemeProvder>
