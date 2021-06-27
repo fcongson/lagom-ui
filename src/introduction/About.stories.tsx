@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import { Container, Section } from ".";
+import { Container, Section } from "..";
 
 export default {
-  title: "Welcome",
+  title: "Welcome/About",
 };
 
-const WelcomeContainer = styled.div`
+const AboutContainer = styled.div`
   ${Container} {
     max-width: ${(props) => props.theme.sizes.maxWidthContent};
   }
 `;
 
-export const Welcome = () => (
-  <WelcomeContainer>
+export const About = () => (
+  <AboutContainer>
     <Section>
       <Container display="flex" justifyContent="center">
         <img src="lagom-logo.svg" alt="Lagom UI Logo" width="100%" />
@@ -21,8 +21,9 @@ export const Welcome = () => (
     <Section>
       <Container display="flex" flexDirection="column" justifyContent="center">
         <p>
-          Lagom (pronounced [ˈlɑ̂ːɡɔm]) is a Swedish and Norwegian word meaning
-          "just the right amount".
+          <a href="https://en.wikipedia.org/wiki/Lagom">Lagom</a> (pronounced
+          [ˈlɑ̂ːɡɔm]) is a Swedish and Norwegian word meaning "just the right
+          amount".
         </p>
         <p>
           This component library provides just the right amount of components
@@ -40,5 +41,5 @@ export const Welcome = () => (
         </small>
       </Container>
     </Section>
-  </WelcomeContainer>
+  </AboutContainer>
 );

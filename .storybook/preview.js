@@ -25,6 +25,12 @@ export const parameters = {
     list: themeList,
     Decorator: ThemeDecorator,
   },
+  viewMode: "docs",
+  options: {
+    storySort: {
+      order: ["Welcome", "Components", "Layouts", "*"],
+    },
+  },
 };
 
 export const decorators = [withThemes];

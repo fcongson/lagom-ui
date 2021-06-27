@@ -10,6 +10,9 @@ import {
   SpaceProps,
 } from "styled-system";
 
+/**
+ * Primarily used as a child of `Section`. Provides a container for the section contents.
+ */
 export const Container = styled.div<
   SpaceProps & LayoutProps & ColorProps & FlexboxProps
 >`
@@ -25,9 +28,6 @@ Container.defaultProps = {
   marginBottom: [5, null, 6, null],
 };
 
-/**
- * Primarily used as a child of `Section`. Provides a container for the section contents.
- */
 // export const Container: React.FunctionComponent<
 //   React.ComponentProps<"div"> &
 //     SpaceProps &

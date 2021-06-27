@@ -8,6 +8,9 @@ import {
   SpaceProps,
 } from "styled-system";
 
+/**
+ * A layout element that defines a section in a document.
+ */
 export const Section = styled.section<SpaceProps & LayoutProps & ColorProps>`
   ${space}
   ${layout}
@@ -30,9 +33,6 @@ Section.defaultProps = {
   margin: "0 auto",
 };
 
-/**
- * A layout element that defines a section in a document.
- */
 // export const Section: React.FunctionComponent<
 //   React.ComponentProps<"div"> & SpaceProps & LayoutProps & ColorProps
 // > = ({ children, ref, color, ...restProps }) => {
