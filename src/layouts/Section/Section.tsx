@@ -7,9 +7,8 @@ import {
   space,
   SpaceProps,
 } from "styled-system";
-import { useMergedTheme } from "../../hooks/useMergedTheme";
 
-const StyledSection = styled.section<SpaceProps & LayoutProps & ColorProps>`
+export const Section = styled.section<SpaceProps & LayoutProps & ColorProps>`
   ${space}
   ${layout}
   ${color}
@@ -26,7 +25,7 @@ const StyledSection = styled.section<SpaceProps & LayoutProps & ColorProps>`
   padding-right: calc(max(1rem, env(safe-area-inset-right)));
 `;
 
-StyledSection.defaultProps = {
+Section.defaultProps = {
   maxWidth: "maxWidthSection",
   margin: "0 auto",
 };
@@ -34,13 +33,13 @@ StyledSection.defaultProps = {
 /**
  * A layout element that defines a section in a document.
  */
-export const Section: React.FunctionComponent<
-  React.ComponentProps<"div"> & SpaceProps & LayoutProps & ColorProps
-> = ({ children, ref, color, ...restProps }) => {
-  const mergedTheme = useMergedTheme();
-  return (
-    <StyledSection theme={mergedTheme} {...restProps}>
-      {children}
-    </StyledSection>
-  );
-};
+// export const Section: React.FunctionComponent<
+//   React.ComponentProps<"div"> & SpaceProps & LayoutProps & ColorProps
+// > = ({ children, ref, color, ...restProps }) => {
+//   const mergedTheme = useMergedTheme();
+//   return (
+//     <StyledSection theme={mergedTheme} {...restProps}>
+//       {children}
+//     </StyledSection>
+//   );
+// };

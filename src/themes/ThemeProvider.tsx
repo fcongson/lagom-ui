@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { ThemeProvider as _ThemeProvder } from "styled-components";
+import {
+  ThemeProvider as _ThemeProvider,
+  ThemeProviderProps,
+} from "styled-components";
 import { GlobalStyle } from "../styles/GlobalStyle";
 import "../styles/resetr.css";
-import { theme as _theme, ThemeType } from "./theme";
+import { theme as _theme } from "./theme";
 
-export const ThemeProvider: React.FunctionComponent<{ theme: ThemeType }> = ({
-  children,
-  theme,
-}) => {
+export const ThemeProvider: React.FunctionComponent<
+  ThemeProviderProps<any, any>
+> = ({ children, theme }) => {
   const [noFocusOutline, setNoFocusOutline] = useState(true);
   const mergedTheme = { ..._theme, ...theme };
 
@@ -28,9 +30,9 @@ export const ThemeProvider: React.FunctionComponent<{ theme: ThemeType }> = ({
   }, []);
 
   return (
-    <_ThemeProvder theme={mergedTheme}>
+    <_ThemeProvider theme={mergedTheme}>
       <GlobalStyle noFocusOutline={noFocusOutline} />
       {children}
-    </_ThemeProvder>
+    </_ThemeProvider>
   );
 };

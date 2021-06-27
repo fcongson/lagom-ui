@@ -1,5 +1,5 @@
-import { useMergedTheme } from "hooks/useMergedTheme";
 import styled from "styled-components";
+import { useMergedTheme } from "../../hooks/useMergedTheme";
 
 const StyledBlockquote = styled.blockquote`
   margin-bottom: 2rem;
