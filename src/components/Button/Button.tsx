@@ -4,6 +4,10 @@ import {
   BorderProps,
   buttonStyle,
   ButtonStyleProps,
+  color,
+  ColorProps,
+  space,
+  SpaceProps,
   typography,
   TypographyProps,
 } from "styled-system";
@@ -11,7 +15,7 @@ import { useMergedTheme } from "../../hooks/useMergedTheme";
 import { theme } from "../../themes/theme";
 
 const StyledButton = styled.button<
-  ButtonStyleProps & TypographyProps & BorderProps
+  ButtonStyleProps & TypographyProps & BorderProps & SpaceProps & ColorProps
 >`
   display: flex;
   justify-content: center;
@@ -34,9 +38,12 @@ const StyledButton = styled.button<
     transition: transform 100ms ease-in-out;
   }
 
+  ${buttonStyle}
+
   ${typography}
   ${border}
-  ${buttonStyle}
+  ${space}
+  ${color}
 `;
 
 StyledButton.defaultProps = {
@@ -56,12 +63,9 @@ interface ButtonProps extends React.ComponentProps<"button"> {
   primary?: boolean;
 }
 
-export const Button: React.FunctionComponent<ButtonProps> = ({
-  children,
-  ref,
-  primary = false,
-  ...restProps
-}) => {
+export const Button: React.FunctionComponent<
+  ButtonProps & SpaceProps & ColorProps
+> = ({ children, ref, primary = false, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
     <StyledButton
