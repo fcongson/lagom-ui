@@ -18,11 +18,11 @@
     "copyfiles": "copyfiles -u 1 src/styles/resetr.css build/lib"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.3.0",
-    "@storybook/addon-essentials": "^6.3.0",
-    "@storybook/addons": "^6.3.0",
-    "@storybook/react": "^6.3.0",
-    "@storybook/theming": "^6.3.0",
+    "@storybook/addon-a11y": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addons": "^6.3.4",
+    "@storybook/react": "^6.3.4",
+    "@storybook/theming": "^6.3.4",
     "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.12.4",
