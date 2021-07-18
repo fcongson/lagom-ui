@@ -15,7 +15,7 @@ export const About = () => (
   <AboutContainer>
     <Section>
       <Container display="flex" justifyContent="center">
-        <img src="lagom-logo.svg" alt="Lagom UI Logo" width="100%" />
+        <img src="lagom-logo.png" alt="Lagom UI Logo" width="100%" />
       </Container>
     </Section>
     <Section>

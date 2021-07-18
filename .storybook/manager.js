@@ -5,6 +5,6 @@ addons.setConfig({
   theme: create({
     base: "light",
     brandTitle: "Lagom UI",
-    brandImage: "/lagom-logo.svg",
+    brandImage: "/logo.png",
   }),
 });

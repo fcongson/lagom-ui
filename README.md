@@ -1,4 +1,4 @@
-![lagom-ui](public/lagom-logo.svg)
+![lagom-ui](public/lagom-logo.png)
 
 [**Lagom**](https://en.wikipedia.org/wiki/Lagom) (pronounced [ˈlɑ̂ːɡɔm]) is a Swedish and Norwegian word meaning "just the right amount".
 
