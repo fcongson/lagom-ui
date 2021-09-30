@@ -1,4 +1,5 @@
 export * from "./components/Button";
+export * from "./components/CallToAction";
 export * from "./components/Hero";
 export * from "./components/LinkButton";
 export * from "./components/PageHeader";

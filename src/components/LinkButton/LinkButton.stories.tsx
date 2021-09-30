@@ -6,13 +6,13 @@ export default {
 };
 
 export const Primary = () => (
-  <LinkButton to="/?path=/story/linkbutton--link-button-primary" primary>
+  <LinkButton to="/?path=/story/components-link-button--primary" primary>
     Link button primary
   </LinkButton>
 );
 
 export const Secondary = () => (
-  <LinkButton to="/?path=/story/linkbutton--link-button-secondary">
+  <LinkButton to="/?path=/story/components-link-button--secondary">
     Link button secondary
   </LinkButton>
 );
