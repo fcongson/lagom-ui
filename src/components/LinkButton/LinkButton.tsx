@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components";
-import { ColorProps, SpaceProps } from "styled-system";
+import {
+  BorderProps,
+  ColorProps,
+  SpaceProps,
+  TypographyProps,
+} from "styled-system";
 import { Button } from "../Button";
 
 const linkCss = css`
@@ -27,7 +32,7 @@ interface LinkButtonProps extends React.ComponentProps<"button"> {
 }
 
 export const LinkButton: React.FunctionComponent<
-  LinkButtonProps & SpaceProps & ColorProps
+  LinkButtonProps & TypographyProps & BorderProps & SpaceProps & ColorProps
 > = ({ children, ref, primary = false, to, Component, ...restProps }) => {
   if (Component) {
     const StyledComponent = styled(Component)`

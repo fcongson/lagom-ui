@@ -16,3 +16,16 @@ export const Secondary = () => (
     Link button secondary
   </LinkButton>
 );
+
+export const Custom = () => (
+  <LinkButton
+    to="/?path=/story/components-link-button--custom"
+    backgroundColor="olive"
+    borderColor="olive"
+    color="white"
+    borderRadius={4}
+    fontFamily="monospace"
+  >
+    Link button custom
+  </LinkButton>
+);

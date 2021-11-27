@@ -46,16 +46,6 @@ const StyledButton = styled.button<
   ${color}
 `;
 
-StyledButton.defaultProps = {
-  theme,
-  fontFamily: "sansSerif",
-  fontWeight: "link",
-  fontSize: "body",
-  lineHeight: 2,
-  borderColor: "black",
-  borderRadius: 24,
-};
-
 interface ButtonProps extends React.ComponentProps<"button"> {
   /**
    * Choose between the primary and secondary variants
@@ -64,7 +54,7 @@ interface ButtonProps extends React.ComponentProps<"button"> {
 }
 
 export const Button: React.FunctionComponent<
-  ButtonProps & SpaceProps & ColorProps
+  ButtonProps & TypographyProps & BorderProps & SpaceProps & ColorProps
 > = ({ children, ref, primary = false, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (

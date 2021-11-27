@@ -45,16 +45,24 @@ const space = [0, 4, 8, 16, 32, 64, 128];
 
 const buttons = {
   primary: {
-    backgroundColor: colors.violets[0] as string,
+    backgroundColor: colors.violet as string,
     color: colors.white as string,
     borderColor: colors.violet as string,
     borderRadius: 8,
+    fontFamily: fonts.sansSerif,
+    fontWeight: fontWeights.link,
+    fontSize: fontSizes.body,
+    lineHeight: 2,
   },
   secondary: {
     backgroundColor: colors.white as string,
     color: colors.black as string,
     borderColor: colors.black as string,
     borderRadius: 8,
+    fontFamily: fonts.sansSerif,
+    fontWeight: fontWeights.link,
+    fontSize: fontSizes.body,
+    lineHeight: 2,
   },
 };
 
