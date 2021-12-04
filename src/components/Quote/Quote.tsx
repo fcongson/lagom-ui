@@ -22,22 +22,6 @@ const StyledBlockquote = styled.blockquote`
     padding-left: 2rem;
   }
 
-  & > :first-child:before {
-    content: open-quote;
-    font-size: 2em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
-  }
-
-  & > :last-child:after {
-    content: close-quote;
-    font-size: 2em;
-    line-height: 0.1em;
-    margin-left: 0.025em;
-    vertical-align: -0.4em;
-  }
-
   & > :last-child {
     margin-bottom: 0;
   }
