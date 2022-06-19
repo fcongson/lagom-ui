@@ -1,37 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LinkButton Renders 1`] = `
-<styled.a
-  href="#"
->
-  <Button
-    primary={false}
+Array [
+  <button
+    class="sc-bczRLJ eWIwMV"
   >
     Text
-  </Button>
-</styled.a>
+  </button>,
+]
 `;
 
 exports[`LinkButton Renders primary 1`] = `
-<styled.a
-  href="#"
->
-  <Button
-    primary={true}
+Array [
+  <button
+    class="sc-bczRLJ jpJgZD"
   >
     Text
-  </Button>
-</styled.a>
+  </button>,
+]
 `;
 
 exports[`LinkButton Renders secondary 1`] = `
-<styled.a
-  href="#"
->
-  <Button
-    primary={false}
+Array [
+  <button
+    class="sc-bczRLJ eWIwMV"
   >
     Text
-  </Button>
-</styled.a>
+  </button>,
+]
 `;

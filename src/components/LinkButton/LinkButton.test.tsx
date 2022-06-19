@@ -1,25 +1,25 @@
-import { shallow } from "enzyme";
+import { render, screen } from "@testing-library/react";
 import { LinkButton } from "./LinkButton";
 
 describe("LinkButton", () => {
-  it("Renders", () => {
-    const linkButton = shallow(<LinkButton to="#">Text</LinkButton>);
-    expect(linkButton).toMatchSnapshot();
+  test("Renders", () => {
+    render(<LinkButton to="#">Text</LinkButton>);
+    expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
-  it("Renders primary", () => {
-    const linkButton = shallow(
+  test("Renders primary", () => {
+    render(
       <LinkButton to="#" primary>
         Text
       </LinkButton>
     );
-    expect(linkButton).toMatchSnapshot();
+    expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
-  it("Renders secondary", () => {
-    const linkButton = shallow(
+  test("Renders secondary", () => {
+    render(
       <LinkButton to="#" primary={false}>
         Text
       </LinkButton>
     );
-    expect(linkButton).toMatchSnapshot();
+    expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
 });
