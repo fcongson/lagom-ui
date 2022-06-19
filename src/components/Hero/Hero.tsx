@@ -27,7 +27,7 @@ const HeroContent = styled.div`
 
 export const Hero: React.FunctionComponent<{
   image: React.ReactElement;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }> = ({ image, children, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
