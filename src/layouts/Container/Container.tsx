@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import {
+  border,
+  BorderProps,
   color,
   ColorProps,
   flexbox,
@@ -14,12 +16,13 @@ import {
  * Primarily used as a child of `Section`. Provides a container for the section contents.
  */
 export const Container = styled.div<
-  SpaceProps & LayoutProps & ColorProps & FlexboxProps
+  SpaceProps & LayoutProps & ColorProps & FlexboxProps & BorderProps
 >`
   ${space}
   ${layout}
   ${color}
   ${flexbox}
+  ${border}
 `;
 
 Container.defaultProps = {

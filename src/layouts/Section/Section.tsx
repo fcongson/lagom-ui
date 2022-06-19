@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import {
+  border,
+  BorderProps,
   color,
   ColorProps,
   layout,
@@ -11,10 +13,13 @@ import {
 /**
  * A layout element that defines a section in a document.
  */
-export const Section = styled.section<SpaceProps & LayoutProps & ColorProps>`
+export const Section = styled.section<
+  SpaceProps & LayoutProps & ColorProps & BorderProps
+>`
   ${space}
   ${layout}
   ${color}
+  ${border}
 
   /* Fallback */
   padding: 0 1rem;
