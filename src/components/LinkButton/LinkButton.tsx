@@ -28,7 +28,7 @@ interface LinkButtonProps extends React.ComponentProps<"button"> {
   /**
    * A framework specific link component
    */
-  Component?: React.ComponentType<{ to: string }>;
+  Component?: React.ComponentType<{ to: string; children?: React.ReactNode }>;
 }
 
 export const LinkButton: React.FunctionComponent<

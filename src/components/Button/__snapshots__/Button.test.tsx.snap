@@ -2,12 +2,6 @@
 
 exports[`Button Renders 1`] = `
 <styled.button
-  borderColor="black"
-  borderRadius={24}
-  fontFamily="sansSerif"
-  fontSize="body"
-  fontWeight="link"
-  lineHeight={2}
   theme={
     Object {
       "breakpoints": Array [
@@ -19,11 +13,23 @@ exports[`Button Renders 1`] = `
       "buttons": Object {
         "primary": Object {
           "backgroundColor": "#111111",
+          "borderColor": "#111111",
+          "borderRadius": 24,
           "color": "#ffffff",
+          "fontFamily": "'Montserrat', sans-serif",
+          "fontSize": 16,
+          "fontWeight": 600,
+          "lineHeight": 2,
         },
         "secondary": Object {
           "backgroundColor": "#ffffff",
+          "borderColor": undefined,
+          "borderRadius": 24,
           "color": "#111111",
+          "fontFamily": "'Montserrat', sans-serif",
+          "fontSize": 16,
+          "fontWeight": 600,
+          "lineHeight": 2,
         },
       },
       "colors": Object {
@@ -126,12 +132,6 @@ exports[`Button Renders 1`] = `
 
 exports[`Button Renders primary 1`] = `
 <styled.button
-  borderColor="black"
-  borderRadius={24}
-  fontFamily="sansSerif"
-  fontSize="body"
-  fontWeight="link"
-  lineHeight={2}
   theme={
     Object {
       "breakpoints": Array [
@@ -143,11 +143,23 @@ exports[`Button Renders primary 1`] = `
       "buttons": Object {
         "primary": Object {
           "backgroundColor": "#111111",
+          "borderColor": "#111111",
+          "borderRadius": 24,
           "color": "#ffffff",
+          "fontFamily": "'Montserrat', sans-serif",
+          "fontSize": 16,
+          "fontWeight": 600,
+          "lineHeight": 2,
         },
         "secondary": Object {
           "backgroundColor": "#ffffff",
+          "borderColor": undefined,
+          "borderRadius": 24,
           "color": "#111111",
+          "fontFamily": "'Montserrat', sans-serif",
+          "fontSize": 16,
+          "fontWeight": 600,
+          "lineHeight": 2,
         },
       },
       "colors": Object {
@@ -250,12 +262,6 @@ exports[`Button Renders primary 1`] = `
 
 exports[`Button Renders secondary 1`] = `
 <styled.button
-  borderColor="black"
-  borderRadius={24}
-  fontFamily="sansSerif"
-  fontSize="body"
-  fontWeight="link"
-  lineHeight={2}
   theme={
     Object {
       "breakpoints": Array [
@@ -267,11 +273,23 @@ exports[`Button Renders secondary 1`] = `
       "buttons": Object {
         "primary": Object {
           "backgroundColor": "#111111",
+          "borderColor": "#111111",
+          "borderRadius": 24,
           "color": "#ffffff",
+          "fontFamily": "'Montserrat', sans-serif",
+          "fontSize": 16,
+          "fontWeight": 600,
+          "lineHeight": 2,
         },
         "secondary": Object {
           "backgroundColor": "#ffffff",
+          "borderColor": undefined,
+          "borderRadius": 24,
           "color": "#111111",
+          "fontFamily": "'Montserrat', sans-serif",
+          "fontSize": 16,
+          "fontWeight": 600,
+          "lineHeight": 2,
         },
       },
       "colors": Object {
