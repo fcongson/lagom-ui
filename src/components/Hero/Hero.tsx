@@ -25,11 +25,10 @@ const HeroContent = styled.div`
   overflow: hidden;
 `;
 
-export const Hero: React.FunctionComponent<{ image: React.ReactElement }> = ({
-  image,
-  children,
-  ...restProps
-}) => {
+export const Hero: React.FunctionComponent<{
+  image: React.ReactElement;
+  children: React.ReactNode;
+}> = ({ image, children, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
     <HeroContainer theme={mergedTheme} {...restProps}>

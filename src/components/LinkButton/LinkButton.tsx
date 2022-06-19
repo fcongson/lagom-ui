@@ -16,7 +16,7 @@ const StyledLink = styled.a`
   ${linkCss}
 `;
 
-interface LinkButtonProps extends React.ComponentProps<"button"> {
+interface LinkButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   /**
    * Choose between the primary and secondary variants
    */
@@ -33,7 +33,7 @@ interface LinkButtonProps extends React.ComponentProps<"button"> {
 
 export const LinkButton: React.FunctionComponent<
   LinkButtonProps & TypographyProps & BorderProps & SpaceProps & ColorProps
-> = ({ children, ref, primary = false, to, Component, ...restProps }) => {
+> = ({ children, primary = false, to, Component, ...restProps }) => {
   if (Component) {
     const StyledComponent = styled(Component)`
       ${linkCss}

@@ -18,8 +18,8 @@ StyledHeader.defaultProps = {
 };
 
 export const PageHeader: React.FunctionComponent<
-  React.ComponentProps<"h1"> & TypographyProps & SpaceProps
-> = ({ children, ref, ...restProps }) => {
+  React.ComponentPropsWithoutRef<"h1"> & TypographyProps & SpaceProps
+> = ({ children, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
     <StyledHeader theme={mergedTheme} {...restProps}>

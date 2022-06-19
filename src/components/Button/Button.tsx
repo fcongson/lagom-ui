@@ -12,7 +12,6 @@ import {
   TypographyProps,
 } from "styled-system";
 import { useMergedTheme } from "../../hooks/useMergedTheme";
-import { theme } from "../../themes/theme";
 
 const StyledButton = styled.button<
   ButtonStyleProps & TypographyProps & BorderProps & SpaceProps & ColorProps
@@ -46,7 +45,7 @@ const StyledButton = styled.button<
   ${color}
 `;
 
-interface ButtonProps extends React.ComponentProps<"button"> {
+interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   /**
    * Choose between the primary and secondary variants
    */
@@ -55,7 +54,7 @@ interface ButtonProps extends React.ComponentProps<"button"> {
 
 export const Button: React.FunctionComponent<
   ButtonProps & TypographyProps & BorderProps & SpaceProps & ColorProps
-> = ({ children, ref, primary = false, ...restProps }) => {
+> = ({ children, primary = false, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (
     <StyledButton
