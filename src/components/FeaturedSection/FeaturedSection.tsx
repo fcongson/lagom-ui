@@ -13,12 +13,8 @@ const FeaturedSectionContainer = styled.div<{
   ${(props) =>
     props.imageAsBackground &&
     `
-      min-height: 100vh;
-
       div.image {
         grid-area: 1 / 1;
-        height: 100vh;
-        opacity: 0.5;
       }
 
       ${Section} {
