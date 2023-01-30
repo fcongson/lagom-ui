@@ -12,8 +12,8 @@
   "scripts": {
     "test": "jest",
     "build": "tsc & yarn copyfiles",
-    "storybook": "start-storybook -p 6006 -s public",
-    "storybook:no-manager-cache": "start-storybook --no-manager-cache -p 6006 -s public",
+    "storybook": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006 -s public",
+    "storybook:no-manager-cache": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook --no-manager-cache -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "prepare": "husky install",
     "copyfiles": "copyfiles -u 1 src/styles/resetr.css build/lib"
