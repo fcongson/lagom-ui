@@ -1,6 +1,6 @@
 {
   "name": "@fcongson/lagom-ui",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "author": "Frank Congson",
