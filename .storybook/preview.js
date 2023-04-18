@@ -1,7 +1,8 @@
 import { withThemes } from "storybook-addon-themes/react";
+import { GlobalStyle } from "../src/styles/GlobalStyle";
+import { ThemeProvider } from "../src/themes/ThemeProvider";
 import { theme as defaultTheme } from "../src/themes/theme";
 import { theme } from "../src/themes/theme-sub";
-import { ThemeProvider } from "../src/themes/ThemeProvider";
 
 const themeList = [
   { name: "default", color: defaultTheme.colors.black },
@@ -11,9 +12,19 @@ const themeList = [
 const ThemeDecorator = ({ children, themeName }) => {
   switch (themeName) {
     case "provided":
-      return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+      return (
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          {children}
+        </ThemeProvider>
+      );
     case "default":
-      return <ThemeProvider>{children}</ThemeProvider>;
+      return (
+        <ThemeProvider>
+          <GlobalStyle />
+          {children}
+        </ThemeProvider>
+      );
     default:
       return <>{children}</>;
   }

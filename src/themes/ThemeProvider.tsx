@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import {
-  ThemeProvider as _ThemeProvider,
   ThemeProviderProps,
+  ThemeProvider as _ThemeProvider,
 } from "styled-components";
-import { GlobalStyle } from "../styles/GlobalStyle";
+import { NoFocusOutline } from "../styles/NoFocusOutline";
 import "../styles/resetr.css";
 import { theme as _theme } from "./theme";
 
@@ -31,7 +31,7 @@ export const ThemeProvider: React.FunctionComponent<
 
   return (
     <_ThemeProvider theme={mergedTheme}>
-      <GlobalStyle noFocusOutline={noFocusOutline} />
+      <NoFocusOutline noFocusOutline={noFocusOutline} />
       {children}
     </_ThemeProvider>
   );

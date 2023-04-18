@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components";
 import { ThemeType } from "../themes/theme";
 
 export const GlobalStyle = createGlobalStyle<{
-  noFocusOutline: boolean;
   theme: ThemeType;
 }>`
   * {
@@ -15,18 +14,6 @@ export const GlobalStyle = createGlobalStyle<{
   ::-moz-selection {
     background: ${(props) => props.theme.colors.olives[2]}; /* Gecko Browsers */
   }
-
-  ${(props) =>
-    props.noFocusOutline &&
-    `
-    html {
-      a:focus,
-      button:focus,
-      div[role='button']:focus {
-        outline: none;
-      }
-    }
-    `}
 
   html,
   body,

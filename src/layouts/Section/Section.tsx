@@ -16,11 +16,6 @@ import {
 export const Section = styled.section<
   SpaceProps & LayoutProps & ColorProps & BorderProps
 >`
-  ${space}
-  ${layout}
-  ${color}
-  ${border}
-
   /* Fallback */
   padding: 0 1rem;
 
@@ -31,6 +26,11 @@ export const Section = styled.section<
   /* iOS 11.2+ */
   padding-left: calc(max(1rem, env(safe-area-inset-left)));
   padding-right: calc(max(1rem, env(safe-area-inset-right)));
+
+  ${space}
+  ${layout}
+  ${color}
+  ${border}
 `;
 
 Section.defaultProps = {
