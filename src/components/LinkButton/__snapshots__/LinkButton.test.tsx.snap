@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LinkButton Renders 1`] = `
-Array [
+[
   <button
-    class="sc-bczRLJ eWIwMV"
+    class="sc-beqWaB dslQFA"
   >
     Text
   </button>,
@@ -11,9 +11,9 @@ Array [
 `;
 
 exports[`LinkButton Renders primary 1`] = `
-Array [
+[
   <button
-    class="sc-bczRLJ jpJgZD"
+    class="sc-beqWaB cFptEq"
   >
     Text
   </button>,
@@ -21,9 +21,9 @@ Array [
 `;
 
 exports[`LinkButton Renders secondary 1`] = `
-Array [
+[
   <button
-    class="sc-bczRLJ eWIwMV"
+    class="sc-beqWaB dslQFA"
   >
     Text
   </button>,
