@@ -1,3 +1,4 @@
+import React from "react";
 import { Container } from "../../layouts/Container";
 import { Section } from "../../layouts/Section";
 import { Quote } from "./Quote";
@@ -5,6 +6,7 @@ import { Quote } from "./Quote";
 export default {
   title: "Components/Quote",
   component: Quote,
+  tags: ["autodocs"],
 };
 
 export const Default = () => (

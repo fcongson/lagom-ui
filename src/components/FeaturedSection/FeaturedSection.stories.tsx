@@ -1,3 +1,4 @@
+import React from "react";
 import { theme } from "../../themes/theme";
 import { CallToAction } from "../CallToAction";
 import { FeaturedSection } from "./FeaturedSection";
@@ -5,6 +6,7 @@ import { FeaturedSection } from "./FeaturedSection";
 export default {
   title: "Components/Featured Section",
   component: FeaturedSection,
+  tags: ["autodocs"],
 };
 
 const imageSrc_White = "/jonatan-pie-d7ZBAPEuXGc-unsplash.jpg";

@@ -1,8 +1,10 @@
+import React from "react";
 import { CallToAction } from "./CallToAction";
 
 export default {
   title: "Components/Call To Action",
   component: CallToAction,
+  tags: ["autodocs"],
 };
 
 export const Default = () => (

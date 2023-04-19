@@ -1,9 +1,10 @@
-import { theme } from "../../themes/theme";
+import React from "react";
 import { ImageCaption } from "./ImageCaption";
 
 export default {
   title: "Components/Image Caption",
   component: ImageCaption,
+  tags: ["autodocs"],
 };
 
 const imageSrc_White = "/jonatan-pie-d7ZBAPEuXGc-unsplash.jpg";
