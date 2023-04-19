@@ -1,9 +1,11 @@
+import React from "react";
 import { PageHeader } from "../..";
 import { Hero } from "./Hero";
 
 export default {
   title: "Components/Hero",
   component: Hero,
+  tags: ["autodocs"],
 };
 
 const imageSrc_White = "/jonatan-pie-d7ZBAPEuXGc-unsplash.jpg";

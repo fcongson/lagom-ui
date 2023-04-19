@@ -1,9 +1,11 @@
+import React from "react";
 import { Container } from "../Container";
 import { Section } from "./Section";
 
 export default {
   title: "Layouts/Section",
   component: Section,
+  tags: ["autodocs"],
 };
 
 export const Default = () => (

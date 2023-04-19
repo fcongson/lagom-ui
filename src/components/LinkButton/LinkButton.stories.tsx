@@ -1,8 +1,10 @@
+import React from "react";
 import { LinkButton } from "./LinkButton";
 
 export default {
   title: "Components/Link Button",
   component: LinkButton,
+  tags: ["autodocs"],
 };
 
 export const Primary = () => (

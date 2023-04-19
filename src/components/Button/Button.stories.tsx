@@ -1,9 +1,11 @@
 import { action } from "@storybook/addon-actions";
+import React from "react";
 import { Button } from "./Button";
 
 export default {
   title: "Components/Button",
   component: Button,
+  tags: ["autodocs"],
 };
 
 export const Primary = () => (
