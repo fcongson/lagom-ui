@@ -1,32 +1,41 @@
 import { action } from "@storybook/addon-actions";
-import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 
-export default {
+const meta: Meta = {
   title: "Components/Button",
   component: Button,
   tags: ["autodocs"],
+  args: {
+    onClick: action("clicked"),
+    primary: true,
+    children: "Button primary",
+  },
 };
 
-export const Primary = () => (
-  <Button onClick={action("clicked")} primary>
-    Button primary
-  </Button>
-);
+export default meta;
 
-export const Secondary = () => (
-  <Button onClick={action("clicked")}>Button secondary</Button>
-);
+type Story = StoryObj<typeof Button>;
 
-export const Custom = () => (
-  <Button
-    onClick={action("clicked")}
-    backgroundColor="olive"
-    borderColor="olive"
-    color="white"
-    borderRadius={4}
-    fontFamily="monospace"
-  >
-    Button custom
-  </Button>
-);
+export const Primary: Story = {};
+
+export const Secondary: Story = {
+  ...Primary,
+  args: {
+    primary: false,
+    children: "Button secondary",
+  },
+};
+
+export const Custom: Story = {
+  ...Primary,
+  args: {
+    primary: false,
+    backgroundColor: "olive",
+    borderColor: "olive",
+    color: "white",
+    borderRadius: 4,
+    fontFamily: "monospace",
+    children: "Button custom",
+  },
+};

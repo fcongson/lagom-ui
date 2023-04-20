@@ -1,17 +1,20 @@
-import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { CallToAction } from "./CallToAction";
 
-export default {
+const meta: Meta = {
   title: "Components/Call To Action",
   component: CallToAction,
   tags: ["autodocs"],
+  args: {
+    header: "Lorem Ipsum.",
+    text: "With Call To Action. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    actionLink: "#",
+    actionText: "Lorem ipsum dolor sit amet",
+  },
 };
 
-export const Default = () => (
-  <CallToAction
-    header="Lorem Ipsum."
-    text="With Call To Action. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    actionLink="/?path=/story/components-calltoaction--default"
-    actionText="Lorem ipsum dolor sit amet"
-  />
-);
+export default meta;
+
+type Story = StoryObj<typeof CallToAction>;
+
+export const Default: Story = {};

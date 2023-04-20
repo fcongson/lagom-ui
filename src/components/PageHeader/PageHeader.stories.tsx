@@ -1,10 +1,17 @@
-import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { PageHeader } from "./PageHeader";
 
-export default {
+const meta: Meta = {
   title: "Components/Page Header",
   component: PageHeader,
   tags: ["autodocs"],
+  args: {
+    children: "Lorem ipsum",
+  },
 };
 
-export const Default = () => <PageHeader>Lorem ipsum</PageHeader>;
+export default meta;
+
+type Story = StoryObj<typeof PageHeader>;
+
+export const Default: Story = {};

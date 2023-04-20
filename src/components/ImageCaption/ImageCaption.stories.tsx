@@ -1,11 +1,6 @@
+import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { ImageCaption } from "./ImageCaption";
-
-export default {
-  title: "Components/Image Caption",
-  component: ImageCaption,
-  tags: ["autodocs"],
-};
 
 const imageSrc_White = "/jonatan-pie-d7ZBAPEuXGc-unsplash.jpg";
 const imageSrc_Grey = "/jonatan-pie-RMAKCQmu-gI-unsplash.jpg";
@@ -20,22 +15,32 @@ const image = (
   />
 );
 
-export const Default = () => (
-  <ImageCaption image={image} caption="Default. Lorem ipsum dolor sit amet" />
-);
+const meta: Meta = {
+  title: "Components/Image Caption",
+  component: ImageCaption,
+  tags: ["autodocs"],
+  args: {
+    image,
+    caption: "Default. Lorem ipsum dolor sit amet",
+  },
+};
 
-export const Emphasized = () => (
-  <ImageCaption
-    image={image}
-    caption="Emphasized. Lorem ipsum dolor sit amet"
-    emphasized
-  />
-);
+export default meta;
 
-export const Fullwidth = () => (
-  <ImageCaption
-    image={image}
-    caption="Fullwidth. Lorem ipsum dolor sit amet"
-    fullwidth
-  />
-);
+type Story = StoryObj<typeof ImageCaption>;
+
+export const Default: Story = {};
+
+export const Emphasized: Story = {
+  args: {
+    caption: "Emphasized. Lorem ipsum dolor sit amet",
+    emphasized: true,
+  },
+};
+
+export const Fullwidth: Story = {
+  args: {
+    caption: "Fullwidth. Lorem ipsum dolor sit amet",
+    fullwidth: true,
+  },
+};

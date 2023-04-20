@@ -1,33 +1,39 @@
-import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { LinkButton } from "./LinkButton";
 
-export default {
+const meta: Meta = {
   title: "Components/Link Button",
   component: LinkButton,
   tags: ["autodocs"],
+  args: {
+    to: "#",
+  },
 };
 
-export const Primary = () => (
-  <LinkButton to="/?path=/story/components-link-button--primary" primary>
-    Link button primary
-  </LinkButton>
-);
+export default meta;
 
-export const Secondary = () => (
-  <LinkButton to="/?path=/story/components-link-button--secondary">
-    Link button secondary
-  </LinkButton>
-);
+type Story = StoryObj<typeof LinkButton>;
 
-export const Custom = () => (
-  <LinkButton
-    to="/?path=/story/components-link-button--custom"
-    backgroundColor="olive"
-    borderColor="olive"
-    color="white"
-    borderRadius={4}
-    fontFamily="monospace"
-  >
-    Link button custom
-  </LinkButton>
-);
+export const Primary: Story = {
+  args: {
+    primary: true,
+    children: "Link button primary",
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    children: "Link button secondary",
+  },
+};
+
+export const Custom: Story = {
+  args: {
+    backgroundColor: "olive",
+    borderColor: "olive",
+    color: "white",
+    borderRadius: 4,
+    fontFamily: "monospace",
+    children: "Link button custom",
+  },
+};
