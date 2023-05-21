@@ -3,7 +3,7 @@
 exports[`LinkButton Renders 1`] = `
 [
   <button
-    class="sc-beqWaB dslQFA"
+    class="sc-bgqQcB cRBzGi"
   >
     Text
   </button>,
@@ -13,7 +13,7 @@ exports[`LinkButton Renders 1`] = `
 exports[`LinkButton Renders primary 1`] = `
 [
   <button
-    class="sc-beqWaB cFptEq"
+    class="sc-bgqQcB jVNJGw"
   >
     Text
   </button>,
@@ -23,7 +23,7 @@ exports[`LinkButton Renders primary 1`] = `
 exports[`LinkButton Renders secondary 1`] = `
 [
   <button
-    class="sc-beqWaB dslQFA"
+    class="sc-bgqQcB cRBzGi"
   >
     Text
   </button>,
