@@ -17,12 +17,21 @@ const HeroImage = styled.div`
   height: 100vh;
 `;
 
+const HeroImageOverlay = styled.div`
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--lagom-semantic-color-overlay-background);
+  opacity: var(--lagom-semantic-opacity-overlay);
+`;
+
 const HeroContent = styled.div`
   grid-area: 1 / 1;
   justify-self: center;
   align-self: center;
   z-index: 1;
   overflow: hidden;
+  color: var(--lagom-semantic-color-fg-default);
 `;
 
 export const Hero: React.FunctionComponent<{
@@ -32,7 +41,12 @@ export const Hero: React.FunctionComponent<{
   const mergedTheme = useMergedTheme();
   return (
     <HeroContainer theme={mergedTheme} {...restProps}>
-      {!!image ? <HeroImage>{image}</HeroImage> : null}
+      {!!image ? (
+        <>
+          <HeroImage>{image}</HeroImage>
+          <HeroImageOverlay />
+        </>
+      ) : null}
       {!!children ? <HeroContent>{children}</HeroContent> : null}
     </HeroContainer>
   );

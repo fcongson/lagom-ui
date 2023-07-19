@@ -85,30 +85,6 @@ export type ThemeType = {
   lineHeights: { [key: string]: string | number };
   space: number[];
   sizes: { [key: string]: string };
-  buttons: { [key: string]: { [key: string]: string | number } };
-};
-
-const buttons = {
-  primary: {
-    backgroundColor: colors.black as string,
-    color: colors.white as string,
-    borderColor: colors.black as string,
-    borderRadius: 24,
-    fontFamily: fonts.sansSerif,
-    fontWeight: fontWeights.link,
-    fontSize: fontSizes.body,
-    lineHeight: 2,
-  },
-  secondary: {
-    backgroundColor: colors.white as string,
-    color: colors.black as string,
-    borderColor: colors.balck as string,
-    borderRadius: 24,
-    fontFamily: fonts.sansSerif,
-    fontWeight: fontWeights.link,
-    fontSize: fontSizes.body,
-    lineHeight: 2,
-  },
 };
 
 /**
@@ -124,5 +100,4 @@ export const theme: ThemeType = {
   lineHeights,
   space,
   sizes,
-  buttons,
 };

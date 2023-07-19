@@ -1,3 +1,4 @@
+import "@fcongson/lagom-tokens/css/variables/_core.css";
 import { createGlobalStyle } from "styled-components";
 import { ThemeType } from "../themes/theme";
 
@@ -8,11 +9,10 @@ export const GlobalStyle = createGlobalStyle<{
     -webkit-font-smoothing: antialiased;
   }
   ::selection {
-    background: ${(props) =>
-      props.theme.colors.olives[2]}; /* WebKit/Blink Browsers */
+    background: var(--lagom-core-colors-olive-lighter40); /* WebKit/Blink Browsers */
   }
   ::-moz-selection {
-    background: ${(props) => props.theme.colors.olives[2]}; /* Gecko Browsers */
+    background: var(--lagom-core-colors-olive-lighter40); /* Gecko Browsers */
   }
 
   html,
@@ -26,24 +26,24 @@ export const GlobalStyle = createGlobalStyle<{
 
   body {
     padding: 0;
-    color: ${(props) => props.theme.colors.greys[0]};
-    line-height: 1.7;
-    font-family: ${(props) => props.theme.fonts.sansSerif};
-    font-size: 16px;
+    color: var(--lagom-core-colors-grey-darker40);
+    line-height: var(--lagom-core-line-heights-body);
+    font-family: var(--lagom-core-font-families-body);
+    font-size: var(--lagom-core-font-sizes-body);
   }
 
   /* typography */
 
   a {
-    color: ${(props) => props.theme.colors.greys[0]};
+    color: var(--lagom-core-colors-grey-darker40);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: var(--lagom-core-font-weights-body-semi-bold);
     padding-bottom: 4px;
-    border-bottom: 2px solid ${(props) => props.theme.colors.olives[2]};
+    border-bottom: 2px solid var(--lagom-core-colors-olive-lighter40);
     transition: border-bottom 200ms ease-in-out;
 
     &:hover {
-      border-bottom: 2px solid ${(props) => props.theme.colors.greys[0]};
+      border-bottom: 2px solid var(--lagom-core-colors-grey-darker40);
     }
   }
 
@@ -53,24 +53,24 @@ export const GlobalStyle = createGlobalStyle<{
   h4,
   h5,
   h6 {
-    font-family: ${(props) => props.theme.fonts.sansSerif};
-    font-weight: 700;
+    font-family: var(--lagom-core-font-families-heading);
+    font-weight: var(--lagom-core-font-weights-heading-bold);
     margin-bottom: 1rem;
     a {
       font-weight: inherit;
     }
   }
   h1 {
-    font-size: 54px;
-    line-height: 66px;
+    font-size: var(--lagom-core-font-sizes-h1);
+    line-height: var(--lagom-core-line-heights-heading);
   }
   h2 {
-    font-size: 36px;
-    line-height: 44px;
+    font-size: var(--lagom-core-font-sizes-h2);
+    line-height: var(--lagom-core-line-heights-heading);
   }
   h3 {
-    font-size: 24px;
-    line-height: 29px;
+    font-size: var(--lagom-core-font-sizes-h3);
+    line-height: var(--lagom-core-line-heights-heading);
   }
 
   p,
@@ -91,7 +91,18 @@ export const GlobalStyle = createGlobalStyle<{
 
   code,
   pre {
-    font-family: ${(props) => props.theme.fonts.monospace};
+    font-family: var(--lagom-core-font-families-monospace);
+    font-weight: var(--lagom-core-font-weights-body-regular);
+    background: var(--lagom-core-colors-olive-lighter40);
+    background: hsla(111, 7%, 80%, 0.5);  }
+
+  pre code {
+    background: none;
+  }
+
+  code {
+    padding: var(--lagom-core-dimension-sm);
+    border-radius: var(--lagom-core-border-radius-xs);
   }
 
   pre {
@@ -100,10 +111,12 @@ export const GlobalStyle = createGlobalStyle<{
     white-space: -pre-wrap; /* Opera 4-6 */
     white-space: -o-pre-wrap; /* Opera 7 */
     word-wrap: break-word; /* Internet Explorer 5.5+ */
+    padding: var(--lagom-core-spacing-lg);
+    border-radius: var(--lagom-core-border-radius-xs);
   }
 
   strong {
-    font-weight: bold;
+    font-weight: var(--lagom-core-font-weights-bold);
   }
   em {
     font-style: italic;
@@ -111,22 +124,19 @@ export const GlobalStyle = createGlobalStyle<{
 
   ${(props) => props.theme.mediaQueries.medium} {
     h1 {
-      font-size: 36px;
-      line-height: 44px;
+      font-size: var(--lagom-core-font-sizes-h2)
     }
     h2 {
-      font-size: 24px;
-      line-height: 29px;
+      font-size: var(--lagom-core-font-sizes-h3)
     }
     h3 {
-      font-size: 16px;
-      line-height: 1.7;
+      font-size: (var(--lagom-core-font-sizes-h4))
     }
     p {
-      font-size: 16px;
+      font-size: var(--lagom-core-font-sizes-body);
     }
     pre {
-      font-size: 16px;
+      font-size: var(--lagom-core-font-sizes-body);
     }
   }
 `;
