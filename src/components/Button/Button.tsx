@@ -10,6 +10,7 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  variant,
 } from "styled-system";
 import { useMergedTheme } from "../../hooks/useMergedTheme";
 
@@ -36,6 +37,31 @@ const StyledButton = styled.button<
     transform: translateY(1px);
     transition: transform 100ms ease-in-out;
   }
+
+  ${variant({
+    variants: {
+      primary: {
+        backgroundColor:
+          "var(--lagom-component-button-color-primary-background)",
+        color: "var(--lagom-component-button-color-primary-text)",
+        borderColor: "var(--lagom-component-button-color-primary-border)",
+        borderRadius: "var(--lagom-component-button-border-radius)",
+        fontFamily: "var(--lagom-core-font-families-sans-serif)",
+        fontWeight: "var(--lagom-core-font-weights-semi-bold)",
+        fontSize: "var(--lagom-core-font-sizes-body)",
+      },
+      secondary: {
+        backgroundColor:
+          "var(--lagom-component-button-color-secondary-background)",
+        color: "var(--lagom-component-button-color-secondary-text)",
+        borderColor: "var(--lagom-component-button-color-secondary-border)",
+        borderRadius: "var(--lagom-component-button-border-radius)",
+        fontFamily: "var(--lagom-core-font-families-sans-serif)",
+        fontWeight: "var(--lagom-core-font-weights-semi-bold)",
+        fontSize: "var(--lagom-core-font-sizes-body)",
+      },
+    },
+  })}
 
   ${buttonStyle}
 
