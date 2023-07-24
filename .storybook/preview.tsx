@@ -51,7 +51,7 @@ const decorators = [
         return (
           <ThemeProvider theme={null}>
             <StoryContainer flexDirection={flexDirection} height={height}>
-              <StoryBlock data-lagom-theme={`${theme} semantic.${theme}`}>
+              <StoryBlock data-lagom-theme={`${theme}`}>
                 <Story />
               </StoryBlock>
             </StoryContainer>
