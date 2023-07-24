@@ -1,10 +1,20 @@
 import styled from "styled-components";
-import { space, SpaceProps, typography, TypographyProps } from "styled-system";
+import {
+  color,
+  ColorProps,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from "styled-system";
 import { useMergedTheme } from "../../hooks/useMergedTheme";
 
-const StyledHeader = styled.h1<TypographyProps & SpaceProps>`
+const StyledHeader = styled.h1<TypographyProps & SpaceProps & ColorProps>`
+  color: var(--lagom-semantic-color-fg-default);
+
   ${typography}
   ${space}
+  ${color}
 `;
 
 StyledHeader.defaultProps = {

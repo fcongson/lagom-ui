@@ -16,8 +16,8 @@ type Story = StoryObj<typeof Section>;
 export const Default: Story = {
   render: () => (
     <>
-      <Section bg="violets.2">
-        <Container bg="white">
+      <Section borderStyle="dashed" borderColor="violets.2">
+        <Container borderStyle="dashed" borderColor="violets.2">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Magnis dis
           parturient montes nascetur. Blandit massa enim nec dui nunc. Egestas
@@ -31,8 +31,8 @@ export const Default: Story = {
           curabitur vitae.
         </Container>
       </Section>
-      <Section bg="violets.2">
-        <Container bg="white">
+      <Section borderStyle="dashed" borderColor="violets.2">
+        <Container borderStyle="dashed" borderColor="violets.2">
           Molestie a iaculis at erat pellentesque. Dolor purus non enim praesent
           elementum. Turpis massa sed elementum tempus egestas sed sed risus.
           Erat imperdiet sed euismod nisi. Dictum non consectetur a erat nam.
@@ -45,8 +45,8 @@ export const Default: Story = {
           Fringilla ut morbi tincidunt augue interdum.
         </Container>
       </Section>
-      <Section bg="violets.2">
-        <Container bg="white">
+      <Section borderStyle="dashed" borderColor="violets.2">
+        <Container borderStyle="dashed" borderColor="violets.2">
           Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum
           arcu. Nulla aliquet porttitor lacus luctus accumsan tortor posuere ac
           ut. Imperdiet sed euismod nisi porta lorem mollis aliquam ut

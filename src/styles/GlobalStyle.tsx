@@ -1,4 +1,6 @@
 import "@fcongson/lagom-tokens/css/variables/_core.css";
+import "@fcongson/lagom-tokens/css/theme/_light.css";
+import "@fcongson/lagom-tokens/css/theme/_dark.css";
 import { createGlobalStyle } from "styled-components";
 import { ThemeType } from "../themes/theme";
 
@@ -24,9 +26,9 @@ export const GlobalStyle = createGlobalStyle<{
     flex-direction: column;
   }
 
-  body {
+  body * {
     padding: 0;
-    color: var(--lagom-core-colors-grey-darker40);
+    color: var(--lagom-semantic-color-fg-default);
     line-height: var(--lagom-core-line-heights-body);
     font-family: var(--lagom-core-font-families-body);
     font-size: var(--lagom-core-font-sizes-body);
@@ -35,7 +37,7 @@ export const GlobalStyle = createGlobalStyle<{
   /* typography */
 
   a {
-    color: var(--lagom-core-colors-grey-darker40);
+    color: var(--lagom-semantic-color-fg-default);
     text-decoration: none;
     font-weight: var(--lagom-core-font-weights-body-semi-bold);
     padding-bottom: 4px;
