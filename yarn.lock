@@ -1208,10 +1208,10 @@
   resolved "https://registry.yarnpkg.com/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz#c05ed35ad82df8e6ac616c68b92c2282bd083ba4"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
-"@fcongson/lagom-tokens@^0.14.0":
-  version "0.14.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/0.14.0/42372f77f45fb890161d7af087aed062c0d98a2a#42372f77f45fb890161d7af087aed062c0d98a2a"
-  integrity sha512-RlF5VGy3gysq4bmbhYvEzNtV3/KkDP/XlZAfqLB4zGOcehJUNrgC9pf338nlF9yVMgylqRiu9hNWeo99Nvd0Rg==
+"@fcongson/lagom-tokens@^0.15.0":
+  version "0.15.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/0.15.0/dd2206ceaf870402dc3474eaf15a48d04b3262fd#dd2206ceaf870402dc3474eaf15a48d04b3262fd"
+  integrity sha512-JJSbJvl9+KP3l2rTSTWow4MfNSo+sIUaeGYvMILNprwh1j+KKsDMOl/13CmCGZ+tdrMvmy5d9yWZhYXSw/GFSg==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"

@@ -12,7 +12,7 @@ const StoryContainer = styled.div<{ height: string; flexDirection: string }>(
   ({ height, flexDirection }) => css`
     display: flex;
     flex-direction: ${flexDirection};
-    height: ${height};
+    min-height: ${height};
     margin: -1rem;
   `
 );

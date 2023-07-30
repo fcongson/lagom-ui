@@ -38,7 +38,7 @@ const Image = styled.div`
     text-align: center;
     font-style: italic;
     font-size: 14px;
-    color: ${(props) => props.theme.colors.greys[1]};
+    color: var(--lagom-semantic-color-fg-subtle);
   }
 `;
 

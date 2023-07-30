@@ -41,11 +41,11 @@ export const GlobalStyle = createGlobalStyle<{
     text-decoration: none;
     font-weight: var(--lagom-core-font-weights-body-semi-bold);
     padding-bottom: 4px;
-    border-bottom: 2px solid var(--lagom-core-colors-olive-lighter40);
+    border-bottom: 2px solid var(--lagom-semantic-color-border-muted);
     transition: border-bottom 200ms ease-in-out;
 
     &:hover {
-      border-bottom: 2px solid var(--lagom-core-colors-grey-darker40);
+      border-bottom: 2px solid var(--lagom-semantic-color-border-default);
     }
   }
 
@@ -95,8 +95,8 @@ export const GlobalStyle = createGlobalStyle<{
   pre {
     font-family: var(--lagom-core-font-families-monospace);
     font-weight: var(--lagom-core-font-weights-body-regular);
-    background: var(--lagom-core-colors-olive-lighter40);
-    background: hsla(111, 7%, 80%, 0.5);  }
+    background: hsla(111, 7%, 80%, 0.5); // var(--lagom-core-colors-olive-lighter40);
+  }
 
   pre code {
     background: none;
@@ -140,5 +140,9 @@ export const GlobalStyle = createGlobalStyle<{
     pre {
       font-size: var(--lagom-core-font-sizes-body);
     }
+  }
+
+  img {
+    filter: var(--lagom-semantic-image-filter);
   }
 `;

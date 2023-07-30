@@ -25,7 +25,9 @@ const FeaturedSectionContainer = styled.div<{
   ${(props) =>
     props.colorAsBackground &&
     `
-    background-color: ${props.backgroundColor || props.theme.colors.greys[4]};
+    background-color: ${
+      props.backgroundColor || "var(--lagom-semantic-color-bg-muted)"
+    };
     
     div.image {
       padding-bottom: 4rem;
@@ -71,6 +73,14 @@ const FeaturedSectionContainer = styled.div<{
   }
 `;
 
+const ImageOverlay = styled.div`
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--lagom-semantic-color-overlay-background);
+  opacity: var(--lagom-semantic-opacity-overlay);
+`;
+
 type ImageBackgroundProps = {
   image?: React.ReactNode;
   children?: React.ReactNode;
@@ -83,6 +93,7 @@ const ImageBackground: React.FunctionComponent<ImageBackgroundProps> = ({
   return (
     <FeaturedSectionContainer imageAsBackground>
       {!!image && <div className="image">{image}</div>}
+      <ImageOverlay />
       <Section>
         <Container>
           <div className="content">{children}</div>

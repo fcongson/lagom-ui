@@ -44,10 +44,14 @@ export const Hero: React.FunctionComponent<{
       {!!image ? (
         <>
           <HeroImage>{image}</HeroImage>
-          <HeroImageOverlay />
         </>
       ) : null}
-      {!!children ? <HeroContent>{children}</HeroContent> : null}
+      {!!children ? (
+        <>
+          <HeroImageOverlay />
+          <HeroContent>{children}</HeroContent>
+        </>
+      ) : null}
     </HeroContainer>
   );
 };
