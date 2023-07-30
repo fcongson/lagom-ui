@@ -4,7 +4,7 @@ import { useMergedTheme } from "../../hooks/useMergedTheme";
 const StyledBlockquote = styled.blockquote`
   margin-bottom: 2rem;
   padding-left: 1rem;
-  border-left: 4px solid var(--lagom-semantic-color-fg-default);
+  border-left: 4px solid var(--lagom-semantic-color-border-default);
   display: inline-block;
   font-family: ${(props) => props.theme.fonts.serif};
   font-style: italic;

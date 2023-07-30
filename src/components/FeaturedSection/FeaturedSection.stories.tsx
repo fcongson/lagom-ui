@@ -52,7 +52,7 @@ export const ColorBackground: Story = {
 
 export const ColorBackgroundWithImage: Story = {
   args: {
-    backgroundColor: theme.colors.olives[2],
+    backgroundColor: "var(--lagom-semantic-color-accent-bg)",
     children: (
       <>
         <img
