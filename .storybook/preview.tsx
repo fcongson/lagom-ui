@@ -4,6 +4,7 @@ import { Preview } from "@storybook/react";
 import React from "react";
 import styled, { css } from "styled-components";
 import { ThemeProvider } from "../src/themes/ThemeProvider";
+import "./preview.css";
 
 // [Toolbars & globals](https://storybook.js.org/docs/react/essentials/toolbars-and-globals)
 // [How to add a theme switcher to Storybook](https://storybook.js.org/blog/how-to-add-a-theme-switcher-to-storybook/)

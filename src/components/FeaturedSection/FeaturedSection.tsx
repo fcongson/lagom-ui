@@ -75,8 +75,6 @@ const FeaturedSectionContainer = styled.div<{
 
 const ImageOverlay = styled.div`
   grid-area: 1 / 1;
-  width: 100%;
-  height: 100vh;
   background-color: var(--lagom-semantic-color-overlay-background);
   opacity: var(--lagom-semantic-opacity-overlay);
 `;

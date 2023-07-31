@@ -17,17 +17,9 @@ export const GlobalStyle = createGlobalStyle<{
     background: var(--lagom-core-colors-olive-lighter40); /* Gecko Browsers */
   }
 
-  html,
-  body,
-  #___gatsby,
-  #gatsby-focus-wrapper {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  body * {
+  body {
     padding: 0;
+    background-color: var(--lagom-semantic-color-bg-default);
     color: var(--lagom-semantic-color-fg-default);
     line-height: var(--lagom-core-line-heights-body);
     font-family: var(--lagom-core-font-families-body);
