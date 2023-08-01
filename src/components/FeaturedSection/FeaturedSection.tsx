@@ -70,6 +70,10 @@ const FeaturedSectionContainer = styled.div<{
     flex-direction: column;
     justify-content: center;
     text-align: center;
+
+    p {
+      max-width: ${(props) => props.theme.sizes.maxWidthContent};
+    }
   }
 `;
 
