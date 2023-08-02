@@ -12,7 +12,7 @@ const StyledBlockquote = styled.blockquote`
   color: var(--lagom-semantic-color-fg-muted);
 
   ${(props) => props.theme.mediaQueries.large} {
-    border-left: 2px solid ${(props) => props.theme.colors.greys[0]};
+    border-left: 2px solid var(--lagom-semantic-color-border-default);
     font-size: ${(props) => props.theme.fontSizes.body}px;
   }
 
