@@ -1,8 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { theme } from "../../themes/theme";
 import { CallToAction } from "../CallToAction";
-import { FeaturedSection } from "./FeaturedSection";
+import { FeaturedSection } from "./FeaturedSection.js";
 
 const imageSrc_White = "/jonatan-pie-d7ZBAPEuXGc-unsplash.jpg";
 const imageSrc_Grey = "/jonatan-pie-RMAKCQmu-gI-unsplash.jpg";

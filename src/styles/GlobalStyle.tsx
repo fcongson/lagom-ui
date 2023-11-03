@@ -17,6 +17,10 @@ export const GlobalStyle = createGlobalStyle<{
     background: var(--lagom-core-colors-olive-lighter40); /* Gecko Browsers */
   }
 
+  html {
+    background-color: var(--lagom-semantic-color-bg-default);
+  }
+
   body {
     padding: 0;
     background-color: var(--lagom-semantic-color-bg-default);

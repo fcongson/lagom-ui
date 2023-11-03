@@ -1,0 +1,21 @@
+.lagom-hero {
+  width: 100vw;
+  height: var(--hero-height, 100vh);
+  display: grid;
+  margin-bottom: var(--hero-margin-bottom, 4rem);
+}
+
+.lagom-hero__image {
+  width: 100vw;
+  height: var(--hero-height, 100vh);
+  grid-area: 1/1;
+}
+
+.lagom-hero__content {
+  grid-area: 1/1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
