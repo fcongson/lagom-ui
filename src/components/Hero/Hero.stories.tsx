@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { PageHeader } from "../..";
-import { Hero } from "./Hero";
+import { Hero } from "./Hero.js";
 
 const imageSrc_White = "/jonatan-pie-d7ZBAPEuXGc-unsplash.jpg";
 const imageSrc_Grey = "/jonatan-pie-RMAKCQmu-gI-unsplash.jpg";

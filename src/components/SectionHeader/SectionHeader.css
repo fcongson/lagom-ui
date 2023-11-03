@@ -1,0 +1,4 @@
+.lagom-section-header {
+  font: var(--lagom-component-section-header-typography);
+  text-align: center;
+}
