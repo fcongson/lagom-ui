@@ -3,7 +3,8 @@
 exports[`Button Renders 1`] = `
 [
   <button
-    class="sc-bgqQcB cRBzGi"
+    class="sc-bdnyFh JUQsA"
+    variant="secondary"
   >
     Text
   </button>,
@@ -13,7 +14,8 @@ exports[`Button Renders 1`] = `
 exports[`Button Renders primary 1`] = `
 [
   <button
-    class="sc-bgqQcB jVNJGw"
+    class="sc-bdnyFh fBycnq"
+    variant="primary"
   >
     Text
   </button>,
@@ -23,7 +25,8 @@ exports[`Button Renders primary 1`] = `
 exports[`Button Renders secondary 1`] = `
 [
   <button
-    class="sc-bgqQcB cRBzGi"
+    class="sc-bdnyFh JUQsA"
+    variant="secondary"
   >
     Text
   </button>,

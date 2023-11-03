@@ -1,17 +1,31 @@
 import { render, screen } from "@testing-library/react";
+import React from "react";
+import { ThemeProvider } from "styled-components";
 import { Button } from "./Button";
 
 describe("Button", () => {
   test("Renders", () => {
-    render(<Button>Text</Button>);
+    render(
+      <ThemeProvider theme={{}}>
+        <Button>Text</Button>
+      </ThemeProvider>
+    );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
   test("Renders primary", () => {
-    render(<Button primary>Text</Button>);
+    render(
+      <ThemeProvider theme={{}}>
+        <Button primary>Text</Button>
+      </ThemeProvider>
+    );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
   test("Renders secondary", () => {
-    render(<Button primary={false}>Text</Button>);
+    render(
+      <ThemeProvider theme={{}}>
+        <Button primary={false}>Text</Button>
+      </ThemeProvider>
+    );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
 });
