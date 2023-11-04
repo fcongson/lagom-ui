@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { Container } from "../Container";
-import { Section } from "./Section";
+import { Container } from "../Container/Container.js";
+import { Section } from "./Section.js";
 
 const meta: Meta = {
   title: "Layouts/Section",

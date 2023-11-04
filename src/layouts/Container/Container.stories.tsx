@@ -1,6 +1,6 @@
 import React from "react";
-import { Section } from "../Section";
-import { Container } from "./Container";
+import { Section } from "../Section/Section.js";
+import { Container } from "./Container.js";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta = {

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { PageHeader } from "./PageHeader";
+import { PageHeader } from "./PageHeader.js";
 
 const meta: Meta = {
   title: "Components/Page Header",
