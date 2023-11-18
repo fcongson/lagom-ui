@@ -72,7 +72,7 @@ const FeaturedSectionContainer = styled.div<{
     text-align: center;
 
     p {
-      max-width: ${(props) => props.theme.sizes.maxWidthContent};
+      max-width: var(--sizes-max-width-content);
     }
   }
 `;

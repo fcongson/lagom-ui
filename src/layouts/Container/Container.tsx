@@ -18,6 +18,10 @@ import {
 export const Container = styled.div<
   SpaceProps & LayoutProps & ColorProps & FlexboxProps & BorderProps
 >`
+  max-width: var(--sizes-max-width-container);
+  margin: 0 auto;
+  margin-bottom: var(--lagom-core-spacing-xxl);
+
   ${space}
   ${layout}
   ${color}
@@ -25,11 +29,11 @@ export const Container = styled.div<
   ${border}
 `;
 
-Container.defaultProps = {
-  maxWidth: "maxWidthContainer",
-  margin: "0 auto",
-  marginBottom: [5, null, 6, null],
-};
+// Container.defaultProps = {
+//   maxWidth: "maxWidthContainer",
+//   margin: "0 auto",
+//   marginBottom: [5, null, 6, null],
+// };
 
 // export const Container: React.FunctionComponent<
 //   React.ComponentProps<"div"> &

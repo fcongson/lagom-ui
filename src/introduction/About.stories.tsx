@@ -11,7 +11,7 @@ export default meta;
 
 const AboutContainer = styled.div`
   ${Container} {
-    max-width: ${(props) => props.theme.sizes.maxWidthContent};
+    max-width: var(--sizes-max-width-content);
   }
 `;
 
