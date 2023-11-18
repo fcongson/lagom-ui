@@ -6,14 +6,14 @@ const StyledBlockquote = styled.blockquote`
   padding-left: 1rem;
   border-left: 4px solid var(--lagom-semantic-color-border-default);
   display: inline-block;
-  font-family: ${(props) => props.theme.fonts.serif};
+  font-family: var(--lagom-core-font-families-sans-serif);
   font-style: italic;
-  font-size: ${(props) => props.theme.fontSizes[4]}px;
+  font-size: var(--lagom-core-font-sizes-xl);
   color: var(--lagom-semantic-color-fg-muted);
 
   ${(props) => props.theme.mediaQueries.large} {
     border-left: 2px solid var(--lagom-semantic-color-border-default);
-    font-size: ${(props) => props.theme.fontSizes.body}px;
+    font-size: var(--lagom-core-font-sizes-body);
   }
 
   ${(props) => props.theme.mediaQueries.emphasized} {

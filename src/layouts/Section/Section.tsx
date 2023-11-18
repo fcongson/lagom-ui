@@ -27,16 +27,19 @@ export const Section = styled.section<
   padding-left: calc(max(1rem, env(safe-area-inset-left)));
   padding-right: calc(max(1rem, env(safe-area-inset-right)));
 
+  max-width: var(--sizes-max-width-section);
+  margin: 0 auto;
+
   ${space}
   ${layout}
   ${color}
   ${border}
 `;
 
-Section.defaultProps = {
-  maxWidth: "maxWidthSection",
-  margin: "0 auto",
-};
+// Section.defaultProps = {
+//   maxWidth: "maxWidthSection",
+//   margin: "0 auto",
+// };
 
 // export const Section: React.FunctionComponent<
 //   React.ComponentProps<"div"> & SpaceProps & LayoutProps & ColorProps
