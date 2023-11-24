@@ -13,12 +13,12 @@ const StyledBlockquote = styled.blockquote`
     font-size: var(--lagom-core-font-sizes-xl);
     color: var(--lagom-semantic-color-fg-muted);
 
-    ${(props) => props.theme.mediaQueries.large} {
+    ${({ theme }) => theme.mediaQueries.large} {
       border-left: 2px solid var(--lagom-semantic-color-border-default);
       font-size: var(--lagom-core-font-sizes-body);
     }
 
-    ${(props) => props.theme.mediaQueries.emphasized} {
+    ${({ theme }) => theme.mediaQueries.emphasized} {
       width: 130%;
       margin: 0 -15% 2rem -15%;
       padding-left: 2rem;

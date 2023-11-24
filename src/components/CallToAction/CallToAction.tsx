@@ -16,7 +16,7 @@ const CallToActionContainer = styled.div`
       margin: 0 auto 4rem auto;
       padding: 0 2rem 0 2rem;
 
-      ${(props) => props.theme.mediaQueries.large} {
+      ${({ theme }) => theme.mediaQueries.large} {
         font-size: 16px;
         margin: 0 auto 2rem auto;
         padding: 0 1rem 0 1rem;

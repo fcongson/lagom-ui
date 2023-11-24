@@ -9,7 +9,7 @@ const HeroContainer = styled.div`
     display: grid;
     margin: 0 auto 8rem auto;
 
-    ${(props) => props.theme.mediaQueries.small} {
+    ${({ theme }) => theme.mediaQueries.small} {
       margin: 0 auto 4rem auto;
     }
   }
