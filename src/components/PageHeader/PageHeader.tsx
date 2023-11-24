@@ -1,24 +1,20 @@
 import styled from "styled-components";
-import {
-  color,
-  ColorProps,
-  space,
-  SpaceProps,
-  typography,
-  TypographyProps,
-} from "styled-system";
 import { useMergedTheme } from "../../hooks/useMergedTheme";
 
-const StyledHeader = styled.h1<TypographyProps & SpaceProps & ColorProps>`
+const StyledHeader = styled.h1`
   color: var(--lagom-semantic-color-fg-default);
   font: var(--lagom-component-page-header-typography);
   text-align: center;
   margin: 0 auto;
   margin-bottom: var(--lagom-core-spacing-xxl);
 
-  ${typography}
-  ${space}
-  ${color}
+  ${(props) => props.theme.mediaQueries.large} {
+    font-size: var(--header-scale-2);
+  }
+  ${(props) => props.theme.mediaQueries.small} {
+    font-size: var(--header-scale-3);
+    margin-bottom: var(--lagom-core-spacing-xl);
+  }
 `;
 
 // StyledHeader.defaultProps = {
@@ -32,7 +28,7 @@ const StyledHeader = styled.h1<TypographyProps & SpaceProps & ColorProps>`
 // };
 
 export const PageHeader: React.FunctionComponent<
-  React.ComponentPropsWithoutRef<"h1"> & TypographyProps & SpaceProps
+  React.ComponentPropsWithoutRef<"h1">
 > = ({ children, ...restProps }) => {
   const mergedTheme = useMergedTheme();
   return (

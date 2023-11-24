@@ -10,7 +10,10 @@ export const ThemeProvider: React.FunctionComponent<{
   theme?: ThemeType;
 }> = ({ children, theme }) => {
   const [noFocusOutline, setNoFocusOutline] = useState(true);
-  const mergedTheme = { ..._theme, ...theme };
+  const mergedTheme = {
+    ..._theme,
+    ...theme,
+  };
 
   const a11yHandler = ({ keyCode }: { keyCode: number }) => {
     // Add focus outline when tab key is pressed

@@ -1,6 +1,6 @@
-import "@fcongson/lagom-tokens/css/variables/_core.css";
-import "@fcongson/lagom-tokens/css/theme/_light.css";
 import "@fcongson/lagom-tokens/css/theme/_dark.css";
+import "@fcongson/lagom-tokens/css/theme/_light.css";
+import "@fcongson/lagom-tokens/css/variables/_core.css";
 import { createGlobalStyle } from "styled-components";
 import { ThemeType } from "../themes/theme";
 
@@ -18,9 +18,16 @@ export const GlobalStyle = createGlobalStyle<{
   }
 
   :root {
+    /* TODO: resolve these component overrides */
     --sizes-max-width-section: 1800px;
     --sizes-max-width-container: 1120px;
     --sizes-max-width-content: 800px;
+    --header-scale-1: 121.5px;
+    --header-scale-2: 81px;
+    --header-scale-3: 54px;
+    --header-scale-4: 36px;
+    --header-scale-5: 24px;
+    --header-scale-6: 16px;
   }
 
   body {
