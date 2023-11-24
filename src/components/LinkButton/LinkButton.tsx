@@ -1,15 +1,11 @@
+import clsx from "clsx";
 import styled, { css } from "styled-components";
-import {
-  BorderProps,
-  ColorProps,
-  SpaceProps,
-  TypographyProps,
-} from "styled-system";
 import { Button } from "../Button";
 
 const linkCss = css`
-  text-decoration: none;
-  display: contents;
+  &.lagom-link-button {
+    display: contents;
+  }
 `;
 
 const StyledLink = styled.a`
@@ -17,6 +13,10 @@ const StyledLink = styled.a`
 `;
 
 interface LinkButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+  /**
+   * Classname(s) applied to this component
+   */
+  className?: string;
   /**
    * Choose between the primary and secondary variants
    */
@@ -31,15 +31,20 @@ interface LinkButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   Component?: React.ComponentType<{ to: string; children?: React.ReactNode }>;
 }
 
-export const LinkButton: React.FunctionComponent<
-  LinkButtonProps & TypographyProps & BorderProps & SpaceProps & ColorProps
-> = ({ children, primary = false, to, Component, ...restProps }) => {
+export const LinkButton: React.FunctionComponent<LinkButtonProps> = ({
+  children,
+  className,
+  primary = false,
+  to,
+  Component,
+  ...restProps
+}) => {
   if (Component) {
-    const StyledComponent = styled(Component)`
+    const StyledComponent = styled(Component)<{ className?: string }>`
       ${linkCss}
     `;
     return (
-      <StyledComponent to={to}>
+      <StyledComponent className={clsx(`lagom-link-button`, className)} to={to}>
         <Button primary={primary} {...restProps}>
           {children}
         </Button>
@@ -48,7 +53,7 @@ export const LinkButton: React.FunctionComponent<
   }
 
   return (
-    <StyledLink href={to}>
+    <StyledLink className={clsx(`lagom-link-button`, className)} href={to}>
       <Button primary={primary} {...restProps}>
         {children}
       </Button>

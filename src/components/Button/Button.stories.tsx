@@ -31,11 +31,13 @@ export const Custom: Story = {
   ...Primary,
   args: {
     primary: false,
-    backgroundColor: "var(--lagom-core-colors-olive-base)",
-    borderColor: "var(--lagom-core-colors-olive-base)",
-    color: "var(--lagom-core-colors-white)",
-    borderRadius: 4,
-    fontFamily: "monospace",
+    style: {
+      backgroundColor: "var(--lagom-core-colors-olive-base)",
+      borderColor: "var(--lagom-core-colors-olive-base)",
+      color: "var(--lagom-core-colors-white)",
+      borderRadius: 4,
+      fontFamily: "monospace",
+    },
     children: "Button custom",
   },
 };
