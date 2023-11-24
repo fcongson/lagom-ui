@@ -42,8 +42,7 @@ export const About: StoryObj = {
           </p>
           <p>
             Built using{" "}
-            <a href="https://styled-components.com/">styled components</a> and{" "}
-            <a href="https://styled-system.com/">Styled System</a>.
+            <a href="https://styled-components.com/">styled components</a>.
           </p>
           <small className="copyright">
             Copyright © {new Date().getFullYear()} Frank Congson

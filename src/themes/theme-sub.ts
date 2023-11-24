@@ -66,9 +66,6 @@ const buttons = {
   },
 };
 
-/**
- * [Styled System Theme Specification](https://styled-system.com/theme-specification)
- */
 export const theme = {
   colors,
   fonts,
