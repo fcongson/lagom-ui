@@ -29,11 +29,13 @@ export const Secondary: Story = {
 
 export const Custom: Story = {
   args: {
-    backgroundColor: "var(--lagom-core-colors-olive-base)",
-    borderColor: "var(--lagom-core-colors-olive-base)",
-    color: "var(--lagom-core-colors-white)",
-    borderRadius: 4,
-    fontFamily: "monospace",
+    style: {
+      backgroundColor: "var(--lagom-core-colors-olive-base)",
+      borderColor: "var(--lagom-core-colors-olive-base)",
+      color: "var(--lagom-core-colors-white)",
+      borderRadius: 4,
+      fontFamily: "monospace",
+    },
     children: "Link button custom",
   },
 };

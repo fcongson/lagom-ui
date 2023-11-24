@@ -1,91 +1,75 @@
+import clsx from "clsx";
 import styled from "styled-components";
-import {
-  border,
-  BorderProps,
-  buttonStyle,
-  ButtonStyleProps,
-  color,
-  ColorProps,
-  space,
-  SpaceProps,
-  typography,
-  TypographyProps,
-  variant,
-} from "styled-system";
 import { useMergedTheme } from "../../hooks/useMergedTheme";
 
-const StyledButton = styled.button<
-  ButtonStyleProps & TypographyProps & BorderProps & SpaceProps & ColorProps
->`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const StyledButton = styled.button`
+  &.lagom-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  height: 48px;
-  width: fit-content;
-  border: 1px solid;
-  padding: 8px 24px;
-  cursor: pointer;
+    height: 48px;
+    width: fit-content;
+    border: 1px solid;
+    padding: 8px 24px;
+    cursor: pointer;
 
-  transition: transform 200ms ease-in-out;
+    transition: transform 200ms ease-in-out;
 
-  &:hover {
+    border-radius: var(--lagom-component-button-border-radius);
+    font-family: var(--lagom-core-font-families-sans-serif);
+    font-weight: var(--lagom-core-font-weights-semi-bold);
+    font-size: var(--lagom-core-font-sizes-body);
+  }
+
+  &.lagom-button--primary {
+    background-color: var(--lagom-component-button-color-primary-background);
+    color: var(--lagom-component-button-color-primary-text);
+    border-color: var(--lagom-component-button-color-primary-border);
+  }
+
+  &.lagom-button--secondary {
+    background-color: var(--lagom-component-button-color-secondary-background);
+    color: var(--lagom-component-button-color-secondary-text);
+    border-color: var(--lagom-component-button-color-secondary-border);
+  }
+
+  &.lagom-button:hover {
     transform: translateY(-2px);
   }
 
-  &:active {
+  &.lagom-button:active {
     transform: translateY(1px);
     transition: transform 100ms ease-in-out;
   }
-
-  ${variant({
-    variants: {
-      primary: {
-        backgroundColor:
-          "var(--lagom-component-button-color-primary-background)",
-        color: "var(--lagom-component-button-color-primary-text)",
-        borderColor: "var(--lagom-component-button-color-primary-border)",
-        borderRadius: "var(--lagom-component-button-border-radius)",
-        fontFamily: "var(--lagom-core-font-families-sans-serif)",
-        fontWeight: "var(--lagom-core-font-weights-semi-bold)",
-        fontSize: "var(--lagom-core-font-sizes-body)",
-      },
-      secondary: {
-        backgroundColor:
-          "var(--lagom-component-button-color-secondary-background)",
-        color: "var(--lagom-component-button-color-secondary-text)",
-        borderColor: "var(--lagom-component-button-color-secondary-border)",
-        borderRadius: "var(--lagom-component-button-border-radius)",
-        fontFamily: "var(--lagom-core-font-families-sans-serif)",
-        fontWeight: "var(--lagom-core-font-weights-semi-bold)",
-        fontSize: "var(--lagom-core-font-sizes-body)",
-      },
-    },
-  })}
-
-  ${buttonStyle}
-
-  ${typography}
-  ${border}
-  ${space}
-  ${color}
 `;
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+  /**
+   * Classname(s) applied to this component
+   */
+  className?: string;
   /**
    * Choose between the primary and secondary variants
    */
   primary?: boolean;
 }
 
-export const Button: React.FunctionComponent<
-  ButtonProps & TypographyProps & BorderProps & SpaceProps & ColorProps
-> = ({ children, primary = false, ...restProps }) => {
+export const Button: React.FunctionComponent<ButtonProps> = ({
+  children,
+  className,
+  primary = false,
+  ...restProps
+}) => {
   const mergedTheme = useMergedTheme();
   return (
     <StyledButton
       theme={mergedTheme}
-      variant={primary ? "primary" : "secondary"}
+      className={clsx(
+        "lagom-button",
+        className,
+        primary ? "lagom-button--primary" : "lagom-button--secondary",
+      )}
       {...restProps}
     >
       {children}

@@ -1,7 +1,7 @@
+import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Section } from "../Section";
 import { Container } from "./Container";
-import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta = {
   title: "Layouts/Container",
@@ -17,7 +17,12 @@ export const Default: Story = {
   render: () => (
     <>
       <Section>
-        <Container borderStyle="dashed" borderColor="violets.2">
+        <Container
+          style={{
+            borderStyle: "dashed",
+            borderColor: "var(--lagom-core-colors-violet-lighter40)",
+          }}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Magnis dis
           parturient montes nascetur. Blandit massa enim nec dui nunc. Egestas
@@ -32,7 +37,12 @@ export const Default: Story = {
         </Container>
       </Section>
       <Section>
-        <Container borderStyle="dashed" borderColor="violets.2">
+        <Container
+          style={{
+            borderStyle: "dashed",
+            borderColor: "var(--lagom-core-colors-violet-lighter40)",
+          }}
+        >
           Molestie a iaculis at erat pellentesque. Dolor purus non enim praesent
           elementum. Turpis massa sed elementum tempus egestas sed sed risus.
           Erat imperdiet sed euismod nisi. Dictum non consectetur a erat nam.
@@ -46,7 +56,12 @@ export const Default: Story = {
         </Container>
       </Section>
       <Section>
-        <Container borderStyle="dashed" borderColor="violets.2">
+        <Container
+          style={{
+            borderStyle: "dashed",
+            borderColor: "var(--lagom-core-colors-violet-lighter40)",
+          }}
+        >
           Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum
           arcu. Nulla aliquet porttitor lacus luctus accumsan tortor posuere ac
           ut. Imperdiet sed euismod nisi porta lorem mollis aliquam ut

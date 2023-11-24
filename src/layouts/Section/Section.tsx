@@ -1,53 +1,62 @@
+import clsx from "clsx";
 import styled from "styled-components";
-import {
-  border,
-  BorderProps,
-  color,
-  ColorProps,
-  layout,
-  LayoutProps,
-  space,
-  SpaceProps,
-} from "styled-system";
+
+const StyledSection = styled.section`
+  &.lagom-section {
+    /* Fallback */
+    padding: 0 1rem;
+
+    /* iOS 11 */
+    padding-left: calc(max(1rem, constant(safe-area-inset-left)));
+    padding-right: calc(max(1rem, constant(safe-area-inset-right)));
+
+    /* iOS 11.2+ */
+    padding-left: calc(max(1rem, env(safe-area-inset-left)));
+    padding-right: calc(max(1rem, env(safe-area-inset-right)));
+
+    max-width: var(--lagom-component-section-width, 1800px);
+    margin: 0 auto;
+    overflow: hidden; /* TODO: Should this be global? Currently used to hide emphasized content overflowing beyond small viewports */
+  }
+
+  &.lagom-section--background-color .container {
+    background-color: inherit;
+    padding: var(--lagom-component-container-margin-bottom) 0;
+    margin: 0 auto;
+  }
+`;
+
+interface SectionProps extends React.ComponentPropsWithoutRef<"section"> {
+  /**
+   * Classname(s) applied to this component
+   */
+  className?: string;
+  /**
+   * Background color applied to this section
+   */
+  backgroundColor?: string;
+}
 
 /**
  * A layout element that defines a section in a document.
  */
-export const Section = styled.section<
-  SpaceProps & LayoutProps & ColorProps & BorderProps
->`
-  /* Fallback */
-  padding: 0 1rem;
-
-  /* iOS 11 */
-  padding-left: calc(max(1rem, constant(safe-area-inset-left)));
-  padding-right: calc(max(1rem, constant(safe-area-inset-right)));
-
-  /* iOS 11.2+ */
-  padding-left: calc(max(1rem, env(safe-area-inset-left)));
-  padding-right: calc(max(1rem, env(safe-area-inset-right)));
-
-  max-width: var(--sizes-max-width-section);
-  margin: 0 auto;
-
-  ${space}
-  ${layout}
-  ${color}
-  ${border}
-`;
-
-// Section.defaultProps = {
-//   maxWidth: "maxWidthSection",
-//   margin: "0 auto",
-// };
-
-// export const Section: React.FunctionComponent<
-//   React.ComponentProps<"div"> & SpaceProps & LayoutProps & ColorProps
-// > = ({ children, ref, color, ...restProps }) => {
-//   const mergedTheme = useMergedTheme();
-//   return (
-//     <StyledSection theme={mergedTheme} {...restProps}>
-//       {children}
-//     </StyledSection>
-//   );
-// };
+export const Section: React.FunctionComponent<SectionProps> = ({
+  children,
+  className,
+  backgroundColor,
+  ...restProps
+}) => {
+  return (
+    <StyledSection
+      className={clsx(
+        "lagom-section",
+        className,
+        !!backgroundColor && "lagom-section--background-color",
+      )}
+      style={!!backgroundColor ? { backgroundColor: backgroundColor } : null}
+      {...restProps}
+    >
+      {children}
+    </StyledSection>
+  );
+};

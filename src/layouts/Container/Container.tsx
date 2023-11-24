@@ -1,51 +1,48 @@
+import clsx from "clsx";
 import styled from "styled-components";
-import {
-  border,
-  BorderProps,
-  color,
-  ColorProps,
-  flexbox,
-  FlexboxProps,
-  layout,
-  LayoutProps,
-  space,
-  SpaceProps,
-} from "styled-system";
+
+const StyledContainer = styled.div`
+  &.lagom-container {
+    max-width: var(--lagom-component-container-width, 1000px);
+    margin: 0 auto;
+    margin-bottom: var(--lagom-component-container-margin-bottom, 4rem);
+  }
+
+  &.lagom-container--margin-none {
+    margin-bottom: unset;
+  }
+`;
+
+interface ContainerProps extends React.ComponentPropsWithoutRef<"div"> {
+  /**
+   * Classname(s) applied to this component
+   */
+  className?: string;
+  /**
+   * Removes the bottom margin
+   */
+  marginNone?: boolean;
+}
 
 /**
  * Primarily used as a child of `Section`. Provides a container for the section contents.
  */
-export const Container = styled.div<
-  SpaceProps & LayoutProps & ColorProps & FlexboxProps & BorderProps
->`
-  max-width: var(--sizes-max-width-container);
-  margin: 0 auto;
-  margin-bottom: var(--lagom-core-spacing-xxl);
-
-  ${space}
-  ${layout}
-  ${color}
-  ${flexbox}
-  ${border}
-`;
-
-// Container.defaultProps = {
-//   maxWidth: "maxWidthContainer",
-//   margin: "0 auto",
-//   marginBottom: [5, null, 6, null],
-// };
-
-// export const Container: React.FunctionComponent<
-//   React.ComponentProps<"div"> &
-//     SpaceProps &
-//     LayoutProps &
-//     ColorProps &
-//     FlexboxProps
-// > = ({ children, ref, color, ...restProps }) => {
-//   const mergedTheme = useMergedTheme();
-//   return (
-//     <StyledContainer theme={mergedTheme} {...restProps}>
-//       {children}
-//     </StyledContainer>
-//   );
-// };
+export const Container: React.FunctionComponent<ContainerProps> = ({
+  children,
+  className,
+  marginNone,
+  ...restProps
+}) => {
+  return (
+    <StyledContainer
+      className={clsx(
+        "lagom-container",
+        className,
+        marginNone && "lagom-container--margin-none",
+      )}
+      {...restProps}
+    >
+      {children}
+    </StyledContainer>
+  );
+};
