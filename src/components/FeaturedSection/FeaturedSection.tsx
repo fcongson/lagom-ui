@@ -33,7 +33,7 @@ const FeaturedSectionContainer = styled.div<{
       padding-bottom: 4rem;
     }
     
-    ${Container} {
+    .lagom-container {
       padding-top: 12rem;
       padding-bottom: 12rem;
       
@@ -52,12 +52,12 @@ const FeaturedSectionContainer = styled.div<{
     }
     `}
 
-  ${Section} {
+  .lagom-section {
     grid-area: 1 / 1;
     align-self: center;
   }
 
-  ${Container} {
+  .lagom-container {
     margin-bottom: 0;
   }
 
