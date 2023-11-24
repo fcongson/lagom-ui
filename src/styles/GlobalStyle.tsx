@@ -131,7 +131,7 @@ export const GlobalStyle = createGlobalStyle<{
     font-style: italic;
   }
 
-  ${(props) => props.theme.mediaQueries.medium} {
+  ${({ theme }) => theme.mediaQueries.medium} {
     h1 {
       font-size: var(--lagom-core-font-sizes-h2)
     }

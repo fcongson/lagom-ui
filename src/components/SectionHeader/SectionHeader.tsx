@@ -10,10 +10,10 @@ const StyledHeader = styled.h2`
     margin: 0 auto;
     margin-bottom: var(--lagom-core-spacing-xxl);
 
-    ${(props) => props.theme.mediaQueries.large} {
+    ${({ theme }) => theme.mediaQueries.large} {
       font-size: var(--header-scale-3);
     }
-    ${(props) => props.theme.mediaQueries.small} {
+    ${({ theme }) => theme.mediaQueries.small} {
       font-size: var(--header-scale-4);
       margin-bottom: var(--lagom-core-spacing-xl);
     }

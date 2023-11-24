@@ -14,7 +14,7 @@ const Image = styled.div`
   }
 
   .emphasized {
-    ${(props) => props.theme.mediaQueries.emphasized} {
+    ${({ theme }) => theme.mediaQueries.emphasized} {
       width: 130%;
       margin: 0 -15% 2rem -15%;
     }
@@ -28,7 +28,7 @@ const Image = styled.div`
       max-height: 100vh;
     }
 
-    ${(props) => props.theme.mediaQueries.small} {
+    ${({ theme }) => theme.mediaQueries.small} {
       margin-bottom: 4rem;
     }
   }
