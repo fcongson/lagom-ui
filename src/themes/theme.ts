@@ -6,17 +6,12 @@ const sizes: { [key: string]: string } = {
   maxWidthContent: "800px",
 };
 
-// @ts-ignore for styled-system usage
-const breakpoints: { [key: string]: string } = [
-  "320px",
-  "568px",
-  "768px",
-  "992px",
-];
-breakpoints.mobilePortrait = breakpoints[0];
-breakpoints.mobileLandscape = breakpoints[1];
-breakpoints.tabletPortrait = breakpoints[2];
-breakpoints.tabletLandscape = breakpoints[3];
+const breakpoints: { [key: string]: string } = {
+  mobilePortrait: "320px",
+  mobileLandscape: "568px",
+  tabletPortrait: "768px",
+  tabletLandscape: "992px",
+};
 
 const mediaQueries: { [key: string]: string } = {
   xsmall: `@media screen and (max-width: ${breakpoints.mobilePortrait})`,
@@ -31,9 +26,6 @@ export type ThemeType = {
   mediaQueries: { [key: string]: string };
 };
 
-/**
- * [Styled System Theme Specification](https://styled-system.com/theme-specification)
- */
 export const theme: ThemeType = {
   breakpoints,
   mediaQueries,
