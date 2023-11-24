@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { theme } from "../../themes/theme";
 import { CallToAction } from "../CallToAction";
 import { FeaturedSection } from "./FeaturedSection";
 
@@ -39,6 +38,26 @@ export const ImageAsBackground: Story = {
   },
 };
 
+export const ImageAsBackgroundFramed: Story = {
+  args: {
+    image: (
+      <img
+        src={imageSrc}
+        alt={alt}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+    ),
+    imageAsBackground: true,
+    children: (
+      <p>
+        Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit.
+      </p>
+    ),
+    framed: true,
+  },
+};
+
 export const ColorBackground: Story = {
   args: {
     children: (
@@ -47,6 +66,18 @@ export const ColorBackground: Story = {
         elit.
       </p>
     ),
+  },
+};
+
+export const ColorBackgroundFramed: Story = {
+  args: {
+    children: (
+      <p>
+        Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit.
+      </p>
+    ),
+    framed: true,
   },
 };
 
