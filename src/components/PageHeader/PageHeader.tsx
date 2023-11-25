@@ -7,6 +7,7 @@ const StyledHeader = styled.h1`
     color: var(--lagom-semantic-color-fg-default);
     font: var(--lagom-component-page-header-typography);
     text-align: center;
+    text-wrap: balance;
     margin: 0 auto;
     margin-bottom: var(--lagom-core-spacing-xxl);
 
