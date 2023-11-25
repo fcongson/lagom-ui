@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import styled from "styled-components";
-import { useMergedTheme } from "../../hooks/useMergedTheme";
+import { useTheme } from "../../hooks/useTheme";
 
 const StyledBlockquote = styled.blockquote`
   &.lagom-quote {
@@ -33,7 +33,7 @@ const StyledBlockquote = styled.blockquote`
 export const Quote: React.FunctionComponent<
   React.ComponentPropsWithoutRef<"blockquote">
 > = ({ children, className, ...restProps }) => {
-  const mergedTheme = useMergedTheme();
+  const mergedTheme = useTheme();
   return (
     <StyledBlockquote
       theme={mergedTheme}

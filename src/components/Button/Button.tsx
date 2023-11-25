@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import styled from "styled-components";
-import { useMergedTheme } from "../../hooks/useMergedTheme";
+import { useTheme } from "../../hooks/useTheme";
 
 const StyledButton = styled.button`
   &.lagom-button {
@@ -61,7 +61,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   primary = false,
   ...restProps
 }) => {
-  const mergedTheme = useMergedTheme();
+  const mergedTheme = useTheme();
   return (
     <StyledButton
       theme={mergedTheme}
