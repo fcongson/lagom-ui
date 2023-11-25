@@ -8,7 +8,7 @@ const StyledBlockquote = styled.blockquote`
     padding-left: 1rem;
     border-left: 4px solid var(--lagom-semantic-color-border-default);
     display: inline-block;
-    font-family: var(--lagom-core-font-families-sans-serif);
+    font-family: var(--lagom-core-font-families-serif);
     font-style: italic;
     font-size: var(--lagom-core-font-sizes-xl);
     color: var(--lagom-semantic-color-fg-muted);
