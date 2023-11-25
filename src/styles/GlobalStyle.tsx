@@ -29,6 +29,7 @@ export const GlobalStyle = createGlobalStyle<{
     --header-scale-5: 24px;
     --header-scale-6: 16px;
     --hero-height: 100vh;
+    --framed-margin: 1rem;
   }
 
   body {

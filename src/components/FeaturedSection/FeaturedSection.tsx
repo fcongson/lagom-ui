@@ -16,8 +16,9 @@ const featuredSectionCss = css`
   }
 
   &.lagom-featured-section--framed {
+    max-height: calc(100vh - (2 * var(--framed-margin)));
     max-width: 100vw;
-    margin: 1rem;
+    margin: var(--framed-margin);
     border-radius: var(--lagom-core-border-radius-sm);
     overflow: hidden;
   }
@@ -26,10 +27,12 @@ const featuredSectionCss = css`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
 
     p {
       max-width: var(--sizes-max-width-content);
+      text-wrap: pretty;
     }
   }
 `;

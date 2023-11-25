@@ -16,7 +16,6 @@ const StyledSection = styled.section`
 
     max-width: var(--lagom-component-section-width, 1800px);
     margin: 0 auto;
-    overflow: hidden; /* TODO: Should this be global? Currently used to hide emphasized content overflowing beyond small viewports */
   }
 
   &.lagom-section--background-color .container {
