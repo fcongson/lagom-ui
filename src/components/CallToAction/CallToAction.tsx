@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import styled from "styled-components";
 import { LinkButton, SectionHeader } from "../..";
-import { useMergedTheme } from "../../hooks/useMergedTheme";
+import { useTheme } from "../../hooks/useTheme";
 
 const CallToActionContainer = styled.div`
   &.lagom-call-to-action {
@@ -41,7 +41,7 @@ export const CallToAction: React.FunctionComponent<{
   LinkComponent,
   ...restProps
 }) => {
-  const mergedTheme = useMergedTheme();
+  const mergedTheme = useTheme();
   return (
     <CallToActionContainer
       theme={mergedTheme}

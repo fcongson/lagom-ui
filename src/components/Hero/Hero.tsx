@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import styled from "styled-components";
-import { useMergedTheme } from "../../hooks/useMergedTheme";
+import { useTheme } from "../../hooks/useTheme";
 
 const HeroContainer = styled.div`
   &.lagom-hero {
@@ -47,7 +47,7 @@ export const Hero: React.FunctionComponent<{
   children?: React.ReactNode;
   className?: string;
 }> = ({ image, children, className, ...restProps }) => {
-  const mergedTheme = useMergedTheme();
+  const mergedTheme = useTheme();
   return (
     <HeroContainer
       theme={mergedTheme}

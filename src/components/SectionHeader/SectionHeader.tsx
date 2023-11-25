@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import styled from "styled-components";
-import { useMergedTheme } from "../../hooks/useMergedTheme";
+import { useTheme } from "../../hooks/useTheme";
 
 const StyledHeader = styled.h2`
   &.lagom-section-header {
@@ -24,7 +24,7 @@ const StyledHeader = styled.h2`
 export const SectionHeader: React.FunctionComponent<
   React.ComponentPropsWithoutRef<"h2">
 > = ({ children, className, ...restProps }) => {
-  const mergedTheme = useMergedTheme();
+  const mergedTheme = useTheme();
   return (
     <StyledHeader
       theme={mergedTheme}

@@ -22,11 +22,13 @@ const mediaQueries: { [key: string]: string } = {
 };
 
 export type ThemeType = {
-  breakpoints: { [key: string]: string };
-  mediaQueries: { [key: string]: string };
+  sizes?: { [key: string]: string };
+  breakpoints?: { [key: string]: string };
+  mediaQueries?: { [key: string]: string };
 };
 
 export const theme: ThemeType = {
+  sizes,
   breakpoints,
   mediaQueries,
 };
