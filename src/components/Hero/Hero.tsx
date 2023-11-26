@@ -3,15 +3,14 @@ import styled from "styled-components";
 import { useTheme } from "../../hooks/useTheme";
 
 const HeroContainer = styled.div`
-  &.lagom-hero {
-    width: 100%;
-    height: var(--hero-height, 100vh);
-    display: grid;
-    margin: 0 auto 8rem auto;
+  /* .lagom-hero */
+  width: 100%;
+  height: var(--hero-height, 100vh);
+  display: grid;
+  margin: 0 auto 8rem auto;
 
-    ${({ theme }) => theme.mediaQueries.small} {
-      margin: 0 auto 4rem auto;
-    }
+  ${({ theme }) => theme.mediaQueries.small} {
+    margin: 0 auto 4rem auto;
   }
 `;
 

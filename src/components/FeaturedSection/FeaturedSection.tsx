@@ -11,7 +11,8 @@ type FeaturedSectionProps = {
 };
 
 const featuredSectionCss = css`
-  &.lagom-featured-section .lagom-container {
+  /* .lagom-featured-section */
+  & .lagom-container {
     margin-bottom: 0;
   }
 
@@ -23,7 +24,7 @@ const featuredSectionCss = css`
     overflow: hidden;
   }
 
-  &.lagom-featured-section .lagom-featured-section__content {
+  & .lagom-featured-section__content {
     display: flex;
     flex-direction: column;
     justify-content: center;

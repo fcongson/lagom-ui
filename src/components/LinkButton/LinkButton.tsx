@@ -3,9 +3,8 @@ import styled, { css } from "styled-components";
 import { Button } from "../Button";
 
 const linkCss = css`
-  &.lagom-link-button {
-    display: contents;
-  }
+  /* .lagom-link-button */
+  display: contents;
 `;
 
 const StyledLink = styled.a`

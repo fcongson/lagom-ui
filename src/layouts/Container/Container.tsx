@@ -2,11 +2,10 @@ import clsx from "clsx";
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
-  &.lagom-container {
-    max-width: var(--lagom-component-container-width, 1000px);
-    margin: 0 auto;
-    margin-bottom: var(--lagom-component-container-margin-bottom, 4rem);
-  }
+  /* .lagom-container */
+  max-width: var(--lagom-component-container-width, 1120px);
+  margin: 0 auto;
+  margin-bottom: var(--lagom-component-container-margin-bottom, 4rem);
 
   &.lagom-container--margin-none {
     margin-bottom: unset;

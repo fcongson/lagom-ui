@@ -3,24 +3,23 @@ import styled from "styled-components";
 import { useTheme } from "../../hooks/useTheme";
 
 const StyledButton = styled.button`
-  &.lagom-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* .lagom-button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    height: 48px;
-    width: fit-content;
-    border: 1px solid;
-    padding: 8px 24px;
-    cursor: pointer;
+  height: 48px;
+  width: fit-content;
+  border: 1px solid;
+  padding: 8px 24px;
+  cursor: pointer;
 
-    transition: transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
 
-    border-radius: var(--lagom-component-button-border-radius);
-    font-family: var(--lagom-core-font-families-sans-serif);
-    font-weight: var(--lagom-core-font-weights-semi-bold);
-    font-size: var(--lagom-core-font-sizes-body);
-  }
+  border-radius: var(--lagom-component-button-border-radius);
+  font-family: var(--lagom-core-font-families-sans-serif);
+  font-weight: var(--lagom-core-font-weights-semi-bold);
+  font-size: var(--lagom-core-font-sizes-body);
 
   &.lagom-button--primary {
     background-color: var(--lagom-component-button-color-primary-background);
