@@ -4,23 +4,22 @@ import { LinkButton, SectionHeader } from "../..";
 import { useTheme } from "../../hooks/useTheme";
 
 const CallToActionContainer = styled.div`
-  &.lagom-call-to-action {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  /* .lagom-call-to-action */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    p {
-      font-weight: normal;
-      font-size: 20px;
-      text-align: center;
-      margin: 0 auto 4rem auto;
-      padding: 0 2rem 0 2rem;
+  p {
+    font-weight: normal;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto 4rem auto;
+    padding: 0 2rem 0 2rem;
 
-      ${({ theme }) => theme.mediaQueries.large} {
-        font-size: 16px;
-        margin: 0 auto 2rem auto;
-        padding: 0 1rem 0 1rem;
-      }
+    ${({ theme }) => theme.mediaQueries.large} {
+      font-size: 16px;
+      margin: 0 auto 2rem auto;
+      padding: 0 1rem 0 1rem;
     }
   }
 `;

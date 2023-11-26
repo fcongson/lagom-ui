@@ -5,7 +5,8 @@ import { Container } from "../../layouts/Container";
 import { Section } from "../../layouts/Section";
 
 const imageCaptionCss = css`
-  &.lagom-image-caption.lagom-section {
+  /* .lagom-image-caption */
+  &.lagom-section {
     overflow: hidden;
   }
 
