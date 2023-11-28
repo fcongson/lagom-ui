@@ -12,29 +12,27 @@ type FeaturedSectionProps = {
 
 const featuredSectionCss = css`
   /* .lagom-featured-section */
+  max-width: 100%;
+
   & .lagom-container {
     margin-bottom: 0;
   }
 
   &.lagom-featured-section--framed {
     max-height: calc(100vh - (2 * var(--framed-margin)));
-    max-width: 100vw;
     margin: var(--framed-margin);
     border-radius: var(--lagom-core-border-radius-sm);
     overflow: hidden;
   }
 
   & .lagom-featured-section__content {
+    max-width: ${({ theme }) => theme.sizes.maxWidthContent};
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     text-align: center;
-
-    p {
-      max-width: var(--sizes-max-width-content);
-      text-wrap: pretty;
-    }
+    text-wrap: pretty;
   }
 `;
 

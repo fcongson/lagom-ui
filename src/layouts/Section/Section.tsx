@@ -14,7 +14,10 @@ const StyledSection = styled.section`
   padding-left: calc(max(1rem, env(safe-area-inset-left)));
   padding-right: calc(max(1rem, env(safe-area-inset-right)));
 
-  max-width: var(--lagom-component-section-width, 1800px);
+  max-width: var(
+    --lagom-component-section-width,
+    ${({ theme }) => theme.sizes.maxWidthSection}
+  );
   margin: 0 auto;
 
   &.lagom-section--background-color .container {

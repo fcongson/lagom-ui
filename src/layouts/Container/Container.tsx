@@ -3,7 +3,10 @@ import styled from "styled-components";
 
 const StyledContainer = styled.div`
   /* .lagom-container */
-  max-width: var(--lagom-component-container-width, 1120px);
+  max-width: var(
+    --lagom-component-container-width,
+    ${({ theme }) => theme.sizes.maxWidthContainer}
+  );
   margin: 0 auto;
   margin-bottom: var(--lagom-component-container-margin-bottom, 8rem);
 

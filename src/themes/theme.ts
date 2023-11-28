@@ -1,9 +1,11 @@
+const MAX_WIDTH_SECTION = 1800;
 const MAX_WIDTH_CONTAINER = 1120;
+const MAX_WIDTH_CONTENT = 800;
 const sizes: { [key: string]: string } = {
-  maxWidthSection: "1800px",
+  maxWidthSection: `${MAX_WIDTH_SECTION}px`,
   maxWidthContainer: `${MAX_WIDTH_CONTAINER}px`,
+  maxWidthContent: `${MAX_WIDTH_CONTENT}px`,
   minWidthEmph: `${MAX_WIDTH_CONTAINER * 1.3}px`,
-  maxWidthContent: "800px",
 };
 
 const breakpoints: { [key: string]: string } = {

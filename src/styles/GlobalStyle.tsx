@@ -32,6 +32,7 @@ export const GlobalStyle = createGlobalStyle<{
     --framed-margin: 1rem;
   }
 
+  html,
   body {
     padding: 0;
     background-color: var(--lagom-semantic-color-bg-default);
