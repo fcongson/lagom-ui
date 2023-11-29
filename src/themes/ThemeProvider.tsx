@@ -3,7 +3,8 @@ import { ThemeProvider as _ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/GlobalStyle";
 import { NoFocusOutline } from "../styles/NoFocusOutline";
 import "../styles/resetr.css";
-import { ThemeType, theme as _theme } from "./theme";
+import { ThemeType } from "./createTheme";
+import { theme as _theme } from "./theme";
 
 export const ThemeProvider: React.FunctionComponent<{
   children?: React.ReactNode;

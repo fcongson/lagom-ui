@@ -11,3 +11,4 @@ export * from "./hooks/useTheme";
 export * from "./layouts/Container";
 export * from "./layouts/Section";
 export * from "./themes/ThemeProvider";
+export * from "./themes/createTheme";
