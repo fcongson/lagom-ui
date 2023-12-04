@@ -1787,7 +1787,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.23.3"
     "@babel/preset-react": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
-    "@fcongson/lagom-tokens": "npm:^0.18.0"
+    "@fcongson/lagom-tokens": "npm:^0.19.0"
     "@storybook/addon-a11y": "npm:^7.5.3"
     "@storybook/addon-essentials": "npm:^7.5.3"
     "@storybook/addon-interactions": "npm:^7.5.3"
