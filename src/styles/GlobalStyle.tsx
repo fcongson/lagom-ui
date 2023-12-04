@@ -1,6 +1,5 @@
-import "@fcongson/lagom-tokens/css/theme/_dark.css";
 import "@fcongson/lagom-tokens/css/theme/_light.css";
-import "@fcongson/lagom-tokens/css/variables/_core.css";
+import "@fcongson/lagom-tokens/css/theme/_dark.css";
 import { createGlobalStyle } from "styled-components";
 import { ThemeType } from "../themes/createTheme";
 

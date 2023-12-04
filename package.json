@@ -54,11 +54,14 @@
     "typescript": "5.2.2"
   },
   "dependencies": {
-    "@fcongson/lagom-tokens": "^0.16.0",
+    "@fcongson/lagom-tokens": "^0.18.0",
     "clsx": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.1"
   },
-  "packageManager": "yarn@4.0.1"
+  "packageManager": "yarn@4.0.2",
+  "resolutions": {
+    "@fcongson/lagom-tokens": "portal:/Users/frank/Developer/git/lagom-tokens"
+  }
 }

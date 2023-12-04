@@ -1773,12 +1773,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fcongson/lagom-tokens@npm:^0.16.0":
-  version: 0.16.0
-  resolution: "@fcongson/lagom-tokens@npm:0.16.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40fcongson%2Flagom-tokens%2F0.16.0%2F20e45607b84a817381d36e5aac6b8d36eaee1a1e"
-  checksum: eac1aeca38fbbf546646162eac0d2f29dd11d62981b0e91a744fa53e81d86ca471099f14225836d5f093070364427e5fc4722fa13b211f23d4717a10e92fa794
+"@fcongson/lagom-tokens@portal:/Users/frank/Developer/git/lagom-tokens::locator=%40fcongson%2Flagom-ui%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@fcongson/lagom-tokens@portal:/Users/frank/Developer/git/lagom-tokens::locator=%40fcongson%2Flagom-ui%40workspace%3A."
   languageName: node
-  linkType: hard
+  linkType: soft
 
 "@fcongson/lagom-ui@workspace:.":
   version: 0.0.0-use.local
@@ -1788,7 +1787,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.23.3"
     "@babel/preset-react": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
-    "@fcongson/lagom-tokens": "npm:^0.16.0"
+    "@fcongson/lagom-tokens": "npm:^0.18.0"
     "@storybook/addon-a11y": "npm:^7.5.3"
     "@storybook/addon-essentials": "npm:^7.5.3"
     "@storybook/addon-interactions": "npm:^7.5.3"

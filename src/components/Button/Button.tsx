@@ -2,6 +2,20 @@ import clsx from "clsx";
 import styled from "styled-components";
 import { useTheme } from "../../hooks/useTheme";
 
+export type ButtonTheme = {
+  borderRadius?: string;
+  primary?: {
+    backgroundColor?: string;
+    color?: string;
+    borderColor?: string;
+  };
+  secondary?: {
+    backgroundColor?: string;
+    color?: string;
+    borderColor?: string;
+  };
+};
+
 const StyledButton = styled.button`
   /* .lagom-button */
   display: flex;
@@ -16,21 +30,51 @@ const StyledButton = styled.button`
 
   transition: transform 200ms ease-in-out;
 
-  border-radius: var(--lagom-component-button-border-radius);
-  font-family: var(--lagom-core-font-families-sans-serif);
-  font-weight: var(--lagom-core-font-weights-semi-bold);
-  font-size: var(--lagom-core-font-sizes-body);
+  border-radius: var(
+    --themed-component-button-border-radius,
+    var(--lagom-component-button-border-radius)
+  );
+  font-family: var(
+    --themed-core-font-families-sans-serif,
+    var(--lagom-core-font-families-sans-serif)
+  );
+  font-weight: var(
+    --themed-core-font-weights-semi-bold,
+    var(--lagom-core-font-weights-semi-bold)
+  );
+  font-size: var(
+    --themed-core-font-sizes-body,
+    var(--lagom-core-font-sizes-body)
+  );
 
   &.lagom-button--primary {
-    background-color: var(--lagom-component-button-color-primary-background);
-    color: var(--lagom-component-button-color-primary-text);
-    border-color: var(--lagom-component-button-color-primary-border);
+    background-color: var(
+      --themed-component-button-color-primary-background,
+      var(--lagom-component-button-color-primary-background)
+    );
+    color: var(
+      --themed-component-button-color-primary-text,
+      var(--lagom-component-button-color-primary-text)
+    );
+    border-color: var(
+      --themed-component-button-color-primary-border,
+      var(--lagom-component-button-color-primary-border)
+    );
   }
 
   &.lagom-button--secondary {
-    background-color: var(--lagom-component-button-color-secondary-background);
-    color: var(--lagom-component-button-color-secondary-text);
-    border-color: var(--lagom-component-button-color-secondary-border);
+    background-color: var(
+      --themed-component-button-color-secondary-background,
+      var(--lagom-component-button-color-secondary-background)
+    );
+    color: var(
+      --themed-component-button-color-secondary-text,
+      var(--lagom-component-button-color-secondary-text)
+    );
+    border-color: var(
+      --themed-component-button-color-secondary-border,
+      var(--lagom-component-button-color-secondary-border)
+    );
   }
 
   &.lagom-button:hover {

@@ -111,14 +111,6 @@ const ColorBackgroundSection = styled(Section)`
       padding-top: 8rem;
       padding-bottom: 8rem;
     }
-
-    div:not(:last-of-type) {
-      margin-bottom: 8rem;
-
-      ${({ theme }) => theme.mediaQueries.small} {
-        margin-bottom: 4rem;
-      }
-    }
   }
 `;
 

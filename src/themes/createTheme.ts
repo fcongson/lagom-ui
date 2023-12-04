@@ -1,3 +1,17 @@
+import { ButtonTheme } from "components/Button";
+import { ExecutionProps, createGlobalStyle } from "styled-components";
+
+export type CoreTheme = {
+  fontFamilies?: {
+    serif?: string;
+    sansSerif?: string;
+    monospace?: string;
+  };
+  fontSizes?: {
+    body?: string;
+  };
+};
+
 export type ThemeType = {
   MAX_WIDTH_SECTION?: number;
   MAX_WIDTH_CONTAINER?: number;
@@ -21,13 +35,20 @@ export type ThemeType = {
     large: string;
     emphasized: string;
   };
+  core?: CoreTheme;
+  button?: ButtonTheme;
 };
 
 export const createTheme = ({
   MAX_WIDTH_SECTION = 1800,
   MAX_WIDTH_CONTAINER = 1120,
   MAX_WIDTH_CONTENT = 800,
-}): ThemeType => {
+  core,
+  button,
+}: ThemeType): {
+  theme: ThemeType;
+  GlobalStyle: React.NamedExoticComponent<ExecutionProps & object>;
+} => {
   const sizes: ThemeType["sizes"] = {
     maxWidthSection: `${MAX_WIDTH_SECTION}px`,
     maxWidthContainer: `${MAX_WIDTH_CONTAINER}px`,
@@ -50,12 +71,34 @@ export const createTheme = ({
     emphasized: `@media screen and (min-width: ${sizes.minWidthEmph})`,
   };
 
+  const GlobalStyle = createGlobalStyle`
+    :root {
+      /* font families */
+      --themed-core-font-families-monospace: ${core?.fontFamilies?.monospace};
+      --themed-core-font-families-serif: ${core?.fontFamilies?.serif};
+      --themed-core-font-families-sans-serif: ${core?.fontFamilies?.sansSerif};
+      --themed-core-font-sizes-body: ${core?.fontSizes?.body};
+
+      /* button theme */
+      --themed-component-button-border-radius: ${button?.borderRadius};
+      --themed-component-button-color-primary-background: ${button?.primary?.backgroundColor};
+      --themed-component-button-color-primary-text: ${button?.primary?.color};
+      --themed-component-button-color-primary-border: ${button?.primary?.borderColor};
+      --themed-component-button-color-secondary-background: ${button?.secondary?.backgroundColor};
+      --themed-component-button-color-secondary-text: ${button?.secondary?.color};
+      --themed-component-button-color-secondary-border: ${button?.secondary?.borderColor};
+    }
+  `;
+
   return {
-    MAX_WIDTH_SECTION,
-    MAX_WIDTH_CONTAINER,
-    MAX_WIDTH_CONTENT,
-    sizes,
-    breakpoints,
-    mediaQueries,
+    theme: {
+      MAX_WIDTH_SECTION,
+      MAX_WIDTH_CONTAINER,
+      MAX_WIDTH_CONTENT,
+      sizes,
+      breakpoints,
+      mediaQueries,
+    },
+    GlobalStyle,
   };
 };
