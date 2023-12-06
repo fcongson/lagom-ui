@@ -21,12 +21,12 @@ export const GlobalStyle = createGlobalStyle<{
     --sizes-max-width-section: 1800px;
     --sizes-max-width-container: 1120px;
     --sizes-max-width-content: 800px;
-    --header-scale-1: 121.5px;
-    --header-scale-2: 81px;
-    --header-scale-3: 54px;
-    --header-scale-4: 36px;
-    --header-scale-5: 24px;
-    --header-scale-6: 16px;
+    --header-scale-1: var(--themed-header-scale-1, 121.5px); 
+    --header-scale-2: var(--themed-header-scale-2, 81px);
+    --header-scale-3: var(--themed-header-scale-3, 54px);
+    --header-scale-4: var(--themed-header-scale-4, 36px);
+    --header-scale-5: var(--themed-header-scale-5, 24px);
+    --header-scale-6: var(--themed-header-scale-6, 16px);
     --hero-height: 100vh;
     --framed-margin: 1rem;
   }

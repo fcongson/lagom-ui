@@ -10,6 +10,14 @@ export type CoreTheme = {
   fontSizes?: {
     body?: string;
   };
+  headerScale?: {
+    1?: string;
+    2?: string;
+    3?: string;
+    4?: string;
+    5?: string;
+    6?: string;
+  };
 };
 
 export type ThemeType = {
@@ -78,6 +86,14 @@ export const createTheme = ({
       --themed-core-font-families-serif: ${core?.fontFamilies?.serif};
       --themed-core-font-families-sans-serif: ${core?.fontFamilies?.sansSerif};
       --themed-core-font-sizes-body: ${core?.fontSizes?.body};
+
+      /* header scale */
+      --themed-header-scale-1: ${core?.headerScale?.[1]};
+      --themed-header-scale-2: ${core?.headerScale?.[2]};
+      --themed-header-scale-3: ${core?.headerScale?.[3]};
+      --themed-header-scale-4: ${core?.headerScale?.[4]};
+      --themed-header-scale-5: ${core?.headerScale?.[5]};
+      --themed-header-scale-6: ${core?.headerScale?.[6]};
 
       /* button theme */
       --themed-component-button-border-radius: ${button?.borderRadius};

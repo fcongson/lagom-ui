@@ -6,6 +6,7 @@ const StyledHeader = styled.h2`
   /* .lagom-section-header */
   color: var(--lagom-semantic-color-fg-default);
   font: var(--lagom-component-section-header-typography);
+  font-size: var(--header-scale-2);
   text-align: center;
   text-wrap: balance;
   margin: 0 auto;
