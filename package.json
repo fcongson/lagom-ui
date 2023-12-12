@@ -61,6 +61,6 @@
     "styled-components": "^6.1.1"
   },
   "resolutions": {
-    "@fcongson/lagom-tokens": "portal:/Users/frank/Developer/git/lagom-tokens"
+    "jackspeak": "2.1.1"
   }
 }
