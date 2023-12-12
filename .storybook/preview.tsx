@@ -15,7 +15,7 @@ const StoryContainer = styled.div<{ height: string; flexDirection: string }>(
     flex-direction: ${flexDirection};
     min-height: ${height};
     margin: -1rem;
-  `
+  `,
 );
 const StoryBlock = styled.div`
   flex-grow: 1;
@@ -36,7 +36,7 @@ const decorators = [
       case "side-by-side":
       case "stacked": {
         return (
-          <ThemeProvider theme={null}>
+          <ThemeProvider theme={{}}>
             <StoryContainer flexDirection={flexDirection} height={height}>
               <StoryBlock data-lagom-theme="light">
                 <Story />
@@ -50,7 +50,7 @@ const decorators = [
       }
       default: {
         return (
-          <ThemeProvider theme={null}>
+          <ThemeProvider theme={{}}>
             <StoryContainer flexDirection={flexDirection} height={height}>
               <StoryBlock data-lagom-theme={`${theme}`}>
                 <Story />

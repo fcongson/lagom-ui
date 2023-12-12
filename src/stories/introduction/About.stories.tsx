@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { Container, Section } from "..";
+import { Container, Section } from "../..";
 
 const meta: Meta = {
   title: "Welcome/About",
@@ -10,7 +10,7 @@ const meta: Meta = {
 export default meta;
 
 const AboutContainer = styled.div`
-  ${Container} {
+  .lagom-container {
     max-width: var(--sizes-max-width-content);
   }
 `;
@@ -19,15 +19,17 @@ export const About: StoryObj = {
   render: () => (
     <AboutContainer>
       <Section>
-        <Container display="flex" justifyContent="center">
+        <Container style={{ display: "flex", justifyContent: "center" }}>
           <img src="lagom-logo.png" alt="Lagom UI Logo" width="100%" />
         </Container>
       </Section>
       <Section>
         <Container
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
         >
           <p>
             <a href="https://en.wikipedia.org/wiki/Lagom">Lagom</a> (pronounced
