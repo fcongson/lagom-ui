@@ -6,6 +6,8 @@ import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Container, PageHeader, Section, SectionHeader } from "../..";
 import { cssCustomPropertyName } from "../utils/cssCustomPropertyName";
+import { sortByHexColor } from "../utils/sortByHexColor";
+import { TokenCard } from "./TokenCard";
 
 const meta: Meta = {
   title: "Design Tokens/Color",
@@ -27,38 +29,11 @@ const ColorCard: React.FunctionComponent<ColorCardProps> = ({
   name,
   border,
 }) => (
-  <div
-    style={{
-      width: "100%",
-      minHeight: "4rem",
-      margin: "1rem",
-      borderRadius: "0.5rem",
-      display: "flex",
-      overflow: "hidden",
-    }}
-  >
-    <span
-      style={{
-        flex: 1,
-        backgroundColor: color,
-        border,
-        borderRight: "none",
-        borderRadius: "0.5rem 0 0 0.5rem",
-      }}
-    />
-    <span
-      style={{
-        padding: "1rem",
-        width: "50%",
-        backgroundColor: "var(--lagom-semantic-color-bg-muted)",
-        borderRadius: "0 0.5rem 0.5rem 0",
-        fontFamily: "var(--lagom-core-font-families-monospace)",
-      }}
-    >
-      <div>{cssCustomPropertyName(name)}</div>
-      <div style={{ fontSize: "var(--lagom-core-font-sizes-sm)" }}>{color}</div>
-    </span>
-  </div>
+  <TokenCard
+    previewProps={{ backgroundColor: color, border }}
+    name={cssCustomPropertyName(name)}
+    value={color}
+  />
 );
 
 interface ColorGroupProps {
@@ -66,6 +41,7 @@ interface ColorGroupProps {
   title?: string;
   tokenSet: Object;
   tokenKey?: string;
+  sort?: boolean;
 }
 
 const ColorGroup: React.FunctionComponent<ColorGroupProps> = ({
@@ -73,22 +49,21 @@ const ColorGroup: React.FunctionComponent<ColorGroupProps> = ({
   title,
   tokenSet,
   tokenKey = TOKEN_KEY,
+  sort = false,
 }) => {
-  const colors = Object.keys(tokenSet).filter((key) =>
-    key.startsWith(`${tokenKey}${color ?? ""}`),
-  );
-  console.log({
-    tokenSet,
-    tokenKey,
-    startsWith: `${tokenKey}${color}`,
-    colors,
-  });
+  const colors = Object.keys(tokenSet).reduce((result, key) => {
+    if (key.startsWith(`${tokenKey}${color ?? ""}`)) {
+      result[key] = tokenSet[key];
+    }
+    return result;
+  }, {});
+  const sortedColors = sortByHexColor(colors);
   return (
     <Section>
       <Container>
         <SectionHeader>{title || color}</SectionHeader>
-        {colors.map((color) => (
-          <ColorCard name={color} color={tokenSet[color]} />
+        {Object.keys(sort ? sortedColors : colors).map((color) => (
+          <ColorCard key={color} name={color} color={tokenSet[color]} />
         ))}
       </Container>
     </Section>
@@ -117,12 +92,12 @@ export const Color: StoryObj = {
           />
         </Container>
       </Section>
-      <ColorGroup color="Grey" tokenSet={core} />
-      <ColorGroup color="Olive" tokenSet={core} />
-      <ColorGroup color="Violet" tokenSet={core} />
-      <ColorGroup color="Navy" tokenSet={core} />
-      <ColorGroup color="Red" tokenSet={core} />
-      <ColorGroup color="Honey" tokenSet={core} />
+      <ColorGroup color="Grey" tokenSet={core} sort />
+      <ColorGroup color="Olive" tokenSet={core} sort />
+      <ColorGroup color="Violet" tokenSet={core} sort />
+      <ColorGroup color="Navy" tokenSet={core} sort />
+      <ColorGroup color="Red" tokenSet={core} sort />
+      <ColorGroup color="Honey" tokenSet={core} sort />
       <ColorGroup
         title="Semantic"
         tokenSet={semantic}

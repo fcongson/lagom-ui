@@ -9,10 +9,10 @@ import "./preview.css";
 // [Toolbars & globals](https://storybook.js.org/docs/react/essentials/toolbars-and-globals)
 // [How to add a theme switcher to Storybook](https://storybook.js.org/blog/how-to-add-a-theme-switcher-to-storybook/)
 
-const StoryContainer = styled.div<{ height: string; flexDirection: string }>(
-  ({ height, flexDirection }) => css`
+const StoryContainer = styled.div<{ height: string; $flexDirection: string }>(
+  ({ height, $flexDirection }) => css`
     display: flex;
-    flex-direction: ${flexDirection};
+    flex-direction: ${$flexDirection};
     min-height: ${height};
     margin: -1rem;
   `,
@@ -37,7 +37,7 @@ const decorators = [
       case "stacked": {
         return (
           <ThemeProvider theme={{}}>
-            <StoryContainer flexDirection={flexDirection} height={height}>
+            <StoryContainer $flexDirection={flexDirection} height={height}>
               <StoryBlock data-lagom-theme="light">
                 <Story />
               </StoryBlock>
@@ -51,7 +51,7 @@ const decorators = [
       default: {
         return (
           <ThemeProvider theme={{}}>
-            <StoryContainer flexDirection={flexDirection} height={height}>
+            <StoryContainer $flexDirection={flexDirection} height={height}>
               <StoryBlock data-lagom-theme={`${theme}`}>
                 <Story />
               </StoryBlock>
