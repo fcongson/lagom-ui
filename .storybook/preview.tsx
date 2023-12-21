@@ -95,7 +95,14 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ["Welcome", "Components", "Layouts", "*"],
+        order: [
+          "About",
+          "Style Guide",
+          "Design Tokens",
+          "Components",
+          "Layouts",
+          "*",
+        ],
       },
     },
   },

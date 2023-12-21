@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import styled from "styled-components";
-import { Container, Section } from "../..";
+import { Container, Section } from "..";
 
 const meta: Meta = {
-  title: "Welcome/About",
+  title: "About",
 };
 
 export default meta;

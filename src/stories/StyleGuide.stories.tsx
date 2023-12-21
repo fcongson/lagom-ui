@@ -9,10 +9,10 @@ import {
   PageHeader,
   Quote,
   Section,
-} from "../..";
+} from "..";
 
 const meta: Meta = {
-  title: "Welcome/Style Guide",
+  title: "Style Guide",
 };
 
 export default meta;
@@ -33,6 +33,7 @@ const image = (
 export const StyleGuide: StoryObj = {
   render: () => (
     <>
+      <PageHeader>Style Guide</PageHeader>
       {/* Typography */}
       <Section>
         <Container id="typography">
