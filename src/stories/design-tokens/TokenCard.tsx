@@ -7,7 +7,7 @@ interface PreviewProps {
 }
 
 export interface TokenCardProps {
-  preview?: string;
+  preview?: React.ReactNode;
   previewProps?: PreviewProps;
   name: string;
   value: string;

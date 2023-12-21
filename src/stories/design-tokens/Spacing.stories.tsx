@@ -23,7 +23,37 @@ const SpacingCard: React.FunctionComponent<SpacingCardProps> = ({
   value,
 }) => (
   <TokenCard
-    preview={value}
+    preview={
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <div
+          style={{
+            backgroundColor: "var(--lagom-semantic-color-bg-muted)",
+            height: "2rem",
+            width: "2rem",
+            borderRadius: "1rem",
+          }}
+        >
+          {/* 👉 */}
+        </div>
+        <div
+          style={{
+            backgroundColor: "var(--lagom-semantic-color-accent-default)",
+            height: "4rem",
+            width: value,
+          }}
+        ></div>
+        <div
+          style={{
+            backgroundColor: "var(--lagom-semantic-color-bg-muted)",
+            height: "2rem",
+            width: "2rem",
+            borderRadius: "1rem",
+          }}
+        >
+          {/* 👈 */}
+        </div>
+      </div>
+    }
     previewProps={{
       border: "1px solid var(--lagom-semantic-color-bg-muted)",
     }}

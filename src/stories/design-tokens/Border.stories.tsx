@@ -23,7 +23,16 @@ const BorderCard: React.FunctionComponent<BorderCardProps> = ({
   value,
 }) => (
   <TokenCard
-    preview={value}
+    preview={
+      <div
+        style={{
+          borderRadius: value,
+          backgroundColor: "var(--lagom-semantic-color-accent-default)",
+          height: "4rem",
+          width: "4rem",
+        }}
+      ></div>
+    }
     previewProps={{
       border: "1px solid var(--lagom-semantic-color-bg-muted)",
     }}
