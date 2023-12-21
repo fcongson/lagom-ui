@@ -45,7 +45,7 @@ interface FontGroupProps {
 const FontGroup: React.FunctionComponent<FontGroupProps> = ({ type }) => (
   <Section>
     <Container>
-      <SectionHeader>{type}</SectionHeader>
+      <SectionHeader>Font {type}</SectionHeader>
       {Object.keys(core).map((key) => {
         return key.startsWith(`${TOKEN_KEY}${type}`) ? (
           <FontCard key={key} name={key} value={core[key]} type={type} />
