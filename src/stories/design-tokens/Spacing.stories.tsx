@@ -3,6 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Container, PageHeader, Section } from "../..";
 import { cssCustomPropertyName } from "../utils/cssCustomPropertyName";
+import { sortByPx } from "../utils/sortByPx";
 import { TokenCard } from "./TokenCard";
 
 const meta: Meta = {
@@ -62,17 +63,24 @@ const SpacingCard: React.FunctionComponent<SpacingCardProps> = ({
   />
 );
 
-const SpacingGroup: React.FunctionComponent = () => (
-  <Section>
-    <Container>
-      {Object.keys(core).map((key) => {
-        return key.startsWith(`${TOKEN_KEY}`) ? (
+const SpacingGroup: React.FunctionComponent = () => {
+  const tokens = Object.keys(core).reduce((result, key) => {
+    if (key.startsWith(TOKEN_KEY)) {
+      result[key] = core[key];
+    }
+    return result;
+  }, {});
+  const sortedTokens = sortByPx(tokens);
+  return (
+    <Section>
+      <Container>
+        {Object.keys(sortedTokens).map((key) => (
           <SpacingCard key={key} name={key} value={core[key]} />
-        ) : undefined;
-      })}
-    </Container>
-  </Section>
-);
+        ))}
+      </Container>
+    </Section>
+  );
+};
 
 export const Spacing: StoryObj = {
   render: () => {

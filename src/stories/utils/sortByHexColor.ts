@@ -1,13 +1,4 @@
-const sortByComparator = (obj, comparator) => {
-  const sortedKeys = Object.keys(obj).sort((a, b) => comparator(obj, a, b));
-
-  const sortedObject = {};
-  sortedKeys.forEach((key) => {
-    sortedObject[key] = obj[key];
-  });
-
-  return sortedObject;
-};
+import { sortByComparator } from "./sortByComparator";
 
 // Comparator function for sorting by hex color values
 const compareHexColors = (obj, a, b) => {
@@ -22,5 +13,4 @@ const compareHexColors = (obj, a, b) => {
   return decimalA - decimalB;
 };
 
-// Example usage:
 export const sortByHexColor = (obj) => sortByComparator(obj, compareHexColors);

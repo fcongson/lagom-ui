@@ -3,6 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Container, PageHeader, Section, SectionHeader } from "../..";
 import { cssCustomPropertyName } from "../utils/cssCustomPropertyName";
+import { sortByPx } from "../utils/sortByPx";
 import { TokenCard } from "./TokenCard";
 
 const meta: Meta = {
@@ -45,18 +46,25 @@ interface BorderGroupProps {
   type?: string;
 }
 
-const BorderGroup: React.FunctionComponent<BorderGroupProps> = ({ type }) => (
-  <Section>
-    <Container>
-      <SectionHeader>Border {type}</SectionHeader>
-      {Object.keys(core).map((key) => {
-        return key.startsWith(`${TOKEN_KEY}${type}`) ? (
+const BorderGroup: React.FunctionComponent<BorderGroupProps> = ({ type }) => {
+  const tokens = Object.keys(core).reduce((result, key) => {
+    if (key.startsWith(`${TOKEN_KEY}${type}`)) {
+      result[key] = core[key];
+    }
+    return result;
+  }, {});
+  const sortedTokens = sortByPx(tokens);
+  return (
+    <Section>
+      <Container>
+        <SectionHeader>Border {type}</SectionHeader>
+        {Object.keys(sortedTokens).map((key) => (
           <BorderCard key={key} name={key} value={core[key]} />
-        ) : undefined;
-      })}
-    </Container>
-  </Section>
-);
+        ))}
+      </Container>
+    </Section>
+  );
+};
 
 export const Border: StoryObj = {
   render: () => {
