@@ -1,13 +1,13 @@
 import * as core from "@fcongson/lagom-tokens/js/variables/core";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { Container, PageHeader, Section } from "../..";
-import { cssCustomPropertyName } from "../utils/cssCustomPropertyName";
-import { sortByPx } from "../utils/sortByPx";
+import { Container, PageHeader, Section } from "../../..";
+import { cssCustomPropertyName } from "../../utils/cssCustomPropertyName";
+import { sortByPx } from "../../utils/sortByPx";
 import { TokenCard } from "./TokenCard";
 
 const meta: Meta = {
-  title: "Design Tokens/Spacing",
+  title: "Design Tokens/Tokens",
 };
 
 export default meta;

@@ -101,7 +101,6 @@ const preview: Preview = {
           "Design Tokens",
           "Components",
           "Layouts",
-          "*",
         ],
       },
     },

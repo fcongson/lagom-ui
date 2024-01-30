@@ -4,13 +4,13 @@ import * as semanticDark from "@fcongson/lagom-tokens/js/variables/semantic.dark
 import * as semanticLight from "@fcongson/lagom-tokens/js/variables/semantic.light";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { Container, PageHeader, Section, SectionHeader } from "../..";
-import { cssCustomPropertyName } from "../utils/cssCustomPropertyName";
-import { sortByHexColor } from "../utils/sortByHexColor";
+import { Container, PageHeader, Section, SectionHeader } from "../../..";
+import { cssCustomPropertyName } from "../../utils/cssCustomPropertyName";
+import { sortByHexColor } from "../../utils/sortByHexColor";
 import { TokenCard } from "./TokenCard";
 
 const meta: Meta = {
-  title: "Design Tokens/Color",
+  title: "Design Tokens/Tokens",
 };
 
 export default meta;
