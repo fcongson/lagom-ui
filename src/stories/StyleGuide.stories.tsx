@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import {
+  CallToAction,
   Container,
   FeaturedSection,
   Hero,
@@ -9,6 +10,7 @@ import {
   PageHeader,
   Quote,
   Section,
+  SectionHeader,
 } from "..";
 
 const meta: Meta = {
@@ -26,7 +28,11 @@ const image = (
   <img
     src={imageSrc}
     alt={alt}
-    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+    }}
   />
 );
 
@@ -35,6 +41,13 @@ export const StyleGuide: StoryObj = {
     <>
       <PageHeader>Style Guide</PageHeader>
       {/* Typography */}
+      <Section>
+        <Container>
+          <FeaturedSection framed>
+            <SectionHeader>Typography</SectionHeader>
+          </FeaturedSection>
+        </Container>
+      </Section>
       <Section>
         <Container id="typography">
           <h1>H1 Lorem Ipsum</h1>
@@ -80,12 +93,40 @@ export const StyleGuide: StoryObj = {
 
       {/* Page Header */}
       <Section>
+        <Container>
+          <FeaturedSection framed>
+            <SectionHeader>Page Header</SectionHeader>
+          </FeaturedSection>
+        </Container>
+      </Section>
+      <Section>
         <Container id="page-header">
           <PageHeader>Lorem Ipsum</PageHeader>
         </Container>
       </Section>
 
+      {/* Section Header */}
+      <Section>
+        <Container>
+          <FeaturedSection framed>
+            <SectionHeader>Section Header</SectionHeader>
+          </FeaturedSection>
+        </Container>
+      </Section>
+      <Section>
+        <Container id="section-header">
+          <SectionHeader>Lorem Ipsum</SectionHeader>
+        </Container>
+      </Section>
+
       {/* Quote */}
+      <Section>
+        <Container>
+          <FeaturedSection framed>
+            <SectionHeader>Quote</SectionHeader>
+          </FeaturedSection>
+        </Container>
+      </Section>
       <Section>
         <Container id="quote">
           <Quote>
@@ -159,6 +200,13 @@ export const StyleGuide: StoryObj = {
       </Section>
 
       {/* Image Caption */}
+      <Section>
+        <Container>
+          <FeaturedSection framed>
+            <SectionHeader>Image Caption</SectionHeader>
+          </FeaturedSection>
+        </Container>
+      </Section>
       <ImageCaption
         image={image}
         caption="Default. Lorem ipsum dolor sit amet"
@@ -175,6 +223,13 @@ export const StyleGuide: StoryObj = {
       />
 
       {/* Featured Section */}
+      <Section>
+        <Container>
+          <FeaturedSection framed>
+            <SectionHeader>Featured Section</SectionHeader>
+          </FeaturedSection>
+        </Container>
+      </Section>
       <FeaturedSection image={image} imageAsBackground>
         <p>
           Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -210,12 +265,43 @@ export const StyleGuide: StoryObj = {
         </p>
       </FeaturedSection>
 
+      {/* Call To Action */}
+      <Section>
+        <FeaturedSection framed>
+          <SectionHeader>Call To Action</SectionHeader>
+        </FeaturedSection>
+      </Section>
+      <Section>
+        <Container id="call-to-action">
+          <CallToAction
+            header="Lorem Ipsum."
+            text="With Call To Action. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            actionLink="#call-to-action"
+            actionText="Lorem ipsum dolor sit amet"
+          />
+        </Container>
+      </Section>
+
       {/* Hero */}
+      <Section>
+        <Container>
+          <FeaturedSection framed>
+            <SectionHeader>Hero</SectionHeader>
+          </FeaturedSection>
+        </Container>
+      </Section>
       <Hero image={image}>
         <PageHeader>Lorem Ipsum</PageHeader>
       </Hero>
 
       {/* Link Button */}
+      <Section>
+        <Container>
+          <FeaturedSection framed>
+            <SectionHeader>Link Button</SectionHeader>
+          </FeaturedSection>
+        </Container>
+      </Section>
       <LinkButton to="#link-button">Link button</LinkButton>
     </>
   ),

@@ -103,8 +103,9 @@ const FullWidthImageFigure = styled.figure`
     }
   }
 
-  &.lagom-image-caption--full-width div {
-    max-height: 100vh;
+  &.lagom-image-caption--full-width div,
+  &.lagom-image-caption--full-width div img {
+    max-height: inherit;
   }
 `;
 

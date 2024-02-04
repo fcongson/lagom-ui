@@ -19,7 +19,6 @@ const featuredSectionCss = css`
   }
 
   &.lagom-featured-section--framed {
-    max-height: calc(100vh - (2 * var(--framed-margin)));
     margin: var(--framed-margin);
     border-radius: var(--lagom-core-border-radius-sm);
     overflow: hidden;
