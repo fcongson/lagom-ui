@@ -5,9 +5,9 @@ import * as semanticLight from "@fcongson/lagom-tokens/js/variables/semantic.lig
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Container, PageHeader, Section, SectionHeader } from "../../..";
+import { TokenCard } from "../../utils/TokenCard";
 import { cssCustomPropertyName } from "../../utils/cssCustomPropertyName";
 import { sortByHexColor } from "../../utils/sortByHexColor";
-import { TokenCard } from "./TokenCard";
 
 const meta: Meta = {
   title: "Design Tokens/Tokens",

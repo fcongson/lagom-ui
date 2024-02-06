@@ -2,9 +2,9 @@ import * as core from "@fcongson/lagom-tokens/js/variables/core";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Container, PageHeader, Section } from "../../..";
+import { TokenCard } from "../../utils/TokenCard";
 import { cssCustomPropertyName } from "../../utils/cssCustomPropertyName";
 import { sortByPx } from "../../utils/sortByPx";
-import { TokenCard } from "./TokenCard";
 
 const meta: Meta = {
   title: "Design Tokens/Tokens",
