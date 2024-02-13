@@ -1,8 +1,10 @@
+import { GrowthBookProvider } from "@growthbook/growthbook-react";
 import { useEffect, useState } from "react";
 import { ThemeProvider as _ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/GlobalStyle";
 import { NoFocusOutline } from "../styles/NoFocusOutline";
 import "../styles/resetr.css";
+import { growthbook } from "../utils/GrowthBook";
 import { ThemeType } from "./createTheme";
 import { theme as _theme } from "./theme";
 
@@ -32,11 +34,18 @@ export const ThemeProvider: React.FunctionComponent<{
     };
   }, []);
 
+  useEffect(() => {
+    // Load features asynchronously when the app renders
+    growthbook.loadFeatures();
+  }, []);
+
   return (
-    <_ThemeProvider theme={mergedTheme}>
-      <GlobalStyle theme={mergedTheme} />
-      <NoFocusOutline noFocusOutline={noFocusOutline} />
-      {children}
-    </_ThemeProvider>
+    <GrowthBookProvider growthbook={growthbook}>
+      <_ThemeProvider theme={mergedTheme}>
+        <GlobalStyle theme={mergedTheme} />
+        <NoFocusOutline noFocusOutline={noFocusOutline} />
+        {children}
+      </_ThemeProvider>
+    </GrowthBookProvider>
   );
 };
