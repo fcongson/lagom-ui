@@ -1,10 +1,7 @@
 import { addons } from "@storybook/addons";
-import { create } from "@storybook/theming";
+import lagomStorybook from "./lagom-storybook";
+import "./preview.css";
 
 addons.setConfig({
-  theme: create({
-    base: "light",
-    brandTitle: "Lagom UI",
-    brandImage: "/logo.png",
-  }),
+  theme: lagomStorybook,
 });
