@@ -1,3 +1,4 @@
+import { useFeatureIsOn } from "@growthbook/growthbook-react";
 import clsx from "clsx";
 import styled from "styled-components";
 import { useTheme } from "../../hooks/useTheme";
@@ -98,13 +99,19 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   primary?: boolean;
 }
 
-export const Button: React.FunctionComponent<ButtonProps> = ({
-  children,
-  className,
-  primary = false,
-  ...restProps
-}) => {
+interface ButtonPropsExperimental {
+  /**
+   * @ignore
+   */
+  icon?: React.ReactNode;
+}
+
+export const Button: React.FunctionComponent<
+  ButtonProps & ButtonPropsExperimental
+> = ({ children, className, primary = false, ...restProps }) => {
   const mergedTheme = useTheme();
+  const enabled = useFeatureIsOn("icon-button");
+
   return (
     <StyledButton
       theme={mergedTheme}
@@ -115,6 +122,9 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       )}
       {...restProps}
     >
+      {enabled && restProps.icon && (
+        <span style={{ paddingRight: "1rem" }}>{restProps.icon}</span>
+      )}
       {children}
     </StyledButton>
   );

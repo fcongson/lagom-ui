@@ -1266,6 +1266,20 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.1.6.tgz#22958c042e10b67463997bd6ea7115fe28cbcaf9"
   integrity sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==
 
+"@growthbook/growthbook-react@^0.23.0":
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/@growthbook/growthbook-react/-/growthbook-react-0.23.0.tgz#3fa8d88fd54896b554ff54c435d680d6ec3c5ae5"
+  integrity sha512-o2KJV0lr431yUvS+wNNKXwvYixtbDGVbMLWeu6mWK0bZ2pBGZqMBmPge7d6n8XzL6fmnPay7pMBFORflX6/u7Q==
+  dependencies:
+    "@growthbook/growthbook" "^0.33.0"
+
+"@growthbook/growthbook@^0.33.0":
+  version "0.33.0"
+  resolved "https://registry.yarnpkg.com/@growthbook/growthbook/-/growthbook-0.33.0.tgz#221cad73b215f832ae78d587a7e629b39ea4cb06"
+  integrity sha512-euzcBMgpNXJgCKRg6LdDihUaymSxh8wuKbvf2LvES9jHAJ8WwKcSi32cpM2ubIvqHkF8ORAAdx82tlL2DhO5hw==
+  dependencies:
+    dom-mutator "^0.6.0"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -4458,6 +4472,11 @@ dom-converter@^0.2.0:
   integrity sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==
   dependencies:
     utila "~0.4"
+
+dom-mutator@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/dom-mutator/-/dom-mutator-0.6.0.tgz#079d7a4b3e8981a562cd777548b99baab51d65c5"
+  integrity sha512-iCt9o0aYfXMUkz/43ZOAUFQYotjGB+GNbYJiJdz4TgXkyToXbbRy5S6FbTp72lRBtfpUMwEc1KmpFEU4CZeoNg==
 
 dom-serializer@^1.0.1:
   version "1.4.1"

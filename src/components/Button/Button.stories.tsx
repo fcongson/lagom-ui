@@ -41,3 +41,19 @@ export const Custom: Story = {
     children: "Button custom",
   },
 };
+
+export const WithExperimentalIcon: Story = {
+  ...Primary,
+  args: {
+    primary: false,
+    style: {
+      backgroundColor: "var(--lagom-core-colors-olive-base)",
+      borderColor: "var(--lagom-core-colors-olive-base)",
+      color: "var(--lagom-core-colors-white)",
+      borderRadius: 4,
+      fontFamily: "monospace",
+    },
+    children: "Button custom",
+    icon: "🚀",
+  },
+};
