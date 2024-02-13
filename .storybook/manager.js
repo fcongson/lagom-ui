@@ -1,6 +1,6 @@
 import { addons } from "@storybook/addons";
 import lagomStorybook from "./lagom-storybook";
-import "./preview.css";
+import "./style.css";
 
 addons.setConfig({
   theme: lagomStorybook,
