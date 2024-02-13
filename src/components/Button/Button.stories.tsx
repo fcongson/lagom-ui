@@ -5,7 +5,7 @@ import { Button } from "./Button";
 const meta: Meta = {
   title: "Components/Button",
   component: Button,
-  tags: ["autodocs"],
+  // tags: ["autodocs"],
   args: {
     onClick: action("clicked"),
     primary: true,
