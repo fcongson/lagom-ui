@@ -15,8 +15,8 @@ export default create({
   brandTarget: "_self",
 
   //
-  // colorPrimary: light.lagomSemanticColorBrandPrimary,
-  // colorSecondary: light.lagomSemanticColorBrandSecondary,
+  colorPrimary: core.lagomCoreColorsOliveLighter20,
+  colorSecondary: core.lagomCoreColorsOliveLighter20,
 
   // UI
   appBg: light.lagomSemanticColorBgDefault,
@@ -31,7 +31,8 @@ export default create({
 
   // Toolbar default and active colors
   barTextColor: light.lagomSemanticColorFgDefault,
-  // barSelectedColor: light.lagomSemanticColorBrandPrimary,
+  barHoverColor: core.lagomCoreColorsOliveBase,
+  barSelectedColor: core.lagomCoreColorsOliveBase,
   barBg: light.lagomSemanticColorBgDefault,
 
   // Form colors
