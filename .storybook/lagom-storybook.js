@@ -23,7 +23,7 @@ export default create({
   appContentBg: light.lagomSemanticColorBgDefault,
   appPreviewBg: light.lagomSemanticColorBgDefault,
   appBorderColor: light.lagomSemanticColorBorderMuted,
-  // appBorderRadius: 4,
+  appBorderRadius: 0,
 
   // Text colors
   textColor: light.lagomSemanticColorFgDefault,
