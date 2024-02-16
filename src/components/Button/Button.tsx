@@ -86,6 +86,10 @@ const StyledButton = styled.button`
     transform: translateY(1px);
     transition: transform 100ms ease-in-out;
   }
+
+  .lagom-button__icon {
+    padding-right: var(--lagom-core-dimension-md);
+  }
 `;
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
@@ -123,7 +127,7 @@ export const Button: React.FunctionComponent<
       {...restProps}
     >
       {enabled && restProps.icon && (
-        <span style={{ paddingRight: "1rem" }}>{restProps.icon}</span>
+        <span className="lagom-button__icon">{restProps.icon}</span>
       )}
       {children}
     </StyledButton>
