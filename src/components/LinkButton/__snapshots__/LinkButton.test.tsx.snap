@@ -3,8 +3,7 @@
 exports[`LinkButton Renders 1`] = `
 [
   <button
-    class="sc-bdnyFh JUQsA"
-    variant="secondary"
+    class="sc-bdfCDU gPECCf lagom-button lagom-button--secondary"
   >
     Text
   </button>,
@@ -14,8 +13,7 @@ exports[`LinkButton Renders 1`] = `
 exports[`LinkButton Renders primary 1`] = `
 [
   <button
-    class="sc-bdnyFh fBycnq"
-    variant="primary"
+    class="sc-bdfCDU gPECCf lagom-button lagom-button--primary"
   >
     Text
   </button>,
@@ -25,8 +23,7 @@ exports[`LinkButton Renders primary 1`] = `
 exports[`LinkButton Renders secondary 1`] = `
 [
   <button
-    class="sc-bdnyFh JUQsA"
-    variant="secondary"
+    class="sc-bdfCDU gPECCf lagom-button lagom-button--secondary"
   >
     Text
   </button>,
