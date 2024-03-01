@@ -1,3 +1,4 @@
 {
-  "./src/**/*": "prettier --write"
+  "./src/**/*": "prettier --write",
+  "./.storybook/**/*": "prettier --write"
 }
