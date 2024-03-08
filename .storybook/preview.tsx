@@ -103,6 +103,7 @@ const preview: Preview = {
         ],
       },
     },
+    // chromatic: { disableSnapshot: true },
   },
   decorators,
   globalTypes,

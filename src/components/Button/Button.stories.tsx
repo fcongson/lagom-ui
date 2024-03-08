@@ -1,4 +1,3 @@
-import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 
@@ -7,7 +6,6 @@ const meta: Meta = {
   component: Button,
   // tags: ["autodocs"],
   args: {
-    onClick: action("clicked"),
     primary: true,
     children: "Button primary",
   },

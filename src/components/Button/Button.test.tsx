@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import { ThemeProvider } from "styled-components";
 import { Button } from "./Button";
 
@@ -8,7 +7,7 @@ describe("Button", () => {
     render(
       <ThemeProvider theme={{}}>
         <Button>Text</Button>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
@@ -16,7 +15,7 @@ describe("Button", () => {
     render(
       <ThemeProvider theme={{}}>
         <Button primary>Text</Button>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
@@ -24,7 +23,7 @@ describe("Button", () => {
     render(
       <ThemeProvider theme={{}}>
         <Button primary={false}>Text</Button>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });

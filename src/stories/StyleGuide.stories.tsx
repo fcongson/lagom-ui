@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import {
   CallToAction,
   Container,
@@ -15,6 +14,9 @@ import {
 
 const meta: Meta = {
   title: "Style Guide",
+  // parameters: {
+  //   chromatic: { disableSnapshot: false },
+  // },
 };
 
 export default meta;

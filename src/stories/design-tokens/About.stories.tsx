@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { Markdown } from "../utils/Markdown";
 import AboutMdx from "./About.mdx";
 

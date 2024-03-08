@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { Container } from "../../layouts/Container";
 import { Section } from "../../layouts/Section";
 import { Quote } from "./Quote";

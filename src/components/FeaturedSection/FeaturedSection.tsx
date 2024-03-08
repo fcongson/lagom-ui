@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import React from "react";
 import styled, { css } from "styled-components";
 import { Container } from "../../layouts/Container";
 import { Section } from "../../layouts/Section";

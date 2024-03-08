@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { ImageCaption } from "./ImageCaption";
 
 const imageSrc_White = "/jonatan-pie-d7ZBAPEuXGc-unsplash.jpg";
