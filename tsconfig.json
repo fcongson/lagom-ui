@@ -15,6 +15,5 @@
     "experimentalDecorators": true,
     "esModuleInterop": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["**/stories/*", "**/*.stories.tsx", "**/*.test.tsx"]
+  "include": ["./src/**/*"]
 }

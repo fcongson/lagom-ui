@@ -3,7 +3,6 @@ import * as semantic from "@fcongson/lagom-tokens/js/variables/semantic";
 import * as semanticDark from "@fcongson/lagom-tokens/js/variables/semantic.dark";
 import * as semanticLight from "@fcongson/lagom-tokens/js/variables/semantic.light";
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { Container, PageHeader, Section, SectionHeader } from "../../..";
 import { TokenCard } from "../../utils/TokenCard";
 import { cssCustomPropertyName } from "../../utils/cssCustomPropertyName";

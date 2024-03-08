@@ -1,5 +1,3 @@
-import React from "react";
-
 export const VideoCard: React.FunctionComponent<{
   title: string;
   src: string;
@@ -18,9 +16,9 @@ export const VideoCard: React.FunctionComponent<{
           height="100%"
           src={src}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
     </>
