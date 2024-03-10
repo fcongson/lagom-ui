@@ -14,9 +14,6 @@ import {
 
 const meta: Meta = {
   title: "Style Guide",
-  // parameters: {
-  //   chromatic: { disableSnapshot: false },
-  // },
 };
 
 export default meta;
