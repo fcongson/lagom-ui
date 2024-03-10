@@ -7,7 +7,6 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
     "@storybook/addon-webpack5-compiler-babel",
-    "@chromatic-com/storybook",
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -26,23 +25,6 @@ const config: StorybookConfig = {
           },
         ],
       ],
-    };
-  },
-  async webpackFinal(config) {
-    return {
-      ...config,
-      module: {
-        ...config.module,
-        rules: [
-          ...(config.module?.rules?.filter(
-            ({ test }) => test?.toString() !== "/\\.mdx$/",
-          ) ?? []),
-          {
-            test: /\.mdx$/,
-            use: [require.resolve("@mdx-js/loader")],
-          },
-        ],
-      },
     };
   },
 };

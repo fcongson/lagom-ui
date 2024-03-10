@@ -12,8 +12,8 @@ dependencies:
     specifier: ^0.19.0
     version: 0.19.0
   '@growthbook/growthbook-react':
-    specifier: ^0.24.0
-    version: 0.24.0(react@18.2.0)
+    specifier: ^0.25.0
+    version: 0.25.0(react@18.2.0)
   '@storybook/test':
     specifier: ^8.0.0-beta.6
     version: 8.0.0-rc.1(@types/jest@29.5.12)(jest@29.7.0)
@@ -43,9 +43,6 @@ devDependencies:
   '@babel/preset-typescript':
     specifier: ^7.23.3
     version: 7.23.3(@babel/core@7.24.0)
-  '@chromatic-com/storybook':
-    specifier: ^1.2.9
-    version: 1.2.9(react@18.2.0)
   '@mdx-js/loader':
     specifier: ^3.0.1
     version: 3.0.1(webpack@5.90.3)
@@ -97,9 +94,6 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.2.21
     version: 18.2.21
-  chromatic:
-    specifier: ^11.0.6
-    version: 11.0.6
   copyfiles:
     specifier: ^2.4.1
     version: 2.4.1
@@ -1454,21 +1448,6 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@chromatic-com/storybook@1.2.9(react@18.2.0):
-    resolution: {integrity: sha512-+Ajng95vBXLVgVA7i9oAqa0mo0MkqFtLefiBA9lMnPaLHJuY1DB8ZQsr+Sol/b5xH3a3zWuQCWcWW5sKjbLzYw==}
-    engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
-    dependencies:
-      chromatic: 11.0.6
-      filesize: 10.1.0
-      jsonfile: 6.1.0
-      react-confetti: 6.1.0(react@18.2.0)
-      strip-ansi: 7.1.0
-    transitivePeerDependencies:
-      - '@chromatic-com/cypress'
-      - '@chromatic-com/playwright'
-      - react
-    dev: true
-
   /@colors/colors@1.5.0:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
@@ -1916,18 +1895,18 @@ packages:
     resolution: {integrity: sha512-wZVheeMUuE0pkjrHRejPlJkpqxkhS++vPc1hK2DREGin9fVJGU2mxcsHUcwYPatn0/y+NkRbtzff2sRKYoyQTw==, tarball: https://npm.pkg.github.com/download/@fcongson/lagom-tokens/0.19.0/42c6bf058ac809e1771bf2709cf3241e45d96a37}
     dev: false
 
-  /@growthbook/growthbook-react@0.24.0(react@18.2.0):
-    resolution: {integrity: sha512-7Nz8FIc5PPlCXbRzv9GyY/86hmDytJ84ZCtLBuOt/Bna/MsuJlh/TXUg6eF4OFeRN039FhgyapBJ4hC4Mqt+Qw==}
+  /@growthbook/growthbook-react@0.25.0(react@18.2.0):
+    resolution: {integrity: sha512-EPkdDvpm9YzAnE1xy+kRxiOaKODhAQD1yBDMNyI96nzOu52p8yKsaTIOdoH0URpeSSbgCc8mtI7K6WCFFrLtEw==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
     dependencies:
-      '@growthbook/growthbook': 0.34.0
+      '@growthbook/growthbook': 0.35.0
       react: 18.2.0
     dev: false
 
-  /@growthbook/growthbook@0.34.0:
-    resolution: {integrity: sha512-3K5JL8QftX7y77EpieYg9anXVYb6+ZafTsrNCWp0HOdmtf4lxHOzCUYwuYDaS3bvmaeIUWJ5hYcOTc6WhNbfJw==}
+  /@growthbook/growthbook@0.35.0:
+    resolution: {integrity: sha512-QgTXq3nGh4QU0zYiEpiWWomNNPemagHOAN0wL0vgKvRl1FE3pPMqFwABtMXqytHyq9YOgeSRXys8JlCc09CzbQ==}
     engines: {node: '>=10'}
     dependencies:
       dom-mutator: 0.6.0
@@ -2909,7 +2888,7 @@ packages:
       '@storybook/csf': 0.1.2
       '@storybook/types': 8.0.0-rc.3
       fs-extra: 11.2.0
-      recast: 0.23.5
+      recast: 0.23.6
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - supports-color
@@ -4460,19 +4439,6 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /chromatic@11.0.6:
-    resolution: {integrity: sha512-wwJEHlml552yYGVFQuHXTR8TsZCGOhh3Q3F5IsoHFuGh04of12Xc5XyLF3bScD8lh7XKkbEYl3+Zc2j34C2q9w==}
-    hasBin: true
-    peerDependencies:
-      '@chromatic-com/cypress': ^0.5.2 || ^1.0.0
-      '@chromatic-com/playwright': ^0.5.2 || ^1.0.0
-    peerDependenciesMeta:
-      '@chromatic-com/cypress':
-        optional: true
-      '@chromatic-com/playwright':
-        optional: true
-    dev: true
-
   /chrome-trace-event@1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
     engines: {node: '>=6.0'}
@@ -5573,11 +5539,6 @@ packages:
     resolution: {integrity: sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==}
     dependencies:
       minimatch: 5.1.6
-    dev: true
-
-  /filesize@10.1.0:
-    resolution: {integrity: sha512-GTLKYyBSDz3nPhlLVPjPWZCnhkd9TrrRArNcy8Z+J2cqScB7h2McAzR6NBX6nYOoWafql0roY8hrocxnZBv9CQ==}
-    engines: {node: '>= 10.4.0'}
     dev: true
 
   /fill-range@7.0.1:
@@ -8568,16 +8529,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /react-confetti@6.1.0(react@18.2.0):
-    resolution: {integrity: sha512-7Ypx4vz0+g8ECVxr88W9zhcQpbeujJAVqL14ZnXJ3I23mOI9/oBVTQ3dkJhUmB0D6XOtCZEM6N0Gm9PMngkORw==}
-    engines: {node: '>=10.18'}
-    peerDependencies:
-      react: ^16.3.0 || ^17.0.1 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-      tween-functions: 1.2.0
-    dev: true
-
   /react-docgen-typescript@2.2.2(typescript@5.4.2):
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
     peerDependencies:
@@ -8704,6 +8655,17 @@ packages:
 
   /recast@0.23.5:
     resolution: {integrity: sha512-M67zIddJiwXdfPQRYKJ0qZO1SLdH1I0hYeb0wzxA+pNOvAZiQHulWzuk+fYsEWRQ8VfZrgjyucqsCOtCyM01/A==}
+    engines: {node: '>= 4'}
+    dependencies:
+      ast-types: 0.16.1
+      esprima: 4.0.1
+      source-map: 0.6.1
+      tiny-invariant: 1.3.3
+      tslib: 2.6.2
+    dev: true
+
+  /recast@0.23.6:
+    resolution: {integrity: sha512-9FHoNjX1yjuesMwuthAmPKabxYQdOgihFYmT5ebXfYGBcnqXZf3WOVz+5foEZ8Y83P4ZY6yQD5GMmtV+pgCCAQ==}
     engines: {node: '>= 4'}
     dependencies:
       ast-types: 0.16.1
@@ -9595,10 +9557,6 @@ packages:
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
-    dev: true
-
-  /tween-functions@1.2.0:
-    resolution: {integrity: sha512-PZBtLYcCLtEcjL14Fzb1gSxPBeL7nWvGhO5ZFPGqziCcr8uvHp0NDmdjBchp6KHL+tExcg0m3NISmKxhU394dA==}
     dev: true
 
   /type-detect@4.0.8:
