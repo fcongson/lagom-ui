@@ -4,7 +4,7 @@
 
 This component library provides just the right amount of components for my own personal projects. Primarily driven by FrankCongson.com. With theme support for individually styled projects.
 
-Built using [styled components](https://styled-components.com/)Ø.
+Built using [styled components](https://styled-components.com/).
 
 ## Inspiration
 
