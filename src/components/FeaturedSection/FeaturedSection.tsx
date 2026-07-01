@@ -1,65 +1,13 @@
 import clsx from "clsx";
-import styled, { css } from "styled-components";
 import { Container } from "../../layouts/Container";
 import { Section } from "../../layouts/Section";
+import "./FeaturedSection.css";
 
 type FeaturedSectionProps = {
   children?: React.ReactNode;
   className?: string;
   framed?: boolean;
 };
-
-const featuredSectionCss = css`
-  /* .lagom-featured-section */
-  max-width: 100%;
-
-  & .lagom-container {
-    margin-bottom: 0;
-  }
-
-  &.lagom-featured-section--framed {
-    margin: var(--framed-margin);
-    border-radius: var(--lagom-core-border-radius-sm);
-    overflow: hidden;
-  }
-
-  & .lagom-featured-section__content {
-    max-width: ${({ theme }) => theme.sizes.maxWidthContent};
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    text-wrap: pretty;
-  }
-`;
-
-const ImageBackgroundContainer = styled.div`
-  ${featuredSectionCss}
-
-  &.lagom-featured-section--image-background {
-    display: grid;
-  }
-
-  &.lagom-featured-section--image-background .lagom-featured-section__image {
-    grid-area: 1 / 1;
-  }
-  &.lagom-featured-section--image-background
-    .lagom-featured-section__image-overlay {
-    grid-area: 1 / 1;
-    background-color: var(--lagom-semantic-color-overlay-background);
-    opacity: var(--lagom-semantic-opacity-overlay);
-  }
-
-  &.lagom-featured-section--image-background .lagom-section {
-    grid-area: 1 / 1;
-    align-self: center;
-  }
-
-  &.lagom-featured-section--image-background .lagom-section {
-    z-index: 1;
-  }
-`;
 
 type ImageBackgroundProps = FeaturedSectionProps & {
   image?: React.ReactNode;
@@ -72,7 +20,7 @@ const ImageBackground: React.FunctionComponent<ImageBackgroundProps> = ({
   framed,
 }) => {
   return (
-    <ImageBackgroundContainer
+    <div
       className={clsx(
         "lagom-featured-section lagom-featured-section--image-background",
         className,
@@ -90,27 +38,9 @@ const ImageBackground: React.FunctionComponent<ImageBackgroundProps> = ({
           <div className="lagom-featured-section__content">{children}</div>
         </Container>
       </Section>
-    </ImageBackgroundContainer>
+    </div>
   );
 };
-
-const ColorBackgroundSection = styled(Section)`
-  ${featuredSectionCss}
-
-  &.lagom-featured-section--color-background {
-    background-color: var(--lagom-semantic-color-bg-muted);
-  }
-
-  &.lagom-featured-section--color-background .lagom-container {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-
-    ${({ theme }) => theme.mediaQueries.large} {
-      padding-top: 8rem;
-      padding-bottom: 8rem;
-    }
-  }
-`;
 
 type ColorBackgroundProps = FeaturedSectionProps & {
   backgroundColor?: string;
@@ -123,7 +53,7 @@ const ColorBackground: React.FunctionComponent<ColorBackgroundProps> = ({
   framed,
 }) => {
   return (
-    <ColorBackgroundSection
+    <Section
       className={clsx(
         "lagom-featured-section lagom-featured-section--color-background",
         className,
@@ -134,7 +64,7 @@ const ColorBackground: React.FunctionComponent<ColorBackgroundProps> = ({
       <Container>
         <div className="lagom-featured-section__content">{children}</div>
       </Container>
-    </ColorBackgroundSection>
+    </Section>
   );
 };
 

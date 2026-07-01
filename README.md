@@ -4,7 +4,7 @@
 
 This component library provides just the right amount of components for my own personal projects. Primarily driven by FrankCongson.com. With theme support for individually styled projects.
 
-Built using [styled components](https://styled-components.com/).
+Styled with plain CSS and [design tokens](https://github.com/fcongson/lagom-tokens).
 
 ## Inspiration
 

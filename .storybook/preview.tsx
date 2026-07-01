@@ -2,26 +2,11 @@ import "@fcongson/lagom-tokens/css/theme/_dark.css";
 import "@fcongson/lagom-tokens/css/theme/_light.css";
 import { Preview } from "@storybook/react";
 import React from "react";
-import styled, { css } from "styled-components";
 import { ThemeProvider } from "../src/themes/ThemeProvider";
 import "./style.css";
 
 // [Toolbars & globals](https://storybook.js.org/docs/react/essentials/toolbars-and-globals)
 // [How to add a theme switcher to Storybook](https://storybook.js.org/blog/how-to-add-a-theme-switcher-to-storybook/)
-
-const StoryContainer = styled.div<{ height: string; $flexDirection: string }>(
-  ({ height, $flexDirection }) => css`
-    display: flex;
-    flex-direction: ${$flexDirection};
-    min-height: ${height};
-    margin: -1rem;
-  `,
-);
-const StoryBlock = styled.div`
-  flex-grow: 1;
-  padding: 1rem;
-  background: var(--lagom-semantic-color-bg-default);
-`;
 
 const decorators = [
   (Story, context) => {
@@ -37,25 +22,31 @@ const decorators = [
       case "stacked": {
         return (
           <ThemeProvider theme={{}}>
-            <StoryContainer $flexDirection={flexDirection} height={height}>
-              <StoryBlock data-lagom-theme="light">
+            <div
+              className="lagom-story-container"
+              style={{ flexDirection, minHeight: height }}
+            >
+              <div className="lagom-story-block" data-lagom-theme="light">
                 <Story />
-              </StoryBlock>
-              <StoryBlock data-lagom-theme="dark">
+              </div>
+              <div className="lagom-story-block" data-lagom-theme="dark">
                 <Story />
-              </StoryBlock>
-            </StoryContainer>
+              </div>
+            </div>
           </ThemeProvider>
         );
       }
       default: {
         return (
           <ThemeProvider theme={{}}>
-            <StoryContainer $flexDirection={flexDirection} height={height}>
-              <StoryBlock data-lagom-theme={`${theme}`}>
+            <div
+              className="lagom-story-container"
+              style={{ flexDirection, minHeight: height }}
+            >
+              <div className="lagom-story-block" data-lagom-theme={`${theme}`}>
                 <Story />
-              </StoryBlock>
-            </StoryContainer>
+              </div>
+            </div>
           </ThemeProvider>
         );
       }

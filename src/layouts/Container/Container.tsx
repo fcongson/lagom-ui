@@ -1,19 +1,5 @@
 import clsx from "clsx";
-import styled from "styled-components";
-
-const StyledContainer = styled.div`
-  /* .lagom-container */
-  max-width: var(
-    --lagom-component-container-width,
-    ${({ theme }) => theme.sizes.maxWidthContainer}
-  );
-  margin: 0 auto;
-  margin-bottom: var(--lagom-component-container-margin-bottom, 8rem);
-
-  &.lagom-container--margin-none {
-    margin-bottom: unset;
-  }
-`;
+import "./Container.css";
 
 interface ContainerProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
@@ -36,7 +22,7 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
   ...restProps
 }) => {
   return (
-    <StyledContainer
+    <div
       className={clsx(
         "lagom-container",
         className,
@@ -45,6 +31,6 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
       {...restProps}
     >
       {children}
-    </StyledContainer>
+    </div>
   );
 };

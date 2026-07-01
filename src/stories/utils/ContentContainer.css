@@ -1,0 +1,3 @@
+.lagom-content-container .lagom-container {
+  max-width: var(--sizes-max-width-content);
+}

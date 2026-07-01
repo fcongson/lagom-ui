@@ -13,3 +13,14 @@ body * {
     padding-bottom: 0;
   }
 }
+
+.lagom-story-container {
+  display: flex;
+  margin: -1rem;
+}
+
+.lagom-story-block {
+  flex-grow: 1;
+  padding: 1rem;
+  background: var(--lagom-semantic-color-bg-default);
+}

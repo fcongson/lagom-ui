@@ -1,0 +1,33 @@
+.lagom-hero {
+  width: 100%;
+  height: var(--hero-height, 100vh);
+  display: grid;
+  margin: 0 auto 8rem auto;
+}
+
+@media screen and (max-width: 568px) {
+  .lagom-hero {
+    margin: 0 auto 4rem auto;
+  }
+}
+
+.lagom-hero__image {
+  width: 100%;
+  height: var(--hero-height, 100vh);
+  grid-area: 1/1;
+}
+
+.lagom-hero__image-overlay {
+  grid-area: 1 / 1;
+  background-color: var(--lagom-semantic-color-overlay-background);
+  opacity: var(--lagom-semantic-opacity-overlay);
+}
+
+.lagom-hero__content {
+  grid-area: 1/1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}

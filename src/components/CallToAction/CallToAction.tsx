@@ -1,33 +1,11 @@
 import clsx from "clsx";
-import styled from "styled-components";
 import { LinkButton, SectionHeader } from "../..";
-import { useTheme } from "../../hooks/useTheme";
-
-const CallToActionContainer = styled.div`
-  /* .lagom-call-to-action */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  p {
-    font-weight: normal;
-    font-size: 20px;
-    text-align: center;
-    margin: 0 auto 4rem auto;
-    padding: 0 2rem 0 2rem;
-
-    ${({ theme }) => theme.mediaQueries.large} {
-      font-size: 16px;
-      margin: 0 auto 2rem auto;
-      padding: 0 1rem 0 1rem;
-    }
-  }
-`;
+import "./CallToAction.css";
 
 export const CallToAction: React.FunctionComponent<{
   className?: string;
   header?: string;
-  text?: string | JSX.Element | (string | JSX.Element)[];
+  text?: string | React.JSX.Element | (string | React.JSX.Element)[];
   actionLink?: string;
   actionText?: string;
   LinkComponent?: React.ComponentType<{ to: string }>;
@@ -40,10 +18,8 @@ export const CallToAction: React.FunctionComponent<{
   LinkComponent,
   ...restProps
 }) => {
-  const mergedTheme = useTheme();
   return (
-    <CallToActionContainer
-      theme={mergedTheme}
+    <div
       className={clsx("lagom-call-to-action", className)}
       {...restProps}
     >
@@ -63,6 +39,6 @@ export const CallToAction: React.FunctionComponent<{
           {actionText}
         </LinkButton>
       )}
-    </CallToActionContainer>
+    </div>
   );
 };

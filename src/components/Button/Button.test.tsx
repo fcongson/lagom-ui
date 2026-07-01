@@ -1,29 +1,29 @@
 import { render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
+import { MockGrowthBookProvider } from "../../test-utils/growthbook-mock";
 import { Button } from "./Button";
 
 describe("Button", () => {
   test("Renders", () => {
     render(
-      <ThemeProvider theme={{}}>
+      <MockGrowthBookProvider>
         <Button>Text</Button>
-      </ThemeProvider>,
+      </MockGrowthBookProvider>,
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
   test("Renders primary", () => {
     render(
-      <ThemeProvider theme={{}}>
+      <MockGrowthBookProvider>
         <Button primary>Text</Button>
-      </ThemeProvider>,
+      </MockGrowthBookProvider>,
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
   test("Renders secondary", () => {
     render(
-      <ThemeProvider theme={{}}>
+      <MockGrowthBookProvider>
         <Button primary={false}>Text</Button>
-      </ThemeProvider>,
+      </MockGrowthBookProvider>,
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });

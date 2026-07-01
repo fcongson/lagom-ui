@@ -1,31 +1,7 @@
 import clsx from "clsx";
-import styled, { css } from "styled-components";
 import { Container } from "../../layouts/Container";
 import { Section } from "../../layouts/Section";
-
-const imageCaptionCss = css`
-  /* .lagom-image-caption */
-  &.lagom-section {
-    overflow: hidden;
-  }
-
-  .lagom-image-caption__block-img {
-    margin-bottom: 2rem;
-  }
-
-  .lagom-image-caption__block-img img {
-    width: 100%;
-    height: auto;
-  }
-
-  .lagom-image-caption__image-label {
-    display: block;
-    text-align: center;
-    font-style: italic;
-    font-size: 14px;
-    color: var(--lagom-semantic-color-fg-subtle);
-  }
-`;
+import "./ImageCaption.css";
 
 type ImageProps = {
   className?: string;
@@ -33,17 +9,13 @@ type ImageProps = {
   caption?: string;
 };
 
-const DefaultImageSection = styled(Section)`
-  ${imageCaptionCss}
-`;
-
 const DefaultImage: React.FunctionComponent<ImageProps> = ({
   className,
   image,
   caption,
 }) => {
   return (
-    <DefaultImageSection className={clsx("lagom-image-caption", className)}>
+    <Section className={clsx("lagom-image-caption", className)}>
       <Container>
         <figure className="lagom-image-caption__block-img">
           {image}
@@ -54,20 +26,9 @@ const DefaultImage: React.FunctionComponent<ImageProps> = ({
           ) : null}
         </figure>
       </Container>
-    </DefaultImageSection>
+    </Section>
   );
 };
-
-const EmphasizedImageSection = styled(Section)`
-  ${imageCaptionCss}
-
-  .lagom-image-caption--emphasized {
-    ${({ theme }) => theme.mediaQueries.emphasized} {
-      width: 130%;
-      margin: 0 -15% 2rem -15%;
-    }
-  }
-`;
 
 const EmphasizedImage: React.FunctionComponent<ImageProps> = ({
   className,
@@ -75,7 +36,7 @@ const EmphasizedImage: React.FunctionComponent<ImageProps> = ({
   caption,
 }) => {
   return (
-    <EmphasizedImageSection className={clsx("lagom-image-caption", className)}>
+    <Section className={clsx("lagom-image-caption", className)}>
       <Container>
         <figure className="lagom-image-caption__block-img lagom-image-caption--emphasized">
           {image}
@@ -86,27 +47,9 @@ const EmphasizedImage: React.FunctionComponent<ImageProps> = ({
           ) : null}
         </figure>
       </Container>
-    </EmphasizedImageSection>
+    </Section>
   );
 };
-
-const FullWidthImageFigure = styled.figure`
-  ${imageCaptionCss}
-
-  &.lagom-image-caption--full-width {
-    max-height: 100vh;
-    margin-bottom: 8rem;
-
-    ${({ theme }) => theme.mediaQueries.small} {
-      margin-bottom: 4rem;
-    }
-  }
-
-  &.lagom-image-caption--full-width div,
-  &.lagom-image-caption--full-width div img {
-    max-height: inherit;
-  }
-`;
 
 const FullWidthImage: React.FunctionComponent<ImageProps> = ({
   className,
@@ -114,7 +57,7 @@ const FullWidthImage: React.FunctionComponent<ImageProps> = ({
   caption,
 }) => {
   return (
-    <FullWidthImageFigure
+    <figure
       className={clsx(
         "lagom-image-caption lagom-image-caption__block-img lagom-image-caption--full-width",
         className,
@@ -126,7 +69,7 @@ const FullWidthImage: React.FunctionComponent<ImageProps> = ({
           {caption}
         </figcaption>
       ) : null}
-    </FullWidthImageFigure>
+    </figure>
   );
 };
 

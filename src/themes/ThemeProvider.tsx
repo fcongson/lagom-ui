@@ -1,10 +1,10 @@
 import { GrowthBookProvider } from "@growthbook/growthbook-react";
 import { useEffect, useState } from "react";
-import { ThemeProvider as _ThemeProvider } from "styled-components";
-import { GlobalStyle } from "../styles/GlobalStyle";
-import { NoFocusOutline } from "../styles/NoFocusOutline";
+import "../styles/GlobalStyle";
+import { NO_FOCUS_OUTLINE_CLASS } from "../styles/NoFocusOutline";
 import "../styles/resetr.css";
 import { growthbook } from "../utils/GrowthBook";
+import { ThemeContext } from "./ThemeContext";
 import { ThemeType } from "./createTheme";
 import { theme as _theme } from "./theme";
 
@@ -35,17 +35,22 @@ export const ThemeProvider: React.FunctionComponent<{
   }, []);
 
   useEffect(() => {
+    document.documentElement.classList.toggle(
+      NO_FOCUS_OUTLINE_CLASS,
+      noFocusOutline,
+    );
+  }, [noFocusOutline]);
+
+  useEffect(() => {
     // Load features asynchronously when the app renders
     growthbook.loadFeatures();
   }, []);
 
   return (
     <GrowthBookProvider growthbook={growthbook}>
-      <_ThemeProvider theme={mergedTheme}>
-        <GlobalStyle theme={mergedTheme} />
-        <NoFocusOutline noFocusOutline={noFocusOutline} />
+      <ThemeContext.Provider value={mergedTheme}>
         {children}
-      </_ThemeProvider>
+      </ThemeContext.Provider>
     </GrowthBookProvider>
   );
 };

@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import "./ContentContainer.css";
 
-export const ContentContainer = styled.div`
-  .lagom-container {
-    max-width: var(--sizes-max-width-content);
-  }
-`;
+export const ContentContainer: React.FunctionComponent<{
+  children?: React.ReactNode;
+}> = ({ children }) => (
+  <div className="lagom-content-container">{children}</div>
+);

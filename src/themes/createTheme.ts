@@ -1,5 +1,5 @@
-import { ButtonTheme } from "components/Button";
-import { ExecutionProps, createGlobalStyle } from "styled-components";
+import { createElement } from "react";
+import { ButtonTheme } from "../components/Button";
 
 export type CoreTheme = {
   fontFamilies?: {
@@ -55,7 +55,7 @@ export const createTheme = ({
   button,
 }: ThemeType): {
   theme: ThemeType;
-  GlobalStyle: React.NamedExoticComponent<ExecutionProps & object>;
+  GlobalStyle: React.FunctionComponent;
 } => {
   const sizes: ThemeType["sizes"] = {
     maxWidthSection: `${MAX_WIDTH_SECTION}px`,
@@ -79,7 +79,10 @@ export const createTheme = ({
     emphasized: `@media screen and (min-width: ${sizes.minWidthEmph})`,
   };
 
-  const GlobalStyle = createGlobalStyle`
+  // Renders as a plain <style> tag rather than styled-components'
+  // createGlobalStyle. Placement in the DOM doesn't matter for :root custom
+  // properties, so an inline tag works the same as a <head>-injected one.
+  const globalStyleCss = `
     :root {
       /* font families */
       --themed-core-font-families-monospace: ${core?.fontFamilies?.monospace};
@@ -105,6 +108,9 @@ export const createTheme = ({
       --themed-component-button-color-secondary-border: ${button?.secondary?.borderColor};
     }
   `;
+
+  const GlobalStyle: React.FunctionComponent = () =>
+    createElement("style", undefined, globalStyleCss);
 
   return {
     theme: {

@@ -1,0 +1,7 @@
+/* Applied via a class toggled on <html> by ThemeProvider: suppress the
+   focus outline until the user starts navigating with the keyboard (Tab). */
+html.lagom-no-focus-outline a:focus,
+html.lagom-no-focus-outline button:focus,
+html.lagom-no-focus-outline div[role="button"]:focus {
+  outline: none;
+}

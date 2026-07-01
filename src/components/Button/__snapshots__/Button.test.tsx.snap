@@ -3,7 +3,7 @@
 exports[`Button Renders 1`] = `
 [
   <button
-    class="sc-bdfCDU gPECCf lagom-button lagom-button--secondary"
+    class="lagom-button lagom-button--secondary"
   >
     Text
   </button>,
@@ -13,7 +13,7 @@ exports[`Button Renders 1`] = `
 exports[`Button Renders primary 1`] = `
 [
   <button
-    class="sc-bdfCDU gPECCf lagom-button lagom-button--primary"
+    class="lagom-button lagom-button--primary"
   >
     Text
   </button>,
@@ -23,7 +23,7 @@ exports[`Button Renders primary 1`] = `
 exports[`Button Renders secondary 1`] = `
 [
   <button
-    class="sc-bdfCDU gPECCf lagom-button lagom-button--secondary"
+    class="lagom-button lagom-button--secondary"
   >
     Text
   </button>,

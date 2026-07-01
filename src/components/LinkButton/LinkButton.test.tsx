@@ -1,33 +1,33 @@
 import { render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
+import { MockGrowthBookProvider } from "../../test-utils/growthbook-mock";
 import { LinkButton } from "./LinkButton";
 
 describe("LinkButton", () => {
   test("Renders", () => {
     render(
-      <ThemeProvider theme={{}}>
+      <MockGrowthBookProvider>
         <LinkButton to="#">Text</LinkButton>
-      </ThemeProvider>,
+      </MockGrowthBookProvider>,
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
   test("Renders primary", () => {
     render(
-      <ThemeProvider theme={{}}>
+      <MockGrowthBookProvider>
         <LinkButton to="#" primary>
           Text
         </LinkButton>
-      </ThemeProvider>,
+      </MockGrowthBookProvider>,
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
   test("Renders secondary", () => {
     render(
-      <ThemeProvider theme={{}}>
+      <MockGrowthBookProvider>
         <LinkButton to="#" primary={false}>
           Text
         </LinkButton>
-      </ThemeProvider>,
+      </MockGrowthBookProvider>,
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
