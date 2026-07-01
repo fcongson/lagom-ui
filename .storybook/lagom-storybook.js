@@ -1,7 +1,7 @@
 import * as dark from "@fcongson/lagom-tokens/js/theme/dark.js";
 import * as light from "@fcongson/lagom-tokens/js/theme/light.js";
 import * as core from "@fcongson/lagom-tokens/js/variables/core.js";
-import { create } from "@storybook/theming/create";
+import { create } from "storybook/theming/create";
 
 export default create({
   base: "light",

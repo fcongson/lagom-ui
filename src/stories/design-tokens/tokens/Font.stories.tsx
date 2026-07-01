@@ -1,5 +1,5 @@
 import * as core from "@fcongson/lagom-tokens/js/variables/core.js";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Container, PageHeader, Section, SectionHeader } from "../../..";
 import { TokenCard } from "../../utils/TokenCard";
 import { cssCustomPropertyName } from "../../utils/cssCustomPropertyName";

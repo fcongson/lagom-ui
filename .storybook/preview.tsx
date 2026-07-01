@@ -1,6 +1,6 @@
 import "@fcongson/lagom-tokens/css/theme/_dark.css";
 import "@fcongson/lagom-tokens/css/theme/_light.css";
-import { Preview } from "@storybook/react";
+import { Preview } from "@storybook/react-webpack5";
 import React from "react";
 import { ThemeProvider } from "../src/themes/ThemeProvider";
 import "./style.css";
