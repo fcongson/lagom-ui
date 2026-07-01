@@ -1,4 +1,6 @@
 {
-  "./src/**/*": "prettier --write",
-  "./.storybook/**/*": "prettier --write"
+  "./src/**/*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+  "./src/**/*.{css,md,mdx,json}": "prettier --write",
+  "./.storybook/**/*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+  "./.storybook/**/*.{css,js}": "prettier --write"
 }

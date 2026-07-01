@@ -15,7 +15,7 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["../public"],
-  async babel(config, { configType }) {
+  async babel(config, { configType: _configType }) {
     return {
       ...config,
       plugins: [

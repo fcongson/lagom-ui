@@ -38,7 +38,7 @@ const ColorCard: React.FunctionComponent<ColorCardProps> = ({
 interface ColorGroupProps {
   color?: string;
   title?: string;
-  tokenSet: Object;
+  tokenSet: object;
   tokenKey?: string;
   sort?: boolean;
 }

@@ -26,9 +26,9 @@ export const Section: React.FunctionComponent<SectionProps> = ({
       className={clsx(
         "lagom-section",
         className,
-        !!backgroundColor && "lagom-section--background-color",
+        backgroundColor && "lagom-section--background-color",
       )}
-      style={!!backgroundColor ? { backgroundColor: backgroundColor } : null}
+      style={backgroundColor ? { backgroundColor: backgroundColor } : null}
       {...restProps}
     >
       {children}

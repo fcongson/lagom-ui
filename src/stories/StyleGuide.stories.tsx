@@ -18,8 +18,6 @@ const meta: Meta = {
 
 export default meta;
 
-const imageSrc_White = "/jonatan-pie-d7ZBAPEuXGc-unsplash.jpg";
-const imageSrc_Grey = "/jonatan-pie-RMAKCQmu-gI-unsplash.jpg";
 const imageSrc_Brown = "/jonatan-pie-swG0ojqS6hc-unsplash.jpg";
 const imageSrc = imageSrc_Brown;
 const alt = "Arctic Fox by Jonatan Pie";

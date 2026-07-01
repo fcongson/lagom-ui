@@ -8,12 +8,12 @@ export const Hero: React.FunctionComponent<{
 }> = ({ image, children, className, ...restProps }) => {
   return (
     <div className={clsx("lagom-hero", className)} {...restProps}>
-      {!!image ? (
+      {image ? (
         <>
           <div className="lagom-hero__image">{image}</div>
         </>
       ) : null}
-      {!!children ? (
+      {children ? (
         <>
           <div className="lagom-hero__image-overlay" />
           <div className="lagom-hero__content">{children}</div>

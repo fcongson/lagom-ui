@@ -1,0 +1,39 @@
+name: Publish Workflow
+
+run-name: ${{ github.actor }} is publishing lagom-ui
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Set Node.js
+        uses: actions/setup-node@v4
+        with:
+          # Storybook 10 requires Node >= 20.19 or >= 22.12.
+          node-version: "20"
+          cache: pnpm
+          registry-url: "https://npm.pkg.github.com"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Test
+        run: pnpm test
+      - name: Build
+        run: pnpm build
+      - name: Publish package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.TOKEN }}
