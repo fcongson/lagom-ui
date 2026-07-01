@@ -17,14 +17,21 @@ export default defineConfig({
   css: {
     // Requires the `@tsdown/css` package (see devDependencies).
     // Components import their stylesheet as a side effect, e.g.
-    // `import "./Button.css"`. By default tsdown merges all such imports
-    // into one CSS file and strips the import statements from the JS
-    // output, so `inject: true` keeps a single `import "./style.css"` in
-    // the built JS instead - `import { Button } from "@fcongson/lagom-ui"`
-    // then automatically pulls in styling, matching today's behavior.
-    // Merging is fine here since everything already funnels through one
-    // bundled entry point (src/index.ts) - there's no per-component JS
-    // splitting to preserve granularity for in the first place.
-    inject: true,
+    // `import "./Button.css"`. tsdown merges all such imports into one
+    // build/lib/style.css.
+    //
+    // `inject: true` was tried first (keeps `import "./style.css"` in the
+    // built JS so consumers get styling automatically), but tsdown's CSS
+    // support is still experimental and this literally emits an ESM
+    // `import` statement at the top of the CJS output too - `require()`
+    // throws immediately ("Cannot use import statement outside a
+    // module"). Confirmed against the actual build output, not a config
+    // mistake on our end: https://github.com/rolldown/tsdown/issues/472.
+    // Left at the default (false): style.css is still emitted, just not
+    // auto-imported. Consumers need `import "@fcongson/lagom-ui/style.css"`
+    // once, alongside their component imports (exposed via package.json's
+    // exports map) - this is the same pattern most non-CSS-in-JS React
+    // component libraries use.
+    inject: false,
   },
 });
