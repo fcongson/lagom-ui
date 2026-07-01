@@ -1,4 +1,4 @@
-import * as core from "@fcongson/lagom-tokens/js/variables/core";
+import * as core from "@fcongson/lagom-tokens/js/variables/core.js";
 import { Meta, StoryObj } from "@storybook/react";
 import { Container, PageHeader, Section } from "../../..";
 import { TokenCard } from "../../utils/TokenCard";

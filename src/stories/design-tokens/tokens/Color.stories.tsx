@@ -1,7 +1,7 @@
-import * as core from "@fcongson/lagom-tokens/js/variables/core";
-import * as semantic from "@fcongson/lagom-tokens/js/variables/semantic";
-import * as semanticDark from "@fcongson/lagom-tokens/js/variables/semantic.dark";
-import * as semanticLight from "@fcongson/lagom-tokens/js/variables/semantic.light";
+import * as core from "@fcongson/lagom-tokens/js/variables/core.js";
+import * as semantic from "@fcongson/lagom-tokens/js/variables/semantic.js";
+import * as semanticDark from "@fcongson/lagom-tokens/js/variables/semantic.dark.js";
+import * as semanticLight from "@fcongson/lagom-tokens/js/variables/semantic.light.js";
 import { Meta, StoryObj } from "@storybook/react";
 import { Container, PageHeader, Section, SectionHeader } from "../../..";
 import { TokenCard } from "../../utils/TokenCard";
