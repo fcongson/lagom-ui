@@ -32,8 +32,11 @@ jobs:
       - name: Set Node.js
         uses: actions/setup-node@v4
         with:
-          # Storybook 10 requires Node >= 20.19 or >= 22.12.
-          node-version: "20"
+          # Storybook 10 requires Node >= 20.19 or >= 22.12, but tsdown 0.22's
+          # own engines field requires Node ^22.18.0 || >=24.11.0 (it needs a
+          # native TS-config loader newer than Node 20 provides, and its
+          # "unrun" fallback isn't installed) - use 22, which satisfies both.
+          node-version: "22"
           cache: pnpm
           registry-url: "https://npm.pkg.github.com"
       - name: Install dependencies
