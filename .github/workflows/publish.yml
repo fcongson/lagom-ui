@@ -10,6 +10,19 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      # .npmrc (committed at repo root) authenticates the @fcongson scope against
+      # npm.pkg.github.com via `${TOKEN}` for every registry request, not just
+      # publish - lagom-tokens is itself a private/scoped GitHub Packages
+      # dependency owned by a different repo, so `pnpm install` needs this too,
+      # not only `npm publish`. Uses the automatic per-run GITHUB_TOKEN rather
+      # than a manually-created PAT - both repos are owned by the same account,
+      # and lagom-tokens' package settings grant this repo read access
+      # (Package settings -> Manage Actions access -> lagom-ui).
+      TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up pnpm
@@ -35,5 +48,3 @@ jobs:
         run: pnpm build
       - name: Publish package
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.TOKEN }}
