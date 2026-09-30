@@ -11,12 +11,14 @@
   text-align: center;
   text-wrap: balance;
   margin: 0 auto;
-  /* Was calc(2 * spacing-xxl) - inconsistent with SectionHeader's 1x, with no
-     apparent reason for the extra ratio. Now matches SectionHeader and is
-     themeable the same way. */
+  /* 2x spacing-xxl (vs. SectionHeader's 1x) is a deliberate choice from Nov
+     2023 (136b00e - doubled this and Container's default margin-bottom in
+     the same commit), not an oversight - PageHeader is the single biggest,
+     most prominent heading per page, unlike SectionHeader which repeats
+     within one. Just making it themeable, not changing the default. */
   margin-bottom: var(
     --themed-component-page-header-margin-bottom,
-    var(--lagom-core-spacing-xxl)
+    calc(2 * var(--lagom-core-spacing-xxl))
   );
 }
 
@@ -29,7 +31,9 @@
 @media screen and (max-width: 568px) {
   .lagom-page-header {
     font-size: var(--header-scale-3);
-    /* No margin-bottom override needed here anymore - the base rule's default
-       is already spacing-xxl now that it's no longer doubled. */
+    margin-bottom: var(
+      --themed-component-page-header-margin-bottom-sm,
+      var(--lagom-core-spacing-xxl)
+    );
   }
 }
