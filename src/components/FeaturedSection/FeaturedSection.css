@@ -24,11 +24,27 @@
 
 .lagom-featured-section.lagom-featured-section--image-background {
   display: grid;
+  /* Unlike Hero, this had no height mechanism at all - the grid row's height
+     was purely emergent from its content (the overlaid .lagom-section, not
+     the image), so the actual <img> size could end up shorter or taller than
+     the row it needed to fill, leaving a gap. --featured-section-height
+     mirrors Hero's --hero-height; default of auto preserves today's
+     behavior exactly for anyone not setting it. */
+  height: var(--featured-section-height, auto);
 }
 
 .lagom-featured-section.lagom-featured-section--image-background
   .lagom-featured-section__image {
   grid-area: 1 / 1;
+}
+
+/* See Hero.css for the same fix and the reasoning behind it. */
+.lagom-featured-section.lagom-featured-section--image-background
+  .lagom-featured-section__image
+  img {
+  width: 100%;
+  height: 100%;
+  object-fit: var(--themed-component-featured-section-image-fit, cover);
 }
 
 .lagom-featured-section.lagom-featured-section--image-background

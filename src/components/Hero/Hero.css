@@ -2,12 +2,15 @@
   width: 100%;
   height: var(--hero-height, 100vh);
   display: grid;
-  margin: 0 auto 8rem auto;
+  /* Unlike PageHeader's margin, this 8rem/4rem was never identified as
+     inconsistent with anything else - only making it themeable here, not
+     changing the actual default. */
+  margin: 0 auto var(--themed-component-hero-margin-bottom, 8rem) auto;
 }
 
 @media screen and (max-width: 568px) {
   .lagom-hero {
-    margin: 0 auto 4rem auto;
+    margin: 0 auto var(--themed-component-hero-margin-bottom-sm, 4rem) auto;
   }
 }
 
@@ -15,6 +18,18 @@
   width: 100%;
   height: var(--hero-height, 100vh);
   grid-area: 1/1;
+}
+
+/* ImageCaption styles its own <img> (width: 100%; height: auto) but Hero/
+   FeaturedSection never did - the wrapper stretches to the grid row via the
+   default stretch alignment, but without this the <img> inside it renders at
+   whatever size the consumer happens to give it, leaving a gap (or overflow)
+   between the two. object-fit is themeable since "cover" isn't universally
+   the right choice (e.g. an already-cropped or transparent image). */
+.lagom-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: var(--themed-component-hero-image-fit, cover);
 }
 
 .lagom-hero__image-overlay {

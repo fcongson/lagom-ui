@@ -1,11 +1,23 @@
 .lagom-page-header {
-  color: var(--lagom-semantic-color-fg-default);
-  font: var(--lagom-component-page-header-typography);
+  color: var(
+    --themed-component-page-header-color-text,
+    var(--lagom-component-page-header-color-text)
+  );
+  font: var(
+    --themed-component-page-header-typography,
+    var(--lagom-component-page-header-typography)
+  );
   font-size: var(--header-scale-1);
   text-align: center;
   text-wrap: balance;
   margin: 0 auto;
-  margin-bottom: calc(2 * var(--lagom-core-spacing-xxl));
+  /* Was calc(2 * spacing-xxl) - inconsistent with SectionHeader's 1x, with no
+     apparent reason for the extra ratio. Now matches SectionHeader and is
+     themeable the same way. */
+  margin-bottom: var(
+    --themed-component-page-header-margin-bottom,
+    var(--lagom-core-spacing-xxl)
+  );
 }
 
 @media screen and (max-width: 992px) {
@@ -17,6 +29,7 @@
 @media screen and (max-width: 568px) {
   .lagom-page-header {
     font-size: var(--header-scale-3);
-    margin-bottom: var(--lagom-core-spacing-xxl);
+    /* No margin-bottom override needed here anymore - the base rule's default
+       is already spacing-xxl now that it's no longer doubled. */
   }
 }
