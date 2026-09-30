@@ -1,11 +1,20 @@
 .lagom-section-header {
-  color: var(--lagom-semantic-color-fg-default);
-  font: var(--lagom-component-section-header-typography);
+  color: var(
+    --themed-component-section-header-color-text,
+    var(--lagom-component-section-header-color-text)
+  );
+  font: var(
+    --themed-component-section-header-typography,
+    var(--lagom-component-section-header-typography)
+  );
   font-size: var(--header-scale-2);
   text-align: center;
   text-wrap: balance;
   margin: 0 auto;
-  margin-bottom: var(--lagom-core-spacing-xxl);
+  margin-bottom: var(
+    --themed-component-section-header-margin-bottom,
+    var(--lagom-core-spacing-xxl)
+  );
 }
 
 @media screen and (max-width: 992px) {
