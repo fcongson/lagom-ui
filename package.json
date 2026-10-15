@@ -1,6 +1,6 @@
 {
   "name": "@fcongson/lagom-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./build/lib/index.cjs",
   "module": "./build/lib/index.mjs",
   "types": "./build/lib/index.d.cts",
