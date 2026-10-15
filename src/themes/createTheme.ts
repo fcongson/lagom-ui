@@ -79,35 +79,48 @@ export const createTheme = ({
     emphasized: `@media screen and (min-width: ${sizes.minWidthEmph})`,
   };
 
+  // Only emit declarations for values the caller provided. An omitted field
+  // must leave its --themed-* property unset so components'
+  // var(--themed-x, var(--lagom-x)) fallbacks resolve to the lagom token;
+  // interpolating it would write the literal string "undefined" instead.
+  const themedProperties: Record<string, string | undefined> = {
+    // font families
+    "--themed-core-font-families-monospace": core?.fontFamilies?.monospace,
+    "--themed-core-font-families-serif": core?.fontFamilies?.serif,
+    "--themed-core-font-families-sans-serif": core?.fontFamilies?.sansSerif,
+    "--themed-core-font-sizes-body": core?.fontSizes?.body,
+
+    // header scale
+    "--themed-header-scale-1": core?.headerScale?.[1],
+    "--themed-header-scale-2": core?.headerScale?.[2],
+    "--themed-header-scale-3": core?.headerScale?.[3],
+    "--themed-header-scale-4": core?.headerScale?.[4],
+    "--themed-header-scale-5": core?.headerScale?.[5],
+    "--themed-header-scale-6": core?.headerScale?.[6],
+
+    // button theme
+    "--themed-component-button-border-radius": button?.borderRadius,
+    "--themed-component-button-color-primary-background":
+      button?.primary?.backgroundColor,
+    "--themed-component-button-color-primary-text": button?.primary?.color,
+    "--themed-component-button-color-primary-border":
+      button?.primary?.borderColor,
+    "--themed-component-button-color-secondary-background":
+      button?.secondary?.backgroundColor,
+    "--themed-component-button-color-secondary-text": button?.secondary?.color,
+    "--themed-component-button-color-secondary-border":
+      button?.secondary?.borderColor,
+  };
+
+  const declarations = Object.entries(themedProperties)
+    .filter(([, value]) => value !== undefined)
+    .map(([property, value]) => `  ${property}: ${value};`)
+    .join("\n");
+
   // Renders as a plain <style> tag rather than styled-components'
   // createGlobalStyle. Placement in the DOM doesn't matter for :root custom
   // properties, so an inline tag works the same as a <head>-injected one.
-  const globalStyleCss = `
-    :root {
-      /* font families */
-      --themed-core-font-families-monospace: ${core?.fontFamilies?.monospace};
-      --themed-core-font-families-serif: ${core?.fontFamilies?.serif};
-      --themed-core-font-families-sans-serif: ${core?.fontFamilies?.sansSerif};
-      --themed-core-font-sizes-body: ${core?.fontSizes?.body};
-
-      /* header scale */
-      --themed-header-scale-1: ${core?.headerScale?.[1]};
-      --themed-header-scale-2: ${core?.headerScale?.[2]};
-      --themed-header-scale-3: ${core?.headerScale?.[3]};
-      --themed-header-scale-4: ${core?.headerScale?.[4]};
-      --themed-header-scale-5: ${core?.headerScale?.[5]};
-      --themed-header-scale-6: ${core?.headerScale?.[6]};
-
-      /* button theme */
-      --themed-component-button-border-radius: ${button?.borderRadius};
-      --themed-component-button-color-primary-background: ${button?.primary?.backgroundColor};
-      --themed-component-button-color-primary-text: ${button?.primary?.color};
-      --themed-component-button-color-primary-border: ${button?.primary?.borderColor};
-      --themed-component-button-color-secondary-background: ${button?.secondary?.backgroundColor};
-      --themed-component-button-color-secondary-text: ${button?.secondary?.color};
-      --themed-component-button-color-secondary-border: ${button?.secondary?.borderColor};
-    }
-  `;
+  const globalStyleCss = `:root {\n${declarations}\n}`;
 
   const GlobalStyle: React.FunctionComponent = () =>
     createElement("style", undefined, globalStyleCss);
