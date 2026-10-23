@@ -3,17 +3,24 @@ import "./Container.css";
 
 interface ContainerProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
-   * Classname(s) applied to this component
+   * Class name(s) added to the `<div>`.
    */
   className?: string;
   /**
-   * Removes the bottom margin
+   * Removes the default bottom margin, for containers that shouldn't add
+   * space below themselves.
    */
   marginNone?: boolean;
 }
 
 /**
- * Primarily used as a child of `Section`. Provides a container for the section contents.
+ * Centred content column (max 1120px), used inside Section.
+ *
+ * Centres content in a column up to 1120px wide, with a bottom margin to space
+ * consecutive blocks. Use it inside a `Section` to hold a page's content.
+ * Accepts all `<div>` attributes.
+ *
+ * @summary Centred content column (max 1120px), used inside Section.
  */
 export const Container: React.FunctionComponent<ContainerProps> = ({
   children,

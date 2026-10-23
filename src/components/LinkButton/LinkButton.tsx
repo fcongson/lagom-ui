@@ -4,19 +4,28 @@ import "./LinkButton.css";
 
 interface LinkButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   /**
-   * Classname(s) applied to this component
+   * Class name(s) added to the link element.
    */
   className?: string;
   /**
-   * Choose between the primary and secondary variants
+   * Use the primary variant for the main destination in a view. Defaults to
+   * the secondary variant.
+   * @default false
    */
   primary?: boolean;
   /**
-   * Where to navigate to
+   * The URL or route to navigate to.
    */
   to: string;
   /**
-   * A framework specific link component
+   * The link's label. Make it describe the destination (e.g. "View all
+   * posts"), not "Click here".
+   */
+  children?: React.ReactNode;
+  /**
+   * A framework link component (e.g. Gatsby's or Next's `Link`) to render
+   * instead of a plain `<a>`, for client-side routing. It receives `to`,
+   * `className`, and `children`.
    */
   Component?: React.ComponentType<{
     to: string;
@@ -25,6 +34,16 @@ interface LinkButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   }>;
 }
 
+/**
+ * Navigates to a page or route, styled as a button.
+ *
+ * A link styled as a button, for navigating to another page or route. Renders
+ * an `<a>` by default, or your framework's link component via `Component`.
+ *
+ * For actions that don't navigate, use `Button`.
+ *
+ * @summary Navigates to a page or route, styled as a button.
+ */
 export const LinkButton: React.FunctionComponent<LinkButtonProps> = ({
   children,
   className,

@@ -3,17 +3,24 @@ import "./Section.css";
 
 interface SectionProps extends React.ComponentPropsWithoutRef<"section"> {
   /**
-   * Classname(s) applied to this component
+   * Class name(s) added to the `<section>`.
    */
   className?: string;
   /**
-   * Background color applied to this section
+   * Background colour for the section. Use a token, e.g.
+   * `var(--lagom-semantic-color-bg-muted)`.
    */
   backgroundColor?: string;
 }
 
 /**
- * A layout element that defines a section in a document.
+ * Outer page band (max 1800px). Wrap content in a Container.
+ *
+ * The outer layout band for a page region: a `<section>` up to 1800px wide,
+ * with side padding that respects device safe areas. Put a `Container` inside
+ * it for the content column. Accepts all `<section>` attributes.
+ *
+ * @summary Outer page band (max 1800px). Wrap content in a Container.
  */
 export const Section: React.FunctionComponent<SectionProps> = ({
   children,

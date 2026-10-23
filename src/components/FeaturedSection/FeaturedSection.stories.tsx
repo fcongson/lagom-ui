@@ -2,10 +2,6 @@ import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { CallToAction } from "../CallToAction";
 import { FeaturedSection } from "./FeaturedSection";
 
-const imageSrc_Brown = "/jonatan-pie-swG0ojqS6hc-unsplash.jpg";
-const imageSrc = imageSrc_Brown;
-const alt = "Arctic Fox by Jonatan Pie";
-
 const meta: Meta = {
   title: "Components/Featured Section",
   component: FeaturedSection,
@@ -20,8 +16,8 @@ export const ImageAsBackground: Story = {
   args: {
     image: (
       <img
-        src={imageSrc}
-        alt={alt}
+        src="/jonatan-pie-swG0ojqS6hc-unsplash.jpg"
+        alt="Arctic Fox by Jonatan Pie"
         style={{ width: "100%", height: "100%", objectFit: "cover" }}
       />
     ),
@@ -39,8 +35,8 @@ export const ImageAsBackgroundFramed: Story = {
   args: {
     image: (
       <img
-        src={imageSrc}
-        alt={alt}
+        src="/jonatan-pie-swG0ojqS6hc-unsplash.jpg"
+        alt="Arctic Fox by Jonatan Pie"
         style={{ width: "100%", height: "100%", objectFit: "cover" }}
       />
     ),
@@ -84,8 +80,8 @@ export const ColorBackgroundWithImage: Story = {
     children: (
       <>
         <img
-          src={imageSrc}
-          alt={alt}
+          src="/jonatan-pie-swG0ojqS6hc-unsplash.jpg"
+          alt="Arctic Fox by Jonatan Pie"
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
         <p>
@@ -98,14 +94,14 @@ export const ColorBackgroundWithImage: Story = {
 };
 
 export const WithCallToAction: Story = {
-  args: {
-    children: (
+  render: (args) => (
+    <FeaturedSection {...args}>
       <CallToAction
         header="Lorem Ipsum."
         text="With Call To Action. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         actionLink="#featured-section"
         actionText="Lorem ipsum dolor sit amet"
       />
-    ),
-  },
+    </FeaturedSection>
+  ),
 };

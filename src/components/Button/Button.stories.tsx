@@ -40,8 +40,13 @@ export const Custom: Story = {
   },
 };
 
+/**
+ * The `icon` prop is behind the `icon-button` GrowthBook flag and isn't
+ * stable API, so this story is left out of the AI manifest.
+ */
 export const WithExperimentalIcon: Story = {
   ...Primary,
+  tags: ["!manifest"],
   args: {
     primary: false,
     children: "With icon",
