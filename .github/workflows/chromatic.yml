@@ -1,0 +1,48 @@
+name: Chromatic
+
+run-name: ${{ github.actor }} is publishing lagom-ui to Chromatic
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    env:
+      # Same as ci.yml: the committed .npmrc authenticates the @fcongson scope
+      # against npm.pkg.github.com (for lagom-tokens) via `${TOKEN}`.
+      TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Chromatic needs full git history to find baselines for each branch.
+          fetch-depth: 0
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Set Node.js
+        uses: actions/setup-node@v4
+        with:
+          # See ci.yml for why Node 22. chromatic@18 also requires Node >= 22.
+          node-version: "22"
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Publish to Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+          # Visual changes on PRs are reviewed in Chromatic, not failed in CI.
+          exitZeroOnChanges: true
+          # Merges to main become the new baseline.
+          autoAcceptChanges: main
+          # Only snapshot stories affected by the change (faster, fewer snapshots).
+          onlyChanged: true
