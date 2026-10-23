@@ -20,7 +20,6 @@ If the docs don't answer a question, say so instead of inventing an answer. Miss
 ## Rules for building UI with Lagom
 
 - **Only use exported components.** Import from `@fcongson/lagom-ui`. Don't recreate a component that already exists.
-- **Not in Lagom:** blog post listings, site navigation, and footers are specific to frankcongson.com, not library components. Build those in the consuming app.
 - **Page structure:** pages are built from `PageHeader` or `Hero` at the top, then `Section` (full-width, max 1800px) containing `Container` (max 1120px) for content.
 - **Use tokens, never raw values.** Use `--lagom-semantic-*` custom properties for colour (e.g. `--lagom-semantic-color-fg-muted`), and `--lagom-core-*` for spacing, type, and radii. Don't hard-code hex values, px spacing, or font stacks.
 - **Theming:** components read `--themed-*` custom properties first and fall back to `--lagom-*` tokens. Override `--themed-*` on `:root` or a wrapping element; don't override component class styles.
