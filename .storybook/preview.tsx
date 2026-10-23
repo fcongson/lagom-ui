@@ -88,6 +88,8 @@ const preview: Preview = {
           "About",
           "Getting Started",
           "Theming",
+          "Patterns",
+          ["Page Structure", "Landing Page", "Article", "Content Page"],
           "Style Guide",
           "Design Tokens",
           ["About", "Using Tokens", "Tokens"],

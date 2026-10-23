@@ -1,0 +1,97 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta
+  title="Patterns/Article"
+  summary="A long-form article or blog post: a plain h1 title, Section and Container blocks per heading, plain h2 headings, Quote, code blocks, and emphasized ImageCaptions between sections."
+/>
+
+# Article
+
+For blog posts and other long-form writing. This is how frankcongson.com's blog posts are built.
+
+## Structure
+
+1. **Title:** a plain `<h1>` in a `Section` and `Container`, aligned with the text.
+2. **Lead image:** an `ImageCaption` directly after the title.
+3. **Body:** one `Section` and `Container` per heading group. Each starts with a plain `<h2>`, then paragraphs, lists, a `Quote`, or `<pre>` code blocks.
+4. **Images between sections:** `ImageCaption` with `emphasized`, so images stand out from the text on large screens. Use `fullwidth` for the occasional striking image.
+5. **Ending:** a short closing section, or a `FeaturedSection` with a `CallToAction`.
+
+## Example
+
+```jsx
+import { Container, ImageCaption, Quote, Section } from "@fcongson/lagom-ui";
+
+export const Post = () => (
+  <>
+    <Section>
+      <Container>
+        <h1>Design Tokens To Dark Mode</h1>
+      </Container>
+    </Section>
+
+    <ImageCaption
+      image={
+        <img
+          src="/lead.jpg"
+          alt="Light and dark versions of the same page side by side"
+        />
+      }
+    />
+
+    <Section>
+      <Container>
+        <p>An opening paragraph that sets up the post.</p>
+      </Container>
+    </Section>
+
+    <Section>
+      <Container>
+        <h2>Design tokens</h2>
+        <p>Body text for this section.</p>
+        <Quote>
+          <p>A short quotation that supports the point.</p>
+        </Quote>
+        <p>More body text.</p>
+      </Container>
+    </Section>
+
+    <ImageCaption
+      image={
+        <img src="/figma.jpg" alt="Token sets in Tokens Studio for Figma" />
+      }
+      caption="Token sets in Tokens Studio."
+      emphasized
+    />
+
+    <Section>
+      <Container>
+        <h2>A closer look</h2>
+        <p>Explanation, then code.</p>
+        <pre>
+          <code>{`--lagom-semantic-color-fg-default: #111111;`}</code>
+        </pre>
+      </Container>
+    </Section>
+  </>
+);
+```
+
+## Guidelines
+
+- **Use plain `<h2>` and `<h3>` for headings in the text,** not `SectionHeader`. SectionHeader is centred and very large, made for landing-style sections.
+- **Start a new Section and Container at each `<h2>`.** That gives consistent space between sections.
+- **Keep images out of the text Containers.** Use `ImageCaption`, which brings its own Section and Container, between sections.
+- **Use `emphasized` for most article images,** and `fullwidth` sparingly.
+
+## Accessibility
+
+- **Headings in order:** one `h1` (the title), then `h2` for sections and `h3` within them. Screen reader users navigate long articles by heading.
+- **Alt text on every content image.** Captions add context but don't replace alt text.
+- **Quote attribution:** show who said it as visible text. See `Quote`.
+- **Code blocks:** use `<pre><code>`. Lagom styles them in the monospace font.
+
+## Related
+
+- [Page structure](?path=/docs/patterns-page-structure--docs)
+- `ImageCaption`, `Quote`

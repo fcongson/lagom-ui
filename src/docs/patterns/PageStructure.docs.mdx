@@ -1,0 +1,87 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta
+  title="Patterns/Page Structure"
+  summary="The rules every Lagom page follows: one h1 at the top, Section and Container bands for content, and full-bleed components placed directly in the page."
+/>
+
+# Page structure
+
+Every Lagom page is a stack of full-width bands. Follow these rules, then use one of the page patterns (landing page, article, or content page) as a starting point.
+
+## The rules
+
+1. **Start with the page title.** Use one of:
+   - a `Hero` with a `PageHeader` inside, for pages with a strong image
+   - a `PageHeader` on its own
+   - a plain `<h1>` in a `Section` and `Container`, for articles where the title sits with the text
+
+   Whichever you choose, the page has **exactly one `h1`**.
+
+2. **Put content in `Section` → `Container`.** Section is the full-width band (up to 1800px, with side padding). Container is the centred content column (up to 1120px).
+3. **Use one Section and Container per block of content.** Start a new pair for each heading group, rather than putting the whole page in one Container. Each Container adds 8rem of space below it, which separates the blocks.
+4. **Place full-bleed components directly in the page, not inside a Container:**
+   - `Hero`
+   - `FeaturedSection` (it includes its own Section and Container)
+   - `ImageCaption` with `fullwidth`
+5. **Use semantic tokens** for any colours in your own CSS, so dark mode works. See [Using Tokens](?path=/docs/design-tokens-using-tokens--docs).
+
+## Skeleton
+
+```jsx
+import {
+  Container,
+  FeaturedSection,
+  CallToAction,
+  PageHeader,
+  Section,
+} from "@fcongson/lagom-ui";
+
+export const Page = () => (
+  <>
+    <PageHeader>Page title</PageHeader>
+
+    <Section>
+      <Container>
+        <p>First block of content.</p>
+      </Container>
+    </Section>
+
+    <Section>
+      <Container>
+        <h2>A heading</h2>
+        <p>Second block of content.</p>
+      </Container>
+    </Section>
+
+    <FeaturedSection>
+      <CallToAction
+        header="What next?"
+        text="One sentence pointing to the next step."
+        actionLink="/next"
+        actionText="Go to the next page"
+      />
+    </FeaturedSection>
+  </>
+);
+```
+
+## Headings
+
+- **`PageHeader`:** the page title (`h1`). Centred and very large.
+- **`SectionHeader`:** a centred display heading (`h2`) for landing-style sections, and inside `CallToAction`.
+- **Plain `<h2>` and `<h3>`:** headings within body text, such as article sections. Lagom styles them globally, aligned with the text.
+- Don't skip levels. Under an `h2`, use `h3`.
+
+## Common mistakes
+
+- **Wrapping a `FeaturedSection` or `Hero` in a `Container`:** it can't reach full width.
+- **A `Container` without a `Section`:** it loses the side padding on small screens.
+- **A second `PageHeader`,** for example below a Hero that already has one.
+- **Hard-coded colours or spacing:** use tokens.
+
+## Page patterns
+
+- [Landing page](?path=/docs/patterns-landing-page--docs): an image, a short intro, and featured bands, each leading somewhere.
+- [Article](?path=/docs/patterns-article--docs): long-form text with images and quotes.
+- [Content page](?path=/docs/patterns-content-page--docs): a titled page of text sections, such as About.
