@@ -11,7 +11,7 @@ Lagom's docs are exposed through the Storybook MCP server (`@storybook/addon-mcp
 
 When answering questions about components or building UI with Lagom:
 
-1. Call `docs-list` to see what exists. Only recommend components that appear there. It also lists guides. Read **Getting Started** for setup questions, **Theming** for overrides and dark mode, and **Using Tokens** before writing CSS.
+1. Call `docs-list` to see what exists. Only recommend components that appear there. It also lists guides. Read **Getting Started** for setup questions, **Theming** for overrides and dark mode, **Using Tokens** before writing CSS, and **Patterns** before laying out a page.
 2. Call `docs-show` for a component before using it. Answer questions about props, usage, and variants from the docs, not by guessing from source.
 3. Before writing or editing stories, call `get-storybook-story-instructions`. After a visual change, use `stories-preview` to check it.
 
@@ -20,7 +20,7 @@ If the docs don't answer a question, say so instead of inventing an answer. Miss
 ## Rules for building UI with Lagom
 
 - **Only use exported components.** Import from `@fcongson/lagom-ui`. Don't recreate a component that already exists.
-- **Page structure:** pages are built from `PageHeader` or `Hero` at the top, then `Section` (full-width, max 1800px) containing `Container` (max 1120px) for content.
+- **Page structure:** pages are built from `PageHeader` or `Hero` at the top, then `Section` (full-width, max 1800px) containing `Container` (max 1120px) for content. Full-bleed components (`Hero`, `FeaturedSection`, full-width `ImageCaption`) go directly in the page, not in a Container. See **Patterns/Page Structure**.
 - **Use tokens, never raw values.** Use `--lagom-semantic-*` custom properties for colour (e.g. `--lagom-semantic-color-fg-muted`), and `--lagom-core-*` for spacing, type, and radii. Don't hard-code hex values, px spacing, or font stacks.
 - **Theming:** components read `--themed-*` custom properties first and fall back to `--lagom-*` tokens. Override `--themed-*` on `:root` or a wrapping element; don't override component class styles.
 - **Setup:** apps must import `@fcongson/lagom-ui/style.css` and a lagom-tokens theme (`css/theme/_light.css`, optionally `_dark.css`), and render inside `ThemeProvider`.

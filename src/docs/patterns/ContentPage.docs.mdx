@@ -1,0 +1,86 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta
+  title="Patterns/Content Page"
+  summary="A titled page of text sections, like About: a Hero with a PageHeader, Sections with h2 headings and paragraphs, a full-width image between topics, and a colour FeaturedSection to close."
+/>
+
+# Content page
+
+For pages like About or Uses: a titled page of a few text sections, ending with a way to get in touch or go further. This is how frankcongson.com's About page is built.
+
+## Structure
+
+1. **Title:** a `Hero` with a `PageHeader` inside. Use a plain `PageHeader` if there's no image.
+2. **Sections:** a `Section` and `Container` per topic, starting with a plain `<h2>`, then paragraphs. Long topics can span several Section and Container pairs.
+3. **Image break:** an `ImageCaption` with `fullwidth` between topics.
+4. **Close:** a colour `FeaturedSection` with a final note or a `CallToAction`.
+
+## Example
+
+```jsx
+import {
+  CallToAction,
+  Container,
+  FeaturedSection,
+  Hero,
+  ImageCaption,
+  PageHeader,
+  Section,
+} from "@fcongson/lagom-ui";
+
+export const About = () => (
+  <>
+    <Hero image={<img src="/portrait.jpg" alt="" />}>
+      <PageHeader>About.</PageHeader>
+    </Hero>
+
+    <Section>
+      <Container>
+        <h2>Hello, I'm Frank.</h2>
+        <p>A few paragraphs about you.</p>
+      </Container>
+    </Section>
+
+    <ImageCaption
+      image={
+        <img src="/desk.jpg" alt="A tidy desk with a laptop and notebook" />
+      }
+      fullwidth
+    />
+
+    <Section>
+      <Container>
+        <h2>What can you expect here?</h2>
+        <p>What the site covers.</p>
+      </Container>
+    </Section>
+
+    <FeaturedSection>
+      <CallToAction
+        header="Say hello."
+        text="I'd love to hear from you."
+        actionLink="/contact/"
+        actionText="Get in touch"
+      />
+    </FeaturedSection>
+  </>
+);
+```
+
+## Guidelines
+
+- **One topic per heading.** Keep sections short enough to scan.
+- **One image break** is usually enough. More, and the page reads like a gallery.
+- **End with somewhere to go,** rather than stopping at the last paragraph.
+
+## Accessibility
+
+- **The `PageHeader` in the Hero is the page's only `h1`.** Section headings are `h2`.
+- **Hero image:** if it's a portrait or shows the subject, describe it. If it's mood, use `alt=""`.
+- **Contrast:** check the `PageHeader` over the Hero image at every screen size.
+
+## Related
+
+- [Page structure](?path=/docs/patterns-page-structure--docs)
+- `Hero`, `PageHeader`, `ImageCaption`, `FeaturedSection`

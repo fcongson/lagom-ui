@@ -1,0 +1,77 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta
+  title="Patterns/Landing Page"
+  summary="A home or landing page: a Hero image, a short intro, then alternating image and colour FeaturedSections, each with one CallToAction."
+/>
+
+# Landing page
+
+For a home page or landing page that introduces you, then sends people to the main parts of the site. This is how the frankcongson.com home page is built.
+
+## Structure
+
+1. **`Hero`** with just an image, setting the mood.
+2. **Intro:** a `Section` and `Container` with the page's `<h1>` and one or two short paragraphs.
+3. **Featured bands:** one `FeaturedSection` per destination, each holding a single `CallToAction`. Alternate image backgrounds and colour backgrounds, so consecutive bands look different.
+
+## Example
+
+```jsx
+import {
+  CallToAction,
+  Container,
+  FeaturedSection,
+  Hero,
+  Section,
+} from "@fcongson/lagom-ui";
+
+export const Home = () => (
+  <>
+    <Hero image={<img src="/hero.jpg" alt="" />} />
+
+    <Section>
+      <Container>
+        <h1>Hello.</h1>
+        <p>A sentence or two about who you are and what's on this site.</p>
+      </Container>
+    </Section>
+
+    <FeaturedSection image={<img src="/camera.jpg" alt="" />} imageAsBackground>
+      <CallToAction
+        header="Photography."
+        text="Places I've been and things I've seen."
+        actionLink="/photography/"
+        actionText="See my photography"
+      />
+    </FeaturedSection>
+
+    <FeaturedSection>
+      <CallToAction
+        header="Work."
+        text="What I do, and how I do it."
+        actionLink="/work/"
+        actionText="Read about my work"
+      />
+    </FeaturedSection>
+  </>
+);
+```
+
+## Guidelines
+
+- **One action per band.** Each `CallToAction` should point to one destination.
+- **Short header and text.** A word or short phrase for the header, and one sentence of text.
+- **Alternate backgrounds:** image, colour, image. Two image bands in a row compete with each other.
+- **The page needs an `h1`.** The Hero here has no text, so the intro carries the `h1`. If you'd rather put the title over the image, use a `PageHeader` inside the Hero, and drop the intro's `h1`.
+
+## Accessibility
+
+- **Decorative images:** the Hero and band images here are decorative, so they use `alt=""`. If an image matters to the content, describe it.
+- **Text over images:** check contrast over each background image. The overlay is light and doesn't guarantee it (see `FeaturedSection`).
+- **Button labels:** make each `actionText` name the destination ("See my photography"), so a list of links makes sense out of context.
+
+## Related
+
+- [Page structure](?path=/docs/patterns-page-structure--docs)
+- `Hero`, `FeaturedSection`, `CallToAction`
