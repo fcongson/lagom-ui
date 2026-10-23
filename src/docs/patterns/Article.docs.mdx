@@ -1,4 +1,5 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+import * as PatternStories from "./Patterns.stories";
 
 <Meta
   title="Patterns/Article"
@@ -8,6 +9,12 @@ import { Meta } from "@storybook/addon-docs/blocks";
 # Article
 
 For blog posts and other long-form writing. This is how frankcongson.com's blog posts are built.
+
+## Preview
+
+A live example built with Lagom components. Scroll inside the frame to see the whole page, and use the toolbar's theme switch to see it in dark mode.
+
+<Canvas of={PatternStories.Article} />
 
 ## Structure
 
@@ -60,7 +67,7 @@ export const Post = () => (
       image={
         <img src="/figma.jpg" alt="Token sets in Tokens Studio for Figma" />
       }
-      caption="Token sets in Tokens Studio."
+      caption="A caption adds context, like a title or credit."
       emphasized
     />
 
