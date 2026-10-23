@@ -45,7 +45,8 @@
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "serve-storybook": "npx http-server storybook-static"
+    "serve-storybook": "npx http-server storybook-static",
+    "eval": "node evals/run.mjs"
   },
   "devDependencies": {
     "@babel/core": "^7.26.8",
