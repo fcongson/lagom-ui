@@ -8,8 +8,15 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-a11y",
     "@storybook/addon-webpack5-compiler-babel",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
+    // Serves an MCP endpoint at /mcp (locally and on Chromatic builds) so AI
+    // agents can look up components, docs, and stories.
+    "@storybook/addon-mcp",
   ],
+  features: {
+    // Generates the components manifest the MCP docs tools read from.
+    componentsManifest: true,
+  },
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
