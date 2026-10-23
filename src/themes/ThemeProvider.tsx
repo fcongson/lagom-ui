@@ -2,7 +2,6 @@ import { GrowthBookProvider } from "@growthbook/growthbook-react";
 import { useEffect, useState } from "react";
 import "../styles/GlobalStyle";
 import { NO_FOCUS_OUTLINE_CLASS } from "../styles/NoFocusOutline";
-import "../styles/resetr.css";
 import { growthbook } from "../utils/GrowthBook";
 import { ThemeContext } from "./ThemeContext";
 import { ThemeType } from "./createTheme";

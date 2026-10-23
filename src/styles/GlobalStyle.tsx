@@ -18,4 +18,7 @@
 // itself at its own app layout level, so this was redundant there anyway.
 // Consumers now choose and import their own lagom-tokens theme CSS
 // explicitly, same as they choose lagom-ui's own style.css.
+// The reset must load before GlobalStyle.css: rules with equal specificity
+// (e.g. `code, pre { font-family }`) are won by whichever loads last.
+import "./resetr.css";
 import "./GlobalStyle.css";
