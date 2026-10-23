@@ -1,5 +1,35 @@
 # @fcongson/lagom-ui
 
+## 1.1.0
+
+### Minor Changes
+
+- 8cf6c21: `LinkButton` now renders a single `<a>` (or your `Component`) with the button styles, instead of a `<button>` nested inside a link. Assistive tech now announces it as a link, and the markup is valid HTML. It looks the same.
+
+  Breaking for some consumers:
+
+  - CSS or tests that target `.lagom-link-button button` need to target `.lagom-link-button` instead.
+  - Its props are now `<a>` attributes, not `<button>` attributes.
+  - A custom `Component` now receives any extra props you pass (e.g. `aria-label`, `style`).
+
+  `LinkButton` no longer needs the GrowthBook provider.
+
+- 8cf6c21: `createTheme()` font overrides now apply everywhere:
+
+  - `core.fontFamilies.serif` → `Quote`
+  - `core.fontFamilies.monospace` → `code` and `pre`
+  - `core.fontFamilies.sansSerif` → body text and headings (previously only `Button`)
+  - `core.fontSizes.body` → body text (previously only `Button`)
+
+  If you already set these, they'll now take effect.
+
+### Patch Changes
+
+- 8cf6c21: `Button` no longer writes the experimental `icon` prop to the DOM as an attribute.
+- b41efa0: Document every component, prop, and theme type with JSDoc. Descriptions now appear in editor tooltips and Storybook's props tables.
+- 8cf6c21: Focus rings are now handled with CSS `:focus-visible` instead of a JavaScript keydown listener. They still show for keyboard focus and hide for mouse clicks, and they now also follow the browser's own heuristics (e.g. focus moved by script after a keypress). The `lagom-no-focus-outline` class is no longer added to `<html>`.
+- 8cf6c21: A `Section` with `backgroundColor` now pads its `Container` evenly top and bottom, as intended. The rule previously targeted the wrong class and never applied.
+
 ## 1.0.3
 
 ### Patch Changes
