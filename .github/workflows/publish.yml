@@ -14,21 +14,23 @@ jobs:
       contents: read
       packages: write
     env:
-      # .npmrc (committed at repo root) authenticates the @fcongson scope against
-      # npm.pkg.github.com via `${TOKEN}` for every registry request, not just
-      # publish - lagom-tokens is itself a private/scoped GitHub Packages
-      # dependency owned by a different repo, so `pnpm install` needs this too,
-      # not only `npm publish`. Uses the automatic per-run GITHUB_TOKEN rather
-      # than a manually-created PAT - both repos are owned by the same account,
-      # and lagom-tokens' package settings grant this repo read access
-      # (Package settings -> Manage Actions access -> lagom-ui).
+      # Authenticates the @fcongson scope against npm.pkg.github.com for every
+      # registry request, not just publish - lagom-tokens is itself a
+      # private/scoped GitHub Packages dependency owned by a different repo, so
+      # `pnpm install` needs this too, not only `npm publish`. pnpm ignores the
+      # committed .npmrc's `${TOKEN}` credential (it refuses env-expanded auth
+      # from repository-controlled config), so NODE_AUTH_TOKEN feeds setup-node's
+      # user-level .npmrc, which pnpm and npm both read. TOKEN stays for the
+      # committed .npmrc, which npm still honors. Uses the automatic per-run
+      # GITHUB_TOKEN rather than a manually-created PAT - both repos are owned
+      # by the same account, and lagom-tokens' package settings grant this repo
+      # read access (Package settings -> Manage Actions access -> lagom-ui).
       TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - name: Set Node.js
         uses: actions/setup-node@v4
         with:
