@@ -1,0 +1,9 @@
+# Netlify installs with the pnpm version from package.json's `packageManager`
+# (pnpm 12). pnpm 12 ignores the `${TOKEN}` credential in the committed .npmrc
+# ("repository-controlled registry credentials"), so the install gets a 401 from
+# GitHub Packages when fetching @fcongson/lagom-tokens. Pointing the user-level
+# npm config at .npmrc.netlify supplies the same credential in a place pnpm
+# trusts. TOKEN is the existing Netlify environment variable that .npmrc used.
+# Netlify checks the repo out at /opt/build/repo.
+[build.environment]
+  NPM_CONFIG_USERCONFIG = "/opt/build/repo/.npmrc.netlify"
