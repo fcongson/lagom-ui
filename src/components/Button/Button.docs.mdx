@@ -1,59 +1,65 @@
-import {
-  Meta,
-  Primary,
-  Controls,
-  Story,
-  Canvas,
-  Unstyled,
-} from "@storybook/addon-docs/blocks";
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
 import * as ButtonStories from "./Button.stories";
 
 <Meta of={ButtonStories} />
 
-<Unstyled>
-
 # Button
 
-Button is used to initiate actions on a page or form.
+Triggers an action on the current page, such as submitting a form, opening a dialog, or toggling something. It renders a native `<button>` and accepts all button attributes.
 
 <Primary />
 
-## Usage
+## When to use
 
-Buttons allow users to initiate an action or command when clicked or tapped. The button's label or text description indicates the purpose of the action to the user.
+- For actions that happen on the current page.
+- Use **one primary button** per view for the main action, and secondary buttons for the rest.
 
-## Props
+## When not to use
 
-<Controls />
+- **To navigate to another page or route:** use `LinkButton`. A button that navigates is announced as a button, so screen reader users won't expect the page to change.
+- **For inline links within text:** use a plain `<a>`.
 
 ## Variants
 
 ### Primary
 
-A button can be of primary importance.
+The main action in a view, such as "Save" or "Send". Set `primary`.
 
 <Canvas of={ButtonStories.Primary} />
 
 ### Secondary
 
-A button can be of secondary importance.
+The default. For other actions, such as "Cancel" or "Show more".
 
 <Canvas of={ButtonStories.Secondary} />
 
-### Custom
+## Accessibility
 
-A button can be a custom variant.
+**Handled by Button:**
 
-<Canvas of={ButtonStories.Custom} />
+- A native `<button>`: it's focusable, works with Enter and Space, and is announced as a button.
+- A visible focus ring for keyboard users only, via `:focus-visible`.
 
-## Experimental
+**Your responsibility:**
 
-These experimental features are hidden behind a feature flag.
+- **Label:** make it describe the action ("Save changes", not "Click here"). For icon-only buttons, add an `aria-label`.
+- **`type`:** inside a `<form>`, a button submits the form by default. Set `type="button"` for anything that shouldn't submit.
+- **Disabled state:** a `disabled` button currently looks the same as an enabled one, with a pointer cursor and hover lift. Prefer keeping the button enabled and explaining what's missing when it's pressed. If you do disable it, tell users why nearby.
+- **Motion:** the hover lift is a 2px movement and doesn't respond to `prefers-reduced-motion`.
 
-### With Icon
+## Do and don't
 
-A button can include an icon.
+- **Do** keep labels short, and start them with a verb.
+- **Do** use `--themed-component-button-*` properties to change colours or radius. See [Theming](?path=/docs/theming--docs).
+- **Don't** use more than one primary button in a group.
+- **Don't** restyle a button with inline `style` overrides. They bypass theming and dark mode.
+- **Don't** use the `icon` prop. It's experimental, behind a feature flag.
 
-<Canvas of={ButtonStories.WithExperimentalIcon} />
+## Props
 
-</Unstyled>
+<Controls />
+
+## Related
+
+- `LinkButton`: a link styled as a button, for navigation.
+- `CallToAction`: a heading, text, and action button.

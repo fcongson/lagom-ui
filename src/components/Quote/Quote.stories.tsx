@@ -6,13 +6,13 @@ import { Quote } from "./Quote";
 const meta: Meta = {
   title: "Components/Quote",
   component: Quote,
-  tags: ["autodocs"],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Quote>;
 
+/** A long quotation on its own. */
 export const Default: Story = {
   render: () => (
     <Section>
@@ -37,6 +37,7 @@ export const Default: Story = {
   ),
 };
 
+/** Quotes of different lengths, in the flow of body text. */
 export const WithContent: Story = {
   render: () => (
     <Section>

@@ -4,7 +4,6 @@ import { Button } from "./Button";
 const meta: Meta = {
   title: "Components/Button",
   component: Button,
-  // tags: ["autodocs"],
   args: {
     primary: true,
     children: "Button primary",
@@ -15,8 +14,10 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
+/** The main action in a view. Use one per group. */
 export const Primary: Story = {};
 
+/** The default, for actions other than the main one. */
 export const Secondary: Story = {
   ...Primary,
   args: {
@@ -25,7 +26,13 @@ export const Secondary: Story = {
   },
 };
 
+/**
+ * Restyles the button with inline `style`, which bypasses theming and dark
+ * mode. Kept as a visual test only. Use the `--themed-component-button-*`
+ * properties instead.
+ */
 export const Custom: Story = {
+  tags: ["!manifest"],
   ...Primary,
   args: {
     primary: false,

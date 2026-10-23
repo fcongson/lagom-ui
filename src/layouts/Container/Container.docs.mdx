@@ -1,0 +1,35 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as ContainerStories from "./Container.stories";
+
+<Meta of={ContainerStories} />
+
+# Container
+
+Centres content in a column up to 1120px wide, with a bottom margin to space consecutive blocks. Use it inside a `Section`.
+
+<Primary />
+
+## When to use
+
+- Inside every `Section`, to hold that section's content.
+
+## When not to use
+
+- **On its own, without a Section:** it won't get the page's side padding on small screens.
+- **For full-bleed content:** put full-width components (`ImageCaption` with `fullwidth`, `FeaturedSection`, `Hero`) directly in the page, not in a Container.
+
+## Spacing
+
+Each Container has an 8rem bottom margin. Set `marginNone` to remove it, for example when the next block should sit directly below. Inside a `Section` with `backgroundColor`, the Container is padded top and bottom instead.
+
+## Accessibility
+
+Container is a plain `<div>` with no semantics. Use headings and landmarks inside it for structure.
+
+## Props
+
+<Controls />
+
+## Related
+
+- `Section`: the full-width band that holds Containers.

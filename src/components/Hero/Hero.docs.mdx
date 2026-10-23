@@ -1,0 +1,65 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as HeroStories from "./Hero.stories";
+
+<Meta of={HeroStories} />
+
+# Hero
+
+A full-viewport-height image at the top of a page, optionally with content (usually a `PageHeader`) centred over it.
+
+<Primary />
+
+## When to use
+
+- At the top of a page that opens with a strong image, such as a photography post or a landing page.
+
+## When not to use
+
+- **Anywhere but the top of a page:** use `FeaturedSection` with an image background.
+- **For pages without a strong image:** use a plain `PageHeader`.
+- **More than once per page.**
+
+## Variants
+
+### Image only
+
+With no children, the image shows with no overlay.
+
+<Canvas of={HeroStories.Default} />
+
+### With a heading
+
+Put a `PageHeader` inside. An overlay is added behind it.
+
+<Canvas of={HeroStories.WithHeader} />
+
+## Sizing
+
+- **Height:** `--hero-height` (default `100vh`).
+- **Crop:** `--themed-component-hero-image-fit` (default `cover`).
+- **Space below:** `--themed-component-hero-margin-bottom` (8rem, or 4rem at 568px and below).
+
+See [Theming](?path=/docs/theming--docs).
+
+## Accessibility
+
+**Your responsibility:**
+
+- **One `h1`:** a `PageHeader` inside the Hero is the page's `h1`. Don't add another `PageHeader` below it.
+- **Text over the image:** the overlay is light (10% in light mode, 30% in dark mode). It doesn't guarantee contrast. Choose an image with a calm area behind the heading, and check contrast at every screen size, since `cover` crops differently on narrow screens.
+- **Image alt text:** if the image is mainly mood, give it `alt=""`. If it shows something the page is about, describe it.
+- **Height:** 100vh pushes all content below the fold. Consider a shorter `--hero-height` on content-heavy pages.
+
+## Do and don't
+
+- **Do** pair Hero with a short `PageHeader`.
+- **Don't** put long text or several actions over the image.
+
+## Props
+
+<Controls />
+
+## Related
+
+- `PageHeader`: the heading usually placed inside.
+- `FeaturedSection`: image bands further down a page.

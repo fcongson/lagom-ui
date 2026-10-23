@@ -5,13 +5,13 @@ import { FeaturedSection } from "./FeaturedSection";
 const meta: Meta = {
   title: "Components/Featured Section",
   component: FeaturedSection,
-  tags: ["autodocs"],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof FeaturedSection>;
 
+/** Opens part of a page with an image behind short content. */
 export const ImageAsBackground: Story = {
   args: {
     image: (
@@ -31,6 +31,7 @@ export const ImageAsBackground: Story = {
   },
 };
 
+/** An image band inset from the page edges, for a softer break. */
 export const ImageAsBackgroundFramed: Story = {
   args: {
     image: (
@@ -51,6 +52,7 @@ export const ImageAsBackgroundFramed: Story = {
   },
 };
 
+/** Highlights a short message on the default muted background. */
 export const ColorBackground: Story = {
   args: {
     children: (
@@ -62,6 +64,7 @@ export const ColorBackground: Story = {
   },
 };
 
+/** A coloured band inset from the page edges. */
 export const ColorBackgroundFramed: Story = {
   args: {
     children: (
@@ -74,6 +77,7 @@ export const ColorBackgroundFramed: Story = {
   },
 };
 
+/** A custom token background, with an image in the content. */
 export const ColorBackgroundWithImage: Story = {
   args: {
     backgroundColor: "var(--lagom-semantic-color-accent-bg)",
@@ -93,6 +97,7 @@ export const ColorBackgroundWithImage: Story = {
   },
 };
 
+/** The most common use: a highlighted prompt for the next step. */
 export const WithCallToAction: Story = {
   render: (args) => (
     <FeaturedSection {...args}>

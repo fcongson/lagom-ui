@@ -5,13 +5,13 @@ import { Section } from "./Section";
 const meta: Meta = {
   title: "Layouts/Section",
   component: Section,
-  tags: ["autodocs"],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Section>;
 
+/** Sections holding Containers, with dashed outlines. */
 export const Default: Story = {
   render: () => (
     <>

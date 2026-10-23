@@ -1,0 +1,52 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as SectionHeaderStories from "./SectionHeader.stories";
+
+<Meta of={SectionHeaderStories} />
+
+# SectionHeader
+
+A centred heading for a section of a page. It renders an `<h2>` and accepts all `<h2>` attributes.
+
+<Primary />
+
+## When to use
+
+- To start each major section of a page, under the page's `PageHeader`.
+
+## When not to use
+
+- **For the page title:** use `PageHeader` (`<h1>`).
+- **For sub-headings within a section:** use plain `<h3>` to `<h6>` elements, which Lagom styles globally.
+
+## Sizing
+
+The size steps down on smaller screens: header scale 2 by default, 3 at 992px and below, and 4 at 568px and below.
+
+Change it with `--themed-header-scale-*`, `--themed-component-section-header-color-text`, and `--themed-component-section-header-margin-bottom`. See [Theming](?path=/docs/theming--docs).
+
+## Accessibility
+
+**Handled by SectionHeader:**
+
+- A real `<h2>`, so screen reader users can jump between sections.
+
+**Your responsibility:**
+
+- **Heading order:** don't skip levels. Under a SectionHeader, use `<h3>`, not `<h4>`.
+- **Make it descriptive:** each heading should make sense on its own in a list of headings.
+
+## Do and don't
+
+- **Do** use one per major section.
+- **Don't** use a SectionHeader just for its size. If you need large text that isn't a heading, style a paragraph.
+
+## Props
+
+SectionHeader has no props of its own. It accepts all `<h2>` attributes, such as `id` for in-page links.
+
+<Controls />
+
+## Related
+
+- `PageHeader`: the page title.
+- `CallToAction`: uses a SectionHeader for its heading.
