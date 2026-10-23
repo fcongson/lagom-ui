@@ -1,0 +1,66 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as ImageCaptionStories from "./ImageCaption.stories";
+
+<Meta of={ImageCaptionStories} />
+
+# ImageCaption
+
+An image in a `<figure>`, with an optional caption. By default it sits in the content column. `emphasized` and `fullwidth` make it wider.
+
+<Primary />
+
+## When to use
+
+- For images within an article or page, with or without a caption.
+
+## When not to use
+
+- **For a background image behind text:** use `FeaturedSection` or `Hero`.
+- **For decorative images:** use a plain `<img alt="">`, since a figure implies content.
+
+## Variants
+
+### Default
+
+Contained in the content column, up to 1120px wide.
+
+<Canvas of={ImageCaptionStories.Default} />
+
+### Emphasized
+
+130% of the content column on screens 1456px and wider, so it extends past the text. Narrower screens show it at the default width. Takes precedence over `fullwidth`.
+
+<Canvas of={ImageCaptionStories.Emphasized} />
+
+### Full width
+
+Spans the full viewport width, capped at the viewport height. For the most striking images.
+
+<Canvas of={ImageCaptionStories.Fullwidth} />
+
+## Accessibility
+
+**Handled by ImageCaption:**
+
+- `<figure>` and `<figcaption>` semantics, so the caption is associated with the image.
+- Caption colour (`fg-subtle`): 7.6:1 contrast on the default background in light mode, 8.2:1 in dark.
+
+**Your responsibility:**
+
+- **Alt text:** the `image` needs its own `alt`. The caption doesn't replace it. Alt text describes what's in the image; the caption adds context, such as a title, credit, or comment.
+- **Caption size:** captions are 14px italic. Keep them short.
+
+## Do and don't
+
+- **Do** pass an `<img>` with `alt` as `image`.
+- **Do** use `emphasized` or `fullwidth` sparingly, so they stand out.
+- **Don't** repeat the alt text in the caption.
+
+## Props
+
+<Controls />
+
+## Related
+
+- `FeaturedSection`: an image behind content.
+- `Hero`: a full-height image at the top of a page.

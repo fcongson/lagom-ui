@@ -1,0 +1,52 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as SectionStories from "./Section.stories";
+
+<Meta of={SectionStories} />
+
+# Section
+
+The outer band for a region of a page: a `<section>` up to 1800px wide, with side padding that respects device safe areas. Put a `Container` inside for the content column.
+
+<Primary />
+
+## Page structure
+
+Lagom pages follow one structure:
+
+```jsx
+<PageHeader>Title</PageHeader>
+<Section>
+  <Container>…content…</Container>
+</Section>
+<Section>
+  <Container>…more content…</Container>
+</Section>
+```
+
+## When to use
+
+- For each region of a page, holding a `Container`.
+
+## When not to use
+
+- **For full-width highlighted bands:** use `FeaturedSection`, which includes its own Section and Container.
+
+## Background colour
+
+Set `backgroundColor` to colour the band. The Container inside is then padded top and bottom (8rem), so the colour extends evenly. Use a semantic token, e.g. `var(--lagom-semantic-color-bg-muted)`, so it adapts to dark mode.
+
+## Accessibility
+
+**Your responsibility:**
+
+- **Headings:** `<section>` only becomes a landmark when it has an accessible name. Start a section with a heading (e.g. `SectionHeader`), and link them with `aria-labelledby` if you want it listed as a region.
+- **Background colour:** check that text still meets 4.5:1 against a custom `backgroundColor`, in light and dark modes.
+
+## Props
+
+<Controls />
+
+## Related
+
+- `Container`: the content column inside a Section.
+- `FeaturedSection`: a highlighted Section with a colour or image background.

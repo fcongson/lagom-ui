@@ -1,0 +1,63 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as QuoteStories from "./Quote.stories";
+
+<Meta of={QuoteStories} />
+
+# Quote
+
+A quotation set apart from body text, in an italic serif with a left border. It renders a `<blockquote>` and accepts all `<blockquote>` attributes.
+
+<Primary />
+
+## When to use
+
+- For quotations from people or sources, within an article.
+- For a pull quote that highlights a line from the text.
+
+## When not to use
+
+- **For indenting or emphasising text that isn't a quote:** use other styling. Screen readers announce a blockquote as a quotation.
+
+## Variants
+
+Quote has one style. On screens 1456px and wider, it extends past the text column (130% wide) for emphasis. At 992px and below, it uses body text size with a thinner border.
+
+The quote's size depends on its content:
+
+<Canvas of={QuoteStories.WithContent} />
+
+## Accessibility
+
+**Handled by Quote:**
+
+- A `<blockquote>` element, so assistive tech identifies it as a quotation.
+- Text in `fg-muted`: 15.9:1 contrast on the default background in light mode, 13.6:1 in dark.
+
+**Your responsibility:**
+
+- **Content in elements:** put the quote in `<p>` elements, not loose text.
+- **Attribution:** show who said it as visible text. Put the attribution outside the blockquote, e.g. wrap both in a `<figure>` with a `<figcaption>`. The `cite` attribute (a source URL) isn't shown or announced.
+
+```jsx
+<figure>
+  <Quote cite="https://example.com/interview">
+    <p>Just the right amount.</p>
+  </Quote>
+  <figcaption>— Someone, in an interview</figcaption>
+</figure>
+```
+
+## Do and don't
+
+- **Do** keep pull quotes short. One or two sentences hold attention.
+- **Don't** use Quote for text that isn't a quotation.
+
+## Props
+
+Quote has no props of its own. It accepts all `<blockquote>` attributes, such as `cite`.
+
+<Controls />
+
+## Related
+
+- `ImageCaption`: uses the same `<figure>` and `<figcaption>` pattern.

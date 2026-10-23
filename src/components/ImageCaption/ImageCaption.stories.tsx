@@ -12,7 +12,6 @@ const image = (
 const meta: Meta = {
   title: "Components/Image Caption",
   component: ImageCaption,
-  tags: ["autodocs"],
   args: {
     image,
     caption: "Default. Lorem ipsum dolor sit amet",
@@ -23,8 +22,10 @@ export default meta;
 
 type Story = StoryObj<typeof ImageCaption>;
 
+/** An image in the content column. For most article images. */
 export const Default: Story = {};
 
+/** Wider than the text on large screens, to draw attention. */
 export const Emphasized: Story = {
   args: {
     caption: "Emphasized. Lorem ipsum dolor sit amet",
@@ -32,6 +33,7 @@ export const Emphasized: Story = {
   },
 };
 
+/** Edge to edge, for the most striking images. */
 export const Fullwidth: Story = {
   args: {
     caption: "Fullwidth. Lorem ipsum dolor sit amet",

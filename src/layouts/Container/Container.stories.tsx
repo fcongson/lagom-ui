@@ -5,13 +5,13 @@ import { Container } from "./Container";
 const meta: Meta = {
   title: "Layouts/Container",
   component: Container,
-  tags: ["autodocs"],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Container>;
 
+/** Content columns inside Sections, with dashed outlines. */
 export const Default: Story = {
   render: () => (
     <>

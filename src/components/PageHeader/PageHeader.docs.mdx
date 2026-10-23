@@ -1,0 +1,52 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as PageHeaderStories from "./PageHeader.stories";
+
+<Meta of={PageHeaderStories} />
+
+# PageHeader
+
+The page's main heading. It renders an `<h1>`, centred and large, and accepts all `<h1>` attributes.
+
+<Primary />
+
+## When to use
+
+- Once per page, as its title, either at the top of the page or inside a `Hero`.
+
+## When not to use
+
+- **For headings within the page:** use `SectionHeader` (`<h2>`).
+- **More than once per page.**
+
+## Sizing
+
+The size steps down on smaller screens: header scale 1 by default, 2 at 992px and below, and 3 at 568px and below.
+
+Change the scale with `--themed-header-scale-*`, the colour with `--themed-component-page-header-color-text`, and the space below with `--themed-component-page-header-margin-bottom`. See [Theming](?path=/docs/theming--docs).
+
+## Accessibility
+
+**Handled by PageHeader:**
+
+- A real `<h1>`, which screen reader users rely on to find the page title.
+
+**Your responsibility:**
+
+- **Exactly one per page.** If the page uses a `Hero` with a PageHeader inside, that's the `h1`.
+- **Match the document title:** the heading and the page's `<title>` should say the same thing.
+
+## Do and don't
+
+- **Do** keep it short. It's very large on desktop.
+- **Don't** style another element to look like a PageHeader. Use the component, so the heading structure stays correct.
+
+## Props
+
+PageHeader has no props of its own. It accepts all `<h1>` attributes, such as `id` and `className`.
+
+<Controls />
+
+## Related
+
+- `SectionHeader`: headings within the page.
+- `Hero`: a full-height image, usually with a PageHeader inside.

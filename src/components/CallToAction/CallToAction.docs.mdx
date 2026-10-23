@@ -1,0 +1,56 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as CallToActionStories from "./CallToAction.stories";
+
+<Meta of={CallToActionStories} />
+
+# CallToAction
+
+A centred block with a heading, a short line of text, and one action button. It prompts the reader's next step at the end of a section or page.
+
+<Primary />
+
+## When to use
+
+- At the end of a page or long section, to point readers to one next step, such as "Get in touch" or "See more work".
+- Inside a `FeaturedSection`, to give the prompt its own band.
+
+## When not to use
+
+- **For more than one action:** CallToAction has one button. Write your own layout with `SectionHeader`, text, and several `LinkButton`s.
+- **For an action that doesn't navigate:** the button is a `LinkButton`, so it always navigates. Use `Button` in your own layout instead.
+- **Repeatedly on one page:** one or two prompts are enough.
+
+## How it renders
+
+- `header` → a `SectionHeader` (`<h2>`)
+- `text` → a centred `<p>`
+- `actionLink` and `actionText` → a secondary `LinkButton`. It only renders when **both** are set.
+
+Pass `LinkComponent` to use your router's link component for the button.
+
+## Accessibility
+
+**Handled by CallToAction:**
+
+- A real heading, paragraph, and link, in reading order.
+
+**Your responsibility:**
+
+- **Heading level:** the heading is always an `<h2>`. Use it where an `h2` fits the page outline, not under an `h3`.
+- **Button label:** make `actionText` describe the destination ("See my photography"). "Click here" or "Learn more" doesn't make sense out of context.
+
+## Do and don't
+
+- **Do** keep `text` to a sentence or two.
+- **Do** make the header and button text tell the same story.
+- **Don't** set `actionLink` without `actionText`, or the reverse. The button won't render.
+
+## Props
+
+<Controls />
+
+## Related
+
+- `FeaturedSection`: a highlighted band, often wrapping a CallToAction.
+- `LinkButton`: the button inside it.
+- `SectionHeader`: the heading inside it.

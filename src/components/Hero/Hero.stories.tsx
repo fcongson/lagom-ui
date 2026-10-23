@@ -5,7 +5,6 @@ import { Hero } from "./Hero";
 const meta: Meta = {
   title: "Components/Hero",
   component: Hero,
-  tags: ["autodocs"],
   args: {
     image: (
       <img
@@ -21,8 +20,10 @@ export default meta;
 
 type Story = StoryObj<typeof Hero>;
 
+/** An image-only opener, with no overlay. */
 export const Default: Story = {};
 
+/** The usual opener: the page title centred over the image. */
 export const WithHeader: Story = {
   render: (args) => (
     <Hero {...args}>

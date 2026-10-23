@@ -1,0 +1,76 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as FeaturedSectionStories from "./FeaturedSection.stories";
+
+<Meta of={FeaturedSectionStories} />
+
+# FeaturedSection
+
+A full-width band that highlights content, with a colour background (the default) or an image background. Content is centred in a column up to 800px wide.
+
+<Primary />
+
+## When to use
+
+- To break up a long page with a highlighted message, quote, or `CallToAction`.
+- To introduce a part of a page with an image behind a short heading.
+
+## When not to use
+
+- **For the top of a page:** use `Hero` (full-height image) or `PageHeader`.
+- **For regular content:** use `Section` and `Container`. A page full of featured bands has nothing that stands out.
+- **For long text:** content is centred, which is hard to read beyond a few lines.
+
+## Variants
+
+### Colour background
+
+The default. It uses `--lagom-semantic-color-bg-muted`, with generous vertical padding (12rem, 8rem at 992px and below).
+
+<Canvas of={FeaturedSectionStories.ColorBackground} />
+
+Set `backgroundColor` to use another colour. Use a semantic token so it adapts to dark mode:
+
+<Canvas of={FeaturedSectionStories.ColorBackgroundWithImage} />
+
+### Image background
+
+Set both `image` and `imageAsBackground`. The image covers the band, with an overlay behind the content. Without `imageAsBackground`, `image` is ignored.
+
+<Canvas of={FeaturedSectionStories.ImageAsBackground} />
+
+### Framed
+
+Set `framed` to inset the band from the page edges and round its corners. It works with either background.
+
+<Canvas of={FeaturedSectionStories.ColorBackgroundFramed} />
+<Canvas of={FeaturedSectionStories.ImageAsBackgroundFramed} />
+
+### With a CallToAction
+
+<Canvas of={FeaturedSectionStories.WithCallToAction} />
+
+## Accessibility
+
+**Your responsibility:**
+
+- **Text over images:** the overlay is light (10% in light mode, 30% in dark mode). It doesn't guarantee readable contrast. Choose calm, low-detail images, and check that text meets 4.5:1 (3:1 for large text) at every screen size.
+- **Background image alt text:** a background image is usually decorative, so give it `alt=""`. If it carries meaning, describe it in the content too.
+- **Custom `backgroundColor`:** check that body text still meets 4.5:1 against it in both light and dark modes.
+- **Structure:** FeaturedSection doesn't add a heading or landmark. Put a heading inside when the band starts a new topic.
+
+## Do and don't
+
+- **Do** use semantic colour tokens for `backgroundColor`, e.g. `var(--lagom-semantic-color-accent-bg)`.
+- **Do** keep the content short: a heading, a sentence, and maybe one action.
+- **Don't** put `fg-subtle` text on a `bg-subtle` background. It's only 3.9:1 in light mode.
+- **Don't** stack several featured sections in a row.
+
+## Props
+
+<Controls />
+
+## Related
+
+- `Hero`: a full-height image for the top of a page.
+- `CallToAction`: the usual content for a featured band.
+- `Section`: plain bands for regular content.

@@ -48,6 +48,8 @@ If the docs don't answer a question, say so instead of inventing an answer. Miss
   - Give every component and prop a JSDoc comment. These feed the Controls table and the MCP manifest. Start each component description with a one-line summary (Storybook drops `@summary` tags with react-docgen-typescript).
   - Set `component` in each story file's `meta`, so the component's docs and props are picked up.
   - Pass components to a story through `render`, not as JSX in `args`. JSX in `args` leaks relative imports into the manifest.
+  - Each component's `<Name>.docs.mdx` uses the same sections: summary, `<Primary />`, When to use, When not to use, Variants (each with `<Canvas>`), Accessibility (what the component handles, and what's the consumer's responsibility), Do and don't, Props (`<Controls />`), Related. Don't also add the `autodocs` tag.
+  - Give each story a one-line JSDoc (60 characters or fewer) saying why you'd use it. Tag stories that show an anti-pattern (like inline `style` overrides) with `!manifest`.
 - **Docs pages:** guides live in `src/docs/*.docs.mdx`. Give each one `<Meta title="…" summary="…" />`, and write values out in the MDX: the manifest can't see values imported from modules. Use lists, not Markdown tables: Storybook's MDX doesn't render GitHub-style tables without `remark-gfm`, which isn't installed.
 - **Manifest exclusions:** stories with no component (visual references like the token galleries) use `tags: ["!manifest"]`, so they don't show up as broken entries for agents.
 - **Global CSS order matters:** `resetr.css` must load before `GlobalStyle.css` (see `src/styles/GlobalStyle.tsx`).

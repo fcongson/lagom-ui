@@ -1,0 +1,73 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as LinkButtonStories from "./LinkButton.stories";
+
+<Meta of={LinkButtonStories} />
+
+# LinkButton
+
+Navigates to another page or route, styled as a button. It renders a single `<a>` by default, or your framework's link component via `Component`.
+
+<Primary />
+
+## When to use
+
+- For navigation that should stand out as a call to action, such as "Read the case study" or "View all posts".
+
+## When not to use
+
+- **For actions on the current page** (submitting, opening, toggling): use `Button`.
+- **For links within body text:** use a plain `<a>`. A row of button-styled links competes for attention.
+
+## Variants
+
+### Primary
+
+The main destination in a view. Set `primary`.
+
+<Canvas of={LinkButtonStories.Primary} />
+
+### Secondary
+
+The default, for other destinations.
+
+<Canvas of={LinkButtonStories.Secondary} />
+
+## Framework links
+
+Pass your router's link component as `Component` for client-side navigation. It receives `to`, `className`, `children`, and any other props you pass to `LinkButton`:
+
+```jsx
+import { Link } from "gatsby";
+
+<LinkButton to="/about" Component={Link}>
+  About me
+</LinkButton>;
+```
+
+## Accessibility
+
+**Handled by LinkButton:**
+
+- A single link element: one tab stop, announced as a link, and activated with Enter.
+- A focus ring for keyboard users only.
+
+**Your responsibility:**
+
+- **Label:** make it describe the destination. Screen reader users often browse a list of links out of context, so avoid "Click here" or "Learn more".
+- **New tabs:** if you open the link in a new tab (`target="_blank"`), say so in the label or with visually hidden text.
+- **Custom `Component`:** it must render an `<a>` with an `href`, and pass through `className` and other props. Otherwise the styles and accessibility are lost.
+
+## Do and don't
+
+- **Do** use LinkButton for navigation, and Button for actions. Users expect different behaviour from each.
+- **Do** use `primary` for just one destination in a group.
+- **Don't** restyle a link with inline `style` overrides. Use the `--themed-component-button-*` properties. See [Theming](?path=/docs/theming--docs).
+
+## Props
+
+<Controls />
+
+## Related
+
+- `Button`: for actions on the current page.
+- `CallToAction`: uses a LinkButton for its action.
