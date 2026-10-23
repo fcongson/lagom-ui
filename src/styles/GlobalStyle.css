@@ -2,7 +2,9 @@
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
-  background: var(--lagom-core-colors-olive-lighter40); /* WebKit/Blink Browsers */
+  background: var(
+    --lagom-core-colors-olive-lighter40
+  ); /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
   background: var(--lagom-core-colors-olive-lighter40); /* Gecko Browsers */
@@ -29,8 +31,15 @@ body {
   background-color: var(--lagom-semantic-color-bg-default);
   color: var(--lagom-semantic-color-fg-default);
   line-height: var(--lagom-core-line-heights-body);
-  font-family: var(--lagom-core-font-families-body);
-  font-size: var(--lagom-core-font-sizes-body);
+  /* --themed-* values come from createTheme() and fall back to the tokens. */
+  font-family: var(
+    --themed-core-font-families-sans-serif,
+    var(--lagom-core-font-families-body)
+  );
+  font-size: var(
+    --themed-core-font-sizes-body,
+    var(--lagom-core-font-sizes-body)
+  );
 }
 
 /* typography */
@@ -54,7 +63,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--lagom-core-font-families-heading);
+  font-family: var(
+    --themed-core-font-families-sans-serif,
+    var(--lagom-core-font-families-heading)
+  );
   font-weight: var(--lagom-core-font-weights-heading-bold);
   margin-bottom: 1rem;
 }
@@ -97,9 +109,17 @@ ol li {
 
 code,
 pre {
-  font-family: var(--lagom-core-font-families-monospace);
+  font-family: var(
+    --themed-core-font-families-monospace,
+    var(--lagom-core-font-families-monospace)
+  );
   font-weight: var(--lagom-core-font-weights-body-regular);
-  background: hsla(111, 7%, 80%, 0.5); /* var(--lagom-core-colors-olive-lighter40); */
+  background: hsla(
+    111,
+    7%,
+    80%,
+    0.5
+  ); /* var(--lagom-core-colors-olive-lighter40); */
 }
 
 pre code {

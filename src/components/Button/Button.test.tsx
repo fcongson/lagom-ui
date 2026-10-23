@@ -19,6 +19,14 @@ describe("Button", () => {
     );
     expect(screen.getAllByRole("button")).toMatchSnapshot();
   });
+  test("Doesn't pass the experimental icon prop to the DOM", () => {
+    render(
+      <MockGrowthBookProvider>
+        <Button icon="🚀">Text</Button>
+      </MockGrowthBookProvider>,
+    );
+    expect(screen.getByRole("button").hasAttribute("icon")).toBe(false);
+  });
   test("Renders secondary", () => {
     render(
       <MockGrowthBookProvider>

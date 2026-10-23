@@ -1,34 +1,53 @@
 import { render, screen } from "@testing-library/react";
-import { MockGrowthBookProvider } from "../../test-utils/growthbook-mock";
 import { LinkButton } from "./LinkButton";
 
 describe("LinkButton", () => {
   test("Renders", () => {
-    render(
-      <MockGrowthBookProvider>
-        <LinkButton to="#">Text</LinkButton>
-      </MockGrowthBookProvider>,
-    );
-    expect(screen.getAllByRole("button")).toMatchSnapshot();
+    render(<LinkButton to="#">Text</LinkButton>);
+    expect(screen.getAllByRole("link")).toMatchSnapshot();
   });
   test("Renders primary", () => {
     render(
-      <MockGrowthBookProvider>
-        <LinkButton to="#" primary>
-          Text
-        </LinkButton>
-      </MockGrowthBookProvider>,
+      <LinkButton to="#" primary>
+        Text
+      </LinkButton>,
     );
-    expect(screen.getAllByRole("button")).toMatchSnapshot();
+    expect(screen.getAllByRole("link")).toMatchSnapshot();
   });
   test("Renders secondary", () => {
     render(
-      <MockGrowthBookProvider>
-        <LinkButton to="#" primary={false}>
-          Text
-        </LinkButton>
-      </MockGrowthBookProvider>,
+      <LinkButton to="#" primary={false}>
+        Text
+      </LinkButton>,
     );
-    expect(screen.getAllByRole("button")).toMatchSnapshot();
+    expect(screen.getAllByRole("link")).toMatchSnapshot();
+  });
+  test("Renders a single link with no nested button", () => {
+    render(<LinkButton to="/about">About</LinkButton>);
+    const link = screen.getByRole("link", { name: "About" });
+    expect(link.getAttribute("href")).toBe("/about");
+    expect(screen.queryByRole("button")).toBeNull();
+  });
+  test("Renders a framework link component with props passed through", () => {
+    const FrameworkLink = ({
+      to,
+      children,
+      ...props
+    }: { to: string } & React.ComponentPropsWithoutRef<"a">) => (
+      <a data-framework-link href={to} {...props}>
+        {children}
+      </a>
+    );
+    render(
+      <LinkButton to="/posts" Component={FrameworkLink} aria-label="All posts">
+        Posts
+      </LinkButton>,
+    );
+    const link = screen.getByRole("link", { name: "All posts" });
+    expect(link.hasAttribute("data-framework-link")).toBe(true);
+    expect(link.getAttribute("href")).toBe("/posts");
+    expect(link.classList).toContain("lagom-link-button");
+    expect(link.classList).toContain("lagom-button");
+    expect(screen.queryByRole("button")).toBeNull();
   });
 });

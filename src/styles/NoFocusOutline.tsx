@@ -1,7 +1,3 @@
-// Side-effect only: see NoFocusOutline.css for the actual rule. The class
-// that activates it is toggled on document.documentElement by ThemeProvider
-// (previously a styled-components createGlobalStyle keyed off a boolean
-// prop).
+// Side-effect only: hides the focus ring for pointer focus while keeping it
+// for keyboard focus, using :focus-visible. See NoFocusOutline.css.
 import "./NoFocusOutline.css";
-
-export const NO_FOCUS_OUTLINE_CLASS = "lagom-no-focus-outline";

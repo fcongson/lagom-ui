@@ -1,8 +1,20 @@
 import clsx from "clsx";
-import { Button } from "../Button";
+import "../Button/Button.css";
 import "./LinkButton.css";
 
-interface LinkButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+/**
+ * Props a framework link component receives from `LinkButton`.
+ */
+export type LinkButtonComponentProps = {
+  to: string;
+  className?: string;
+  children?: React.ReactNode;
+} & Omit<React.ComponentPropsWithoutRef<"a">, "href">;
+
+interface LinkButtonProps extends Omit<
+  React.ComponentPropsWithoutRef<"a">,
+  "href"
+> {
   /**
    * Class name(s) added to the link element.
    */
@@ -23,22 +35,19 @@ interface LinkButtonProps extends React.ComponentPropsWithoutRef<"button"> {
    */
   children?: React.ReactNode;
   /**
-   * A framework link component (e.g. Gatsby's or Next's `Link`) to render
-   * instead of a plain `<a>`, for client-side routing. It receives `to`,
-   * `className`, and `children`.
+   * A framework link component (e.g. Gatsby's `Link`) to render instead of a
+   * plain `<a>`, for client-side routing. It receives `to`, `className`,
+   * `children`, and any other props passed to `LinkButton`.
    */
-  Component?: React.ComponentType<{
-    to: string;
-    className?: string;
-    children?: React.ReactNode;
-  }>;
+  Component?: React.ComponentType<LinkButtonComponentProps>;
 }
 
 /**
  * Navigates to a page or route, styled as a button.
  *
- * A link styled as a button, for navigating to another page or route. Renders
- * an `<a>` by default, or your framework's link component via `Component`.
+ * A link styled as a button. Renders a single `<a>` by default, or your
+ * framework's link component via `Component`. It's announced as a link and
+ * takes one tab stop. Accepts all `<a>` attributes except `href` (use `to`).
  *
  * For actions that don't navigate, use `Button`.
  *
@@ -52,21 +61,24 @@ export const LinkButton: React.FunctionComponent<LinkButtonProps> = ({
   Component,
   ...restProps
 }) => {
+  const classNames = clsx(
+    "lagom-link-button",
+    "lagom-button",
+    primary ? "lagom-button--primary" : "lagom-button--secondary",
+    className,
+  );
+
   if (Component) {
     return (
-      <Component className={clsx("lagom-link-button", className)} to={to}>
-        <Button primary={primary} {...restProps}>
-          {children}
-        </Button>
+      <Component className={classNames} to={to} {...restProps}>
+        {children}
       </Component>
     );
   }
 
   return (
-    <a className={clsx("lagom-link-button", className)} href={to}>
-      <Button primary={primary} {...restProps}>
-        {children}
-      </Button>
+    <a className={classNames} href={to} {...restProps}>
+      {children}
     </a>
   );
 };

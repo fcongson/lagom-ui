@@ -2,30 +2,33 @@
 
 exports[`LinkButton Renders 1`] = `
 [
-  <button
-    class="lagom-button lagom-button--secondary"
+  <a
+    class="lagom-link-button lagom-button lagom-button--secondary"
+    href="#"
   >
     Text
-  </button>,
+  </a>,
 ]
 `;
 
 exports[`LinkButton Renders primary 1`] = `
 [
-  <button
-    class="lagom-button lagom-button--primary"
+  <a
+    class="lagom-link-button lagom-button lagom-button--primary"
+    href="#"
   >
     Text
-  </button>,
+  </a>,
 ]
 `;
 
 exports[`LinkButton Renders secondary 1`] = `
 [
-  <button
-    class="lagom-button lagom-button--secondary"
+  <a
+    class="lagom-link-button lagom-button lagom-button--secondary"
+    href="#"
   >
     Text
-  </button>,
+  </a>,
 ]
 `;

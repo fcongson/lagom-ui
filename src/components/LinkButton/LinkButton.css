@@ -1,3 +1,7 @@
-.lagom-link-button {
-  display: contents;
+/* LinkButton is a single <a> carrying the .lagom-button classes. The button
+   classes already override the global link colour, padding, and border.
+   The global a:hover rule is more specific than .lagom-button's border, so
+   reset its 2px bottom border here to keep the button's border even. */
+.lagom-link-button.lagom-button:hover {
+  border-bottom-width: 1px;
 }

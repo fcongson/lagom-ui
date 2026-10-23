@@ -68,7 +68,7 @@ interface ButtonPropsExperimental {
  */
 export const Button: React.FunctionComponent<
   ButtonProps & ButtonPropsExperimental
-> = ({ children, className, primary = false, ...restProps }) => {
+> = ({ children, className, primary = false, icon, ...restProps }) => {
   const enabled = useFeatureIsOn("icon-button");
 
   return (
@@ -80,9 +80,7 @@ export const Button: React.FunctionComponent<
       )}
       {...restProps}
     >
-      {enabled && restProps.icon && (
-        <span className="lagom-button__icon">{restProps.icon}</span>
-      )}
+      {enabled && icon && <span className="lagom-button__icon">{icon}</span>}
       {children}
     </button>
   );
