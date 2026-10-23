@@ -3,6 +3,7 @@
 ---
 
 `createTheme()` font overrides now apply everywhere:
+
 - `core.fontFamilies.serif` → `Quote`
 - `core.fontFamilies.monospace` → `code` and `pre`
 - `core.fontFamilies.sansSerif` → body text and headings (previously only `Button`)
