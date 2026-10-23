@@ -2,8 +2,13 @@ import { Meta, StoryObj } from "@storybook/react-webpack5";
 import AboutMdx from "./About.mdx";
 import { Markdown } from "./utils/Markdown";
 
+/**
+ * Visual reference for people. Excluded from the AI components manifest:
+ * it has no component, and agents get this information from the docs pages.
+ */
 const meta: Meta = {
   title: "About",
+  tags: ["!manifest"],
 };
 
 export default meta;

@@ -10,16 +10,23 @@ Ships as dual ESM + CJS (Node >= 20), with `react`/`react-dom` (18 or 19) as pee
 
 ## Install
 
-`@fcongson/lagom-ui` and its `@fcongson/lagom-tokens` dependency are published to GitHub Packages, so point the `@fcongson` scope at that registry (e.g. in your project's `.npmrc`) with a token that can read packages:
+`@fcongson/lagom-ui` and its `@fcongson/lagom-tokens` dependency are published to GitHub Packages. Point the `@fcongson` scope at that registry in your project's `.npmrc`:
 
 ```
 @fcongson:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${TOKEN}
+```
+
+Then add a GitHub token with `read:packages` to your **user-level** `~/.npmrc`. pnpm 12 ignores credentials in a project's `.npmrc`, including `${TOKEN}`-style variables.
+
+```
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
 ```
 
 ```
-npm install @fcongson/lagom-ui @fcongson/lagom-tokens
+pnpm add @fcongson/lagom-ui @fcongson/lagom-tokens
 ```
+
+The Storybook's **Getting Started** page also covers CI and hosting (GitHub Actions, Netlify).
 
 ## Usage
 
@@ -54,7 +61,9 @@ Components read `--themed-*` CSS custom properties first and fall back to the `-
 
 ## Development
 
-Uses pnpm. Building requires Node >= 22.18 (tsdown's requirement), even though the published package supports Node >= 20.
+Uses pnpm 12 (pinned by `packageManager`). Building requires Node >= 22.18 (tsdown's requirement), even though the published package supports Node >= 20.
+
+`pnpm install` fetches lagom-tokens from GitHub Packages, so it needs the same user-level token as [Install](#install). CI supplies it via `actions/setup-node` and `NODE_AUTH_TOKEN`, and Netlify via `NPM_CONFIG_USERCONFIG` (see `netlify.toml`).
 
 ```
 pnpm install

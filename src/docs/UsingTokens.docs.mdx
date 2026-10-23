@@ -1,0 +1,85 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta
+  title="Design Tokens/Using Tokens"
+  summary="Which lagom-tokens custom properties to use in your own CSS: semantic colours that switch with light and dark, and core tokens for spacing, type, and radii."
+/>
+
+# Using tokens
+
+lagom-tokens provides every design value as a CSS custom property. Use them in your own CSS instead of hard-coded values, so your styles match Lagom and follow light and dark mode.
+
+## Token layers
+
+- **Core** (`--lagom-core-*`): Raw values: the colour palette, spacing scale, fonts, radii, and opacity. Same in light and dark. **In your CSS:** Yes, for spacing, type, radii, and opacity. Not for colour.
+- **Semantic** (`--lagom-semantic-*`): Colours named by role. Values change between light and dark. **In your CSS:** Yes, for all colour.
+- **Component** (`--lagom-component-*`): Defaults for specific Lagom components. **In your CSS:** No. Use the `--themed-*` hooks in [Theming](?path=/docs/theming--docs) to change a component.
+- **Themed** (`--themed-*`): Optional overrides that Lagom reads before the tokens. **In your CSS:** Set them to theme Lagom. Don't read them.
+
+## Colour: use semantic tokens
+
+Always use `--lagom-semantic-color-*` for colour. Core colours (e.g. `--lagom-core-colors-olive-base`) don't change in dark mode.
+
+- `--lagom-semantic-color-fg-default`: Body text. Light `#111111`, dark `#ffffff`.
+- `--lagom-semantic-color-fg-muted`: Secondary text (used by `Quote`). Light `#222222`, dark `#ededed`.
+- `--lagom-semantic-color-fg-subtle`: Tertiary text, such as captions (used by `ImageCaption`). Light `#545454`, dark `#bababa`.
+- `--lagom-semantic-color-bg-default`: Page background. Light `#ffffff`, dark `#222222`.
+- `--lagom-semantic-color-bg-muted`: Panels set apart from the page (default `FeaturedSection` background). Light `#ededed`, dark `#2e2e2e`.
+- `--lagom-semantic-color-bg-subtle`: Stronger panel background. Light `#bababa`, dark `#3b3b3b`.
+- `--lagom-semantic-color-accent-default`: Accent colour. Light `#626e60`, dark `#626e60`.
+- `--lagom-semantic-color-accent-on-accent`: Text on `accent-default`. Light `#ffffff`, dark `#ffffff`.
+- `--lagom-semantic-color-accent-bg`: Accent-tinted background. Light `#94a092`, dark `#313630`.
+- `--lagom-semantic-color-border-default`: Standard borders (used by `Quote`). Light `#222222`, dark `#cacfc9`.
+- `--lagom-semantic-color-border-muted`: Light borders and link underlines. Light `#cacfc9`, dark `#495247`.
+- `--lagom-semantic-color-overlay-background`: Overlay over images, used with `--lagom-semantic-opacity-overlay` (by `Hero` and `FeaturedSection`). Light `#ffffff`, dark `#222222`.
+- `--lagom-semantic-color-shadows-default`: Shadows. Light `#222222`, dark `#111111`.
+- `--lagom-semantic-color-brand-primary`: Brand colour (olive). Same in both modes. Light `#626e60`, dark `#626e60`.
+- `--lagom-semantic-color-brand-secondary`: Brand colour (navy). Same in both modes. Light `#394e6f`, dark `#394e6f`.
+- `--lagom-semantic-color-brand-tertiary`: Brand colour (violet). Same in both modes. Light `#442c45`, dark `#442c45`.
+
+Button colours also have semantic tokens (`--lagom-semantic-color-button-primary-bg`, `-fg`, and the `secondary` equivalents). To change button colours, use the `--themed-component-button-*` hooks.
+
+## Spacing
+
+- `--lagom-core-spacing-xs`: 2px
+- `--lagom-core-spacing-sm`: 4px
+- `--lagom-core-spacing-md`: 8px
+- `--lagom-core-spacing-lg`: 16px
+- `--lagom-core-spacing-xl`: 32px
+- `--lagom-core-spacing-xxl`: 64px
+
+## Typography
+
+- **Families:**
+  - `--lagom-core-font-families-body` and `-heading` (both Montserrat)
+  - `-serif` (Domine)
+  - `-monospace` (Silka Mono)
+  - `-sans-serif`
+- **Sizes:** `--lagom-core-font-sizes-body` is 16px, and the rest scale from it:
+  - `-xs` 0.65×, `-sm` 0.85×, `-lg` 1.25×, `-xl` 1.5×
+  - `-h6` equals body, and each heading up to `-h1` is 1.25× the one below
+- **Weights:** `--lagom-core-font-weights-body-regular`, `-body-semi-bold`, `-body-bold`, `-heading-regular`, `-heading-semi-bold`, `-heading-bold`.
+- **Line heights:** `--lagom-core-line-heights-body`, `-heading`.
+- **Shorthand:** `--lagom-semantic-typography-body` is a complete `font` value for body text.
+
+## Radii and opacity
+
+- `--lagom-core-border-radius-xs`: 4px
+- `--lagom-core-border-radius-sm`: 8px
+- `--lagom-core-border-radius-md`: 12px
+- `--lagom-core-border-radius-lg`: 16px
+- `--lagom-core-border-radius-xl`: 20px
+- `--lagom-core-border-radius-xxl`: 24px
+
+Opacity: `--lagom-core-opacity-none` (0), `-min` (0.1), `-low` (0.3), `-md` (0.5), `-high` (0.7), `-max` (0.9).
+
+## In JavaScript
+
+The same tokens are exported as constants, named in camelCase. For example, `--lagom-core-spacing-lg` becomes `lagomCoreSpacingLg`:
+
+```js
+import { lagomCoreSpacingLg } from "@fcongson/lagom-tokens/js/variables/core.js";
+import { lagomSemanticColorFgDefault } from "@fcongson/lagom-tokens/js/theme/light.js";
+```
+
+JavaScript values are fixed, so they don't switch between light and dark. Prefer the CSS custom properties wherever you can.
