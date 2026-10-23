@@ -15,19 +15,20 @@ jobs:
       contents: read
       packages: read
     env:
-      # See publish.yml: the committed .npmrc authenticates the @fcongson scope
-      # against npm.pkg.github.com via `${TOKEN}` for every install, since
-      # lagom-tokens is itself a private/scoped GitHub Packages dependency
-      # owned by a different repo. Uses the automatic per-run GITHUB_TOKEN -
-      # lagom-tokens' package settings grant this repo read access
-      # (Package settings -> Manage Actions access -> lagom-ui).
-      TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # See publish.yml: the @fcongson scope authenticates against
+      # npm.pkg.github.com for every install, since lagom-tokens is itself a
+      # private/scoped GitHub Packages dependency owned by a different repo.
+      # pnpm ignores the committed .npmrc's `${TOKEN}` credential (it refuses
+      # env-expanded auth from repository-controlled config), so setup-node's
+      # user-level .npmrc, which reads NODE_AUTH_TOKEN, supplies it. Uses the
+      # automatic per-run GITHUB_TOKEN - lagom-tokens' package settings grant
+      # this repo read access (Package settings -> Manage Actions access ->
+      # lagom-ui).
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - name: Set Node.js
         uses: actions/setup-node@v4
         with:
@@ -37,6 +38,8 @@ jobs:
           # "unrun" fallback isn't installed) - use 22, which satisfies both.
           node-version: "22"
           cache: pnpm
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@fcongson"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Lint

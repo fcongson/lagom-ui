@@ -25,6 +25,7 @@
   "files": [
     "build/"
   ],
+  "packageManager": "pnpm@12.11.2",
   "engines": {
     "node": ">=20.0.0"
   },
