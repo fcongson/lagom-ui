@@ -21,6 +21,19 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {},
   },
+  typescript: {
+    // react-docgen-typescript reads inline and intersection prop types that
+    // the default react-docgen misses, so every prop reaches the Controls
+    // table and the MCP components manifest.
+    reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      // Leave out inherited HTML attributes (from @types/react) so docs show
+      // Lagom's own props.
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+    },
+  },
   staticDirs: ["../public"],
   async babel(config, { configType: _configType }) {
     return {

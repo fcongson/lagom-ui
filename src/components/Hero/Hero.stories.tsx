@@ -1,10 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react-webpack5";
-import { PageHeader } from "../..";
+import { PageHeader } from "../PageHeader";
 import { Hero } from "./Hero";
-
-const imageSrc_Brown = "/jonatan-pie-swG0ojqS6hc-unsplash.jpg";
-const imageSrc = imageSrc_Brown;
-const alt = "Arctic Fox by Jonatan Pie";
 
 const meta: Meta = {
   title: "Components/Hero",
@@ -13,8 +9,8 @@ const meta: Meta = {
   args: {
     image: (
       <img
-        src={imageSrc}
-        alt={alt}
+        src="/jonatan-pie-swG0ojqS6hc-unsplash.jpg"
+        alt="Arctic Fox by Jonatan Pie"
         style={{ width: "100%", height: "100%", objectFit: "cover" }}
       />
     ),
@@ -23,12 +19,14 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof PageHeader>;
+type Story = StoryObj<typeof Hero>;
 
 export const Default: Story = {};
 
 export const WithHeader: Story = {
-  args: {
-    children: <PageHeader>Arctic Fox</PageHeader>,
-  },
+  render: (args) => (
+    <Hero {...args}>
+      <PageHeader>Arctic Fox</PageHeader>
+    </Hero>
+  ),
 };

@@ -1,13 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { ImageCaption } from "./ImageCaption";
 
-const imageSrc_Brown = "/jonatan-pie-swG0ojqS6hc-unsplash.jpg";
-const imageSrc = imageSrc_Brown;
-const alt = "Arctic Fox by Jonatan Pie";
 const image = (
   <img
-    src={imageSrc}
-    alt={alt}
+    src="/jonatan-pie-swG0ojqS6hc-unsplash.jpg"
+    alt="Arctic Fox by Jonatan Pie"
     style={{ width: "100%", height: "100%", objectFit: "cover" }}
   />
 );
