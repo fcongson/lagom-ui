@@ -31,6 +31,15 @@ export default tseslint.config(
     },
   },
   {
+    // Node scripts: the docs Q&A eval.
+    files: ["evals/**/*.mjs"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
     rules: {
       "@typescript-eslint/no-unused-vars": [
         "error",
