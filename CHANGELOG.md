@@ -1,5 +1,12 @@
 # @fcongson/lagom-ui
 
+## 1.0.3
+
+### Patch Changes
+
+- 9ef7e75: Stop streaming GrowthBook feature updates. Flags now load once instead of holding a connection open in every consuming app.
+- 6570838: Load the CSS reset before global styles. The reset was loading last and overriding Lagom's monospace font (`code`, `pre`) with the browser default.
+
 ## 1.0.2
 
 ### Patch Changes
