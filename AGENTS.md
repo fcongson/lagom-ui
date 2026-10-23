@@ -11,7 +11,7 @@ Lagom's docs are exposed through the Storybook MCP server (`@storybook/addon-mcp
 
 When answering questions about components or building UI with Lagom:
 
-1. Call `docs-list` to see what exists. Only recommend components that appear there.
+1. Call `docs-list` to see what exists. Only recommend components that appear there. It also lists guides. Read **Getting Started** for setup questions, **Theming** for overrides and dark mode, and **Using Tokens** before writing CSS.
 2. Call `docs-show` for a component before using it. Answer questions about props, usage, and variants from the docs, not by guessing from source.
 3. Before writing or editing stories, call `get-storybook-story-instructions`. After a visual change, use `stories-preview` to check it.
 
@@ -29,7 +29,8 @@ If the docs don't answer a question, say so instead of inventing an answer. Miss
 
 ## Working in this repo
 
-- **Package manager:** pnpm. Building needs Node >= 22.18.
+- **Package manager:** pnpm 12 (pinned by `packageManager`). Building needs Node >= 22.18.
+- **Installing:** `pnpm install` fetches `@fcongson/lagom-tokens` from GitHub Packages. It needs a token with `read:packages` in the user-level `~/.npmrc` (`//npm.pkg.github.com/:_authToken=...`). pnpm 12 ignores the `${TOKEN}` in the committed `.npmrc`. If install fails with 401 or 403, ask the maintainer for a token. Don't edit `.npmrc`.
 - **Commands:**
   - `pnpm storybook`: Storybook on port 6006, with the MCP server at `/mcp`
   - `pnpm lint`
@@ -44,8 +45,11 @@ If the docs don't answer a question, say so instead of inventing an answer. Miss
   - `<Name>.test.tsx`
   - `index.ts`
 - **Documenting components:**
-  - Give every prop a JSDoc comment. These feed the Controls table and the MCP manifest.
+  - Give every component and prop a JSDoc comment. These feed the Controls table and the MCP manifest. Start each component description with a one-line summary (Storybook drops `@summary` tags with react-docgen-typescript).
   - Set `component` in each story file's `meta`, so the component's docs and props are picked up.
+  - Pass components to a story through `render`, not as JSX in `args`. JSX in `args` leaks relative imports into the manifest.
+- **Docs pages:** guides live in `src/docs/*.docs.mdx`. Give each one `<Meta title="…" summary="…" />`, and write values out in the MDX: the manifest can't see values imported from modules. Use lists, not Markdown tables: Storybook's MDX doesn't render GitHub-style tables without `remark-gfm`, which isn't installed.
+- **Manifest exclusions:** stories with no component (visual references like the token galleries) use `tags: ["!manifest"]`, so they don't show up as broken entries for agents.
 - **Global CSS order matters:** `resetr.css` must load before `GlobalStyle.css` (see `src/styles/GlobalStyle.tsx`).
 - **Releases:**
   - Add a changeset (`pnpm changeset`) for any change that affects the published package. Dev-only changes don't need one.

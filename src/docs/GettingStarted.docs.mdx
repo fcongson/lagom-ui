@@ -1,0 +1,113 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta
+  title="Getting Started"
+  summary="Install lagom-ui and lagom-tokens from GitHub Packages, import the stylesheets, and wrap your app in ThemeProvider."
+/>
+
+# Getting Started
+
+Lagom UI is a small React component library (React 18 or 19), styled with plain CSS and [lagom-tokens](https://github.com/fcongson/lagom-tokens) design tokens. You need three things to use it:
+
+1. Both packages installed from GitHub Packages
+2. lagom-ui's stylesheet and a lagom-tokens theme imported
+3. Your app wrapped in `ThemeProvider`
+
+## 1. Install
+
+`@fcongson/lagom-ui` and `@fcongson/lagom-tokens` are published to GitHub Packages, not npm. Point the `@fcongson` scope at GitHub Packages in your project's `.npmrc`:
+
+```ini
+@fcongson:registry=https://npm.pkg.github.com
+```
+
+Then authenticate with a GitHub token that has the `read:packages` scope. Put the token in your **user-level** `~/.npmrc`, not the project's:
+
+```ini
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+```
+
+pnpm 12 ignores credentials in a project's `.npmrc`, including environment variables like `${TOKEN}`. A user-level config works with every package manager.
+
+Install both packages:
+
+```sh
+pnpm add @fcongson/lagom-ui @fcongson/lagom-tokens
+```
+
+### In CI and hosting
+
+- **GitHub Actions:** use `actions/setup-node` with `registry-url: "https://npm.pkg.github.com"` and `scope: "@fcongson"`, and set `NODE_AUTH_TOKEN` to a token with read access to the packages. setup-node writes a user-level `.npmrc` that reads it.
+- **Netlify and similar hosts:** commit a small npmrc file containing `//npm.pkg.github.com/:_authToken=${TOKEN}`, set the host's `NPM_CONFIG_USERCONFIG` environment variable to its path, and set `TOKEN` as a secret.
+
+## 2. Import the styles
+
+Lagom's components use plain CSS, which isn't injected automatically. Import lagom-ui's stylesheet and a lagom-tokens theme once, in your app's entry point:
+
+```js
+import "@fcongson/lagom-ui/style.css";
+import "@fcongson/lagom-tokens/css/theme/_light.css"; // token values (required)
+import "@fcongson/lagom-tokens/css/theme/_dark.css"; // dark mode (optional)
+```
+
+`_light.css` defines every token on `:root`. `_dark.css` switches tokens to their dark values inside any element with `data-lagom-theme="dark"`. See [Theming](?path=/docs/theming--docs).
+
+## 3. Wrap your app in ThemeProvider
+
+Render `ThemeProvider` once, around your whole app:
+
+```jsx
+import { ThemeProvider } from "@fcongson/lagom-ui";
+
+export const App = ({ children }) => <ThemeProvider>{children}</ThemeProvider>;
+```
+
+`ThemeProvider` does three things:
+
+- **Loads global styles:** a CSS reset, typography, and focus rings that show for keyboard users only.
+- **Provides the theme** to `useTheme()`.
+- **Provides the GrowthBook context** for experimental features. `Button` throws an error without it.
+
+## 4. Build a page
+
+Pages follow one structure:
+
+- `PageHeader` or `Hero` at the top.
+- Then `Section` bands (up to 1800px wide), each holding a `Container` (a centred column up to 1120px).
+
+```jsx
+import {
+  CallToAction,
+  Container,
+  PageHeader,
+  Section,
+} from "@fcongson/lagom-ui";
+
+export const AboutPage = () => (
+  <>
+    <PageHeader>About</PageHeader>
+    <Section>
+      <Container>
+        <p>Body content goes here.</p>
+      </Container>
+    </Section>
+    <Section>
+      <Container>
+        <CallToAction
+          header="Get in touch."
+          text="Questions, ideas, or just want to say hi."
+          actionLink="/contact"
+          actionText="Contact me"
+        />
+      </Container>
+    </Section>
+  </>
+);
+```
+
+Each component's page under **Components** and **Layouts** covers its props, variants, and when to use it.
+
+## Next steps
+
+- [Theming](?path=/docs/theming--docs): override fonts, colours, and sizes, and use dark mode.
+- [Using tokens](?path=/docs/design-tokens-using-tokens--docs): which tokens to use in your own CSS.

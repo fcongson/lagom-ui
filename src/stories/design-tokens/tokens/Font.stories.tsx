@@ -5,8 +5,13 @@ import { TokenCard } from "../../utils/TokenCard";
 import { cssCustomPropertyName } from "../../utils/cssCustomPropertyName";
 import { formatPropertyName } from "../../utils/formatPropertyName";
 
+/**
+ * Visual reference for people. Excluded from the AI components manifest:
+ * it has no component, and agents get this information from the docs pages.
+ */
 const meta: Meta = {
   title: "Design Tokens/Tokens",
+  tags: ["!manifest"],
 };
 
 export default meta;

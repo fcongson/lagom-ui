@@ -1,0 +1,122 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta
+  title="Theming"
+  summary="Switch between light and dark tokens, and override Lagom's fonts, button colours, heading sizes, and spacing with --themed-* custom properties or createTheme()."
+/>
+
+# Theming
+
+You can change how Lagom looks in three ways, from broadest to most specific:
+
+1. **Choose a token theme:** light, dark, or both.
+2. **Override with `--themed-*` custom properties** in your own CSS.
+3. **Use `createTheme()`** to set the font, heading, and button overrides from JavaScript.
+
+## Light and dark
+
+Token values come from lagom-tokens' theme stylesheets:
+
+- **`_light.css`** defines every token on `:root`. Import it always.
+- **`_dark.css`** redefines the colour tokens for any element with `data-lagom-theme="dark"`, and everything inside it.
+
+To make the whole page dark, set the attribute on `<html>`. To make one part dark, set it on a wrapping element:
+
+```html
+<html data-lagom-theme="dark">
+  …
+</html>
+
+<div data-lagom-theme="dark">This section uses dark tokens.</div>
+```
+
+Dark mode changes the colour tokens, plus two visual effects: image overlays get stronger (`--lagom-semantic-opacity-overlay`), and images are slightly dimmed (`--lagom-semantic-image-filter`). Use `--lagom-semantic-color-*` tokens in your own CSS, so it switches too. See [Using tokens](?path=/docs/design-tokens-using-tokens--docs).
+
+## Overriding with `--themed-*` properties
+
+Lagom's styles read a `--themed-*` custom property first, and fall back to the lagom-tokens value when it isn't set. Set them on `:root` to change the whole app, or on a wrapping element to change one area:
+
+```css
+:root {
+  --themed-core-font-families-serif: Georgia, serif;
+  --themed-component-button-border-radius: 999px;
+}
+
+.promo {
+  --themed-component-button-color-primary-background: var(
+    --lagom-semantic-color-accent-default
+  );
+}
+```
+
+These overrides win over token values whatever order your stylesheets load in. `createTheme()` sets some of the same properties on `:root`, so set each property one way or the other, not both. These are the hooks Lagom reads:
+
+### Typography
+
+- `--themed-core-font-families-sans-serif`: Body text, `h1`–`h6` elements, `Button`
+- `--themed-core-font-families-serif`: `Quote`
+- `--themed-core-font-families-monospace`: `code`, `pre`
+- `--themed-core-font-sizes-body`: Body text, `Button`
+- `--themed-core-font-weights-semi-bold`: `Button` label weight
+- `--themed-header-scale-1` … `--themed-header-scale-6`: `PageHeader` and `SectionHeader` sizes. They step down the scale on smaller screens. Defaults: 121.5px, 81px, 54px, 36px, 24px, 16px.
+- `--themed-component-page-header-typography`: `PageHeader` font, as a `font` shorthand
+- `--themed-component-section-header-typography`: `SectionHeader` font, as a `font` shorthand
+
+### Colour
+
+- `--themed-component-button-color-primary-background`, `-text`, `-border`: Primary `Button` and `LinkButton`
+- `--themed-component-button-color-secondary-background`, `-text`, `-border`: Secondary `Button` and `LinkButton`
+- `--themed-component-page-header-color-text`: `PageHeader` text
+- `--themed-component-section-header-color-text`: `SectionHeader` text
+
+### Shape and spacing
+
+- `--themed-component-button-border-radius`: `Button` and `LinkButton` corners
+- `--themed-component-page-header-margin-bottom`, `-sm`: Space below `PageHeader` (`-sm` applies at 568px and below)
+- `--themed-component-section-header-margin-bottom`: Space below `SectionHeader`
+- `--themed-component-hero-margin-bottom`, `-sm`: Space below `Hero` (default 8rem, 4rem at 568px and below)
+- `--themed-component-hero-image-fit`: How the `Hero` image fills its area (`object-fit`, default `cover`)
+- `--themed-component-featured-section-image-fit`: How a `FeaturedSection` background image fills it (`object-fit`, default `cover`)
+
+A few older layout properties don't use the `--themed-` prefix:
+
+- `--hero-height`: Hero height, default `100vh`.
+- `--featured-section-height`: image-background FeaturedSection height, default `auto`.
+- `--framed-margin`: inset for `framed` FeaturedSections, default `1rem`.
+
+## `createTheme()`
+
+`createTheme()` sets the typography, heading, and button overrides from JavaScript. It returns a `theme` for `ThemeProvider`, and a `GlobalStyle` component that writes the `--themed-*` properties onto `:root`:
+
+```jsx
+import { createTheme, ThemeProvider } from "@fcongson/lagom-ui";
+
+const { theme, GlobalStyle } = createTheme({
+  core: {
+    fontFamilies: { serif: "Georgia, serif", monospace: "Menlo, monospace" },
+    headerScale: { 1: "96px" },
+  },
+  button: {
+    borderRadius: "999px",
+    primary: { backgroundColor: "rebeccapurple", borderColor: "rebeccapurple" },
+  },
+});
+
+export const App = ({ children }) => (
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    {children}
+  </ThemeProvider>
+);
+```
+
+Fields you leave out keep their token values. `createTheme()` covers these:
+
+- **`core.fontFamilies`:** `serif`, `sansSerif`, `monospace`
+- **`core.fontSizes.body`**
+- **`core.headerScale`:** keys `1` to `6`
+- **`button`:** `borderRadius`, plus `backgroundColor`, `color`, and `borderColor` for `primary` and `secondary`
+
+For anything else, set the `--themed-*` properties in CSS.
+
+The `theme` object's layout values (`MAX_WIDTH_*`, `sizes`, `breakpoints`, `mediaQueries`) are only available to JavaScript through `useTheme()`. Changing them doesn't change Lagom's CSS.

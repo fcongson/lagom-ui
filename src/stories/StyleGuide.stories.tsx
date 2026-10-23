@@ -12,8 +12,13 @@ import {
   SectionHeader,
 } from "..";
 
+/**
+ * Visual reference for people. Excluded from the AI components manifest:
+ * it has no component, and agents get this information from the docs pages.
+ */
 const meta: Meta = {
   title: "Style Guide",
+  tags: ["!manifest"],
 };
 
 export default meta;
