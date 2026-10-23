@@ -14,8 +14,10 @@
   margin: 0 auto;
 }
 
-.lagom-section.lagom-section--background-color .container {
+/* A coloured section pads its content instead of relying on the container's
+   bottom margin, so the colour extends evenly above and below. */
+.lagom-section.lagom-section--background-color .lagom-container {
   background-color: inherit;
-  padding: var(--lagom-component-container-margin-bottom) 0;
+  padding: var(--lagom-component-container-margin-bottom, 8rem) 0;
   margin: 0 auto;
 }

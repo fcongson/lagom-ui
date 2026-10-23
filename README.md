@@ -38,7 +38,7 @@ export const App = () => (
 
 Component styling isn't CSS-in-JS, so it isn't auto-injected - import lagom-ui's stylesheet once alongside your first component import. lagom-ui doesn't bundle a [lagom-tokens](https://github.com/fcongson/lagom-tokens) theme for you either: `_light.css` defines the token values on `:root`, and `_dark.css` applies dark values to anything inside an element with `data-lagom-theme="dark"`.
 
-Render components inside `ThemeProvider`. It supplies the theme context read by `useTheme`, toggles the keyboard-only focus outline, and provides the GrowthBook context that gates experimental features - `Button` (and `LinkButton`, which renders one) throws "Missing or invalid GrowthBookProvider" without it.
+Render components inside `ThemeProvider`. It supplies the theme context read by `useTheme`, loads the global styles (including a `:focus-visible` rule that shows focus rings for keyboard users only), and provides the GrowthBook context that gates experimental features - `Button` throws "Missing or invalid GrowthBookProvider" without it.
 
 ### Theming
 

@@ -1,7 +1,8 @@
-/* Applied via a class toggled on <html> by ThemeProvider: suppress the
-   focus outline until the user starts navigating with the keyboard (Tab). */
-html.lagom-no-focus-outline a:focus,
-html.lagom-no-focus-outline button:focus,
-html.lagom-no-focus-outline div[role="button"]:focus {
+/* Hide the focus ring only when focus comes from a pointer (mouse or touch).
+   Browsers match :focus-visible for keyboard focus, so keyboard users always
+   see the ring, with no JavaScript needed. */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible) {
   outline: none;
 }

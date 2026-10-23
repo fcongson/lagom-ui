@@ -8,22 +8,23 @@ import { ButtonTheme } from "../components/Button";
 export type CoreTheme = {
   /** Font stacks, as CSS `font-family` values. */
   fontFamilies?: {
-    /**
-     * Serif stack. Written to `--themed-core-font-families-serif`, but no
-     * Lagom component reads it yet, so it has no visible effect.
-     */
+    /** Serif stack, used by `Quote`. */
     serif?: string;
-    /** Sans-serif stack. Currently only applied to `Button` text. */
-    sansSerif?: string;
     /**
-     * Monospace stack. Written to `--themed-core-font-families-monospace`,
-     * but no Lagom style reads it yet, so it has no visible effect.
+     * Sans-serif stack, used for body text, `h1`–`h6` elements, and `Button`.
+     * `PageHeader` and `SectionHeader` take their font from their own
+     * typography tokens instead.
      */
+    sansSerif?: string;
+    /** Monospace stack, used by `code` and `pre`. */
     monospace?: string;
   };
   /** Font sizes, as CSS lengths. */
   fontSizes?: {
-    /** Body text size. Currently only applied to `Button` text. */
+    /**
+     * Body text size, used for page text and `Button`. Heading sizes don't
+     * change. `PageHeader` and `SectionHeader` sizes come from `headerScale`.
+     */
     body?: string;
   };
   /**
