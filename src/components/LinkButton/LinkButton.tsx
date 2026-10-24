@@ -35,9 +35,11 @@ interface LinkButtonProps extends Omit<
    */
   children?: React.ReactNode;
   /**
-   * A framework link component (e.g. Gatsby's `Link`) to render instead of a
-   * plain `<a>`, for client-side routing. It receives `to`, `className`,
-   * `children`, and any other props passed to `LinkButton`.
+   * A framework link component to render instead of a plain `<a>`, for
+   * client-side routing. It receives the destination as `to` (not `href`),
+   * plus `className`, `children`, and any other props passed to `LinkButton`.
+   * Gatsby's and React Router's `Link` work directly. For Next.js, wrap `Link`
+   * in an adapter that maps `to` to `href`.
    */
   Component?: React.ComponentType<LinkButtonComponentProps>;
 }

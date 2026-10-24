@@ -104,7 +104,8 @@ export const questions = [
   {
     id: "cta-button-missing",
     category: "Components",
-    question: "My CallToAction renders the heading and text but no button. Why?",
+    question:
+      "My CallToAction renders the heading and text but no button. Why?",
     mustInclude: [
       "The button only renders when both actionLink and actionText are set",
     ],
@@ -118,7 +119,9 @@ export const questions = [
     mustInclude: [
       "No: CallToAction's heading is always an h2 (it uses SectionHeader), with no prop to change the level",
     ],
-    mustNotInclude: ["Invents a prop such as headingLevel or as that exists today"],
+    mustNotInclude: [
+      "Invents a prop such as headingLevel or as that exists today",
+    ],
   },
   {
     id: "missing-component",

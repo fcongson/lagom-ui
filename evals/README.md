@@ -13,7 +13,7 @@ Checks whether an AI agent can answer real questions about Lagom using **only** 
 
 ## Running it
 
-You need the Claude Code CLI installed and logged in. Runs use your account (about $0.10–0.40 per question).
+You need the Claude Code CLI installed and logged in. Runs use your Claude Code login: on a Claude subscription they count against your plan's usage. The first full run of 21 questions came to about $1 at API prices.
 
 ```sh
 pnpm storybook                                       # terminal 1
@@ -24,6 +24,7 @@ pnpm eval -- --concurrency 2 --model sonnet
 ```
 
 Options:
+
 - `--url`: the MCP endpoint (default `http://localhost:6006/mcp`, or `LAGOM_MCP_URL`)
 - `--only`: comma-separated question ids
 - `--concurrency`: questions in parallel (default 3)
@@ -45,6 +46,7 @@ It isn't in CI. It needs a logged-in Claude Code and costs money per run.
 ## Adding a question
 
 Add an entry to `questions.mjs` with a unique `id`, a `category`, the `question` as a consumer would ask it, and the rubric. Good questions:
+
 - come from real confusion (Slack questions, issues, review comments)
 - test something the docs should answer, including limitations ("can I…?" where the answer is no)
 - have rubric criteria that are checkable facts, not style preferences

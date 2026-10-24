@@ -34,7 +34,10 @@ const opt = (name, fallback) => {
   const i = args.indexOf(`--${name}`);
   return i >= 0 ? args[i + 1] : fallback;
 };
-const url = opt("url", process.env.LAGOM_MCP_URL ?? "http://localhost:6006/mcp");
+const url = opt(
+  "url",
+  process.env.LAGOM_MCP_URL ?? "http://localhost:6006/mcp",
+);
 const only = opt("only", "")?.split(",").filter(Boolean) ?? [];
 const concurrency = Number(opt("concurrency", "3"));
 const model = opt("model", "");
@@ -45,7 +48,9 @@ const selected = only.length
   : questions;
 if (only.length && selected.length !== only.length) {
   const known = new Set(questions.map((q) => q.id));
-  console.error(`Unknown question id(s): ${only.filter((id) => !known.has(id)).join(", ")}`);
+  console.error(
+    `Unknown question id(s): ${only.filter((id) => !known.has(id)).join(", ")}`,
+  );
   process.exit(1);
 }
 
@@ -55,7 +60,10 @@ Use only the "lagom" MCP server (Lagom's Storybook docs) to find the answer: sta
 Answer from the docs, not from general knowledge. If the docs don't cover something, say so plainly instead of guessing.
 Keep the answer concise and practical, with a short code example when it helps.`;
 
-const GRADE_PROMPT = (q, answer) => `You are grading an answer about the Lagom UI design system against a rubric. Judge only the answer below; don't use outside knowledge about what Lagom can do.
+const GRADE_PROMPT = (
+  q,
+  answer,
+) => `You are grading an answer about the Lagom UI design system against a rubric. Judge only the answer below; don't use outside knowledge about what Lagom can do.
 
 Question:
 ${q.question}
@@ -97,7 +105,9 @@ const runClaude = (argv, cwd) =>
     child.stdout.on("data", (d) => (stdout += d));
     child.stderr.on("data", (d) => (stderr += d));
     child.on("close", (code) => resolve({ code, stdout, stderr }));
-    child.on("error", (err) => resolve({ code: -1, stdout, stderr: String(err) }));
+    child.on("error", (err) =>
+      resolve({ code: -1, stdout, stderr: String(err) }),
+    );
   });
 
 const checkMcp = async () => {
@@ -122,6 +132,42 @@ const checkMcp = async () => {
     return res.ok;
   } catch {
     return false;
+  }
+};
+
+const mcpCall = async (body) => {
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json, text/event-stream",
+    },
+    body: JSON.stringify(body),
+  });
+  const text = await res.text();
+  // Responses may be plain JSON or a single server-sent event.
+  const data = text.includes("data:")
+    ? text
+        .split("\n")
+        .find((l) => l.startsWith("data:"))
+        .slice(5)
+    : text;
+  return JSON.parse(data);
+};
+
+// Number of components and guides docs-list reports (lines like "- Name (id)").
+const countDocs = async () => {
+  try {
+    const out = await mcpCall({
+      jsonrpc: "2.0",
+      id: 2,
+      method: "tools/call",
+      params: { name: "docs-list", arguments: {} },
+    });
+    const text = out.result?.content?.map((c) => c.text).join("\n") ?? "";
+    return text.split("\n").filter((l) => /^- .+\(.+\)/.test(l)).length;
+  } catch {
+    return 0;
   }
 };
 
@@ -184,7 +230,34 @@ const answer = async (q) => {
   return { text: result.result, toolCalls, cost: result.total_cost_usd ?? 0 };
 };
 
+const expectedIds = (q) => [
+  ...q.mustInclude.map((_, i) => `M${i + 1}`),
+  ...q.mustNotInclude.map((_, i) => `N${i + 1}`),
+];
+
+// The grader occasionally skips a criterion. Retry once before giving up, and
+// report it as a grading error, not a docs failure.
 const grade = async (q, text) => {
+  let cost = 0;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const g = await gradeOnce(q, text);
+    cost += g.cost;
+    const missing = g.criteria
+      ? expectedIds(q).filter((id) => !g.criteria.some((c) => c.id === id))
+      : [];
+    if (g.criteria && missing.length === 0)
+      return { criteria: g.criteria, cost };
+    if (attempt === 2) {
+      return {
+        error: g.error ?? `Grader gave no verdict for ${missing.join(", ")}`,
+        criteria: g.criteria,
+        cost,
+      };
+    }
+  }
+};
+
+const gradeOnce = async (q, text) => {
   const cwd = mkdtempSync(join(tmpdir(), "lagom-grade-"));
   const { stdout, stderr, code } = await runClaude(
     [
@@ -211,7 +284,11 @@ const grade = async (q, text) => {
     const { criteria } = JSON.parse(raw);
     return { criteria, cost };
   } catch {
-    return { error: stderr.trim() || stdout.slice(0, 500) || `grader exited with ${code}`, cost };
+    return {
+      error:
+        stderr.trim() || stdout.slice(0, 500) || `grader exited with ${code}`,
+      cost,
+    };
   }
 };
 
@@ -236,6 +313,15 @@ if (!(await checkMcp())) {
   );
   process.exit(1);
 }
+// Guard against a half-built Storybook (e.g. mid hot-reload): an empty docs
+// index makes every answer "the docs don't cover this".
+const docsCount = await countDocs();
+if (docsCount < 5) {
+  console.error(
+    `The MCP server at ${url} lists only ${docsCount} docs entries. Is Storybook still building? Try again when it's ready.`,
+  );
+  process.exit(1);
+}
 
 console.log(`Evaluating ${selected.length} question(s) against ${url}\n`);
 const started = new Date();
@@ -244,24 +330,40 @@ const results = await pool(selected, concurrency, async (q) => {
   const a = await answer(q);
   const g = a.error ? { error: "not graded" } : await grade(q, a.text);
   const labels = [
-    ...q.mustInclude.map((c, i) => ({ id: `M${i + 1}`, type: "must include", criterion: c })),
-    ...q.mustNotInclude.map((c, i) => ({ id: `N${i + 1}`, type: "must not include", criterion: c })),
+    ...q.mustInclude.map((c, i) => ({
+      id: `M${i + 1}`,
+      type: "must include",
+      criterion: c,
+    })),
+    ...q.mustNotInclude.map((c, i) => ({
+      id: `N${i + 1}`,
+      type: "must not include",
+      criterion: c,
+    })),
   ];
   const criteria = labels.map((l) => {
     const verdict = g.criteria?.find((c) => c.id === l.id);
-    return { ...l, pass: verdict?.pass === true, reason: verdict?.reason ?? g.error ?? "missing verdict" };
+    return {
+      ...l,
+      pass: verdict?.pass === true,
+      reason: verdict?.reason ?? g.error ?? "missing verdict",
+    };
   });
   const pass = !a.error && !g.error && criteria.every((c) => c.pass);
-  console.log(`${pass ? "PASS" : "FAIL"}  ${q.id}`);
+  const label = pass ? "PASS" : a.error || g.error ? "ERROR" : "FAIL";
+  console.log(`${label}  ${q.id}`);
   return {
     id: q.id,
     category: q.category,
     question: q.question,
     pass,
-    error: a.error ?? g.error,
+    error: a.error ?? g.error ?? null,
     answer: a.text ?? "",
     docsOpened: a.toolCalls
-      .filter((t) => t.name.endsWith("docs-show") || t.name.endsWith("docs-show-story"))
+      .filter(
+        (t) =>
+          t.name.endsWith("docs-show") || t.name.endsWith("docs-show-story"),
+      )
       .map((t) => t.input?.id ?? JSON.stringify(t.input)),
     toolCalls: a.toolCalls.map((t) => t.name.replace(/^mcp__lagom__/, "")),
     criteria,
@@ -286,17 +388,37 @@ const lines = [
   ``,
   `## Summary`,
   ``,
-  ...results.map((r) => `- ${r.pass ? "✅" : "❌"} **${r.id}** (${r.category})`),
+  ...results.map(
+    (r) => `- ${r.pass ? "✅" : "❌"} **${r.id}** (${r.category})`,
+  ),
   ``,
 ];
 for (const r of results) {
-  lines.push(`## ${r.pass ? "✅" : "❌"} ${r.id}`, ``, `**Q:** ${r.question}`, ``);
+  lines.push(
+    `## ${r.pass ? "✅" : "❌"} ${r.id}`,
+    ``,
+    `**Q:** ${r.question}`,
+    ``,
+  );
   if (r.error) lines.push(`**Error:** ${r.error}`, ``);
-  lines.push(`**Docs opened:** ${r.docsOpened.length ? r.docsOpened.join(", ") : "none"}`, ``);
+  lines.push(
+    `**Docs opened:** ${r.docsOpened.length ? r.docsOpened.join(", ") : "none"}`,
+    ``,
+  );
   for (const c of r.criteria) {
-    lines.push(`- ${c.pass ? "✅" : "❌"} ${c.type}: ${c.criterion}  \n  _${c.reason}_`);
+    lines.push(
+      `- ${c.pass ? "✅" : "❌"} ${c.type}: ${c.criterion}  \n  _${c.reason}_`,
+    );
   }
-  lines.push(``, `<details><summary>Answer</summary>`, ``, r.answer || "(none)", ``, `</details>`, ``);
+  lines.push(
+    ``,
+    `<details><summary>Answer</summary>`,
+    ``,
+    r.answer || "(none)",
+    ``,
+    `</details>`,
+    ``,
+  );
 }
 writeFileSync(join(outDir, "report.md"), lines.join("\n"));
 writeFileSync(join(outDir, "results.json"), JSON.stringify(results, null, 2));
