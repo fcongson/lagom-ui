@@ -18,6 +18,10 @@ Centres content in a column up to 1120px wide, with a bottom margin to space con
 - **On its own, without a Section:** it won't get the page's side padding on small screens.
 - **For full-bleed content:** put full-width components (`ImageCaption` with `fullwidth`, `FeaturedSection`, `Hero`) directly in the page, not in a Container.
 
+## Width
+
+The column is up to 1120px wide. There's no prop or `--themed-*` property to change it yet. `createTheme`'s `MAX_WIDTH_CONTAINER` only affects the JavaScript theme, not the CSS. For narrower text, such as an article, put the content in an element with your own `max-width` inside the Container, rather than overriding the Container's styles.
+
 ## Spacing
 
 Each Container has an 8rem bottom margin. Set `marginNone` to remove it, for example when the next block should sit directly below. Inside a `Section` with `backgroundColor`, the Container is padded top and bottom instead.

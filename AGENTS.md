@@ -57,3 +57,4 @@ If the docs don't answer a question, say so instead of inventing an answer. Miss
   - Add a changeset (`pnpm changeset`) for any change that affects the published package. Dev-only changes don't need one.
   - Versioning (`pnpm version-packages`) and `v*` tags are handled by the maintainer.
 - **Visual tests:** Chromatic runs on every PR. Visual changes are reviewed and accepted in Chromatic.
+- **Docs Q&A eval:** after changing docs, JSDoc, or this file, run `pnpm eval` (with `pnpm storybook` running). It checks that an agent using only the MCP server answers real questions correctly. See `evals/README.md`. When a question fails, fix the docs, not the question.

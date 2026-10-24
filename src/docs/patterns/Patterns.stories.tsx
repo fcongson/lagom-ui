@@ -46,7 +46,6 @@ const redCabinPond = "/red-cabin-pond.jpg";
 const churchMountainWaterfall = "/church-mountain-waterfall.jpg";
 
 export const PageStructure: Story = {
-  name: "Page Structure",
   render: () => (
     <>
       <PageHeader>Page title</PageHeader>
@@ -77,7 +76,6 @@ export const PageStructure: Story = {
 };
 
 export const LandingPage: Story = {
-  name: "Landing Page",
   render: () => (
     <>
       <Hero image={<img src={redCabinsRockyCoast} alt="" />} />
@@ -170,7 +168,6 @@ export const Article: Story = {
 };
 
 export const ContentPage: Story = {
-  name: "Content Page",
   render: () => (
     <>
       <Hero image={<img src={redCabinPond} alt="" />}>

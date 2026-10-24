@@ -18,7 +18,12 @@ You can change how Lagom looks in three ways, from broadest to most specific:
 Token values come from lagom-tokens' theme stylesheets:
 
 - **`_light.css`** defines every token on `:root`. Import it always.
-- **`_dark.css`** redefines the colour tokens for any element with `data-lagom-theme="dark"`, and everything inside it.
+- **`_dark.css`** redefines the colour tokens for any element with `data-lagom-theme="dark"`, and everything inside it. **Import it too if you use dark mode anywhere.** Without it, `data-lagom-theme="dark"` does nothing:
+
+```js
+import "@fcongson/lagom-tokens/css/theme/_light.css";
+import "@fcongson/lagom-tokens/css/theme/_dark.css";
+```
 
 To make the whole page dark, set the attribute on `<html>`. To make one part dark, set it on a wrapping element:
 
@@ -119,4 +124,4 @@ Fields you leave out keep their token values. `createTheme()` covers these:
 
 For anything else, set the `--themed-*` properties in CSS.
 
-The `theme` object's layout values (`MAX_WIDTH_*`, `sizes`, `breakpoints`, `mediaQueries`) are only available to JavaScript through `useTheme()`. Changing them doesn't change Lagom's CSS.
+`createTheme()` also accepts `MAX_WIDTH_SECTION`, `MAX_WIDTH_CONTAINER`, and `MAX_WIDTH_CONTENT`. These, and the rest of the `theme` object's layout values (`sizes`, `breakpoints`, `mediaQueries`), are only available to JavaScript through `useTheme()`. **Changing them doesn't change Lagom's CSS:** Section stays 1800px wide and Container 1120px. There's no supported way to change those widths yet.

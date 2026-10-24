@@ -34,7 +34,11 @@ The default, for other destinations.
 
 ## Framework links
 
-Pass your router's link component as `Component` for client-side navigation. It receives `to`, `className`, `children`, and any other props you pass to `LinkButton`:
+Pass your router's link component as `Component` for client-side navigation. It receives the destination as **`to`**, plus `className`, `children`, and any other props you pass to `LinkButton`. It doesn't receive `href`.
+
+### Gatsby, React Router
+
+Their `Link` components take `to`, so pass them directly:
 
 ```jsx
 import { Link } from "gatsby";
@@ -43,6 +47,22 @@ import { Link } from "gatsby";
   About me
 </LinkButton>;
 ```
+
+### Next.js
+
+Next's `Link` takes `href`, not `to`, so passing it directly renders a link with no destination. Wrap it in a small adapter that maps `to` to `href`:
+
+```jsx
+import NextLink from "next/link";
+
+const Link = ({ to, ...props }) => <NextLink href={to} {...props} />;
+
+<LinkButton to="/about" Component={Link}>
+  About me
+</LinkButton>;
+```
+
+Use the same pattern for any router whose link takes `href` or another prop name.
 
 ## Accessibility
 
