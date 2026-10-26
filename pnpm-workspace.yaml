@@ -1,5 +1,7 @@
 allowBuilds:
   esbuild: true
+# Our own packages are often installed minutes after they're published (a
+# lagom-tokens release, then this repo picks it up), so they skip pnpm's
+# minimum release age. Third-party packages still wait.
 minimumReleaseAgeExclude:
-  - '@fcongson/lagom-brands@1.0.0'
-  - '@fcongson/lagom-tokens@2.0.0'
+  - "@fcongson/*"
