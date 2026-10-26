@@ -30,16 +30,16 @@ export const Secondary: Story = {
 
 /**
  * Restyles the button with inline `style`, which bypasses theming and dark
- * mode. Kept as a visual test only. Use the `--themed-component-button-*`
- * properties instead.
+ * mode. Kept as a visual test only. Override the `--lagom-semantic-color-button-*`
+ * and `--lagom-component-button-*` tokens instead.
  */
 export const Custom: Story = {
   tags: ["!manifest"],
   args: {
     style: {
-      backgroundColor: "var(--lagom-core-colors-olive-base)",
-      borderColor: "var(--lagom-core-colors-olive-base)",
-      color: "var(--lagom-core-colors-white)",
+      backgroundColor: "var(--lagom-semantic-color-accent-default)",
+      borderColor: "var(--lagom-semantic-color-accent-default)",
+      color: "var(--lagom-semantic-color-accent-on-accent)",
       borderRadius: 4,
       fontFamily: "monospace",
     },

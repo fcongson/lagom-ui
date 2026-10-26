@@ -2,33 +2,6 @@ import { useFeatureIsOn } from "@growthbook/growthbook-react";
 import clsx from "clsx";
 import "./Button.css";
 
-/**
- * Button overrides for `createTheme()`. Each value is written to a
- * `--themed-component-button-*` custom property on `:root`.
- */
-export type ButtonTheme = {
-  /** Corner radius for all buttons, as a CSS length. */
-  borderRadius?: string;
-  /** Colours for primary buttons (`primary` prop set). */
-  primary?: {
-    /** Background colour. */
-    backgroundColor?: string;
-    /** Text colour. */
-    color?: string;
-    /** Border colour. */
-    borderColor?: string;
-  };
-  /** Colours for secondary buttons (the default). */
-  secondary?: {
-    /** Background colour. */
-    backgroundColor?: string;
-    /** Text colour. */
-    color?: string;
-    /** Border colour. */
-    borderColor?: string;
-  };
-};
-
 interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   /**
    * Class name(s) added to the `<button>`.

@@ -4,7 +4,7 @@ import "./Hero.css";
 type HeroProps = {
   /**
    * The background image element (e.g. `<img>`), stretched to fill the hero
-   * (crop controlled by `--themed-component-hero-image-fit`). Give it `alt`
+   * (crop controlled by `--lagom-component-hero-image-fit`). Give it `alt`
    * text, or `alt=""` if it's purely decorative.
    */
   image: React.ReactElement;

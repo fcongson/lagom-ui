@@ -1,31 +1,22 @@
 .lagom-section-header {
-  color: var(
-    --themed-component-section-header-color-text,
-    var(--lagom-component-section-header-color-text)
-  );
-  font: var(
-    --themed-component-section-header-typography,
-    var(--lagom-component-section-header-typography)
-  );
-  font-size: var(--header-scale-2);
+  color: var(--lagom-component-section-header-color-text);
+  font: var(--lagom-component-section-header-typography);
+  font-size: var(--lagom-core-font-sizes-header2);
   text-align: center;
   text-wrap: balance;
   margin: 0 auto;
-  margin-bottom: var(
-    --themed-component-section-header-margin-bottom,
-    var(--lagom-core-spacing-xxl)
-  );
+  margin-bottom: var(--lagom-component-section-header-margin-bottom);
 }
 
 @media screen and (max-width: 992px) {
   .lagom-section-header {
-    font-size: var(--header-scale-3);
+    font-size: var(--lagom-core-font-sizes-header3);
   }
 }
 
 @media screen and (max-width: 568px) {
   .lagom-section-header {
-    font-size: var(--header-scale-4);
+    font-size: var(--lagom-core-font-sizes-header4);
     margin-bottom: var(--lagom-core-spacing-xl);
   }
 }

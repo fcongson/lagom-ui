@@ -19,7 +19,7 @@ export const Default: Story = {
         <Container
           style={{
             borderStyle: "dashed",
-            borderColor: "var(--lagom-core-colors-violet-lighter40)",
+            borderColor: "var(--lagom-semantic-color-accent-default)",
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -39,7 +39,7 @@ export const Default: Story = {
         <Container
           style={{
             borderStyle: "dashed",
-            borderColor: "var(--lagom-core-colors-violet-lighter40)",
+            borderColor: "var(--lagom-semantic-color-accent-default)",
           }}
         >
           Molestie a iaculis at erat pellentesque. Dolor purus non enim praesent
@@ -58,7 +58,7 @@ export const Default: Story = {
         <Container
           style={{
             borderStyle: "dashed",
-            borderColor: "var(--lagom-core-colors-violet-lighter40)",
+            borderColor: "var(--lagom-semantic-color-accent-default)",
           }}
         >
           Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum

@@ -55,6 +55,7 @@
     "@babel/preset-typescript": "^7.26.0",
     "@changesets/cli": "^2.31.0",
     "@eslint/js": "^9.39.4",
+    "@fcongson/lagom-brands": "^1.0.0",
     "@mdx-js/loader": "^3.1.0",
     "@storybook/addon-a11y": "^10.6.3",
     "@storybook/addon-docs": "^10.6.3",
@@ -91,7 +92,7 @@
     "typescript-eslint": "^8.60.1"
   },
   "dependencies": {
-    "@fcongson/lagom-tokens": "^1.0.0",
+    "@fcongson/lagom-tokens": "^2.0.0",
     "@growthbook/growthbook-react": "^1.3.1",
     "clsx": "^2.1.1"
   },

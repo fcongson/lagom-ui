@@ -2,12 +2,7 @@
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
-  background: var(
-    --lagom-core-colors-olive-lighter40
-  ); /* WebKit/Blink Browsers */
-}
-::-moz-selection {
-  background: var(--lagom-core-colors-olive-lighter40); /* Gecko Browsers */
+  background: var(--lagom-semantic-color-selection-bg);
 }
 
 :root {
@@ -15,12 +10,6 @@
   --sizes-max-width-section: 1800px;
   --sizes-max-width-container: 1120px;
   --sizes-max-width-content: 800px;
-  --header-scale-1: var(--themed-header-scale-1, 121.5px);
-  --header-scale-2: var(--themed-header-scale-2, 81px);
-  --header-scale-3: var(--themed-header-scale-3, 54px);
-  --header-scale-4: var(--themed-header-scale-4, 36px);
-  --header-scale-5: var(--themed-header-scale-5, 24px);
-  --header-scale-6: var(--themed-header-scale-6, 16px);
   --hero-height: 100vh;
   --framed-margin: 1rem;
 }
@@ -31,15 +20,8 @@ body {
   background-color: var(--lagom-semantic-color-bg-default);
   color: var(--lagom-semantic-color-fg-default);
   line-height: var(--lagom-core-line-heights-body);
-  /* --themed-* values come from createTheme() and fall back to the tokens. */
-  font-family: var(
-    --themed-core-font-families-sans-serif,
-    var(--lagom-core-font-families-body)
-  );
-  font-size: var(
-    --themed-core-font-sizes-body,
-    var(--lagom-core-font-sizes-body)
-  );
+  font-family: var(--lagom-core-font-families-body);
+  font-size: var(--lagom-core-font-sizes-body);
 }
 
 /* typography */
@@ -49,7 +31,7 @@ a {
   text-decoration: none;
   font-weight: var(--lagom-core-font-weights-body-semi-bold);
   padding-bottom: 4px;
-  border-bottom: 2px solid var(--lagom-semantic-color-border-muted);
+  border-bottom: 2px solid var(--lagom-semantic-color-border-secondary);
   transition: border-bottom 200ms ease-in-out;
 }
 
@@ -63,10 +45,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(
-    --themed-core-font-families-sans-serif,
-    var(--lagom-core-font-families-heading)
-  );
+  font-family: var(--lagom-core-font-families-heading);
   font-weight: var(--lagom-core-font-weights-heading-bold);
   margin-bottom: 1rem;
 }
@@ -109,17 +88,9 @@ ol li {
 
 code,
 pre {
-  font-family: var(
-    --themed-core-font-families-monospace,
-    var(--lagom-core-font-families-monospace)
-  );
+  font-family: var(--lagom-core-font-families-monospace);
   font-weight: var(--lagom-core-font-weights-body-regular);
-  background: hsla(
-    111,
-    7%,
-    80%,
-    0.5
-  ); /* var(--lagom-core-colors-olive-lighter40); */
+  background: var(--lagom-semantic-color-bg-secondary);
 }
 
 pre code {

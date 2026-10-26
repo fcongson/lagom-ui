@@ -1,39 +1,22 @@
 .lagom-page-header {
-  color: var(
-    --themed-component-page-header-color-text,
-    var(--lagom-component-page-header-color-text)
-  );
-  font: var(
-    --themed-component-page-header-typography,
-    var(--lagom-component-page-header-typography)
-  );
-  font-size: var(--header-scale-1);
+  color: var(--lagom-component-page-header-color-text);
+  font: var(--lagom-component-page-header-typography);
+  font-size: var(--lagom-core-font-sizes-header1);
   text-align: center;
   text-wrap: balance;
   margin: 0 auto;
-  /* 2x spacing-xxl (vs. SectionHeader's 1x) is a deliberate choice from Nov
-     2023 (136b00e - doubled this and Container's default margin-bottom in
-     the same commit), not an oversight - PageHeader is the single biggest,
-     most prominent heading per page, unlike SectionHeader which repeats
-     within one. Just making it themeable, not changing the default. */
-  margin-bottom: var(
-    --themed-component-page-header-margin-bottom,
-    calc(2 * var(--lagom-core-spacing-xxl))
-  );
+  margin-bottom: var(--lagom-component-page-header-margin-bottom);
 }
 
 @media screen and (max-width: 992px) {
   .lagom-page-header {
-    font-size: var(--header-scale-2);
+    font-size: var(--lagom-core-font-sizes-header2);
   }
 }
 
 @media screen and (max-width: 568px) {
   .lagom-page-header {
-    font-size: var(--header-scale-3);
-    margin-bottom: var(
-      --themed-component-page-header-margin-bottom-sm,
-      var(--lagom-core-spacing-xxl)
-    );
+    font-size: var(--lagom-core-font-sizes-header3);
+    margin-bottom: var(--lagom-component-page-header-margin-bottom-sm);
   }
 }
