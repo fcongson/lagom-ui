@@ -1,2 +1,5 @@
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@fcongson/lagom-brands@1.0.0'
+  - '@fcongson/lagom-tokens@2.0.0'
