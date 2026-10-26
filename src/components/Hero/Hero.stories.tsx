@@ -1,4 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react-webpack5";
+import { keyModes } from "../../stories/utils/modes";
+import { LinkButton } from "../LinkButton";
 import { PageHeader } from "../PageHeader";
 import { Hero } from "./Hero";
 
@@ -30,4 +32,26 @@ export const WithHeader: Story = {
       <PageHeader>Arctic Fox</PageHeader>
     </Hero>
   ),
+};
+
+/**
+ * Keyboard focus over an image: the three-band ring. A visual test,
+ * snapshotted in every brand, mode, and contrast.
+ */
+export const FocusOverImage: Story = {
+  tags: ["!manifest"],
+  render: (args) => (
+    <div style={{ "--hero-height": "60vh" } as React.CSSProperties}>
+      <Hero {...args}>
+        <PageHeader>Arctic Fox</PageHeader>
+        <LinkButton to="#" primary>
+          Read the story
+        </LinkButton>
+      </Hero>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    canvasElement.querySelector("a")?.focus();
+  },
+  parameters: { chromatic: { modes: keyModes } },
 };

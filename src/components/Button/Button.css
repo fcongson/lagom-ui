@@ -41,3 +41,15 @@
 .lagom-button .lagom-button__icon {
   padding-right: var(--lagom-core-dimension-md);
 }
+
+/* Forced colours give every button the same system colours, so primary and
+   secondary would look alike. Fill the primary button with the button text
+   colour instead, keeping the two apart. */
+@media (forced-colors: active) {
+  .lagom-button.lagom-button--primary {
+    forced-color-adjust: none;
+    background-color: ButtonText;
+    color: ButtonFace;
+    border-color: ButtonText;
+  }
+}

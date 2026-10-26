@@ -22,3 +22,4 @@
 // (e.g. `code, pre { font-family }`) are won by whichever loads last.
 import "./resetr.css";
 import "./GlobalStyle.css";
+import "./Focus.css";

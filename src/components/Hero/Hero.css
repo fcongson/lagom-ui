@@ -44,3 +44,11 @@
   justify-content: center;
   z-index: 1;
 }
+
+/* Forced colours drop background colours, so the overlay would wash out the
+   image without helping the text, which gets its own system backplate. */
+@media (forced-colors: active) {
+  .lagom-hero__image-overlay {
+    display: none;
+  }
+}
