@@ -192,7 +192,7 @@ export const questions = [
       "Check the brand with npx check-brand",
     ],
     mustNotInclude: [
-      "Recommends --themed-* properties or createTheme (removed in lagom-ui 2.0)",
+      "Recommends --themed-* properties, or createTheme to set colours or fonts (both removed in lagom-ui 2.0)",
       "Recommends building on the Fern or Waypoint brands",
     ],
   },

@@ -91,7 +91,19 @@ Everything focusable gets the brand's focus ring for keyboard focus (`:focus-vis
 
 Put a `data-lagom-brand`, `data-lagom-theme`, or `data-lagom-contrast` attribute on any element to change everything inside it, including tokens built from other tokens.
 
-Overriding a single token on some other element (`.promo { --lagom-semantic-color-accent-default: … }`) changes that token there, but not the tokens built from it. Custom properties resolve where they're declared, so Base's button colours, which point at `accent-default`, keep the page's value. Override the tokens you need on that element too, or use a brand.
+To change one thing in one area without a brand, override **the token the component reads**, the `--lagom-component-*` token, on a wrapping element. For example, purple primary buttons in one section:
+
+```css
+.promo {
+  --lagom-component-button-color-primary-background: #6b3fa0;
+  --lagom-component-button-color-primary-border: #6b3fa0;
+  --lagom-component-button-color-primary-text: #ffffff;
+}
+```
+
+Overriding a semantic role there instead (`.promo { --lagom-semantic-color-button-primary-bg: … }`) does **not** change the buttons. Custom properties resolve where they're declared: the component token was already resolved from the role on `<html>`, so the buttons keep the page's value. The same goes for any token built from another (`button-primary-bg` from `accent-default`, for example). Semantic role overrides only reach components on `:root` or a brand selector.
+
+If the area needs a different look in dark mode or with increased contrast, set the component tokens again for those (as in the brand example above), and check the contrast yourself.
 
 ## Layout properties
 
