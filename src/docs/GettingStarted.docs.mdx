@@ -2,7 +2,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta
   title="Getting Started"
-  summary="Install lagom-ui and lagom-tokens from GitHub Packages, import the stylesheets, and wrap your app in ThemeProvider."
+  summary="Install lagom-ui and lagom-tokens from GitHub Packages, import the stylesheets, choose a brand, and wrap your app in ThemeProvider."
 />
 
 # Getting Started
@@ -10,7 +10,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 Lagom UI is a small React component library (React 18 or 19), styled with plain CSS and [lagom-tokens](https://github.com/fcongson/lagom-tokens) design tokens. You need three things to use it:
 
 1. Both packages installed from GitHub Packages
-2. lagom-ui's stylesheet and a lagom-tokens theme imported
+2. lagom-ui's stylesheet and lagom-tokens' stylesheet imported
 3. Your app wrapped in `ThemeProvider`
 
 ## 1. Install
@@ -42,15 +42,16 @@ pnpm add @fcongson/lagom-ui @fcongson/lagom-tokens
 
 ## 2. Import the styles
 
-Lagom's components use plain CSS, which isn't injected automatically. Import lagom-ui's stylesheet and a lagom-tokens theme once, in your app's entry point:
+Lagom's components use plain CSS, which isn't injected automatically. Import lagom-ui's stylesheet and lagom-tokens' stylesheet once, in your app's entry point:
 
 ```js
 import "@fcongson/lagom-ui/style.css";
-import "@fcongson/lagom-tokens/css/theme/_light.css"; // token values (required)
-import "@fcongson/lagom-tokens/css/theme/_dark.css"; // dark mode (optional)
+import "@fcongson/lagom-tokens/css/lagom.css";
 ```
 
-`_light.css` defines every token on `:root`. `_dark.css` switches tokens to their dark values inside any element with `data-lagom-theme="dark"`. See [Theming](?path=/docs/theming--docs).
+`lagom.css` holds every token for light mode, dark mode, and increased contrast. Out of the box you get **Base**, Lagom's neutral default brand: grey and navy, with the Lexend, Source Serif 4, and DM Mono fonts. Load those fonts yourself (for example from Fontsource or Google Fonts); lagom-tokens only names them.
+
+To use your own brand, override tokens in your own stylesheet, loaded after `lagom.css`. See [Theming](?path=/docs/theming--docs).
 
 ## 3. Wrap your app in ThemeProvider
 
@@ -64,7 +65,7 @@ export const App = ({ children }) => <ThemeProvider>{children}</ThemeProvider>;
 
 `ThemeProvider` does three things:
 
-- **Loads global styles:** a CSS reset, typography, and focus rings that show for keyboard users only.
+- **Loads global styles:** a CSS reset, typography, and the brand's focus ring, shown for keyboard users only.
 - **Provides the theme** to `useTheme()`.
 - **Provides the GrowthBook context** for experimental features. `Button` throws an error without it.
 
@@ -109,5 +110,5 @@ Each component's page under **Components** and **Layouts** covers its props, var
 
 ## Next steps
 
-- [Theming](?path=/docs/theming--docs): override fonts, colours, and sizes, and use dark mode.
+- [Theming](?path=/docs/theming--docs): make your own brand, and use dark mode and increased contrast.
 - [Using tokens](?path=/docs/design-tokens-using-tokens--docs): which tokens to use in your own CSS.

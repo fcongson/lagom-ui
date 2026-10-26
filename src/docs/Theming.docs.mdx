@@ -2,126 +2,130 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta
   title="Theming"
-  summary="Switch between light and dark tokens, and override Lagom's fonts, button colours, heading sizes, and spacing with --themed-* custom properties or createTheme()."
+  summary="Make your own brand by overriding lagom-tokens' custom properties, and switch brand, dark mode, and increased contrast with data-lagom-* attributes."
 />
 
 # Theming
 
-You can change how Lagom looks in three ways, from broadest to most specific:
+Lagom's look comes entirely from lagom-tokens' CSS custom properties. To change it, you override tokens in your own CSS. Three attributes choose what an element shows, on `<html>` or on any element inside it:
 
-1. **Choose a token theme:** light, dark, or both.
-2. **Override with `--themed-*` custom properties** in your own CSS.
-3. **Use `createTheme()`** to set the font, heading, and button overrides from JavaScript.
+- `data-lagom-brand="…"`: the brand. With no attribute you get **Base**, Lagom's neutral default.
+- `data-lagom-theme="dark"`: dark mode. With no attribute you get light mode.
+- `data-lagom-contrast="more"`: increased contrast. The `prefers-contrast: more` media query turns it on too.
 
-## Light and dark
+Every component follows all three. There are no component props or JavaScript settings for colours, fonts, radii, or spacing.
 
-Token values come from lagom-tokens' theme stylesheets:
+## Making your own brand
 
-- **`_light.css`** defines every token on `:root`. Import it always.
-- **`_dark.css`** redefines the colour tokens for any element with `data-lagom-theme="dark"`, and everything inside it. **Import it too if you use dark mode anywhere.** Without it, `data-lagom-theme="dark"` does nothing:
+Override the tokens you want to change on a `data-lagom-brand` selector, in a stylesheet loaded after `lagom.css`, and set the attribute on `<html>`:
 
-```js
-import "@fcongson/lagom-tokens/css/theme/_light.css";
-import "@fcongson/lagom-tokens/css/theme/_dark.css";
+```css
+[data-lagom-brand~="rouge"] {
+  --lagom-semantic-color-accent-default: #b4281f;
+  --lagom-semantic-color-accent-fg: #b4281f;
+  --lagom-semantic-color-accent-bg: #fadcda;
+  --lagom-semantic-color-focus-ring: #b4281f;
+  --lagom-core-font-families-sans-serif: "Inter", sans-serif;
+  --lagom-component-button-border-radius: 999px;
+}
+
+[data-lagom-brand~="rouge"][data-lagom-theme~="dark"] {
+  --lagom-semantic-color-accent-default: #e79690;
+  --lagom-semantic-color-accent-fg: #e79690;
+  --lagom-semantic-color-accent-bg: #591c14;
+  --lagom-semantic-color-focus-ring: #e79690;
+}
 ```
 
-To make the whole page dark, set the attribute on `<html>`. To make one part dark, set it on a wrapping element:
+```html
+<html data-lagom-brand="rouge"></html>
+```
+
+Anything you don't override keeps Base's value. Three rules keep a brand accessible:
+
+- **Set every colour role you change in both modes.** A light-mode accent left on in dark mode usually fails contrast.
+- **Set increased-contrast values** for any role that falls short of AAA (7:1 for text, 4.5:1 for borders, button fills, and the focus ring). Set them once under `[data-lagom-contrast~="more"]` and again inside `@media (prefers-contrast: more)`.
+- **Check it:** `npx check-brand your-brand.css` (it comes with lagom-tokens) checks every role in light, dark, and both increased-contrast variants, and lists anything that fails.
+
+lagom-tokens' `examples/white-label.css` is a complete brand, including the selectors that let a section switch mode on its own.
+
+**Fern** and **Waypoint**, the brands in Storybook's toolbar, are Frank Congson's own brands for his sites. They're in a separate package, `@fcongson/lagom-brands`, which is public but not licensed for reuse. Base is MIT: start from it.
+
+## What to override
+
+- **Colour:** the `--lagom-semantic-color-*` roles, such as `fg-default`, `bg-secondary`, `accent-default`, `button-primary-bg`, and `focus-ring`. Components read colour only through these roles (directly, or through a component token that points at one), so one override changes every component that uses the role. See [Using tokens](?path=/docs/design-tokens-using-tokens--docs) for every role.
+- **Fonts, sizes, radii, and spacing:** the `--lagom-core-*` tokens, such as `--lagom-core-font-families-sans-serif`, `--lagom-core-font-sizes-header1`, or `--lagom-core-border-radius-sm`.
+- **One component:** the `--lagom-component-*` tokens:
+  - `--lagom-component-button-border-radius`, `-border-width`, and `-color-primary-background`, `-text`, `-border` (and the `secondary` equivalents): `Button` and `LinkButton`
+  - `--lagom-component-page-header-typography`, `-color-text`, `-margin-bottom`, `-margin-bottom-sm`: `PageHeader`
+  - `--lagom-component-section-header-typography`, `-color-text`, `-margin-bottom`: `SectionHeader`
+  - `--lagom-component-hero-margin-bottom`, `-margin-bottom-sm`, `-image-fit`: `Hero`
+  - `--lagom-component-featured-section-color-background`, `-color-text`, `-image-fit`: `FeaturedSection`
+  - `--lagom-component-image-overlay-color-background`, `-opacity`: the overlay over `Hero` and `FeaturedSection` images
+
+`PageHeader` and `SectionHeader` step down the header scale on smaller screens: `PageHeader` uses `--lagom-core-font-sizes-header1`, then `header2` at 992px and below, then `header3` at 568px and below. `SectionHeader` starts at `header2`.
+
+## Dark mode
+
+Set `data-lagom-theme="dark"` on `<html>` for a dark page, or on any element for a dark section:
 
 ```html
 <html data-lagom-theme="dark">
   …
 </html>
 
-<div data-lagom-theme="dark">This section uses dark tokens.</div>
+<section data-lagom-theme="dark">This section is dark.</section>
 ```
 
-Dark mode changes the colour tokens, plus two visual effects: image overlays get stronger (`--lagom-semantic-opacity-overlay`), and images are slightly dimmed (`--lagom-semantic-image-filter`). Use `--lagom-semantic-color-*` tokens in your own CSS, so it switches too. See [Using tokens](?path=/docs/design-tokens-using-tokens--docs).
+Dark mode changes the colour roles, makes image overlays stronger, and dims images slightly (`--lagom-semantic-image-filter`). Use `--lagom-semantic-color-*` roles in your own CSS so it switches too.
 
-## Overriding with `--themed-*` properties
+## Increased contrast
 
-Lagom's styles read a `--themed-*` custom property first, and fall back to the lagom-tokens value when it isn't set. Set them on `:root` to change the whole app, or on a wrapping element to change one area:
+`data-lagom-contrast="more"`, or the user's `prefers-contrast: more` setting, switches every role to values that pass WCAG AAA: 7:1 for text and 4.5:1 for borders, button fills, and the focus ring. Borders get thicker (2px) and so does the focus ring (3px). Use it for a site-wide accessibility toggle, or leave it to the user's system setting.
 
-```css
-:root {
-  --themed-core-font-families-serif: Georgia, serif;
-  --themed-component-button-border-radius: 999px;
-}
+## Focus
 
-.promo {
-  --themed-component-button-color-primary-background: var(
-    --lagom-semantic-color-accent-default
-  );
-}
-```
+Everything focusable gets the brand's focus ring for keyboard focus (`:focus-visible`): an outline in `--lagom-semantic-color-focus-ring`, `--lagom-semantic-focus-ring-width` wide, 2px from the element. Over images (inside `Hero`, or an image-background `FeaturedSection`), the ring gets two more bands, `bg-default` inside and `fg-default` outside, so it shows on any image. In forced colours (such as Windows High Contrast) the ring uses the system highlight colour.
 
-These overrides win over token values whatever order your stylesheets load in. `createTheme()` sets some of the same properties on `:root`, so set each property one way or the other, not both. These are the hooks Lagom reads:
+## Changing part of a page
 
-### Typography
+Put a `data-lagom-brand`, `data-lagom-theme`, or `data-lagom-contrast` attribute on any element to change everything inside it, including tokens built from other tokens.
 
-- `--themed-core-font-families-sans-serif`: Body text, `h1`–`h6` elements, `Button`
-- `--themed-core-font-families-serif`: `Quote`
-- `--themed-core-font-families-monospace`: `code`, `pre`
-- `--themed-core-font-sizes-body`: Body text, `Button`
-- `--themed-core-font-weights-semi-bold`: `Button` label weight
-- `--themed-header-scale-1` … `--themed-header-scale-6`: `PageHeader` and `SectionHeader` sizes. They step down the scale on smaller screens. Defaults: 121.5px, 81px, 54px, 36px, 24px, 16px.
-- `--themed-component-page-header-typography`: `PageHeader` font, as a `font` shorthand
-- `--themed-component-section-header-typography`: `SectionHeader` font, as a `font` shorthand
+Overriding a single token on some other element (`.promo { --lagom-semantic-color-accent-default: … }`) changes that token there, but not the tokens built from it. Custom properties resolve where they're declared, so Base's button colours, which point at `accent-default`, keep the page's value. Override the tokens you need on that element too, or use a brand.
 
-### Colour
+## Layout properties
 
-- `--themed-component-button-color-primary-background`, `-text`, `-border`: Primary `Button` and `LinkButton`
-- `--themed-component-button-color-secondary-background`, `-text`, `-border`: Secondary `Button` and `LinkButton`
-- `--themed-component-page-header-color-text`: `PageHeader` text
-- `--themed-component-section-header-color-text`: `SectionHeader` text
+A few layout values aren't tokens. Set them in CSS:
 
-### Shape and spacing
-
-- `--themed-component-button-border-radius`: `Button` and `LinkButton` corners
-- `--themed-component-page-header-margin-bottom`, `-sm`: Space below `PageHeader` (`-sm` applies at 568px and below)
-- `--themed-component-section-header-margin-bottom`: Space below `SectionHeader`
-- `--themed-component-hero-margin-bottom`, `-sm`: Space below `Hero` (default 8rem, 4rem at 568px and below)
-- `--themed-component-hero-image-fit`: How the `Hero` image fills its area (`object-fit`, default `cover`)
-- `--themed-component-featured-section-image-fit`: How a `FeaturedSection` background image fills it (`object-fit`, default `cover`)
-
-A few older layout properties don't use the `--themed-` prefix:
-
-- `--hero-height`: Hero height, default `100vh`.
-- `--featured-section-height`: image-background FeaturedSection height, default `auto`.
+- `--hero-height`: `Hero` height, default `100vh`.
+- `--featured-section-height`: image-background `FeaturedSection` height, default `auto`.
 - `--framed-margin`: inset for `framed` FeaturedSections, default `1rem`.
 
 ## `createTheme()`
 
-`createTheme()` sets the typography, heading, and button overrides from JavaScript. It returns a `theme` for `ThemeProvider`, and a `GlobalStyle` component that writes the `--themed-*` properties onto `:root`:
+`createTheme()` builds the `theme` object that `ThemeProvider` passes to `useTheme()`: layout widths, breakpoints, and ready-made media queries, for your JavaScript. It doesn't change how components look.
 
 ```jsx
 import { createTheme, ThemeProvider } from "@fcongson/lagom-ui";
 
-const { theme, GlobalStyle } = createTheme({
-  core: {
-    fontFamilies: { serif: "Georgia, serif", monospace: "Menlo, monospace" },
-    headerScale: { 1: "96px" },
-  },
-  button: {
-    borderRadius: "999px",
-    primary: { backgroundColor: "rebeccapurple", borderColor: "rebeccapurple" },
-  },
-});
+const { theme } = createTheme({ MAX_WIDTH_CONTAINER: 960 });
 
 export const App = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    {children}
-  </ThemeProvider>
+  <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 ```
 
-Fields you leave out keep their token values. `createTheme()` covers these:
+It accepts `MAX_WIDTH_SECTION`, `MAX_WIDTH_CONTAINER`, and `MAX_WIDTH_CONTENT`. **Changing them doesn't change Lagom's CSS:** Section stays 1800px wide and Container 1120px.
 
-- **`core.fontFamilies`:** `serif`, `sansSerif`, `monospace`
-- **`core.fontSizes.body`**
-- **`core.headerScale`:** keys `1` to `6`
-- **`button`:** `borderRadius`, plus `backgroundColor`, `color`, and `borderColor` for `primary` and `secondary`
+## Upgrading from lagom-ui 1.x
 
-For anything else, set the `--themed-*` properties in CSS.
+lagom-ui 2.0 removes the `--themed-*` hooks and `createTheme()`'s `core`, `button`, and `GlobalStyle`. Override the token instead:
 
-`createTheme()` also accepts `MAX_WIDTH_SECTION`, `MAX_WIDTH_CONTAINER`, and `MAX_WIDTH_CONTENT`. These, and the rest of the `theme` object's layout values (`sizes`, `breakpoints`, `mediaQueries`), are only available to JavaScript through `useTheme()`. **Changing them doesn't change Lagom's CSS:** Section stays 1800px wide and Container 1120px. There's no supported way to change those widths yet.
+- `--themed-core-font-families-sans-serif`, `-serif`, `-monospace` → `--lagom-core-font-families-sans-serif`, `-serif`, `-monospace` (body text and headings read `--lagom-core-font-families-body` and `-heading`, which point at `sans-serif` in Base)
+- `--themed-core-font-sizes-body` → `--lagom-core-font-sizes-body`
+- `--themed-core-font-weights-semi-bold` → `--lagom-core-font-weights-semi-bold`
+- `--themed-header-scale-1` … `-6` → `--lagom-core-font-sizes-header1` … `header6`
+- `--themed-component-*` → the `--lagom-component-*` token with the same name
+- `createTheme({ core, button })` → set the same tokens in CSS
+
+lagom-tokens 2.0 also renamed some roles (`fg-muted` is now `fg-secondary`, for example). Its `MIGRATION.md` lists every change, and `scripts/migrate.js` rewrites them for you.

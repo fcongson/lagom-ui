@@ -21,16 +21,17 @@ If the docs don't answer a question, say so instead of inventing an answer. Miss
 
 - **Only use exported components.** Import from `@fcongson/lagom-ui`. Don't recreate a component that already exists.
 - **Page structure:** pages are built from `PageHeader` or `Hero` at the top, then `Section` (full-width, max 1800px) containing `Container` (max 1120px) for content. Full-bleed components (`Hero`, `FeaturedSection`, full-width `ImageCaption`) go directly in the page, not in a Container. See **Patterns/Page Structure**.
-- **Use tokens, never raw values.** Use `--lagom-semantic-*` custom properties for colour (e.g. `--lagom-semantic-color-fg-muted`), and `--lagom-core-*` for spacing, type, and radii. Don't hard-code hex values, px spacing, or font stacks.
-- **Theming:** components read `--themed-*` custom properties first and fall back to `--lagom-*` tokens. Override `--themed-*` on `:root` or a wrapping element; don't override component class styles.
-- **Setup:** apps must import `@fcongson/lagom-ui/style.css` and a lagom-tokens theme (`css/theme/_light.css`, optionally `_dark.css`), and render inside `ThemeProvider`.
+- **Use tokens, never raw values.** Use `--lagom-semantic-*` custom properties for colour (e.g. `--lagom-semantic-color-fg-secondary`), and `--lagom-core-*` for spacing, type, and radii. Never use palette colours (`--lagom-grey-55`, `--fern-olive-45`) in components: they don't follow brand, mode, or contrast. Don't hard-code hex values, px spacing, or font stacks.
+- **Theming:** everything visual comes from lagom-tokens. Brands override `--lagom-*` tokens on a `[data-lagom-brand~="…"]` selector; `data-lagom-theme="dark"` and `data-lagom-contrast="more"` switch mode and contrast. There are no `--themed-*` hooks (removed in 2.0). Don't override component class styles. See **Theming**.
+- **Setup:** apps must import `@fcongson/lagom-ui/style.css` and `@fcongson/lagom-tokens/css/lagom.css` (plus their brand's CSS), and render inside `ThemeProvider`.
+- **Focus:** `ThemeProvider` loads the brand's `:focus-visible` ring (three bands over images) and forced-colours rules. Don't add your own focus styles to components.
 - **Experimental props** are gated by GrowthBook feature flags (e.g. Button's experimental icon). Don't recommend them as stable API.
 - **Accessibility is non-negotiable.** Use semantic elements, give every meaningful image `alt` text, keep link and button text descriptive, and don't remove focus styles.
 
 ## Working in this repo
 
 - **Package manager:** pnpm 12 (pinned by `packageManager`). Building needs Node >= 22.18.
-- **Installing:** `pnpm install` fetches `@fcongson/lagom-tokens` from GitHub Packages. It needs a token with `read:packages` in the user-level `~/.npmrc` (`//npm.pkg.github.com/:_authToken=...`). pnpm 12 ignores the `${TOKEN}` in the committed `.npmrc`. If install fails with 401 or 403, ask the maintainer for a token. Don't edit `.npmrc`.
+- **Installing:** `pnpm install` fetches `@fcongson/lagom-tokens` and `@fcongson/lagom-brands` (Fern and Waypoint, dev only, for Storybook) from GitHub Packages. It needs a token with `read:packages` in the user-level `~/.npmrc` (`//npm.pkg.github.com/:_authToken=...`). pnpm 12 ignores the `${TOKEN}` in the committed `.npmrc`. If install fails with 401 or 403, ask the maintainer for a token. Don't edit `.npmrc`.
 - **Commands:**
   - `pnpm storybook`: Storybook on port 6006, with the MCP server at `/mcp`
   - `pnpm lint`
@@ -56,5 +57,6 @@ If the docs don't answer a question, say so instead of inventing an answer. Miss
 - **Releases:**
   - Add a changeset (`pnpm changeset`) for any change that affects the published package. Dev-only changes don't need one.
   - Versioning (`pnpm version-packages`) and `v*` tags are handled by the maintainer.
-- **Visual tests:** Chromatic runs on every PR. Visual changes are reviewed and accepted in Chromatic.
+- **Visual tests:** Chromatic runs on every PR. Visual changes are reviewed and accepted in Chromatic. Every story is snapshotted in Fern light. Stories whose look depends on brand, mode, or contrast (focus states, for example) also set `parameters: { chromatic: { modes: keyModes } }` from `src/stories/utils/modes.ts`, which snapshots them in every combination.
+- **Storybook toolbar:** Brand (Fern by default, Waypoint, Base), Mode, and Contrast set `data-lagom-*` attributes on `<html>`, as an app would. Fern and Waypoint are Frank's brands from `@fcongson/lagom-brands` (not licensed for reuse); docs must say that an app with no brand set gets Base.
 - **Docs Q&A eval:** after changing docs, JSDoc, or this file, run `pnpm eval` (with `pnpm storybook` running). It checks that an agent using only the MCP server answers real questions correctly. See `evals/README.md`. When a question fails, fix the docs, not the question.

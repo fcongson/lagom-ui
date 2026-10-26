@@ -33,8 +33,7 @@ The Storybook's **Getting Started** page also covers CI and hosting (GitHub Acti
 ```jsx
 import { Button, ThemeProvider } from "@fcongson/lagom-ui";
 import "@fcongson/lagom-ui/style.css"; // once, anywhere in your app entry
-import "@fcongson/lagom-tokens/css/theme/_light.css"; // default token values
-import "@fcongson/lagom-tokens/css/theme/_dark.css"; // optional, see below
+import "@fcongson/lagom-tokens/css/lagom.css"; // token values: Base brand, light, dark, increased contrast
 
 export const App = () => (
   <ThemeProvider>
@@ -43,27 +42,28 @@ export const App = () => (
 );
 ```
 
-Component styling isn't CSS-in-JS, so it isn't auto-injected - import lagom-ui's stylesheet once alongside your first component import. lagom-ui doesn't bundle a [lagom-tokens](https://github.com/fcongson/lagom-tokens) theme for you either: `_light.css` defines the token values on `:root`, and `_dark.css` applies dark values to anything inside an element with `data-lagom-theme="dark"`.
+Component styling isn't CSS-in-JS, so it isn't auto-injected - import lagom-ui's stylesheet once alongside your first component import. lagom-ui doesn't bundle [lagom-tokens](https://github.com/fcongson/lagom-tokens)' stylesheet for you either. `lagom.css` gives you Base, Lagom's neutral default brand, with dark mode on any element with `data-lagom-theme="dark"` and increased contrast with `data-lagom-contrast="more"` (or `prefers-contrast: more`).
 
-Render components inside `ThemeProvider`. It supplies the theme context read by `useTheme`, loads the global styles (including a `:focus-visible` rule that shows focus rings for keyboard users only), and provides the GrowthBook context that gates experimental features - `Button` throws "Missing or invalid GrowthBookProvider" without it.
+Render components inside `ThemeProvider`. It supplies the theme context read by `useTheme`, loads the global styles (including the brand's focus ring for keyboard users, and forced-colours support), and provides the GrowthBook context that gates experimental features - `Button` throws "Missing or invalid GrowthBookProvider" without it.
 
 ### Theming
 
-Components read `--themed-*` CSS custom properties first and fall back to the `--lagom-*` tokens, so you can override them globally on `:root` or per-instance on a wrapping element:
+Everything visual comes from lagom-tokens' custom properties. To make your own brand, override tokens on a `data-lagom-brand` selector, in CSS loaded after `lagom.css`, then check it with `npx check-brand your-brand.css`:
 
 ```css
-.my-cta {
-  --themed-component-button-color-primary-background: rebeccapurple;
+[data-lagom-brand~="rouge"] {
+  --lagom-semantic-color-accent-default: #b4281f;
+  --lagom-component-button-border-radius: 999px;
 }
 ```
 
-`createTheme()` is a JS helper for the font, header-scale, and button overrides: it returns `{ theme, GlobalStyle }`, where rendering `<GlobalStyle />` writes the corresponding `--themed-*` properties onto `:root`.
+See the Storybook's **Theming** page for the rules (both modes, increased contrast) and every token you can override. `createTheme()` only builds the JS layout values for `useTheme()`; it doesn't change styles.
 
 ## Development
 
 Uses pnpm 12 (pinned by `packageManager`). Building requires Node >= 22.18 (tsdown's requirement), even though the published package supports Node >= 20.
 
-`pnpm install` fetches lagom-tokens from GitHub Packages, so it needs the same user-level token as [Install](#install). CI supplies it via `actions/setup-node` and `NODE_AUTH_TOKEN`, and Netlify via `NPM_CONFIG_USERCONFIG` (see `netlify.toml`).
+`pnpm install` fetches lagom-tokens and lagom-brands (Fern and Waypoint, for the Storybook brand switcher) from GitHub Packages, so it needs the same user-level token as [Install](#install). CI supplies it via `actions/setup-node` and `NODE_AUTH_TOKEN`, and Netlify via `NPM_CONFIG_USERCONFIG` (see `netlify.toml`).
 
 ```
 pnpm install
