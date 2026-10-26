@@ -8,6 +8,14 @@ body * {
 }
 
 #storybook-docs {
+  /* Docs prose links get Storybook's blue underline as well as Lagom's
+     link border (GlobalStyle.css). Keep Lagom's, so docs links match the
+     components and follow the brand. */
+  & .sbdocs-a {
+    color: var(--lagom-semantic-color-fg-default);
+    text-decoration: none;
+  }
+
   & a[aria-hidden="true"] {
     border-bottom: none;
     padding-bottom: 0;
