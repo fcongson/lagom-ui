@@ -1,0 +1,35 @@
+/* Focus ring, for keyboard focus (:focus-visible) on anything focusable.
+   NoFocusOutline.css hides it for pointer focus.
+
+   The ring's main band is an outline in the brand's focus-ring colour, 2px
+   wide (3px with increased contrast) and 2px from the element. Every brand's
+   focus-ring role reaches 3:1 (4.5:1 with increased contrast) against every
+   background role, so one ring works anywhere on the page. */
+:focus-visible {
+  outline: var(--lagom-semantic-focus-ring-width) solid
+    var(--lagom-semantic-color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Over images no single colour is safe, so the ring gets three bands:
+   bg-default inside (filling the 2px gap), the focus-ring outline, and
+   fg-default outside. Whatever the image, either the inner or the outer band
+   contrasts with it, and each band contrasts with its neighbour (the contract
+   requires fg-default on bg-default at 9:1 or more for this). Box-shadows
+   draw under the outline, so the outer band only shows beyond it. */
+.lagom-hero :focus-visible,
+.lagom-featured-section--image-background :focus-visible {
+  box-shadow:
+    0 0 0 2px var(--lagom-semantic-color-bg-default),
+    0 0 0 calc(4px + var(--lagom-semantic-focus-ring-width))
+      var(--lagom-semantic-color-fg-default);
+}
+
+/* Forced colours (e.g. Windows High Contrast): box-shadows are dropped, but
+   the outline stays. Use the system Highlight colour so the ring matches
+   the rest of the user's system. */
+@media (forced-colors: active) {
+  :focus-visible {
+    outline-color: Highlight;
+  }
+}

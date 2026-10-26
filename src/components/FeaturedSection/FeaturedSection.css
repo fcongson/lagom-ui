@@ -79,3 +79,16 @@
     padding-bottom: 8rem;
   }
 }
+
+@media (forced-colors: active) {
+  /* See Hero.css. */
+  .lagom-featured-section.lagom-featured-section--image-background
+    .lagom-featured-section__image-overlay {
+    display: none;
+  }
+
+  /* The band's colour is dropped, so mark its edges instead. */
+  .lagom-featured-section.lagom-featured-section--color-background {
+    border-block: 1px solid CanvasText;
+  }
+}

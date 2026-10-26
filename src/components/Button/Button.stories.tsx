@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react-webpack5";
+import { keyModes } from "../../stories/utils/modes";
 import { Button } from "./Button";
 
 const meta: Meta = {
@@ -59,4 +60,22 @@ export const WithExperimentalIcon: Story = {
     children: "With icon",
     icon: "🚀",
   },
+};
+
+/**
+ * Keyboard focus: the brand's focus ring. A visual test, snapshotted in
+ * every brand, mode, and contrast.
+ */
+export const Focused: Story = {
+  tags: ["!manifest"],
+  render: () => (
+    <div style={{ display: "flex", gap: "2rem", padding: "1rem" }}>
+      <Button primary>Primary</Button>
+      <Button>Secondary</Button>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    canvasElement.querySelector("button")?.focus();
+  },
+  parameters: { chromatic: { modes: keyModes } },
 };
