@@ -2,42 +2,50 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta
   title="Design Tokens/Using Tokens"
-  summary="Which lagom-tokens custom properties to use in your own CSS: semantic colours that switch with light and dark, and core tokens for spacing, type, and radii."
+  summary="Which lagom-tokens custom properties to use in your own CSS: semantic colour roles that follow brand, dark mode, and increased contrast, and core tokens for spacing, type, and radii."
 />
 
 # Using tokens
 
-lagom-tokens provides every design value as a CSS custom property. Use them in your own CSS instead of hard-coded values, so your styles match Lagom and follow light and dark mode.
+lagom-tokens provides every design value as a CSS custom property. Use them in your own CSS instead of hard-coded values, so your styles match the brand and follow dark mode and increased contrast.
 
 ## Token layers
 
-- **Core** (`--lagom-core-*`): Raw values: the colour palette, spacing scale, fonts, radii, and opacity. Same in light and dark. **In your CSS:** Yes, for spacing, type, radii, and opacity. Not for colour.
-- **Semantic** (`--lagom-semantic-*`): Colours named by role. Values change between light and dark. **In your CSS:** Yes, for all colour.
-- **Component** (`--lagom-component-*`): Defaults for specific Lagom components. **In your CSS:** No. Use the `--themed-*` hooks in [Theming](?path=/docs/theming--docs) to change a component.
-- **Themed** (`--themed-*`): Optional overrides that Lagom reads before the tokens. **In your CSS:** Set them to theme Lagom. Don't read them.
+- **Core** (`--lagom-core-*`): Fonts, the type scale, spacing, radii, and opacity. **In your CSS:** Yes, for spacing, type, radii, and opacity.
+- **Semantic** (`--lagom-semantic-*`): Colours named by role, plus border and focus-ring widths. Values change with brand, mode, and contrast. **In your CSS:** Yes, for all colour.
+- **Component** (`--lagom-component-*`): Values for specific Lagom components, mostly pointing at semantic and core tokens. **In your CSS:** Override them to change one component (see [Theming](?path=/docs/theming--docs)). Don't read them.
+- **Palette** (`--lagom-grey-55`, `--lagom-navy-40`, …): The brand's colour ramps, named by tone from 5 (darkest) to 98 (lightest). Each brand has its own prefix. **In your CSS:** No. Palette colours don't change in dark mode or with increased contrast, and other brands don't have them. Use a role.
 
-## Colour: use semantic tokens
+## Colour: use semantic roles
 
-Always use `--lagom-semantic-color-*` for colour. Core colours (e.g. `--lagom-core-colors-olive-base`) don't change in dark mode.
+Always use `--lagom-semantic-color-*` for colour. Each role says what it's for and what contrast it guarantees, so text set in `fg-default` on `bg-secondary` passes in every brand, mode, and contrast level. Values below are Base's; other brands have their own.
 
-- `--lagom-semantic-color-fg-default`: Body text. Light `#111111`, dark `#ffffff`.
-- `--lagom-semantic-color-fg-muted`: Secondary text (used by `Quote`). Light `#222222`, dark `#ededed`.
-- `--lagom-semantic-color-fg-subtle`: Tertiary text, such as captions (used by `ImageCaption`). Light `#545454`, dark `#bababa`.
-- `--lagom-semantic-color-bg-default`: Page background. Light `#ffffff`, dark `#222222`.
-- `--lagom-semantic-color-bg-muted`: Panels set apart from the page (default `FeaturedSection` background). Light `#ededed`, dark `#2e2e2e`.
-- `--lagom-semantic-color-bg-subtle`: Stronger panel background. Light `#bababa`, dark `#3b3b3b`.
-- `--lagom-semantic-color-accent-default`: Accent colour. Light `#626e60`, dark `#626e60`.
-- `--lagom-semantic-color-accent-on-accent`: Text on `accent-default`. Light `#ffffff`, dark `#ffffff`.
-- `--lagom-semantic-color-accent-bg`: Accent-tinted background. Light `#94a092`, dark `#313630`.
-- `--lagom-semantic-color-border-default`: Standard borders (used by `Quote`). Light `#222222`, dark `#cacfc9`.
-- `--lagom-semantic-color-border-muted`: Light borders and link underlines. Light `#cacfc9`, dark `#495247`.
-- `--lagom-semantic-color-overlay-background`: Overlay over images, used with `--lagom-semantic-opacity-overlay` (by `Hero` and `FeaturedSection`). Light `#ffffff`, dark `#222222`.
-- `--lagom-semantic-color-shadows-default`: Shadows. Light `#222222`, dark `#111111`.
-- `--lagom-semantic-color-brand-primary`: Brand colour (olive). Same in both modes. Light `#626e60`, dark `#626e60`.
-- `--lagom-semantic-color-brand-secondary`: Brand colour (navy). Same in both modes. Light `#394e6f`, dark `#394e6f`.
-- `--lagom-semantic-color-brand-tertiary`: Brand colour (violet). Same in both modes. Light `#442c45`, dark `#442c45`.
+- `--lagom-semantic-color-fg-default`: Body text and headings. Must reach 4.5:1 on every background role, and 9:1 on bg-default (the image focus ring relies on it). Base: light `#1b1b1b`, dark `#f1f1f1`.
+- `--lagom-semantic-color-fg-secondary`: Supporting text, such as quotes and intros. Must reach 4.5:1 on bg-default and bg-secondary. Base: light `#474747`, dark `#c6c6c6`.
+- `--lagom-semantic-color-fg-tertiary`: The least prominent text, such as captions and meta. Page background only: must reach 4.5:1 on bg-default. On a band, use fg-secondary. Base: light `#5e5e5e`, dark `#ababab`.
+- `--lagom-semantic-color-bg-default`: The page background. Base: light `#ffffff`, dark `#1b1b1b`.
+- `--lagom-semantic-color-bg-secondary`: Bands and panels set off from the page, such as FeaturedSection. Base: light `#f1f1f1`, dark `#262626`.
+- `--lagom-semantic-color-bg-tertiary`: The most prominent neutral surface. Base: light `#d4d4d4`, dark `#3b3b3b`.
+- `--lagom-semantic-color-border-default`: Dividers and control outlines. Must reach 3:1 against bg-default. Base: light `#5e5e5e`, dark `#919191`.
+- `--lagom-semantic-color-border-secondary`: Quieter or decorative rules. Base: light `#d4d4d4`, dark `#3b3b3b`.
+- `--lagom-semantic-color-accent-default`: The brand mark: fills, rules, and highlights. Base: light `#475f85`, dark `#99accb`.
+- `--lagom-semantic-color-accent-fg`: Accent-coloured text and links on bg-default. Must reach 4.5:1 there. Base: light `#475f85`, dark `#99accb`.
+- `--lagom-semantic-color-accent-on-accent`: Text on an accent-default fill. Must reach 4.5:1 on it. Base: light `#ffffff`, dark `#1b1b1b`.
+- `--lagom-semantic-color-accent-bg`: A soft accent surface, such as a featured band. fg-default must reach 4.5:1 on it. Base: light `#dde3ed`, dark `#243145`.
+- `--lagom-semantic-color-button-primary-bg`: Primary button fill. Defaults to accent-default. Must reach 3:1 against bg-default. Base: light `#475f85`, dark `#99accb`.
+- `--lagom-semantic-color-button-primary-fg`: Primary button text. Must reach 4.5:1 on button-primary-bg. Base: light `#ffffff`, dark `#1b1b1b`.
+- `--lagom-semantic-color-button-secondary-bg`: Secondary button fill. Base: `transparent` in both modes.
+- `--lagom-semantic-color-button-secondary-fg`: Secondary button text and border. Must reach 4.5:1 on bg-default. Base: light `#475f85`, dark `#99accb`.
+- `--lagom-semantic-color-overlay-background`: The wash over images behind text, at opacity-overlay. Base: light `#ffffff`, dark `#1b1b1b`.
+- `--lagom-semantic-color-selection-bg`: Text selection highlight. fg-default must reach 4.5:1 on it. Base: light `#ccd5e5`, dark `#344766`.
+- `--lagom-semantic-color-focus-ring`: Keyboard focus indicator. Must reach 3:1 against bg-default, bg-secondary, bg-tertiary, and accent-bg. Base: light `#475f85`, dark `#99accb`.
 
-Button colours also have semantic tokens (`--lagom-semantic-color-button-primary-bg`, `-fg`, and the `secondary` equivalents). To change button colours, use the `--themed-component-button-*` hooks.
+## Other semantic tokens
+
+- `--lagom-semantic-opacity-overlay`: Strength of overlay-background over images. Base: light `0.1`, dark `0.3`.
+- `--lagom-semantic-image-filter`: Filter applied to images, such as dimming in dark mode. Base: light `none`, dark `brightness(0.8) contrast(1.2)`.
+- `--lagom-semantic-border-width`: Default border width for controls and dividers. Base: `1px` in both modes.
+- `--lagom-semantic-focus-ring-width`: Focus ring thickness. Base: `2px` in both modes.
 
 ## Spacing
 
@@ -50,14 +58,15 @@ Button colours also have semantic tokens (`--lagom-semantic-color-button-primary
 
 ## Typography
 
-- **Families:**
-  - `--lagom-core-font-families-body` and `-heading` (both Montserrat)
-  - `-serif` (Domine)
-  - `-monospace` (Silka Mono)
-  - `-sans-serif`
+- **Families** (Base's fonts; each brand names its own):
+  - `--lagom-core-font-families-sans-serif` (Lexend)
+  - `-body` and `-heading` (both point at `-sans-serif` in Base)
+  - `-serif` (Source Serif 4)
+  - `-monospace` (DM Mono)
 - **Sizes:** `--lagom-core-font-sizes-body` is 16px, and the rest scale from it:
   - `-xs` 0.65×, `-sm` 0.85×, `-lg` 1.25×, `-xl` 1.5×
   - `-h6` equals body, and each heading up to `-h1` is 1.25× the one below
+  - `-header1` to `-header6` (121.5px, 81px, 54px, 36px, 24px, 16px): the `PageHeader` and `SectionHeader` scale
 - **Weights:** `--lagom-core-font-weights-body-regular`, `-body-semi-bold`, `-body-bold`, `-heading-regular`, `-heading-semi-bold`, `-heading-bold`.
 - **Line heights:** `--lagom-core-line-heights-body`, `-heading`.
 - **Shorthand:** `--lagom-semantic-typography-body` is a complete `font` value for body text.
@@ -78,8 +87,8 @@ Opacity: `--lagom-core-opacity-none` (0), `-min` (0.1), `-low` (0.3), `-md` (0.5
 The same tokens are exported as constants, named in camelCase. For example, `--lagom-core-spacing-lg` becomes `lagomCoreSpacingLg`:
 
 ```js
-import { lagomCoreSpacingLg } from "@fcongson/lagom-tokens/js/variables/core.js";
-import { lagomSemanticColorFgDefault } from "@fcongson/lagom-tokens/js/theme/light.js";
+import { lagomCoreSpacingLg } from "@fcongson/lagom-tokens/js/light.js";
+import { lagomSemanticColorFgDefault } from "@fcongson/lagom-tokens/js/light.js";
 ```
 
-JavaScript values are fixed, so they don't switch between light and dark. Prefer the CSS custom properties wherever you can.
+Each variant has its own module: `js/light.js`, `js/dark.js`, `js/more.js`, and `js/more-dark.js` (Base), or `@fcongson/lagom-brands/<brand>/js/…` for a brand. JavaScript values are fixed, so they don't follow the page's brand, mode, or contrast. Prefer the CSS custom properties wherever you can.

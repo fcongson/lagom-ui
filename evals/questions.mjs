@@ -17,7 +17,7 @@ export const questions = [
     mustInclude: [
       "Both @fcongson/lagom-ui and @fcongson/lagom-tokens are installed from GitHub Packages, with the @fcongson scope pointed at https://npm.pkg.github.com",
       "Authentication needs a GitHub token with read:packages",
-      "Import @fcongson/lagom-ui/style.css and a lagom-tokens theme stylesheet (css/theme/_light.css)",
+      "Import @fcongson/lagom-ui/style.css and lagom-tokens' css/lagom.css",
       "Wrap the app in ThemeProvider",
     ],
     mustNotInclude: [
@@ -140,9 +140,10 @@ export const questions = [
     question:
       "How do I make the primary buttons purple in just one section of my page?",
     mustInclude: [
-      "Set --themed-component-button-color-primary-background (and optionally the -border / -text properties) on a wrapping element around that section",
+      "Set --lagom-component-button-color-primary-background (and optionally the -border / -text tokens) on an element wrapping that section",
     ],
     mustNotInclude: [
+      "Recommends --themed-* properties or createTheme (removed in lagom-ui 2.0)",
       "Recommends inline style overrides on each Button as the main approach",
       "Recommends overriding .lagom-button class styles directly",
     ],
@@ -152,19 +153,21 @@ export const questions = [
     category: "Theming",
     question: "How do I change Lagom's serif font, and what will it affect?",
     mustInclude: [
-      "Use createTheme's core.fontFamilies.serif, or set --themed-core-font-families-serif",
+      "Override --lagom-core-font-families-serif in CSS (for example on :root or a brand selector)",
       "It affects Quote",
     ],
-    mustNotInclude: [],
+    mustNotInclude: [
+      "Recommends --themed-* properties or createTheme (removed in lagom-ui 2.0)",
+    ],
   },
   {
     id: "token-caption",
     category: "Theming",
     question:
       "Which colour token should I use for small caption text in my own CSS?",
-    mustInclude: ["--lagom-semantic-color-fg-subtle"],
+    mustInclude: ["--lagom-semantic-color-fg-tertiary"],
     mustNotInclude: [
-      "Recommends a core colour token (--lagom-core-colors-*) or a hard-coded hex value",
+      "Recommends a palette colour (such as --lagom-grey-55) or a hard-coded hex value",
     ],
   },
   {
@@ -172,8 +175,42 @@ export const questions = [
     category: "Theming",
     question: "How do I make just one section of my page use dark mode?",
     mustInclude: [
-      "Import lagom-tokens' css/theme/_dark.css",
       'Set data-lagom-theme="dark" on the element wrapping that section',
+    ],
+    mustNotInclude: [
+      "Says a separate dark stylesheet (such as _dark.css) must be imported",
+    ],
+  },
+  {
+    id: "brand-own",
+    category: "Theming",
+    question:
+      "How do I give my site its own brand colours and fonts with Lagom?",
+    mustInclude: [
+      "Override lagom-tokens' --lagom-* tokens (semantic colour roles, core fonts) in CSS loaded after lagom.css, on a data-lagom-brand selector or :root",
+      "Set colour roles for both light and dark mode",
+      "Check the brand with npx check-brand",
+    ],
+    mustNotInclude: [
+      "Recommends --themed-* properties or createTheme (removed in lagom-ui 2.0)",
+      "Recommends building on the Fern or Waypoint brands",
+    ],
+  },
+  {
+    id: "brand-default",
+    category: "Theming",
+    question: "Which brand does my app get if I don't set data-lagom-brand?",
+    mustInclude: ["Base, lagom-tokens' neutral default brand"],
+    mustNotInclude: ["Says Fern is the default for apps"],
+  },
+  {
+    id: "contrast-more",
+    category: "Theming",
+    question:
+      "Does Lagom support users who need higher contrast, and how do I turn it on?",
+    mustInclude: [
+      'Yes: prefers-contrast: more turns it on automatically, or set data-lagom-contrast="more"',
+      "Roles switch to values that pass WCAG AAA (7:1 for text)",
     ],
     mustNotInclude: [],
   },

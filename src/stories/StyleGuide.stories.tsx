@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react-webpack5";
+import { keyModes } from "./utils/modes";
 import {
   CallToAction,
   Container,
@@ -19,6 +20,9 @@ import {
 const meta: Meta = {
   title: "Style Guide",
   tags: ["!manifest"],
+  // Every component on one page: snapshotted in every brand, mode, and
+  // contrast, so a token change in any of them shows up in Chromatic.
+  parameters: { chromatic: { modes: keyModes } },
 };
 
 export default meta;
