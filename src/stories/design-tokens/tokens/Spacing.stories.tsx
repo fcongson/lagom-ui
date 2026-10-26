@@ -1,7 +1,7 @@
-import * as core from "@fcongson/lagom-tokens/js/variables/core.js";
 import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Container, PageHeader, Section } from "../../..";
 import { TokenCard } from "../../utils/TokenCard";
+import { brandTokens } from "../../utils/brandTokens";
 import { cssCustomPropertyName } from "../../utils/cssCustomPropertyName";
 import { sortByPx } from "../../utils/sortByPx";
 
@@ -32,7 +32,7 @@ const SpacingCard: React.FunctionComponent<SpacingCardProps> = ({
       <div style={{ display: "flex", alignItems: "center" }}>
         <div
           style={{
-            backgroundColor: "var(--lagom-semantic-color-bg-muted)",
+            backgroundColor: "var(--lagom-semantic-color-bg-secondary)",
             height: "2rem",
             width: "2rem",
             borderRadius: "1rem",
@@ -49,7 +49,7 @@ const SpacingCard: React.FunctionComponent<SpacingCardProps> = ({
         ></div>
         <div
           style={{
-            backgroundColor: "var(--lagom-semantic-color-bg-muted)",
+            backgroundColor: "var(--lagom-semantic-color-bg-secondary)",
             height: "2rem",
             width: "2rem",
             borderRadius: "1rem",
@@ -60,14 +60,16 @@ const SpacingCard: React.FunctionComponent<SpacingCardProps> = ({
       </div>
     }
     previewProps={{
-      border: "1px solid var(--lagom-semantic-color-bg-muted)",
+      border: "1px solid var(--lagom-semantic-color-bg-secondary)",
     }}
     name={cssCustomPropertyName(name)}
     value={value}
   />
 );
 
-const SpacingGroup: React.FunctionComponent = () => {
+const SpacingGroup: React.FunctionComponent<{
+  core: Record<string, string>;
+}> = ({ core }) => {
   const tokens = Object.keys(core).reduce((result, key) => {
     if (key.startsWith(TOKEN_KEY)) {
       result[key] = core[key];
@@ -87,11 +89,12 @@ const SpacingGroup: React.FunctionComponent = () => {
 };
 
 export const Spacing: StoryObj = {
-  render: () => {
+  render: (_args, { globals }) => {
+    const { tokens: core } = brandTokens(globals);
     return (
       <>
         <PageHeader>Spacing</PageHeader>
-        <SpacingGroup />
+        <SpacingGroup core={core} />
       </>
     );
   },

@@ -1,7 +1,7 @@
-import * as core from "@fcongson/lagom-tokens/js/variables/core.js";
 import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Container, PageHeader, Section, SectionHeader } from "../../..";
 import { TokenCard } from "../../utils/TokenCard";
+import { brandTokens } from "../../utils/brandTokens";
 import { cssCustomPropertyName } from "../../utils/cssCustomPropertyName";
 import { sortByPx } from "../../utils/sortByPx";
 
@@ -39,7 +39,7 @@ const BorderCard: React.FunctionComponent<BorderCardProps> = ({
       ></div>
     }
     previewProps={{
-      border: "1px solid var(--lagom-semantic-color-bg-muted)",
+      border: "1px solid var(--lagom-semantic-color-bg-secondary)",
     }}
     name={cssCustomPropertyName(name)}
     value={value}
@@ -48,9 +48,13 @@ const BorderCard: React.FunctionComponent<BorderCardProps> = ({
 
 interface BorderGroupProps {
   type?: string;
+  core: Record<string, string>;
 }
 
-const BorderGroup: React.FunctionComponent<BorderGroupProps> = ({ type }) => {
+const BorderGroup: React.FunctionComponent<BorderGroupProps> = ({
+  type,
+  core,
+}) => {
   const tokens = Object.keys(core).reduce((result, key) => {
     if (key.startsWith(`${TOKEN_KEY}${type}`)) {
       result[key] = core[key];
@@ -71,11 +75,12 @@ const BorderGroup: React.FunctionComponent<BorderGroupProps> = ({ type }) => {
 };
 
 export const Border: StoryObj = {
-  render: () => {
+  render: (_args, { globals }) => {
+    const { tokens: core } = brandTokens(globals);
     return (
       <>
         <PageHeader>Border</PageHeader>
-        <BorderGroup type="Radius" />
+        <BorderGroup type="Radius" core={core} />
       </>
     );
   },

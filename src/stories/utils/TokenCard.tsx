@@ -45,7 +45,7 @@ export const TokenCard: React.FunctionComponent<TokenCardProps> = ({
         style={{
           padding: "1rem",
           width: "50%",
-          backgroundColor: "var(--lagom-semantic-color-bg-muted)",
+          backgroundColor: "var(--lagom-semantic-color-bg-secondary)",
           borderRadius: "0 0.5rem 0.5rem 0",
           fontFamily: "var(--lagom-core-font-families-monospace)",
         }}

@@ -16,7 +16,7 @@ type ImageBackgroundProps = FeaturedSectionProps & {
   /**
    * An image element (e.g. `<img>`) used as the background. Only used when
    * `imageAsBackground` is set. It's stretched to cover the section (crop
-   * controlled by `--themed-component-featured-section-image-fit`), with an
+   * controlled by `--lagom-component-featured-section-image-fit`), with an
    * overlay so text stays readable. Give it `alt` text, or `alt=""` if it's
    * purely decorative.
    */
@@ -56,7 +56,8 @@ type ColorBackgroundProps = FeaturedSectionProps & {
   /**
    * Background colour for the colour variant. Use a token, e.g.
    * `var(--lagom-semantic-color-accent-bg)`. Defaults to
-   * `--lagom-semantic-color-bg-muted`.
+   * `--lagom-component-featured-section-color-background` (`bg-secondary`
+   * in Base).
    */
   backgroundColor?: string;
 };

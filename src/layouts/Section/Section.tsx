@@ -8,7 +8,7 @@ interface SectionProps extends React.ComponentPropsWithoutRef<"section"> {
   className?: string;
   /**
    * Background colour for the section. Use a token, e.g.
-   * `var(--lagom-semantic-color-bg-muted)`.
+   * `var(--lagom-semantic-color-bg-secondary)`.
    */
   backgroundColor?: string;
 }

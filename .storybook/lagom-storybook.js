@@ -1,13 +1,13 @@
-import * as dark from "@fcongson/lagom-tokens/js/theme/dark.js";
-import * as light from "@fcongson/lagom-tokens/js/theme/light.js";
-import * as core from "@fcongson/lagom-tokens/js/variables/core.js";
+// The Storybook UI around the stories uses Fern, the default brand.
+import * as dark from "@fcongson/lagom-brands/fern/js/dark.js";
+import * as light from "@fcongson/lagom-brands/fern/js/light.js";
 import { create } from "storybook/theming/create";
 
 export default create({
   base: "light",
   // Typography
-  fontBase: core.lagomCoreFontFamiliesBody,
-  fontCode: core.lagomCoreFontFamiliesMonospace,
+  fontBase: light.lagomCoreFontFamiliesBody,
+  fontCode: light.lagomCoreFontFamiliesMonospace,
 
   brandTitle: "Lagom UI",
   brandUrl: "https://lagom-ui.netlify.app",
@@ -15,14 +15,14 @@ export default create({
   brandTarget: "_self",
 
   //
-  colorPrimary: core.lagomCoreColorsOliveLighter20,
-  colorSecondary: core.lagomCoreColorsOliveLighter20,
+  colorPrimary: light.lagomSemanticColorAccentDefault,
+  colorSecondary: light.lagomSemanticColorAccentDefault,
 
   // UI
   appBg: light.lagomSemanticColorBgDefault,
   appContentBg: light.lagomSemanticColorBgDefault,
   appPreviewBg: light.lagomSemanticColorBgDefault,
-  appBorderColor: light.lagomSemanticColorBorderMuted,
+  appBorderColor: light.lagomSemanticColorBorderSecondary,
   appBorderRadius: 0,
 
   // Text colors
@@ -31,8 +31,8 @@ export default create({
 
   // Toolbar default and active colors
   barTextColor: light.lagomSemanticColorFgDefault,
-  barHoverColor: core.lagomCoreColorsOliveBase,
-  barSelectedColor: core.lagomCoreColorsOliveBase,
+  barHoverColor: light.lagomSemanticColorAccentDefault,
+  barSelectedColor: light.lagomSemanticColorAccentDefault,
   barBg: light.lagomSemanticColorBgDefault,
 
   // Form colors

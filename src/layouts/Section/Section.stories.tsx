@@ -18,13 +18,13 @@ export const Default: Story = {
       <Section
         style={{
           borderStyle: "dashed",
-          borderColor: "var(--lagom-core-colors-olive-lighter20)",
+          borderColor: "var(--lagom-semantic-color-border-default)",
         }}
       >
         <Container
           style={{
             borderStyle: "dashed",
-            borderColor: "var(--lagom-core-colors-olive-lighter40)",
+            borderColor: "var(--lagom-semantic-color-border-secondary)",
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -43,13 +43,13 @@ export const Default: Story = {
       <Section
         style={{
           borderStyle: "dashed",
-          borderColor: "var(--lagom-core-colors-olive-lighter20)",
+          borderColor: "var(--lagom-semantic-color-border-default)",
         }}
       >
         <Container
           style={{
             borderStyle: "dashed",
-            borderColor: "var(--lagom-core-colors-olive-lighter40)",
+            borderColor: "var(--lagom-semantic-color-border-secondary)",
           }}
         >
           Molestie a iaculis at erat pellentesque. Dolor purus non enim praesent
@@ -67,13 +67,13 @@ export const Default: Story = {
       <Section
         style={{
           borderStyle: "dashed",
-          borderColor: "var(--lagom-core-colors-olive-lighter20)",
+          borderColor: "var(--lagom-semantic-color-border-default)",
         }}
       >
         <Container
           style={{
             borderStyle: "dashed",
-            borderColor: "var(--lagom-core-colors-olive-lighter40)",
+            borderColor: "var(--lagom-semantic-color-border-secondary)",
           }}
         >
           Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum
