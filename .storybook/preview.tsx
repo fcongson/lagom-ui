@@ -1,6 +1,39 @@
 import "@fcongson/lagom-brands/fern/css/fern.css";
 import "@fcongson/lagom-brands/waypoint/css/waypoint.css";
 import "@fcongson/lagom-tokens/css/lagom.css";
+
+// Fonts for every brand in the toolbar, bundled with Storybook from
+// Fontsource rather than fetched from Google Fonts, so Chromatic snapshots
+// never catch a font mid-load. They're imported here, not from a separate
+// module, because package.json's sideEffects would let webpack drop an
+// import-only .ts file. Weights match the tokens: 400 body, 600
+// semi-bold, 700 bold, and italic for Quote's serif.
+
+// Fern (silkamono, its monospace, is self-hosted in style.css)
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/600.css";
+import "@fontsource/montserrat/700.css";
+import "@fontsource/domine/400.css";
+import "@fontsource/domine/700.css";
+
+// Base
+import "@fontsource/lexend/400.css";
+import "@fontsource/lexend/600.css";
+import "@fontsource/lexend/700.css";
+import "@fontsource/source-serif-4/400.css";
+import "@fontsource/source-serif-4/400-italic.css";
+import "@fontsource/source-serif-4/700.css";
+import "@fontsource/dm-mono/400.css";
+
+// Waypoint
+import "@fontsource/work-sans/400.css";
+import "@fontsource/work-sans/600.css";
+import "@fontsource/work-sans/700.css";
+import "@fontsource/fraunces/400.css";
+import "@fontsource/fraunces/400-italic.css";
+import "@fontsource/fraunces/600.css";
+import "@fontsource/ibm-plex-mono/400.css";
+
 import { Decorator, Preview } from "@storybook/react-webpack5";
 import { ThemeProvider } from "../src/themes/ThemeProvider";
 import { defaultModes } from "../src/stories/utils/modes";
