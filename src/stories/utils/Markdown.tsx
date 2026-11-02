@@ -1,5 +1,6 @@
 import { Container, PageHeader, Section, SectionHeader } from "../..";
 import { ContentContainer } from "./ContentContainer";
+import { LagomLogo } from "./LagomLogo";
 import { VideoCard } from "./VideoCard";
 
 const mdxComponents = {
@@ -15,6 +16,7 @@ const mdxComponents = {
     return <SectionHeader {...props} />;
   },
   VideoCard,
+  LagomLogo,
 };
 
 export const Markdown: React.FunctionComponent<{
