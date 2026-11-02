@@ -1,4 +1,7 @@
-![lagom-ui](public/lagom-logo.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="public/lagom-logo-dark.png" />
+  <img src="public/lagom-logo.png" alt="Lagom UI" />
+</picture>
 
 [**Lagom**](https://en.wikipedia.org/wiki/Lagom) (pronounced [ˈlɑ̂ːɡɔm]) is a Swedish and Norwegian word meaning "just the right amount".
 
