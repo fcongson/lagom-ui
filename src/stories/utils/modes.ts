@@ -21,3 +21,13 @@ export const defaultModes = { "fern light": allModes["fern light"] };
 
 /** For key stories: every brand, mode, and contrast combination above. */
 export const keyModes = allModes;
+
+/**
+ * For stories whose layout reflows with width: Fern light at a phone, tablet,
+ * and desktop viewport width.
+ */
+export const viewportModes = {
+  "fern light 375": { ...allModes["fern light"], viewport: 375 },
+  "fern light 768": { ...allModes["fern light"], viewport: 768 },
+  "fern light 1280": { ...allModes["fern light"], viewport: 1280 },
+};

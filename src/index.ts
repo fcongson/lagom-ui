@@ -3,6 +3,7 @@ export * from "./components/CallToAction";
 export * from "./components/FeaturedSection";
 export * from "./components/Hero";
 export * from "./components/ImageCaption";
+export * from "./components/ImageGallery";
 export * from "./components/LinkButton";
 export * from "./components/PageHeader";
 export * from "./components/Quote";

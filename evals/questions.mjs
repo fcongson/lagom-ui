@@ -124,6 +124,35 @@ export const questions = [
     ],
   },
   {
+    id: "gallery-mixed-shapes",
+    category: "Components",
+    question:
+      "I want to show 5 captioned photos in rows, some portrait and some landscape, without cropping them. What should I use?",
+    mustInclude: [
+      "ImageGallery, with ImageGalleryItems grouped into ImageGalleryRows",
+      "Each row has as many images as it has items: up to 3 (or 4 with fullwidth)",
+      "Images in a row are scaled to the same height, without cropping",
+      "Give each <img> its width and height (or pass ratio) so the gallery knows its shape",
+    ],
+    mustNotInclude: [
+      "Suggests ImageCaption components in a hand-written CSS grid or flex layout",
+      "Suggests cropping with object-fit: cover or a fixed aspect ratio",
+    ],
+  },
+  {
+    id: "gallery-per-row",
+    category: "Components",
+    question:
+      "Can I tell ImageGallery to show 3 images per row and just pass it 9 images?",
+    mustInclude: [
+      "No: there's no per-row or columns prop",
+      "Group the images into ImageGalleryRows, e.g. three rows of three",
+    ],
+    mustNotInclude: [
+      "Invents a prop such as perRow, columns, or itemsPerRow that exists today",
+    ],
+  },
+  {
     id: "missing-component",
     category: "Components",
     question: "Does Lagom have a Card or Modal component I can use?",
