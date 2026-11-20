@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageGallery Renders 1`] = `
+<div>
+  <section
+    class="lagom-section lagom-image-gallery"
+  >
+    <div
+      class="lagom-container"
+    >
+      <ul
+        class="lagom-image-gallery__list lagom-image-gallery__list--stack-2"
+        role="list"
+      >
+        <li
+          class="lagom-image-gallery__item"
+          style="--lagom-image-gallery-ratio: 1.5;"
+        >
+          <figure
+            class="lagom-image-gallery__figure"
+          >
+            <div
+              class="lagom-image-gallery__image"
+            >
+              <img
+                alt="One"
+                height="1000"
+                src="/landscape.jpg"
+                width="1500"
+              />
+            </div>
+            <figcaption
+              class="lagom-image-caption__image-label"
+            >
+              First
+            </figcaption>
+          </figure>
+        </li>
+        <li
+          class="lagom-image-gallery__item"
+          style="--lagom-image-gallery-ratio: 1.5;"
+        >
+          <figure
+            class="lagom-image-gallery__figure"
+          >
+            <div
+              class="lagom-image-gallery__image"
+            >
+              <img
+                alt="Two"
+                height="1000"
+                src="/landscape.jpg"
+                width="1500"
+              />
+            </div>
+            <figcaption
+              class="lagom-image-caption__image-label"
+            >
+              Second
+            </figcaption>
+          </figure>
+        </li>
+        <li
+          aria-hidden="true"
+          class="lagom-image-gallery__break"
+        />
+        <li
+          class="lagom-image-gallery__item"
+          style="--lagom-image-gallery-ratio: 1.5;"
+        >
+          <figure
+            class="lagom-image-gallery__figure"
+          >
+            <div
+              class="lagom-image-gallery__image"
+            >
+              <img
+                alt="Three"
+                height="1000"
+                src="/landscape.jpg"
+                width="1500"
+              />
+            </div>
+          </figure>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+`;

@@ -1,0 +1,134 @@
+import { Canvas, Controls, Meta, Primary } from "@storybook/addon-docs/blocks";
+import * as ImageGalleryStories from "./ImageGallery.stories";
+
+<Meta of={ImageGalleryStories} />
+
+# ImageGallery
+
+Rows of images, each with an optional caption. Images in a row are scaled to the same height and fill the row, so portraits and landscapes sit side by side without cropping. You choose how many images go in each row by putting `ImageGalleryItem`s in an `ImageGalleryRow`. On narrow screens the gallery stacks to one image per line.
+
+<Primary />
+
+```jsx
+import {
+  ImageGallery,
+  ImageGalleryItem,
+  ImageGalleryRow,
+} from "@fcongson/lagom-ui";
+
+<ImageGallery>
+  <ImageGalleryRow>
+    <ImageGalleryItem
+      image={
+        <img
+          src="/church.jpg"
+          alt="A white church below misty mountains"
+          width={2400}
+          height={1600}
+        />
+      }
+      caption="Church"
+    />
+    <ImageGalleryItem
+      image={
+        <img
+          src="/coast.jpg"
+          alt="Red cabins on a rocky coast"
+          width={2400}
+          height={1600}
+        />
+      }
+      caption="Rocky coast"
+    />
+  </ImageGalleryRow>
+  <ImageGalleryRow>
+    {/* Up to 3 images per row, or 4 with fullwidth */}
+  </ImageGalleryRow>
+</ImageGallery>;
+```
+
+## When to use
+
+- For several related images shown together, such as photos from one trip or a set of design explorations.
+- When images have different shapes and you don't want them cropped.
+
+## When not to use
+
+- **For a single image:** use `ImageCaption`.
+- **For an image behind text:** use `FeaturedSection` or `Hero`.
+- **For decorative images:** use a plain `<img alt="">`, since a gallery implies content.
+
+## How the layout works
+
+- **Rows are explicit.** Each `ImageGalleryRow` has as many images as it has items: up to 3, or up to 4 in a `fullwidth` gallery. A longer row still renders, but logs a warning in development.
+- **Images in a row share a height.** Each image is sized by its shape, so the row is filled exactly and nothing is cropped. Rows of different shapes have different heights.
+- **The gallery needs each image's shape.** Give every `<img>` its `width` and `height` (the image's real pixel size works). If the image has neither, pass `ratio` (width ÷ height, e.g. `1.5` for 3:2). Without either, the image shows as a square and a warning is logged in development.
+- **Narrow screens stack.** When the gallery is narrower than 160px for each image in its largest row (480px for rows of 3, 640px for rows of 4), every image goes on its own line at full width. This is measured on the gallery itself with a container query, so it works at any width the gallery is placed in.
+- **Older browsers:** without container query support, the gallery keeps its rows and doesn't stack. Every current browser supports them.
+- **Deterministic:** the layout is CSS only. The same rows always produce the same layout at a given width, with no measuring or layout shift after load.
+
+## Variants
+
+### Default
+
+Contained in the content column, up to 1120px wide.
+
+<Canvas of={ImageGalleryStories.Default} />
+
+### Mixed shapes
+
+Portraits and landscapes in the same row are scaled to the same height.
+
+<Canvas of={ImageGalleryStories.MixedShapes} />
+
+### Emphasized
+
+130% of the content column on screens 1456px and wider, so it extends past the text. Narrower screens show it at the default width. Takes precedence over `fullwidth`.
+
+<Canvas of={ImageGalleryStories.Emphasized} />
+
+### Full width
+
+Spans the full viewport width, edge to edge, and allows up to 4 images per row. Each row is capped at 80% of the screen height; a row that would be taller is narrowed and centred. Captions are padded so they don't touch the screen edge.
+
+<Canvas of={ImageGalleryStories.FullWidth} />
+
+### Without captions
+
+Captions are optional on each image.
+
+<Canvas of={ImageGalleryStories.WithoutCaptions} />
+
+## Accessibility
+
+**Handled by ImageGallery:**
+
+- The gallery is one list (`<ul>`) of all its images, so screen readers announce how many images there are. The row breaks are hidden from assistive technology.
+- Each image is a `<figure>` with its caption in a `<figcaption>`, so the caption is associated with the image.
+- Reading order follows the order you write: left to right, then row by row. The layout never reorders images.
+- Caption colour (`fg-tertiary`): every brand guarantees at least 4.5:1 on `bg-default`, and 7:1 with increased contrast.
+
+**Your responsibility:**
+
+- **Alt text:** every `image` needs its own `alt`. The caption doesn't replace it.
+- **A name for the gallery,** when the page doesn't already introduce it with a heading: pass `aria-label` (e.g. `aria-label="Photos from Iceland"`). It's added to the list.
+- **Caption length:** captions are 14px italic, and narrow portrait images wrap them a lot. Keep them short.
+
+## Do and don't
+
+- **Do** give every `<img>` its `width` and `height`. That also prevents layout shift while images load.
+- **Do** keep rows to 3 images (4 at full width).
+- **Do** add `loading="lazy"` to images below the fold. If you use `srcset`, `sizes` can only be approximate, because each image's width depends on its shape and the row.
+- **Don't** put `ImageGalleryItem`s directly in `ImageGallery`. Each would get a row of its own. Wrap them in `ImageGalleryRow`.
+- **Don't** crop images with your own CSS: the gallery sizes them by shape.
+
+## Props
+
+The tabs show the props for `ImageGallery`, `ImageGalleryRow` and `ImageGalleryItem`.
+
+<Controls />
+
+## Related
+
+- `ImageCaption`: a single image with an optional caption.
+- `FeaturedSection`: an image behind content.

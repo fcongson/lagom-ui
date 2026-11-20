@@ -3,7 +3,7 @@ import * as PatternStories from "./Patterns.stories";
 
 <Meta
   title="Patterns/Article"
-  summary="A long-form article or blog post: a plain h1 title, Section and Container blocks per heading, plain h2 headings, Quote, code blocks, and emphasized ImageCaptions between sections."
+  summary="A long-form article or blog post: a plain h1 title, Section and Container blocks per heading, plain h2 headings, Quote, code blocks, and emphasized ImageCaptions or ImageGallery rows between sections."
 />
 
 # Article
@@ -21,7 +21,7 @@ A live example built with Lagom components. Scroll inside the frame to see the w
 1. **Title:** a plain `<h1>` in a `Section` and `Container`, aligned with the text.
 2. **Lead image:** an `ImageCaption` directly after the title.
 3. **Body:** one `Section` and `Container` per heading group. Each starts with a plain `<h2>`, then paragraphs, lists, a `Quote`, or `<pre>` code blocks.
-4. **Images between sections:** `ImageCaption` with `emphasized`, so images stand out from the text on large screens. Use `fullwidth` for the occasional striking image.
+4. **Images between sections:** `ImageCaption` with `emphasized`, so images stand out from the text on large screens. Use `fullwidth` for the occasional striking image. For several related images, use an `ImageGallery`, also with `emphasized`.
 5. **Ending:** a short closing section, or a `FeaturedSection` with a `CallToAction`.
 
 ## Example
@@ -88,7 +88,7 @@ export const Post = () => (
 
 - **Use plain `<h2>` and `<h3>` for headings in the text,** not `SectionHeader`. SectionHeader is centred and very large, made for landing-style sections.
 - **Start a new Section and Container at each `<h2>`.** That gives consistent space between sections.
-- **Keep images out of the text Containers.** Use `ImageCaption`, which brings its own Section and Container, between sections.
+- **Keep images out of the text Containers.** Use `ImageCaption` or `ImageGallery`, which bring their own Section and Container, between sections.
 - **Use `emphasized` for most article images,** and `fullwidth` sparingly.
 
 ## Accessibility
@@ -101,4 +101,4 @@ export const Post = () => (
 ## Related
 
 - [Page structure](?path=/docs/patterns-page-structure--docs)
-- `ImageCaption`, `Quote`
+- `ImageCaption`, `ImageGallery`, `Quote`

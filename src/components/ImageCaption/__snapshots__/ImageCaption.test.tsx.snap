@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageCaption Omits the figcaption when there's no caption 1`] = `
+<div>
+  <section
+    class="lagom-section lagom-image-caption"
+  >
+    <div
+      class="lagom-container"
+    >
+      <figure
+        class="lagom-image-caption__block-img"
+      >
+        <img
+          alt="Arctic fox"
+          src="/fox.jpg"
+        />
+      </figure>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`ImageCaption Renders default 1`] = `
+<div>
+  <section
+    class="lagom-section lagom-image-caption"
+  >
+    <div
+      class="lagom-container"
+    >
+      <figure
+        class="lagom-image-caption__block-img"
+      >
+        <img
+          alt="Arctic fox"
+          src="/fox.jpg"
+        />
+        <figcaption
+          class="lagom-image-caption__image-label"
+        >
+          Default caption
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`ImageCaption Renders emphasized 1`] = `
+<div>
+  <section
+    class="lagom-section lagom-image-caption"
+  >
+    <div
+      class="lagom-container"
+    >
+      <figure
+        class="lagom-image-caption__block-img lagom-image-caption--emphasized"
+      >
+        <img
+          alt="Arctic fox"
+          src="/fox.jpg"
+        />
+        <figcaption
+          class="lagom-image-caption__image-label"
+        >
+          Emphasized caption
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`ImageCaption Renders full width 1`] = `
+<div>
+  <figure
+    class="lagom-image-caption lagom-image-caption__block-img lagom-image-caption--full-width"
+  >
+    <div>
+      <img
+        alt="Arctic fox"
+        src="/fox.jpg"
+      />
+    </div>
+    <figcaption
+      class="lagom-image-caption__image-label"
+    >
+      Full-width caption
+    </figcaption>
+  </figure>
+</div>
+`;
