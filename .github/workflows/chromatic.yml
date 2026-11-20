@@ -19,14 +19,14 @@ jobs:
       # @fcongson scope against npm.pkg.github.com (for lagom-tokens).
       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # Chromatic needs full git history to find baselines for each branch.
           fetch-depth: 0
       - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
       - name: Set Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           # See ci.yml for why Node 22. chromatic@18 also requires Node >= 22.
           node-version: "22"
